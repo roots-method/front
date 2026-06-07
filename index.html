@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roots Method Co. — Investing in a sustainable, scalable future</title>
+  <meta
+    name="description"
+    content="Roots Method Co. invests in sustainable, scalable products — leveraging technology at the forefront to solve complex business problems."
+  />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page" id="top">
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="Roots Method Co. home">
+        <img class="brand__logo" src="assets/logo.png" alt="" />
+        <span class="brand__name">Roots Method Co.</span>
+      </a>
+      <nav class="nav__links">
+        <a class="nav__link" href="mailto:info@rootsmethod.co">Talk to us</a>
+        <a
+          class="nav__link nav__link--cta"
+          href="https://calendar.notion.so/meet/sumit-ntn/rootsmethod"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a call
+          <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <p class="hero__eyebrow">Roots Method Co. &middot; Parent company</p>
+      <h1 class="hero__title">
+        Rooted in <span class="accent">sustainability.</span><br />
+        Built to <span class="accent accent--alt">scale.</span>
+      </h1>
+      <p class="hero__lede">
+        We invest in products and founders that put sustainability and
+        scalability first &mdash; leveraging technology at the forefront to
+        solve complex business problems.
+      </p>
+      <div class="hero__actions">
+        <a
+          class="btn btn--primary"
+          href="https://calendar.notion.so/meet/sumit-ntn/rootsmethod"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a call
+          <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="btn btn--ghost" href="mailto:info@rootsmethod.co">Talk to us</a>
+      </div>
+    </main>
+
+    <section class="focus">
+      <article class="pillar">
+        <span class="pillar__index">01</span>
+        <h2 class="pillar__title">Sustainability</h2>
+        <p class="pillar__body">
+          Products and methods that protect the planet &mdash; from paper,
+          cotton and jute to circular, low-waste supply chains.
+        </p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">02</span>
+        <h2 class="pillar__title">Scalability</h2>
+        <p class="pillar__body">
+          Building for growth, turning promising ideas into resilient
+          businesses ready for the next generation.
+        </p>
+      </article>
+      <article class="pillar">
+        <span class="pillar__index">03</span>
+        <h2 class="pillar__title">Technology</h2>
+        <p class="pillar__body">
+          Technology at the forefront, solving complex problems with data,
+          automation and thoughtful design.
+        </p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; <span id="year"></span> Roots Method Co.</span>
+      <a class="footer__link" href="mailto:info@rootsmethod.co">info@rootsmethod.co</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
