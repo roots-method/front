@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
@@ -22,7 +22,7 @@
     <header class="nav">
       <a class="brand" href="#top" aria-label="Roots Method Co. home">
         <img class="brand__logo" src="assets/logo.png" alt="" />
-        <span class="brand__name">Roots Method Co.</span>
+        <!-- <span class="brand__name">Roots Method Co.</span> -->
       </a>
       <nav class="nav__links">
         <a class="nav__link" href="mailto:info@rootsmethod.co">Talk to us</a>
@@ -39,7 +39,10 @@
     </header>
 
     <main class="hero">
-      <p class="hero__eyebrow">Roots Method Co. &middot; Parent company</p>
+      <p class="hero__eyebrow">
+        <img class="icon-sm" src="assets/icons/09_sprout.svg" alt="" />
+        Roots Method Co. &middot; Parent company
+      </p>
       <h1 class="hero__title">
         Rooted in <span class="accent">sustainability.</span><br />
         Built to <span class="accent accent--alt">scale.</span>
@@ -65,7 +68,10 @@
 
     <section class="focus">
       <article class="pillar">
-        <span class="pillar__index">01</span>
+        <div class="pillar__head">
+          <img class="pillar__icon" src="assets/icons/01_leaf.svg" alt="" />
+          <span class="pillar__index">01</span>
+        </div>
         <h2 class="pillar__title">Sustainability</h2>
         <p class="pillar__body">
           Products and methods that protect the planet &mdash; from paper,
@@ -73,7 +79,10 @@
         </p>
       </article>
       <article class="pillar">
-        <span class="pillar__index">02</span>
+        <div class="pillar__head">
+          <img class="pillar__icon" src="assets/icons/15_analytics.svg" alt="" />
+          <span class="pillar__index">02</span>
+        </div>
         <h2 class="pillar__title">Scalability</h2>
         <p class="pillar__body">
           Building for growth, turning promising ideas into resilient
@@ -81,7 +90,10 @@
         </p>
       </article>
       <article class="pillar">
-        <span class="pillar__index">03</span>
+        <div class="pillar__head">
+          <img class="pillar__icon" src="assets/icons/22_gear.svg" alt="" />
+          <span class="pillar__index">03</span>
+        </div>
         <h2 class="pillar__title">Technology</h2>
         <p class="pillar__body">
           Technology at the forefront, solving complex problems with data,
@@ -92,7 +104,10 @@
 
     <footer class="footer">
       <span class="footer__copy">&copy; <span id="year"></span> Roots Method Co.</span>
-      <a class="footer__link" href="mailto:info@rootsmethod.co">info@rootsmethod.co</a>
+      <a class="footer__link" href="mailto:info@rootsmethod.co">
+        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+        info@rootsmethod.co
+      </a>
     </footer>
   </div>
 

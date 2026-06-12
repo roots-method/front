@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify — Roots Method Icon Set (54)</title>
+  <style>
+    :root { --bg:#f6f4f0; --fg:#222222; --green:#2f4a36; --line:rgba(34,34,34,0.12); }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { background:#fbfaf7; color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; padding:24px; }
+    h1 { font-size:18px; margin-bottom:16px; }
+    .grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+    .cell { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 8px 10px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+    .cell img { width:64px; height:64px; }
+    .cell span { font-size:11px; color:#555; }
+  </style>
+</head>
+<body>
+  <h1>Roots Method Icon Set — 54 icons</h1>
+  <div class="grid" id="grid"></div>
+  <script>
+    const names = [
+      "01_leaf","02_flask","03_droplet","04_sun","05_cycle","06_globe",
+      "07_package","08_truck","09_sprout","10_cart","11_handshake","12_people",
+      "13_search","14_laboratory","15_analytics","16_pie_chart","17_checklist","18_shield",
+      "19_tag","20_link","21_lock","22_gear","23_bell","24_mail",
+      "25_calendar","26_clock","27_location","28_map","29_star","30_heart",
+      "31_sustainability","32_recycle","33_tree","34_seed","35_roots","36_mountain",
+      "37_water","38_layers","39_compass","40_target","41_roadmap","42_flag",
+      "43_warehouse","44_inventory","45_factory","46_shipping","47_carbon","48_co2",
+      "49_energy","50_hydration","51_performance","52_sleep","53_wellness","54_mindfulness"
+    ];
+    document.getElementById("grid").innerHTML = names.map(n => `
+      <div class="cell">
+        <img src="assets/icons/${n}.svg" alt="${n}" />
+        <span>${n}.svg</span>
+      </div>
+    `).join("");
+  </script>
+</body>
+</html>
