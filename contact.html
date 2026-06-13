@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — DheeNode</title>
+  <meta
+    name="description"
+    content="Contact DheeNode to discuss an ROI blueprint or intelligent workflow opportunity."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <a class="brand" href="index.html" aria-label="DheeNode home">
+        <span class="brand__mark">DN</span>
+        <span class="brand__name">DheeNode</span>
+      </a>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="services.html">Services</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="results.html">Results</a>
+        <a class="nav__link is-active" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contact-layout">
+        <div class="page-hero page-hero--contact">
+          <p class="eyebrow">
+            <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+            Contact
+          </p>
+          <h1>Let’s find the workflow worth fixing first.</h1>
+          <p>
+            Tell us where operations feel slow, manual, or unclear. We will
+            start by looking for the practical business case before recommending
+            a system.
+          </p>
+          <div class="contact-methods">
+            <a href="mailto:info@dheenode.com">info@dheenode.com</a>
+            <a href="#" aria-label="Booking link placeholder">Booking link coming soon</a>
+          </div>
+        </div>
+
+        <form class="contact-form" action="mailto:info@dheenode.com" method="post" enctype="text/plain">
+          <label>
+            First name
+            <input type="text" name="first-name" placeholder="Your first name" />
+          </label>
+          <label>
+            Last name
+            <input type="text" name="last-name" placeholder="Your last name" />
+          </label>
+          <label>
+            Work email
+            <input type="email" name="email" placeholder="you@company.com" />
+          </label>
+          <label>
+            Company
+            <input type="text" name="company" placeholder="Company name" />
+          </label>
+          <label class="field-full">
+            What should improve?
+            <textarea name="message" rows="5" placeholder="Share the workflow, bottleneck, or opportunity you want to explore."></textarea>
+          </label>
+          <button class="btn btn--primary field-full" type="submit">
+            Send inquiry
+            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
+      <a class="footer__link" href="mailto:info@dheenode.com">
+        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+        info@dheenode.com
+      </a>
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

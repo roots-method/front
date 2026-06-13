@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify - Roots Method AI Icon Set</title>
+  <style>
+    :root { --bg:#f6f4f0; --fg:#222222; --line:rgba(34,34,34,0.12); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#fbfaf7; color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; padding:24px; }
+    h1 { font-size:18px; margin-bottom:6px; }
+    p { font-size:13px; opacity:.7; margin-bottom:18px; }
+    .grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+    .cell { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 8px 10px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+    .cell img { width:72px; height:72px; }
+    .cell span { font-size:11px; color:#555; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>Roots Method AI & Technology Icon Set - 18 icons</h1>
+  <p>Neutral palette using #0a0a0a, #5a5a5a, and #F7F5F3.</p>
+  <div class="grid" id="grid"></div>
+  <script>
+    const names = ['01_ai_brain', '02_neural_network', '03_model_cube', '04_prompt', '05_agent', '06_automation', '07_data_stack', '08_cloud_ai', '09_api', '10_chip', '11_security_ai', '12_vision', '13_voice', '14_workflow', '15_insight', '16_knowledge_graph', '17_code', '18_deploy'];
+    document.getElementById("grid").innerHTML = names.map(n => `
+      <div class="cell">
+        <img src="assets/icons-ai/${n}.svg" alt="${n}" />
+        <span>${n}.svg</span>
+      </div>
+    `).join("");
+  </script>
+</body>
+</html>

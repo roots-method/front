@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — DheeNode</title>
+  <meta
+    name="description"
+    content="Explore DheeNode services for ROI discovery, workflow intelligence, and AI-enabled business execution."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <a class="brand" href="index.html" aria-label="DheeNode home">
+        <span class="brand__mark">DN</span>
+        <span class="brand__name">DheeNode</span>
+      </a>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link is-active" href="services.html">Services</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="results.html">Results</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">
+          <img class="icon-sm" src="assets/icons-ai/14_workflow.svg" alt="" />
+          Services
+        </p>
+        <h1>Modernize the work that decides your margins.</h1>
+        <p>
+          Expert systems tailored to your goals—built to enhance how your team
+          thinks, decides, and executes. We identify gaps, automate complexity,
+          and continuously optimize performance as your company grows.
+        </p>
+      </section>
+
+      <section class="service-stack">
+        <article class="service-row reveal">
+          <span class="service-row__number">01</span>
+          <div>
+            <h2>ROI Blueprint</h2>
+            <p>
+              We analyze workflows, tools, costs, handoffs, and decision points
+              to identify where intelligent automation can create the strongest
+              return.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>Workflow and cost-structure review</li>
+            <li>Automation opportunity scoring</li>
+            <li>Prioritized implementation roadmap</li>
+          </ul>
+        </article>
+
+        <article class="service-row reveal">
+          <span class="service-row__number">02</span>
+          <div>
+            <h2>AI Automation</h2>
+            <p>
+              We design and deploy automation around repeatable decisions,
+              documents, customer operations, internal coordination, and data
+              movement.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>Agentic workflow design</li>
+            <li>Human-in-the-loop controls</li>
+            <li>Structured reporting and visibility</li>
+          </ul>
+        </article>
+
+        <article class="service-row reveal">
+          <span class="service-row__number">03</span>
+          <div>
+            <h2>Workflow Intelligence</h2>
+            <p>
+              We turn scattered processes into clear operating systems that help
+              teams move faster without losing judgment, context, or quality.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>Process redesign</li>
+            <li>Decision logic and data models</li>
+            <li>Systems integration planning</li>
+          </ul>
+        </article>
+
+        <article class="service-row reveal">
+          <span class="service-row__number">04</span>
+          <div>
+            <h2>Back-Office Operations</h2>
+            <p>
+              We do not just launch—we stay. Once deployed, we take ownership of
+              ongoing performance, maintenance, and optimization so value
+              compounds without added operational burden.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>Continuous performance monitoring</li>
+            <li>System refinement and evolution</li>
+            <li>Long-term operational partnership</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="cta-panel">
+        <div>
+          <p class="eyebrow">First Step</p>
+          <h2>Find the highest-value workflow before building anything.</h2>
+        </div>
+        <a class="btn btn--primary" href="contact.html">
+          Request an ROI blueprint
+          <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
+      <a class="footer__link" href="mailto:info@dheenode.com">
+        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+        info@dheenode.com
+      </a>
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
