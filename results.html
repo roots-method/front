@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results — DheeNode</title>
+  <meta
+    name="description"
+    content="DheeNode result placeholders for metrics, client logos, and future case studies."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <a class="brand" href="index.html" aria-label="DheeNode home">
+        <span class="brand__mark">DN</span>
+        <span class="brand__name">DheeNode</span>
+      </a>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="services.html">Services</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link is-active" href="results.html">Results</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">
+          <img class="icon-sm" src="assets/icons-ai/07_data_stack.svg" alt="" />
+          Results
+        </p>
+        <h1>Proof points will live here as the story grows.</h1>
+        <p>
+          This page is structured for measurable outcomes, client logos, and
+          case studies once approved results are ready to publish.
+        </p>
+      </section>
+
+      <section class="metric-band metric-band--large" aria-label="Metric placeholders">
+        <article class="metric-card">
+          <span class="metric-card__value">XX%</span>
+          <p>Reduction in manual operating effort</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__value">$XXk</span>
+          <p>Annual efficiency opportunity identified</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__value">XX days</span>
+          <p>Saved per workflow cycle</p>
+        </article>
+      </section>
+
+      <section class="section proof-strip">
+        <p class="eyebrow">Client Logos</p>
+        <div class="logo-row logo-row--large" aria-label="Client logo placeholders">
+          <span>Client Logo</span>
+          <span>Client Logo</span>
+          <span>Client Logo</span>
+          <span>Client Logo</span>
+          <span>Client Logo</span>
+        </div>
+      </section>
+
+      <section class="case-grid">
+        <article class="case-card reveal">
+          <span class="case-card__label">Case Study Placeholder</span>
+          <h2>Industry / Company Type</h2>
+          <p>
+            Problem summary, DheeNode approach, and measurable result will be
+            added once the approved story is available.
+          </p>
+        </article>
+        <article class="case-card reveal">
+          <span class="case-card__label">Case Study Placeholder</span>
+          <h2>Industry / Company Type</h2>
+          <p>
+            Problem summary, DheeNode approach, and measurable result will be
+            added once the approved story is available.
+          </p>
+        </article>
+        <article class="case-card reveal">
+          <span class="case-card__label">Case Study Placeholder</span>
+          <h2>Industry / Company Type</h2>
+          <p>
+            Problem summary, DheeNode approach, and measurable result will be
+            added once the approved story is available.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
+      <a class="footer__link" href="mailto:info@dheenode.com">
+        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+        info@dheenode.com
+      </a>
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

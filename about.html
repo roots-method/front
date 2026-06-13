@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — DheeNode</title>
+  <meta
+    name="description"
+    content="Learn the meaning, mission, and operating philosophy behind DheeNode."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <a class="brand" href="index.html" aria-label="DheeNode home">
+        <span class="brand__mark">DN</span>
+        <span class="brand__name">DheeNode</span>
+      </a>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="services.html">Services</a>
+        <a class="nav__link is-active" href="about.html">About</a>
+        <a class="nav__link" href="results.html">Results</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">
+          <img class="icon-sm" src="assets/icons-ai/16_knowledge_graph.svg" alt="" />
+          About DheeNode
+        </p>
+        <h1>Where reflection becomes better execution.</h1>
+        <p>
+          DheeNode is named from the idea of intellect, understanding, wisdom,
+          and reflection. We bring that mindset to the systems businesses depend
+          on every day.
+        </p>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Mission</p>
+          <h2>Build operating systems that help growing businesses move with clarity.</h2>
+        </div>
+        <p class="section__lede">
+          Our mission is to help small and mid-sized companies improve
+          performance through thoughtful process design, practical automation,
+          and intelligent systems that enhance human judgment—not replace it.
+          We build products and workflows that make better execution repeatable.
+        </p>
+      </section>
+
+      <section class="philosophy-grid">
+        <article class="philosophy-card reveal">
+          <span>01</span>
+          <h3>Performance Before Technology</h3>
+          <p>
+            We begin with the business outcome, not the software trend. Every
+            recommendation has to earn its place.
+          </p>
+        </article>
+        <article class="philosophy-card reveal">
+          <span>02</span>
+          <h3>Wisdom In The Loop</h3>
+          <p>
+            Automation should amplify judgment. We design systems with clear
+            control points, accountability, and human context.
+          </p>
+        </article>
+        <article class="philosophy-card reveal">
+          <span>03</span>
+          <h3>Compounding Improvement</h3>
+          <p>
+            A good system gets better with use. We build for feedback,
+            measurement, and steady refinement.
+          </p>
+        </article>
+      </section>
+
+      <section class="vision-panel">
+        <p class="eyebrow">Vision</p>
+        <h2>
+          A future where every growing business can operate with the insight,
+          discipline, and leverage of a much larger organization.
+        </h2>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
+      <a class="footer__link" href="mailto:info@dheenode.com">
+        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+        info@dheenode.com
+      </a>
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
