@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /*
    * Layered palette — change --bg to retheme the canvas.
    * --surface should stay noticeably lighter so content lifts off the page.
@@ -17,9 +18,59 @@
   --line: rgba(10, 10, 10, 0.12);
   --shadow: 0 20px 60px rgba(10, 10, 10, 0.1);
   --shadow-strong: 0 28px 80px rgba(10, 10, 10, 0.16);
+  --canvas-glow: rgba(10, 10, 10, 0.04);
+  --grid-line: rgba(10, 10, 10, 0.06);
+  --grid-opacity: 0.08;
+  --nav-link: rgba(10, 10, 10, 0.62);
+  --eyebrow: rgba(10, 10, 10, 0.52);
+  --btn-primary-hover: #2a2a2a;
+  --btn-primary-shadow: rgba(10, 10, 10, 0.2);
+  --story-end: #ece8e3;
+  --story-stroke: rgba(10, 10, 10, 0.55);
+  --story-stroke-soft: rgba(90, 90, 90, 0.2);
+  --story-stroke-mid: rgba(10, 10, 10, 0.45);
+  --story-stroke-end: rgba(90, 90, 90, 0.25);
+  --story-glow-secondary: rgba(90, 90, 90, 0.14);
+  --story-grid-opacity: 0.35;
+  --placeholder: rgba(10, 10, 10, 0.4);
+  --label: rgba(34, 34, 34, 0.74);
   --font: "Wix Madefor Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Helvetica, Arial, sans-serif;
   --maxw: 1180px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141414;
+  --bg-rgb: 20, 20, 20;
+  --surface: #1c1c1c;
+  --surface-rgb: 28, 28, 28;
+  --inset: #2a2a2a;
+  --fg: #f4f2ef;
+  --muted: rgba(244, 242, 239, 0.68);
+  --accent: #a3a3a3;
+  --accent-strong: #d1d1d1;
+  --accent-soft: #7a7a7a;
+  --accent-rgb: 244, 242, 239;
+  --line: rgba(244, 242, 239, 0.12);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
+  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.48);
+  --canvas-glow: rgba(255, 255, 255, 0.04);
+  --grid-line: rgba(244, 242, 239, 0.06);
+  --grid-opacity: 0.06;
+  --nav-link: rgba(244, 242, 239, 0.62);
+  --eyebrow: rgba(244, 242, 239, 0.52);
+  --btn-primary-hover: #e0ddd8;
+  --btn-primary-shadow: rgba(0, 0, 0, 0.4);
+  --story-end: #242424;
+  --story-stroke: rgba(244, 242, 239, 0.72);
+  --story-stroke-soft: rgba(244, 242, 239, 0.24);
+  --story-stroke-mid: rgba(244, 242, 239, 0.58);
+  --story-stroke-end: rgba(244, 242, 239, 0.3);
+  --story-glow-secondary: rgba(244, 242, 239, 0.12);
+  --story-grid-opacity: 0.55;
+  --placeholder: rgba(244, 242, 239, 0.4);
+  --label: rgba(244, 242, 239, 0.74);
 }
 
 *,
@@ -38,7 +89,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   background:
-    radial-gradient(80% 60% at 90% -5%, rgba(10, 10, 10, 0.04), transparent 55%),
+    radial-gradient(80% 60% at 90% -5%, var(--canvas-glow), transparent 55%),
     var(--bg);
   color: var(--fg);
   font-family: var(--font);
@@ -53,10 +104,10 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.08;
+  opacity: var(--grid-opacity);
   background-image:
-    linear-gradient(rgba(10, 10, 10, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 10, 10, 0.06) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: radial-gradient(circle at 50% 10%, black, transparent 70%);
 }
@@ -91,6 +142,12 @@ textarea {
   flex: none;
 }
 
+[data-theme="dark"] .icon-sm,
+[data-theme="dark"] .feature-card__icon,
+[data-theme="dark"] .philosophy-card__icon {
+  filter: brightness(0) invert(0.92);
+}
+
 .nav {
   position: relative;
   z-index: 10;
@@ -121,7 +178,7 @@ textarea {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+  box-shadow: 0 8px 24px var(--btn-primary-shadow);
 }
 
 .brand__name {
@@ -136,6 +193,47 @@ textarea {
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: clamp(0.75rem, 2vw, 1.35rem);
+}
+
+.nav__tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--fg);
+}
+
+.theme-toggle__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-toggle__icon--light,
+.theme-toggle__icon--dark {
+  display: none;
+}
+
+.theme-toggle[data-theme-pref="light"] .theme-toggle__icon--dark,
+.theme-toggle[data-theme-pref="dark"] .theme-toggle__icon--light {
+  display: block;
 }
 
 .nav__toggle {
@@ -169,7 +267,7 @@ textarea {
   font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: rgba(10, 10, 10, 0.62);
+  color: var(--nav-link);
   transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease,
     border-color 0.2s ease;
 }
@@ -231,7 +329,7 @@ main {
   align-items: center;
   gap: 0.55em;
   margin-bottom: clamp(0.8rem, 1.8vw, 1.2rem);
-  color: rgba(10, 10, 10, 0.52);
+  color: var(--eyebrow);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.07em;
@@ -318,11 +416,11 @@ main {
 .btn--primary {
   background-color: var(--fg);
   color: var(--surface);
-  box-shadow: 0 14px 32px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 14px 32px var(--btn-primary-shadow);
 }
 
 .btn--primary:hover {
-  background-color: #2a2a2a;
+  background-color: var(--btn-primary-hover);
 }
 
 .btn--ghost {
@@ -343,7 +441,7 @@ main {
   border-radius: clamp(1.5rem, 4vw, 2.5rem);
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 45%, rgba(10, 10, 10, 0.04), transparent 40%),
+    radial-gradient(circle at 50% 45%, var(--canvas-glow), transparent 40%),
     var(--surface);
   box-shadow: var(--shadow-strong);
   animation: float-in 0.95s ease 0.18s both, breathe 6s ease-in-out 1s infinite;
@@ -404,7 +502,7 @@ main {
   background: var(--surface);
   color: var(--accent-strong);
   font-weight: 600;
-  box-shadow: 0 12px 32px rgba(10, 10, 10, 0.1);
+  box-shadow: var(--shadow);
   animation: node-pulse 4.8s ease-in-out infinite;
 }
 
@@ -629,10 +727,10 @@ main {
   display: grid;
   min-height: 5.25rem;
   place-items: center;
-  border: 1px dashed rgba(10, 10, 10, 0.2);
+  border: 1px dashed var(--line);
   border-radius: 1rem;
   background: transparent;
-  color: rgba(10, 10, 10, 0.4);
+  color: var(--placeholder);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -708,7 +806,7 @@ main {
   border: 1px solid var(--line);
   border-radius: clamp(1.5rem, 4vw, 2.5rem);
   background:
-    radial-gradient(120% 90% at 0% 0%, rgba(10, 10, 10, 0.04), transparent 55%),
+    radial-gradient(120% 90% at 0% 0%, var(--canvas-glow), transparent 55%),
     var(--surface);
   box-shadow: var(--shadow-strong);
   overflow: hidden;
@@ -727,9 +825,9 @@ main {
   height: 100%;
   min-height: inherit;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 15%, rgba(10, 10, 10, 0.07), transparent 60%),
-    radial-gradient(ellipse 70% 55% at 85% 80%, rgba(90, 90, 90, 0.12), transparent 65%),
-    linear-gradient(160deg, rgba(var(--bg-rgb), 0.9) 0%, rgba(var(--surface-rgb), 1) 48%, #ece8e3 100%);
+    radial-gradient(ellipse 80% 60% at 20% 15%, var(--canvas-glow), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 85% 80%, rgba(var(--accent-rgb), 0.08), transparent 65%),
+    linear-gradient(160deg, rgba(var(--bg-rgb), 0.9) 0%, rgba(var(--surface-rgb), 1) 48%, var(--story-end) 100%);
 }
 
 .story-field__glow {
@@ -745,7 +843,7 @@ main {
   left: -8%;
   width: 55%;
   height: 38%;
-  background: rgba(10, 10, 10, 0.08);
+  background: var(--canvas-glow);
 }
 
 .story-field__glow--two {
@@ -753,16 +851,16 @@ main {
   bottom: 6%;
   width: 48%;
   height: 42%;
-  background: rgba(90, 90, 90, 0.14);
+  background: var(--story-glow-secondary);
   animation-delay: -4s;
 }
 
 .story-field__grid {
   position: absolute;
   inset: 0;
-  opacity: 0.35;
+  opacity: var(--story-grid-opacity);
   background-image:
-    radial-gradient(rgba(10, 10, 10, 0.14) 1px, transparent 1px);
+    radial-gradient(var(--grid-line) 1px, transparent 1px);
   background-size: 22px 22px;
   mask-image: linear-gradient(180deg, black 10%, transparent 92%);
 }
@@ -780,6 +878,7 @@ main {
 }
 
 .story-field__pulse {
+  stroke: var(--story-stroke);
   stroke-dasharray: 42 520;
   stroke-dashoffset: 520;
   animation: story-draw 5.5s ease-in-out infinite;
@@ -787,7 +886,7 @@ main {
 
 .story-field__node {
   fill: var(--surface);
-  stroke: rgba(10, 10, 10, 0.55);
+  stroke: var(--story-stroke);
   stroke-width: 1.5;
   animation: story-node 4.8s ease-in-out infinite;
 }
@@ -811,11 +910,11 @@ main {
   display: grid;
   gap: 0.2rem;
   padding: 0.65rem 0.85rem;
-  border: 1px solid rgba(10, 10, 10, 0.1);
+  border: 1px solid var(--line);
   border-radius: 0.9rem;
   background: rgba(var(--surface-rgb), 0.82);
   backdrop-filter: blur(6px);
-  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.08);
+  box-shadow: var(--shadow);
   animation: story-beat-float 6s ease-in-out infinite;
 }
 
@@ -838,13 +937,14 @@ main {
 }
 
 .story-beat__index {
-  color: rgba(10, 10, 10, 0.42);
+  color: var(--eyebrow);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
 }
 
 .story-beat__label {
+  color: var(--fg);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -941,6 +1041,19 @@ main {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 600;
   letter-spacing: 0.06em;
+  overflow: hidden;
+}
+
+.leader-card__photo--avatar {
+  padding: 0;
+  background: var(--bg);
+}
+
+.leader-card__photo--avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .leader-card h3 {
@@ -1042,7 +1155,7 @@ main {
 .contact-form label {
   display: grid;
   gap: 0.45rem;
-  color: rgba(34, 34, 34, 0.74);
+  color: var(--label);
   font-size: 0.88rem;
   font-weight: 500;
 }
@@ -1213,13 +1326,13 @@ main {
   margin-top: clamp(2rem, 4vw, 3rem);
   padding-top: 1rem;
   border-top: 1px solid var(--line);
-  color: rgba(10, 10, 10, 0.5);
+  color: var(--muted);
   font-size: 0.82rem;
   font-weight: 500;
 }
 
 .footer__copy {
-  color: rgba(34, 34, 34, 0.56);
+  color: var(--muted);
 }
 
 .footer__link {
@@ -1227,7 +1340,7 @@ main {
   align-items: center;
   gap: 0.4em;
   text-decoration: none;
-  color: rgba(34, 34, 34, 0.72);
+  color: var(--label);
   transition: color 0.2s ease;
 }
 
@@ -1432,9 +1545,12 @@ main {
     gap: 0.75rem;
   }
 
+  .nav__tools {
+    margin-left: auto;
+  }
+
   .nav__toggle {
     display: inline-flex;
-    margin-left: auto;
   }
 
   .nav__links {
