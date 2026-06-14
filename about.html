@@ -15,6 +15,8 @@
     href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <meta name="color-scheme" content="light dark" />
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -44,9 +46,9 @@
               <svg class="story-field__svg" viewBox="0 0 360 420" role="presentation">
                 <defs>
                   <linearGradient id="story-flow" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(90, 90, 90, 0.2)" />
-                    <stop offset="55%" stop-color="rgba(10, 10, 10, 0.45)" />
-                    <stop offset="100%" stop-color="rgba(90, 90, 90, 0.25)" />
+                    <stop offset="0%" stop-color="var(--story-stroke-soft)" />
+                    <stop offset="55%" stop-color="var(--story-stroke-mid)" />
+                    <stop offset="100%" stop-color="var(--story-stroke-end)" />
                   </linearGradient>
                 </defs>
                 <path
@@ -61,7 +63,6 @@
                   class="story-field__pulse"
                   d="M 72 48 C 148 92, 196 132, 168 196 S 108 300, 196 372"
                   fill="none"
-                  stroke="rgba(10, 10, 10, 0.55)"
                   stroke-width="2"
                   stroke-linecap="round"
                 />
@@ -135,25 +136,37 @@
         <h2 class="leadership-section__title">Meet the Leadership</h2>
         <div class="leadership-grid">
           <article class="leader-card reveal">
-            <div class="leader-card__photo" aria-hidden="true">
-              <span>AM</span>
+            <div class="leader-card__photo leader-card__photo--avatar">
+              <img
+                src="assets/avatars/AMaheshwari.png"
+                alt="Illustrated portrait of Anubha Maheshwari"
+                loading="lazy"
+              />
             </div>
-            <h3>Akki <i>Maheshwari</i></h3>
+            <h3>Anubha <i>Maheshwari</i></h3>
             <p>Human Resources</p>
           </article>
           <article class="leader-card reveal">
-            <div class="leader-card__photo" aria-hidden="true">
-              <span>SJ</span>
+            <div class="leader-card__photo leader-card__photo--avatar">
+              <img
+                src="assets/avatars/AkkiMahesh.png"
+                alt="Illustrated portrait of Anubha Maheshwari"
+                loading="lazy"
+              />
             </div>
-            <h3>Sumit <i>Jaju</i></h3>
+            <h3>Akki <i>Maheshwari</i></h3>
             <p>Program Head</p>
           </article>
           <article class="leader-card reveal">
-            <div class="leader-card__photo" aria-hidden="true">
-              <span>JR</span>
+            <div class="leader-card__photo leader-card__photo--avatar">
+              <img
+                src="assets/avatars/SJazzy.png"
+                alt="Illustrated portrait of Anubha Maheshwari"
+                loading="lazy"
+              />
             </div>
-            <h3>Jitu <i>Rathi</i></h3>
-            <p>Investor / Board Member</p>
+            <h3>Sumitt <i>Jazzy</i></h3>
+            <p>Money Man</p>
           </article>
         </div>
       </section>
@@ -163,6 +176,7 @@
   </div>
 
   <script src="site-menu.js"></script>
+  <script src="theme.js"></script>
   <script src="header.js"></script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
