@@ -6,7 +6,7 @@
   <title>About — DheeNode</title>
   <meta
     name="description"
-    content="Learn the meaning, mission, and operating philosophy behind DheeNode."
+    content="Learn who DheeNode is, our story, and how we build intelligent business systems for growing companies."
   />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,106 +19,152 @@
 </head>
 <body>
   <div class="site-shell">
-    <header class="nav">
-      <a class="brand" href="index.html" aria-label="DheeNode home">
-        <span class="brand__mark">DN</span>
-        <span class="brand__name">DheeNode</span>
-      </a>
-      <button
-        class="nav__toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="primary-nav"
-        aria-label="Open menu"
-      >
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-      </button>
-      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav__link" href="index.html">Home</a>
-        <a class="nav__link" href="services.html">Services</a>
-        <a class="nav__link is-active" href="about.html">About</a>
-        <a class="nav__link" href="results.html">Results</a>
-        <a class="nav__link" href="contact.html">Contact</a>
-      </nav>
-    </header>
+    <header class="nav" data-component="site-header"></header>
 
     <main>
-      <section class="page-hero">
+      <section class="page-hero page-hero--about">
         <p class="eyebrow">
           <img class="icon-sm" src="assets/icons-ai/16_knowledge_graph.svg" alt="" />
-          About DheeNode
+          Company
         </p>
-        <h1>Where reflection becomes better execution.</h1>
-        <p>
-          DheeNode is named from the idea of intellect, understanding, wisdom,
-          and reflection. We bring that mindset to the systems businesses depend
-          on every day.
+        <h1>Who We Are</h1>
+        <p class="page-hero__tagline">
+          We help growing businesses build systems that are clear, steady, and designed
+          to get better over time.
         </p>
       </section>
 
-      <section class="section split">
-        <div>
-          <p class="eyebrow">Mission</p>
-          <h2>Build operating systems that help growing businesses move with clarity.</h2>
+      <section class="section our-story">
+        <div class="our-story__frame">
+          <div class="our-story__visual" aria-hidden="true">
+            <div class="story-field">
+              <div class="story-field__glow story-field__glow--one"></div>
+              <div class="story-field__glow story-field__glow--two"></div>
+              <div class="story-field__grid"></div>
+              <svg class="story-field__svg" viewBox="0 0 360 420" role="presentation">
+                <defs>
+                  <linearGradient id="story-flow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(90, 90, 90, 0.2)" />
+                    <stop offset="55%" stop-color="rgba(10, 10, 10, 0.45)" />
+                    <stop offset="100%" stop-color="rgba(90, 90, 90, 0.25)" />
+                  </linearGradient>
+                </defs>
+                <path
+                  class="story-field__curve"
+                  d="M 72 48 C 148 92, 196 132, 168 196 S 108 300, 196 372"
+                  fill="none"
+                  stroke="url(#story-flow)"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  class="story-field__pulse"
+                  d="M 72 48 C 148 92, 196 132, 168 196 S 108 300, 196 372"
+                  fill="none"
+                  stroke="rgba(10, 10, 10, 0.55)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <circle class="story-field__node" cx="72" cy="48" r="5" />
+                <circle class="story-field__node" cx="168" cy="196" r="6" />
+                <circle class="story-field__node" cx="196" cy="372" r="5" />
+              </svg>
+              <ol class="story-field__beats">
+                <li class="story-beat">
+                  <span class="story-beat__index">01</span>
+                  <span class="story-beat__label">Friction</span>
+                </li>
+                <li class="story-beat">
+                  <span class="story-beat__index">02</span>
+                  <span class="story-beat__label">Reflection</span>
+                </li>
+                <li class="story-beat">
+                  <span class="story-beat__index">03</span>
+                  <span class="story-beat__label">Alignment</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="our-story__content">
+            <h2 class="our-story__title">Our Story</h2>
+            <div class="our-story__body">
+              <p>
+                DheeNode began with a simple idea: modern tools should make work feel easier,
+                not heavier. We kept seeing capable teams slowed by disconnected workflows
+                and processes that added friction instead of focus.
+              </p>
+              <p>
+                Our name reflects intellect and reflection—understanding how work actually
+                happens before changing it. We partner with growing businesses to see where time
+                and margin quietly slip away, then design systems that make better execution
+                feel natural.
+              </p>
+              <p>
+                We blend thoughtful automation with human judgment, and stay close from design
+                through deployment. When people, process, and tools align, improvement compounds
+                over time.
+              </p>
+            </div>
+            <p class="our-story__closing">
+              Building business systems that help companies move forward with calm and clarity.
+            </p>
+          </div>
         </div>
-        <p class="section__lede">
-          Our mission is to help small and mid-sized companies improve
-          performance through thoughtful process design, practical automation,
-          and intelligent systems that enhance human judgment—not replace it.
-          We build products and workflows that make better execution repeatable.
-        </p>
       </section>
 
-      <section class="philosophy-grid">
-        <article class="philosophy-card reveal">
-          <span>01</span>
-          <h3>Performance Before Technology</h3>
-          <p>
-            We begin with the business outcome, not the software trend. Every
-            recommendation has to earn its place.
-          </p>
-        </article>
-        <article class="philosophy-card reveal">
-          <span>02</span>
-          <h3>Wisdom In The Loop</h3>
-          <p>
-            Automation should amplify judgment. We design systems with clear
-            control points, accountability, and human context.
-          </p>
-        </article>
-        <article class="philosophy-card reveal">
-          <span>03</span>
-          <h3>Compounding Improvement</h3>
-          <p>
-            A good system gets better with use. We build for feedback,
-            measurement, and steady refinement.
-          </p>
-        </article>
+      <section class="section numbers-section">
+        <h2 class="numbers-section__title">DheeNode in Numbers</h2>
+        <div class="metric-band metric-band--about">
+          <article class="metric-card">
+            <span class="metric-card__value">37</span>
+            <p>Customers &amp; counting</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-card__value">425</span>
+            <p>Projects of experience</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-card__value">20</span>
+            <p>Years of industry experience</p>
+          </article>
+        </div>
       </section>
 
-      <section class="vision-panel">
-        <p class="eyebrow">Vision</p>
-        <h2>
-          A future where every growing business can operate with the insight,
-          discipline, and leverage of a much larger organization.
-        </h2>
+      <section class="section leadership-section">
+        <h2 class="leadership-section__title">Meet the Leadership</h2>
+        <div class="leadership-grid">
+          <article class="leader-card reveal">
+            <div class="leader-card__photo" aria-hidden="true">
+              <span>AM</span>
+            </div>
+            <h3>Akki <i>Maheshwari</i></h3>
+            <p>Human Resources</p>
+          </article>
+          <article class="leader-card reveal">
+            <div class="leader-card__photo" aria-hidden="true">
+              <span>SJ</span>
+            </div>
+            <h3>Sumit <i>Jaju</i></h3>
+            <p>Program Head</p>
+          </article>
+          <article class="leader-card reveal">
+            <div class="leader-card__photo" aria-hidden="true">
+              <span>JR</span>
+            </div>
+            <h3>Jitu <i>Rathi</i></h3>
+            <p>Investor / Board Member</p>
+          </article>
+        </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
-      <a class="footer__link" href="mailto:info@dheenode.com">
-        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
-        info@dheenode.com
-      </a>
-    </footer>
+    <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
+  <script src="site-menu.js"></script>
+  <script src="header.js"></script>
   <script src="nav.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="footer.js"></script>
 </body>
 </html>

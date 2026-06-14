@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — DheeNode</title>
+  <title>Our Flow — DheeNode</title>
   <meta
     name="description"
-    content="Explore DheeNode services for ROI discovery, workflow intelligence, and AI-enabled business execution."
+    content="Explore the DheeNode flow for ROI discovery, workflow intelligence, and AI-enabled business execution."
   />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,36 +19,13 @@
 </head>
 <body>
   <div class="site-shell">
-    <header class="nav">
-      <a class="brand" href="index.html" aria-label="DheeNode home">
-        <span class="brand__mark">DN</span>
-        <span class="brand__name">DheeNode</span>
-      </a>
-      <button
-        class="nav__toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="primary-nav"
-        aria-label="Open menu"
-      >
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-        <span class="nav__toggle-bar" aria-hidden="true"></span>
-      </button>
-      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
-        <a class="nav__link" href="index.html">Home</a>
-        <a class="nav__link is-active" href="services.html">Services</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link" href="results.html">Results</a>
-        <a class="nav__link" href="contact.html">Contact</a>
-      </nav>
-    </header>
+    <header class="nav" data-component="site-header"></header>
 
     <main>
       <section class="page-hero">
         <p class="eyebrow">
           <img class="icon-sm" src="assets/icons-ai/14_workflow.svg" alt="" />
-          Services
+          Our Flow
         </p>
         <h1>Modernize the work that decides your margins.</h1>
         <p>
@@ -139,18 +116,12 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <span class="footer__copy">&copy; <span id="year"></span> DheeNode</span>
-      <a class="footer__link" href="mailto:info@dheenode.com">
-        <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
-        info@dheenode.com
-      </a>
-    </footer>
+    <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
+  <script src="site-menu.js"></script>
+  <script src="header.js"></script>
   <script src="nav.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="footer.js"></script>
 </body>
 </html>
