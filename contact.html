@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <meta name="color-scheme" content="light dark" />
@@ -42,18 +42,29 @@
           </div>
         </div>
 
-        <form class="contact-form" action="mailto:info@dheenode.com" method="post" enctype="text/plain">
+        <form class="contact-form" id="contact-form" novalidate>
+          <p
+            class="contact-form__status field-full"
+            id="contact-form-status"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></p>
+          <label class="contact-form__honeypot" aria-hidden="true">
+            Leave blank
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </label>
           <label>
             First name
-            <input type="text" name="first-name" placeholder="Your first name" />
+            <input type="text" name="first-name" placeholder="Your first name" required />
           </label>
           <label>
             Last name
-            <input type="text" name="last-name" placeholder="Your last name" />
+            <input type="text" name="last-name" placeholder="Your last name" required />
           </label>
           <label>
             Work email
-            <input type="email" name="email" placeholder="you@company.com" />
+            <input type="email" name="email" placeholder="you@company.com" required />
           </label>
           <label>
             Company
@@ -61,10 +72,15 @@
           </label>
           <label class="field-full">
             What should improve?
-            <textarea name="message" rows="5" placeholder="Share the workflow, bottleneck, or opportunity you want to explore."></textarea>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Share the workflow, bottleneck, or opportunity you want to explore."
+              required
+            ></textarea>
           </label>
           <button class="btn btn--primary field-full" type="submit">
-            Send inquiry
+            <span class="btn__label">Send inquiry</span>
             <span class="nav__arrow" aria-hidden="true">&#8599;</span>
           </button>
         </form>
@@ -79,5 +95,6 @@
   <script src="header.js"></script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
+  <script src="contact-form.js"></script>
 </body>
 </html>

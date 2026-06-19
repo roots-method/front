@@ -35,8 +35,7 @@
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
     '<a class="site-footer__brand-link" href="index.html" aria-label="DheeNode home">' +
-    '<span class="site-footer__mark">DN</span>' +
-    '<span class="site-footer__name">DheeNode</span>' +
+    '<span class="site-footer__mark">DheeNode</span>' +
     "</a>" +
     "</div>" +
     '<div class="site-footer__column">' +
@@ -63,7 +62,6 @@
     '<div class="site-footer__social" aria-label="Social links">' +
     '<a class="site-footer__social-link" href="#" aria-label="LinkedIn">in</a>' +
     '<a class="site-footer__social-link" href="#" aria-label="X">x</a>' +
-    '<a class="site-footer__social-link" href="#" aria-label="Instagram">ig</a>' +
     "</div>" +
     "</div>" +
     '<div class="site-footer__cta">' +
