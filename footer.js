@@ -1,6 +1,6 @@
 (function () {
-  const INQUIRY_EMAIL = "info@dheenode.com";
-  const CONTACT_EMAIL = "info@dheenode.com";
+  const INQUIRY_EMAIL = "info@dheesystems.com";
+  const CONTACT_EMAIL = "info@dheesystems.com";
 
   const menuItems = window.SITE_MENU_ITEMS || [];
 
@@ -10,10 +10,10 @@
     "mailto:" +
     INQUIRY_EMAIL +
     "?subject=" +
-    encodeURIComponent("Inquiry from DheeNode Website") +
+    encodeURIComponent("Inquiry from dhee systems Website") +
     "&body=" +
     encodeURIComponent(
-      "Hello DheeNode,\n\nI would like to discuss a workflow or business opportunity.\n\n"
+      "Hello dhee systems,\n\nI would like to discuss a workflow or business opportunity.\n\n"
     );
 
   const menuMarkup = menuItems
@@ -34,8 +34,8 @@
   const footerMarkup =
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
-    '<a class="site-footer__brand-link" href="index.html" aria-label="DheeNode home">' +
-    '<span class="site-footer__mark">DheeNode</span>' +
+    '<a class="site-footer__brand-link" href="index.html" aria-label="dhee systems home">' +
+    '<span class="site-footer__mark">dhee systems</span>' +
     "</a>" +
     "</div>" +
     '<div class="site-footer__column">' +
@@ -71,7 +71,7 @@
     "</div>" +
     "</div>" +
     '<div class="site-footer__legal">' +
-    '<span>&copy; <span id="footer-year"></span> DheeNode</span>' +
+    '<span>&copy; <span id="footer-year"></span> dhee systems</span>' +
     "</div>";
 
   document.querySelectorAll("[data-component='site-footer']").forEach(function (footer) {

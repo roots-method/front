@@ -20,8 +20,8 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="DheeNode home">' +
-    '<span class="brand__name">DheeNode</span>' +
+    '<a class="brand" href="index.html" aria-label="dhee systems home">' +
+    '<span class="brand__name">dhee systems</span>' +
     "</a>" +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
     navMarkup +
@@ -47,8 +47,8 @@
     header.innerHTML = headerMarkup;
     header.classList.add("nav--ready");
 
-    if (window.DheeNodeTheme && typeof window.DheeNodeTheme.bind === "function") {
-      window.DheeNodeTheme.bind();
+    if (window.DheeSystemsTheme && typeof window.DheeSystemsTheme.bind === "function") {
+      window.DheeSystemsTheme.bind();
     }
   });
 })();

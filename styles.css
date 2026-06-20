@@ -168,6 +168,12 @@ textarea {
   text-decoration: none;
 }
 
+.brand__logo {
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: none;
+}
+
 .brand__mark {
   display: inline-grid;
   width: 2.45rem;

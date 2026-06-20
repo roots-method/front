@@ -1,5 +1,5 @@
 (function () {
-  var STORAGE_KEY = "dheenode-theme";
+  var STORAGE_KEY = "dheesystems-theme";
   var stored = localStorage.getItem(STORAGE_KEY);
 
   if (stored === "system" || !stored) {
