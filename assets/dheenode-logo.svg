@@ -1,25 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="DheeNode">
   <rect width="1200" height="400" fill="#F7F5F3"/>
-  <g transform="translate(120 200)">
-    <circle cx="0" cy="0" r="88" fill="#ffffff" stroke="#0a0a0a" stroke-opacity="0.2" stroke-width="3"/>
-    <text
-      x="0"
-      y="12"
-      text-anchor="middle"
-      font-family="'Wix Madefor Text', Arial, Helvetica, sans-serif"
-      font-size="52"
-      font-weight="600"
-      fill="#0a0a0a"
-      letter-spacing="4"
-    >DN</text>
-    <text
-      x="148"
-      y="14"
-      font-family="'Wix Madefor Text', Arial, Helvetica, sans-serif"
-      font-size="88"
-      font-weight="600"
-      fill="#0a0a0a"
-      letter-spacing="-2"
-    >DheeNode</text>
-  </g>
+  <text
+    x="600"
+    y="218"
+    text-anchor="middle"
+    font-family="'Wix Madefor Display', 'Wix Madefor Text', Arial, sans-serif"
+    font-size="112"
+    font-weight="600"
+    fill="#0a0a0a"
+    letter-spacing="-2"
+  >DheeNode</text>
 </svg>
