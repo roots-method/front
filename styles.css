@@ -371,6 +371,36 @@ main {
   color: var(--accent);
 }
 
+.hero__slash {
+  display: inline-block;
+  padding-inline: 0.06em;
+  background: linear-gradient(
+    105deg,
+    var(--fg) 0%,
+    var(--fg) 22%,
+    var(--accent) 38%,
+    var(--accent-soft) 50%,
+    var(--accent) 62%,
+    var(--fg) 78%,
+    var(--fg) 100%
+  );
+  background-size: 320% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: slash-sweep 2.2s linear infinite;
+}
+
+@keyframes slash-sweep {
+  0% {
+    background-position: 130% 0;
+  }
+
+  100% {
+    background-position: -30% 0;
+  }
+}
+
 .accent::after {
   content: "";
   position: absolute;

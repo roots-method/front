@@ -21,7 +21,7 @@
 
   var headerMarkup =
     '<a class="brand" href="index.html" aria-label="dhee systems home">' +
-    '<span class="brand__name">dhee systems</span>' +
+    '<span class="brand__name">dhee / systems</span>' +
     "</a>" +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
     navMarkup +

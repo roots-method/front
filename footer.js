@@ -35,7 +35,7 @@
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
     '<a class="site-footer__brand-link" href="index.html" aria-label="dhee systems home">' +
-    '<span class="site-footer__mark">dhee systems</span>' +
+    '<span class="site-footer__mark">dhee / systems</span>' +
     "</a>" +
     "</div>" +
     '<div class="site-footer__column">' +
