@@ -22,7 +22,15 @@
 
   var headerMarkup =
     '<a class="brand" href="index.html" aria-label="dhee systems home">' +
-    '<span class="brand__name">dhee <span class="brand__slash">/</span> systems</span>' +
+    '<span class="brand__name">' +
+    '<span class="brand__word">' +
+    '<span class="brand__glyph">d</span><span class="brand__rest">hee</span>' +
+    "</span>" +
+    '<span class="brand__slash" aria-hidden="true">/</span>' +
+    '<span class="brand__word">' +
+    '<span class="brand__glyph">s</span><span class="brand__rest">ystems</span>' +
+    "</span>" +
+    "</span>" +
     "</a>" +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
     navMarkup +
@@ -44,6 +52,23 @@
     "</button>" +
     "</div>";
 
+  function bindNavScroll() {
+    if (window.__dheeNavScrollBound) return;
+    window.__dheeNavScrollBound = true;
+
+    var scrollThreshold = 48;
+
+    function updateNavScroll() {
+      var scrolled = window.scrollY > scrollThreshold;
+      document.querySelectorAll(".nav").forEach(function (nav) {
+        nav.classList.toggle("nav--scrolled", scrolled);
+      });
+    }
+
+    window.addEventListener("scroll", updateNavScroll, { passive: true });
+    updateNavScroll();
+  }
+
   document.querySelectorAll("[data-component='site-header']").forEach(function (header) {
     header.innerHTML = headerMarkup;
     header.classList.add("nav--ready");
@@ -52,4 +77,6 @@
       window.DheeSystemsTheme.bind();
     }
   });
+
+  bindNavScroll();
 })();
