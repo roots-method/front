@@ -1190,6 +1190,194 @@ main {
   padding-top: clamp(1rem, 3vw, 2rem);
 }
 
+.case-grid--related {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.case-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  --case-accent-bg: var(--case-accent, var(--surface));
+  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 42%, var(--line));
+  background: var(--case-accent-bg);
+  border-color: var(--case-accent-border);
+}
+
+[data-theme="dark"] .case-card {
+  --case-accent-bg: color-mix(in srgb, var(--case-accent, var(--surface)) 26%, var(--surface));
+  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 34%, var(--line));
+}
+
+.case-card--compact {
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+}
+
+.case-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.case-card__cta::after {
+  content: "\2197";
+  font-size: 0.95em;
+}
+
+.case-card:focus-visible {
+  outline: 2px solid rgba(var(--accent-rgb), 0.55);
+  outline-offset: 3px;
+}
+
+.case-article {
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(3rem, 7vw, 5rem);
+  --case-accent-bg: var(--case-accent, var(--surface));
+  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 42%, var(--line));
+}
+
+[data-theme="dark"] .case-article {
+  --case-accent-bg: color-mix(in srgb, var(--case-accent, var(--surface)) 26%, var(--surface));
+  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 34%, var(--line));
+}
+
+.case-article__loading {
+  color: var(--muted);
+}
+
+.case-article__header {
+  max-width: 48rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.case-article__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.case-article__back:hover,
+.case-article__back:focus-visible {
+  color: var(--fg);
+}
+
+.case-article__label {
+  display: block;
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-article__header h1 {
+  max-width: 18ch;
+  margin-bottom: clamp(0.85rem, 2vw, 1.15rem);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3.35rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.case-article__summary {
+  max-width: 58ch;
+  margin-bottom: clamp(1rem, 2.5vw, 1.35rem);
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.62;
+}
+
+.case-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  color: var(--placeholder);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case-article__meta span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.25rem;
+  color: var(--line);
+}
+
+.metric-band--case {
+  padding-top: 0;
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.metric-band--case .metric-card--case-accent {
+  background: var(--case-accent-bg);
+  border-color: var(--case-accent-border);
+}
+
+.metric-band--case .metric-card--case-accent p {
+  color: color-mix(in srgb, var(--fg) 72%, var(--case-accent, var(--fg)));
+}
+
+.case-article__body {
+  display: grid;
+  gap: clamp(2rem, 4vw, 2.75rem);
+  max-width: 42rem;
+  margin-bottom: clamp(3rem, 7vw, 4.5rem);
+}
+
+.case-article__section h2 {
+  margin-bottom: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.case-article__section p {
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.case-article__section p + p {
+  margin-top: 1rem;
+}
+
+.case-article__section .check-list {
+  margin-top: 1.15rem;
+}
+
+.case-article__related {
+  padding-top: clamp(1rem, 3vw, 1.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.case-article__related h2 {
+  max-width: 22ch;
+  margin-top: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.case-article__cta {
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+}
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.78fr);

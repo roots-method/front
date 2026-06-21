@@ -3,10 +3,11 @@
     return item.href !== "index.html";
   });
   var currentPage = window.location.pathname.split("/").pop() || "index.html";
+  var activePage = currentPage === "case-study.html" ? "results.html" : currentPage;
 
   var navMarkup = menuItems
     .map(function (item) {
-      var active = item.href === currentPage ? " is-active" : "";
+      var active = item.href === activePage ? " is-active" : "";
       return (
         '<a class="nav__link' +
         active +
