@@ -5,6 +5,7 @@
   const menuItems = window.SITE_MENU_ITEMS || [];
 
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const activePage = currentPage === "case-study.html" ? "results.html" : currentPage;
 
   const inquiryMailto =
     "mailto:" +
@@ -18,7 +19,7 @@
 
   const menuMarkup = menuItems
     .map(function (item) {
-      const active = item.href === currentPage ? " is-active" : "";
+      const active = item.href === activePage ? " is-active" : "";
       return (
         '<a class="site-footer__menu-link' +
         active +
