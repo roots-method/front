@@ -21,17 +21,15 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="dhee systems home">' +
+    '<a class="brand" href="index.html" aria-label="Suraj Analytics home">' +
     '<span class="brand__name">' +
-    '<span class="brand__word">' +
-    '<span class="brand__glyph">d</span><span class="brand__rest">hee</span>' +
-    "</span>" +
-    '<span class="brand__slash" aria-hidden="true">/</span>' +
-    '<span class="brand__word">' +
-    '<span class="brand__glyph">s</span><span class="brand__rest">ystems</span>' +
-    "</span>" +
-    "</span>" +
-    "</a>" +
+    '<span class="brand__word brand__word--suraj">Suraj</span>' +
+    '<span class="brand__sep" aria-hidden="true">' +
+    '<span class="brand__sun">✳</span>' +
+    '</span>' +
+    '<span class="brand__word brand__word--analytics">Analytics</span>' +
+    '</span>' +
+    '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
     navMarkup +
     "</nav>" +
@@ -53,8 +51,8 @@
     "</div>";
 
   function bindNavScroll() {
-    if (window.__dheeNavScrollBound) return;
-    window.__dheeNavScrollBound = true;
+    if (window.__surajNavScrollBound) return;
+    window.__surajNavScrollBound = true;
 
     var scrollThreshold = 48;
 
@@ -73,8 +71,8 @@
     header.innerHTML = headerMarkup;
     header.classList.add("nav--ready");
 
-    if (window.DheeSystemsTheme && typeof window.DheeSystemsTheme.bind === "function") {
-      window.DheeSystemsTheme.bind();
+    if (window.SurajAnalyticsTheme && typeof window.SurajAnalyticsTheme.bind === "function") {
+      window.SurajAnalyticsTheme.bind();
     }
   });
 

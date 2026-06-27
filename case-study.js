@@ -117,7 +117,7 @@
   }
 
   function renderNotFound() {
-    document.title = "Case study not found — dhee systems";
+    document.title = "Case study not found — Suraj Analytics";
 
     container.innerHTML =
       '<section class="page-hero">' +
@@ -136,7 +136,7 @@
     return;
   }
 
-  document.title = study.title + " — Case Work — dhee systems";
+  document.title = study.title + " — Case Work — Suraj Analytics";
 
   var description = document.querySelector('meta[name="description"]');
   if (description) {
