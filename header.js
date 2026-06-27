@@ -27,11 +27,6 @@
     '<span class="brand__word">' +
     '<span class="brand__glyph">S</span><span class="brand__rest">uraj</span>' +
     "</span>" +
-    '<svg class="brand__connector" viewBox="0 0 30 12" aria-hidden="true" focusable="false">' +
-    '<circle cx="5" cy="6" r="5" fill="currentColor"/>' +
-    '<line x1="10" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.5"/>' +
-    '<circle cx="25" cy="6" r="5" fill="currentColor"/>' +
-    '</svg>' +
     '<span class="brand__word">' +
     '<span class="brand__glyph">A</span><span class="brand__rest">nalytics</span>' +
     "</span>" +
