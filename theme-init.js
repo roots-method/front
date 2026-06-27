@@ -3,11 +3,11 @@
   var stored = localStorage.getItem(STORAGE_KEY);
 
   if (stored === "system" || !stored) {
-    stored = "light";
+    stored = "dark";
   }
 
   if (stored !== "light" && stored !== "dark") {
-    stored = "light";
+    stored = "dark";
   }
 
   document.documentElement.setAttribute("data-theme", stored);
