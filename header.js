@@ -21,14 +21,18 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="dhee systems home">' +
+    '<a class="brand" href="index.html" aria-label="Suraj Analytics home">' +
     '<span class="brand__name">' +
     '<span class="brand__word">' +
-    '<span class="brand__glyph">d</span><span class="brand__rest">hee</span>' +
+    '<span class="brand__glyph">S</span><span class="brand__rest">uraj</span>' +
     "</span>" +
-    '<span class="brand__slash" aria-hidden="true">/</span>' +
+    '<svg class="brand__connector" viewBox="0 0 30 12" aria-hidden="true" focusable="false">' +
+    '<circle cx="5" cy="6" r="5" fill="currentColor"/>' +
+    '<line x1="10" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.5"/>' +
+    '<circle cx="25" cy="6" r="5" fill="currentColor"/>' +
+    '</svg>' +
     '<span class="brand__word">' +
-    '<span class="brand__glyph">s</span><span class="brand__rest">ystems</span>' +
+    '<span class="brand__glyph">A</span><span class="brand__rest">nalytics</span>' +
     "</span>" +
     "</span>" +
     "</a>" +
@@ -53,8 +57,8 @@
     "</div>";
 
   function bindNavScroll() {
-    if (window.__dheeNavScrollBound) return;
-    window.__dheeNavScrollBound = true;
+    if (window.__surajNavScrollBound) return;
+    window.__surajNavScrollBound = true;
 
     var scrollThreshold = 48;
 
@@ -73,8 +77,8 @@
     header.innerHTML = headerMarkup;
     header.classList.add("nav--ready");
 
-    if (window.DheeSystemsTheme && typeof window.DheeSystemsTheme.bind === "function") {
-      window.DheeSystemsTheme.bind();
+    if (window.SurajAnalyticsTheme && typeof window.SurajAnalyticsTheme.bind === "function") {
+      window.SurajAnalyticsTheme.bind();
     }
   });
 

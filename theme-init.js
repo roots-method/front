@@ -1,5 +1,5 @@
 (function () {
-  var STORAGE_KEY = "dheesystems-theme";
+  var STORAGE_KEY = "surajanalytics-theme";
   var stored = localStorage.getItem(STORAGE_KEY);
 
   if (stored === "system" || !stored) {

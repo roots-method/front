@@ -1,5 +1,5 @@
 (function () {
-  var STORAGE_KEY = "dheesystems-theme";
+  var STORAGE_KEY = "surajanalytics-theme";
 
   function getPreference() {
     var stored = localStorage.getItem(STORAGE_KEY);
@@ -42,7 +42,7 @@
     updateToggleButtons(getPreference());
   }
 
-  window.DheeSystemsTheme = {
+  window.SurajAnalyticsTheme = {
     bind: bindToggleButtons,
     apply: applyPreference,
   };
