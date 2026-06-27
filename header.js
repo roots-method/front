@@ -26,7 +26,6 @@
     '<span class="brand__word brand__word--suraj">Suraj</span>' +
     '<span class="brand__sep" aria-hidden="true">' +
     '<span class="brand__sun">✳</span>' +
-    '<span class="brand__bar"></span>' +
     '</span>' +
     '<span class="brand__word brand__word--analytics">Analytics</span>' +
     '</span>' +

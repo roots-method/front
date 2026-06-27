@@ -235,22 +235,14 @@ textarea {
 }
 
 .brand__sun {
-  font-size: 0.6em;
+  font-size: 1em;
   line-height: 1;
   color: var(--accent);
-  margin-bottom: 0.05em;
-}
-
-.brand__bar {
-  display: block;
-  width: 2px;
-  height: 1em;
-  background: var(--fg);
-  border-radius: 1px;
+  margin-bottom: 0.35em;
 }
 
 .brand__word--analytics {
-  font-size: 0.78em;
+  font-size: 1em;
   align-self: flex-end;
   padding-bottom: 0.05em;
 }
@@ -415,7 +407,7 @@ main {
 .page-hero h1 {
   max-width: 18ch;
   font-family: var(--font-heading);
-  font-size: clamp(1.9rem, 6vw, 4.85rem);
+  font-size: clamp(1.9rem, 6vw, 4rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.08;
