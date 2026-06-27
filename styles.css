@@ -1,39 +1,35 @@
 :root {
   color-scheme: light;
-  /*
-   * Layered palette — change --bg to retheme the canvas.
-   * --surface should stay noticeably lighter so content lifts off the page.
-   */
-  --bg: #f7f5f3;
-  --bg-rgb: 247, 245, 243;
+  --bg: #f8f5ef;
+  --bg-rgb: 248, 245, 239;
   --surface: #ffffff;
   --surface-rgb: 255, 255, 255;
-  --inset: #e8e4df;
-  --fg: #0a0a0a;
-  --muted: rgba(10, 10, 10, 0.68);
-  --accent: #5a5a5a;
-  --accent-strong: #3a3a3a;
-  --accent-soft: #8a8a8a;
-  --accent-rgb: 10, 10, 10;
-  --line: rgba(10, 10, 10, 0.12);
-  --shadow: 0 20px 60px rgba(10, 10, 10, 0.1);
-  --shadow-strong: 0 28px 80px rgba(10, 10, 10, 0.16);
-  --canvas-glow: rgba(10, 10, 10, 0.04);
-  --grid-line: rgba(10, 10, 10, 0.06);
+  --inset: #ede8df;
+  --fg: #0d1b35;
+  --muted: rgba(13, 27, 53, 0.64);
+  --accent: #c97a0a;
+  --accent-strong: #9e5d00;
+  --accent-soft: #e49c2a;
+  --accent-rgb: 201, 122, 10;
+  --line: rgba(13, 27, 53, 0.12);
+  --shadow: 0 20px 60px rgba(13, 27, 53, 0.1);
+  --shadow-strong: 0 28px 80px rgba(13, 27, 53, 0.16);
+  --canvas-glow: rgba(201, 122, 10, 0.07);
+  --grid-line: rgba(13, 27, 53, 0.07);
   --grid-opacity: 0.08;
-  --nav-link: rgba(10, 10, 10, 0.62);
-  --eyebrow: rgba(10, 10, 10, 0.52);
-  --btn-primary-hover: #2a2a2a;
-  --btn-primary-shadow: rgba(10, 10, 10, 0.2);
-  --story-end: #ece8e3;
-  --story-stroke: rgba(10, 10, 10, 0.55);
-  --story-stroke-soft: rgba(90, 90, 90, 0.2);
-  --story-stroke-mid: rgba(10, 10, 10, 0.45);
-  --story-stroke-end: rgba(90, 90, 90, 0.25);
-  --story-glow-secondary: rgba(90, 90, 90, 0.14);
+  --nav-link: rgba(13, 27, 53, 0.58);
+  --eyebrow: rgba(13, 27, 53, 0.48);
+  --btn-primary-hover: #1a3060;
+  --btn-primary-shadow: rgba(13, 27, 53, 0.22);
+  --story-end: #ece6da;
+  --story-stroke: rgba(13, 27, 53, 0.55);
+  --story-stroke-soft: rgba(201, 122, 10, 0.22);
+  --story-stroke-mid: rgba(13, 27, 53, 0.45);
+  --story-stroke-end: rgba(201, 122, 10, 0.28);
+  --story-glow-secondary: rgba(201, 122, 10, 0.12);
   --story-grid-opacity: 0.35;
-  --placeholder: rgba(10, 10, 10, 0.4);
-  --label: rgba(34, 34, 34, 0.74);
+  --placeholder: rgba(13, 27, 53, 0.38);
+  --label: rgba(13, 27, 53, 0.7);
   --font: "Wix Madefor Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Helvetica, Arial, sans-serif;
   --font-heading: "Wix Madefor Display", "Wix Madefor Text", -apple-system,
@@ -43,36 +39,36 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #141414;
-  --bg-rgb: 20, 20, 20;
-  --surface: #1c1c1c;
-  --surface-rgb: 28, 28, 28;
-  --inset: #2a2a2a;
-  --fg: #f4f2ef;
-  --muted: rgba(244, 242, 239, 0.68);
-  --accent: #a3a3a3;
-  --accent-strong: #d1d1d1;
-  --accent-soft: #7a7a7a;
-  --accent-rgb: 244, 242, 239;
-  --line: rgba(244, 242, 239, 0.12);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
-  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.48);
-  --canvas-glow: rgba(255, 255, 255, 0.04);
-  --grid-line: rgba(244, 242, 239, 0.06);
+  --bg: #080f1f;
+  --bg-rgb: 8, 15, 31;
+  --surface: #0d1b35;
+  --surface-rgb: 13, 27, 53;
+  --inset: #1a2d50;
+  --fg: #f0e8d4;
+  --muted: rgba(240, 232, 212, 0.65);
+  --accent: #e8a030;
+  --accent-strong: #f0c060;
+  --accent-soft: #c97a0a;
+  --accent-rgb: 232, 160, 48;
+  --line: rgba(240, 232, 212, 0.12);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.6);
+  --canvas-glow: rgba(232, 160, 48, 0.06);
+  --grid-line: rgba(240, 232, 212, 0.06);
   --grid-opacity: 0.06;
-  --nav-link: rgba(244, 242, 239, 0.62);
-  --eyebrow: rgba(244, 242, 239, 0.52);
-  --btn-primary-hover: #e0ddd8;
-  --btn-primary-shadow: rgba(0, 0, 0, 0.4);
-  --story-end: #242424;
-  --story-stroke: rgba(244, 242, 239, 0.72);
-  --story-stroke-soft: rgba(244, 242, 239, 0.24);
-  --story-stroke-mid: rgba(244, 242, 239, 0.58);
-  --story-stroke-end: rgba(244, 242, 239, 0.3);
-  --story-glow-secondary: rgba(244, 242, 239, 0.12);
+  --nav-link: rgba(240, 232, 212, 0.58);
+  --eyebrow: rgba(240, 232, 212, 0.48);
+  --btn-primary-hover: #e0d4b8;
+  --btn-primary-shadow: rgba(0, 0, 0, 0.5);
+  --story-end: #111d36;
+  --story-stroke: rgba(240, 232, 212, 0.7);
+  --story-stroke-soft: rgba(232, 160, 48, 0.28);
+  --story-stroke-mid: rgba(240, 232, 212, 0.55);
+  --story-stroke-end: rgba(232, 160, 48, 0.32);
+  --story-glow-secondary: rgba(232, 160, 48, 0.14);
   --story-grid-opacity: 0.55;
-  --placeholder: rgba(244, 242, 239, 0.4);
-  --label: rgba(244, 242, 239, 0.74);
+  --placeholder: rgba(240, 232, 212, 0.38);
+  --label: rgba(240, 232, 212, 0.72);
 }
 
 *,
@@ -201,15 +197,16 @@ textarea {
   width: 2.45rem;
   height: 2.45rem;
   place-items: center;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--fg);
+  background: var(--fg);
+  color: var(--surface);
   font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  box-shadow: 0 8px 24px var(--btn-primary-shadow);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 0 2.5px var(--bg), 0 0 0 4.5px var(--accent);
+  flex-shrink: 0;
 }
 
 .brand__name {
@@ -255,9 +252,11 @@ textarea {
   opacity: 0;
 }
 
-.nav--scrolled .brand__slash {
-  padding-inline: 0;
-  margin-inline: -0.02em;
+.brand__connector {
+  width: 1.8em;
+  height: 0.55em;
+  align-self: center;
+  flex: none;
 }
 
 .nav__links {
