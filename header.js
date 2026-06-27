@@ -23,9 +23,12 @@
   var headerMarkup =
     '<a class="brand" href="index.html" aria-label="Suraj Analytics home">' +
     '<span class="brand__name">' +
-    '<span class="brand__word">Suraj</span>' +
-    '<span class="brand__divider" aria-hidden="true">/</span>' +
-    '<span class="brand__word">Analytics</span>' +
+    '<span class="brand__word brand__word--suraj">Suraj</span>' +
+    '<span class="brand__sep" aria-hidden="true">' +
+    '<span class="brand__sun">✳</span>' +
+    '<span class="brand__bar"></span>' +
+    '</span>' +
+    '<span class="brand__word brand__word--analytics">Analytics</span>' +
     '</span>' +
     '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
