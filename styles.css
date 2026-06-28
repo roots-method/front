@@ -191,13 +191,14 @@ textarea {
   height: 3.2rem;
   overflow: hidden;
   flex: none;
+  margin-left: -0.75rem;
 }
 
 .brand__logo {
-  height: 11rem;
+  height: 7rem;
   width: auto;
   display: block;
-  margin-top: -4rem;
+  margin-top: -1.9rem;
 }
 
 /* Show correct logo per theme */
