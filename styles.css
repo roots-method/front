@@ -187,70 +187,25 @@ textarea {
   flex: none;
 }
 
+.brand__logo-wrap {
+  height: 3.2rem;
+  overflow: hidden;
+  flex: none;
+}
+
 .brand__logo {
-  width: 2.45rem;
-  height: 2.45rem;
-  flex: none;
-}
-
-.brand__mark {
-  display: inline-grid;
-  width: 2.45rem;
-  height: 2.45rem;
-  place-items: center;
-  border: none;
-  border-radius: 50%;
-  background: var(--fg);
-  color: var(--surface);
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  box-shadow: 0 0 0 2.5px var(--bg), 0 0 0 4.5px var(--accent);
-  flex-shrink: 0;
-}
-
-.brand__name {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-.brand__word {
-  display: inline-flex;
-  align-items: baseline;
-}
-
-.brand__logo-mark {
-  width: 2rem;
-  height: 2rem;
-  flex: none;
+  height: 11rem;
+  width: auto;
   display: block;
+  margin-top: -4rem;
 }
 
-.brand__sep {
-  display: inline-flex;
-  align-items: center;
-  margin-inline: 0.35em;
-}
+/* Show correct logo per theme */
+.brand__logo--light { display: block; }
+.brand__logo--dark  { display: none; }
 
-.brand__bar {
-  display: block;
-  width: 1.5px;
-  height: 1.1em;
-  background: currentColor;
-  opacity: 0.35;
-}
-
-.brand__word--analytics {
-  font-size: 0.85em;
-  letter-spacing: 0;
-}
+[data-theme="dark"] .brand__logo--light { display: none; }
+[data-theme="dark"] .brand__logo--dark  { display: block; }
 
 .brand__connector {
   width: 1.8em;
