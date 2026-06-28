@@ -226,25 +226,30 @@ textarea {
   align-items: baseline;
 }
 
-.brand__sep {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-inline: 0.3em;
-  gap: 0;
+.brand__logo-mark {
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  display: block;
 }
 
-.brand__sun {
-  font-size: 1em;
-  line-height: 1;
-  color: var(--accent);
-  margin-bottom: 0.35em;
+.brand__sep {
+  display: inline-flex;
+  align-items: center;
+  margin-inline: 0.35em;
+}
+
+.brand__bar {
+  display: block;
+  width: 1.5px;
+  height: 1.1em;
+  background: currentColor;
+  opacity: 0.35;
 }
 
 .brand__word--analytics {
-  font-size: 1em;
-  align-self: flex-end;
-  padding-bottom: 0.05em;
+  font-size: 0.85em;
+  letter-spacing: 0;
 }
 
 .brand__connector {
