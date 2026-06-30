@@ -61,8 +61,8 @@
     '<div class="site-footer__column">' +
     '<h2 class="site-footer__heading">Follow</h2>' +
     '<div class="site-footer__social" aria-label="Social links">' +
-    '<a class="site-footer__social-link" href="#" aria-label="LinkedIn">in</a>' +
-    '<a class="site-footer__social-link" href="#" aria-label="X">X</a>' +
+    '<a class="site-footer__social-link" target="_blank" href="https://www.linkedin.com/company/dhee-node/?viewAsMember=true" aria-label="LinkedIn">in</a>' +
+    '<a class="site-footer__social-link" target="_blank" href="https://x.com/_jazoo" aria-label="X">X</a>' +
     "</div>" +
     "</div>" +
     '<div class="site-footer__cta">' +

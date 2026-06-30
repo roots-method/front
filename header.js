@@ -22,9 +22,20 @@
 
   var headerMarkup =
     '<a class="brand" href="index.html" aria-label="Suraj Analytics home">' +
-    '<div class="brand__logo-wrap">' +
-    '<img class="brand__logo brand__logo--light" src="assets/logofor-lightbg.png" alt="Suraj Analytics" />' +
-    '<img class="brand__logo brand__logo--dark" src="assets/logofor-darkbg.png" alt="Suraj Analytics" />' +
+    '<svg class="brand__mark" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+    '<circle cx="18" cy="18" r="3.2" fill="currentColor"/>' +
+    '<line x1="18" y1="14.5" x2="18" y2="4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<line x1="20.5" y1="15.5" x2="27.5" y2="8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>' +
+    '<line x1="21.5" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<line x1="20.5" y1="20.5" x2="27.5" y2="27.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>' +
+    '<line x1="18" y1="21.5" x2="18" y2="32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<line x1="15.5" y1="20.5" x2="8.5" y2="27.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>' +
+    '<line x1="14.5" y1="18" x2="4" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<line x1="15.5" y1="15.5" x2="8.5" y2="8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>' +
+    '</svg>' +
+    '<div class="brand__wordmark">' +
+    '<span class="brand__name">Suraj</span>' +
+    '<span class="brand__sub">Analytics</span>' +
     '</div>' +
     '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
