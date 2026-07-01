@@ -218,13 +218,6 @@ textarea {
   color: var(--accent);
 }
 
-.brand__connector {
-  width: 1.8em;
-  height: 0.55em;
-  align-self: center;
-  flex: none;
-}
-
 .nav__links {
   display: flex;
   align-items: center;
