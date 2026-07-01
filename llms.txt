@@ -1,0 +1,28 @@
+# Suraj Analytics
+
+> Suraj Analytics is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
+
+## Services
+
+- **ROI Blueprint**: Audit of workflows, tools, costs, handoffs, and decision points to identify where intelligent automation creates the strongest return.
+- **AI Automation**: Design and deployment of automation for repeatable decisions, documents, customer operations, internal coordination, and data movement.
+- **Workflow Intelligence**: Converting scattered processes into clear operating systems so teams move faster without losing judgment, context, or quality.
+- **Back-Office Operations**: Ongoing ownership of deployed systems — performance, maintenance, and optimisation so value compounds without added operational burden.
+
+## Results
+
+- 39% reduction in operational costs
+- 40 hours of manual work eliminated per week
+- 48× faster workflow turnaround
+
+## Who we work with
+
+Mid-market companies that need to improve operating clarity, reduce execution drag, and build systems that compound in value over time.
+
+## Pages
+
+- [Home](https://www.surajanalytics.com/)
+- [About](https://www.surajanalytics.com/about.html)
+- [Our Flow](https://www.surajanalytics.com/our-flow.html)
+- [Case Work](https://www.surajanalytics.com/results.html)
+- [Contact](https://www.surajanalytics.com/contact.html)
