@@ -59,13 +59,13 @@ window.CASE_STUDIES = {
       {
         heading: "Phased rollout",
         paragraphs: [
-          "We structured the rollout in three phases to manage regulatory exposure and build internal confidence in the system. Phase 1 covered non-payment cancellations—the highest-volume, most structured case type—with autonomous execution for high-confidence cases and escalation for everything else.",
-          "Phase 2 extended to underwriting-reason cancellations, with mandatory human sign-off regardless of confidence score during an initial review period. Phase 3 added reinstatement processing and accounting reconciliation, both gated on the audit outcomes from Phases 1 and 2.",
+          "We structured the rollout in two live phases to manage regulatory exposure and build internal confidence in the system before expanding scope. Phase 1 covered non-payment cancellations — the highest-volume, most structured case type — with autonomous execution for high-confidence cases and escalation for everything else.",
+          "Phase 2 extended to underwriting-reason cancellations, with mandatory human sign-off regardless of confidence score during an initial audit period. A third phase covering reinstatement processing and full accounting reconciliation via a dedicated ledger agent is planned once the Phase 1 and 2 audit review is complete.",
         ],
         list: [
-          "Phase 1: Non-payment cancellations — autonomous execution for high-confidence, escalate low-confidence",
-          "Phase 2: Underwriting-reason cancellations — mandatory underwriter sign-off throughout initial period",
-          "Phase 3: Reinstatement and accounting reconciliation — confidence-gated after Phase 1–2 audit review",
+          "Phase 1 (live): Non-payment cancellations — autonomous execution for high-confidence, escalate low-confidence",
+          "Phase 2 (live): Underwriting-reason cancellations — mandatory underwriter sign-off throughout initial period",
+          "Phase 3 (planned): Reinstatement and accounting reconciliation — pending Phase 1–2 audit outcomes",
         ],
       },
       {
