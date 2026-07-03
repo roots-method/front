@@ -53,6 +53,14 @@
             "</ul>";
         }
 
+        var diagram = "";
+        if (section.diagram) {
+          diagram =
+            '<figure class="case-article__diagram">' +
+            '<img src="' + escapeHtml(section.diagram) + '" alt="' + escapeHtml(section.diagramAlt || "") + '" loading="lazy" />' +
+            "</figure>";
+        }
+
         return (
           '<section class="case-article__section">' +
           "<h2>" +
@@ -60,6 +68,7 @@
           "</h2>" +
           paragraphs +
           list +
+          diagram +
           "</section>"
         );
       })
