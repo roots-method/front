@@ -14,7 +14,7 @@ window.CASE_STUDIES = {
     label: "Insurance · Underwriting",
     title: "Agentic notice-of-cancellation automation",
     summary:
-      "A mid-size P&C carrier was processing notice-of-cancellation cases through manual review and static rule engines—capping throughput and burying underwriting and accounting staff in decisions that didn't need human judgment.",
+      "A mid-size P&C carrier was processing notice-of-cancellation cases through manual review and static rule engines capping throughput and burying underwriting and accounting staff in decisions that didn't need human judgment.",
     teaser:
       "A mid-size P&C carrier was processing notice-of-cancellation cases through manual review and static rule engines. We built a multi-agent system with a confidence-based escalation gate that resolves the majority of cases autonomously and routes the rest to underwriters with full reasoning attached.",
     readTime: "8 min read",
@@ -28,14 +28,14 @@ window.CASE_STUDIES = {
       {
         heading: "The challenge",
         paragraphs: [
-          "Notice of cancellation is one of the highest-volume, most regulation-bound workflows in property and casualty insurance. Every case touches policy administration, billing, document generation, and accounting over a multi-day lifecycle—with notice periods and required disclosures that vary by state, line of business, and cancellation reason.",
-          "The carrier was running this on manual review and static rule engines. Staff in underwriting and accounting spent significant time on cases where the right answer was clear-cut and computable—non-payment with no payment history exceptions, straightforward risk deterioration, clean refund calculations. That left less capacity for the cases that actually required judgment: ambiguous fraud indicators, reinstatement edge cases, multi-factor risk situations where context mattered.",
+          "Notice of cancellation is one of the highest-volume, most regulation-bound workflows in property and casualty insurance. Every case touches policy administration, billing, document generation, and accounting over a multi-day lifecycle with notice periods and required disclosures that vary by state, line of business, and cancellation reason.",
+          "The carrier was running this on manual review and static rule engines. Staff in underwriting and accounting spent significant time on cases where the right answer was clear-cut and computable non-payment with no payment history exceptions, straightforward risk deterioration, clean refund calculations. That left less capacity for the cases that actually required judgment: ambiguous fraud indicators, reinstatement edge cases, multi-factor risk situations where context mattered.",
         ],
       },
       {
         heading: "Why this needed agents, not another rule engine",
         paragraphs: [
-          "Static rule engines handle binary conditions well. NOC is not binary. A cancellation for risk deterioration may involve conflicting signals—a good payment history, a borderline inspection result, a market condition that changes how underwriters weigh evidence. Rule engines can't weigh ambiguous, multi-factor evidence. Agents can.",
+          "Static rule engines handle binary conditions well. NOC is not binary. A cancellation for risk deterioration may involve conflicting signals a good payment history, a borderline inspection result, a market condition that changes how underwriters weigh evidence. Rule engines can't weigh ambiguous, multi-factor evidence. Agents can.",
           "The volume also made this a natural fit: non-payment, risk change, and fraud triggers generate a steady, predictable case stream rather than one-off events. That steady stream is exactly what an agentic system is built for.",
         ],
       },
@@ -66,6 +66,12 @@ window.CASE_STUDIES = {
           "Phase 1 (live): Non-payment cancellations — autonomous execution for high-confidence, escalate low-confidence",
           "Phase 2 (live): Underwriting-reason cancellations — mandatory underwriter sign-off throughout initial period",
           "Phase 3 (planned): Reinstatement and accounting reconciliation — pending Phase 1–2 audit outcomes",
+        ],
+      },
+      {
+        heading: "Results and conclusion",
+        paragraphs: [
+          "The Phase 1 deployment resolved the majority of non-payment cancellations without underwriter involvement, materially reducing per-case handling time and freeing the operations team from decisions that didn't require their judgment. Staff previously absorbed by routine NOC review were redirected to fraud indicators, borderline reinstatements, and multi-factor risk situations — work where their expertise compounds rather than gets consumed by process. Phase 2 is building the audit dataset that will allow the confidence threshold to tighten further, increasing autonomous resolution across underwriting-reason cases without relaxing compliance controls. At current volumes, the two live phases are on track to eliminate a significant share of manual NOC handling while maintaining a full audit trail and human oversight on every ambiguous case.",
         ],
       },
       {
