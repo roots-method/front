@@ -1375,6 +1375,21 @@ main {
   margin-top: 1.15rem;
 }
 
+.case-article__diagram {
+  margin: 2rem 0 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1.5rem;
+}
+
+.case-article__diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .case-article__related {
   padding-top: clamp(1rem, 3vw, 1.5rem);
   border-top: 1px solid var(--line);

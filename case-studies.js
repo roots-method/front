@@ -1,5 +1,5 @@
 window.CASE_STUDY_ORDER = [
-  "regional-logistics-network",
+  "agentic-noc-automation",
   "multi-office-advisory-firm",
   "direct-to-consumer-retailer",
   "onboarding-success-platform",
@@ -8,6 +8,81 @@ window.CASE_STUDY_ORDER = [
 ];
 
 window.CASE_STUDIES = {
+  "agentic-noc-automation": {
+    slug: "agentic-noc-automation",
+    accent: "#a8a4e0",
+    label: "Insurance · Underwriting",
+    title: "Agentic notice-of-cancellation automation",
+    summary:
+      "A mid-size P&C carrier was processing notice-of-cancellation cases through manual review and static rule engines capping throughput and burying underwriting and accounting staff in decisions that didn't need human judgment.",
+    teaser:
+      "A mid-size P&C carrier was processing notice-of-cancellation cases through manual review and static rule engines. We built a multi-agent system with a confidence-based escalation gate that resolves the majority of cases autonomously and routes the rest to underwriters with full reasoning attached.",
+    readTime: "8 min read",
+    engagement: "Phased rollout",
+    metrics: [
+      { value: "3 agents", label: "Specialist decision agents in production" },
+      { value: "Phase 3", label: "Reinstatement and accounting reconciliation" },
+      { value: "0", label: "Compliance violations at go-live" },
+    ],
+    sections: [
+      {
+        heading: "The challenge",
+        paragraphs: [
+          "Notice of cancellation is one of the highest-volume, most regulation-bound workflows in property and casualty insurance. Every case touches policy administration, billing, document generation, and accounting over a multi-day lifecycle with notice periods and required disclosures that vary by state, line of business, and cancellation reason.",
+          "The carrier was running this on manual review and static rule engines. Staff in underwriting and accounting spent significant time on cases where the right answer was clear-cut and computable non-payment with no payment history exceptions, straightforward risk deterioration, clean refund calculations. That left less capacity for the cases that actually required judgment: ambiguous fraud indicators, reinstatement edge cases, multi-factor risk situations where context mattered.",
+        ],
+      },
+      {
+        heading: "Why this needed agents, not another rule engine",
+        paragraphs: [
+          "Static rule engines handle binary conditions well. NOC is not binary. A cancellation for risk deterioration may involve conflicting signals a good payment history, a borderline inspection result, a market condition that changes how underwriters weigh evidence. Rule engines can't weigh ambiguous, multi-factor evidence. Agents can.",
+          "The volume also made this a natural fit: non-payment, risk change, and fraud triggers generate a steady, predictable case stream rather than one-off events. That steady stream is exactly what an agentic system is built for.",
+        ],
+      },
+      {
+        heading: "What we built",
+        paragraphs: [
+          "We designed a four-tier architecture: a trigger layer that detects non-payment, risk change, or fraud events; an orchestrator agent that tracks case lifecycle state and routes to the right specialists; three decision agents that each form an independent judgment and score their own confidence; and a confidence gate that determines whether a case executes autonomously or escalates to a human reviewer.",
+          "The three specialist agents each own a distinct domain. The risk agent weighs evidence of risk deterioration across policy history, inspection data, and market signals. The exception agent handles reinstatement requests—payment disputes, grace period questions, customer-initiated reversals. The ledger agent calculates premium adjustments and refunds based on the verified cancellation date and policy terms.",
+          "Regulatory facts—notice periods, required disclosure language, state-specific rules—stay in a deterministic rules layer. Agents reason over risk and exceptions, not over legal validity. That separation kept the compliance surface clean and auditable.",
+        ],
+        diagram: "assets/case-work/noc_agentic_architecture_v2.svg",
+        diagramAlt: "Architecture diagram showing trigger event flowing to orchestrator agent, fanning out to risk, exception, and ledger agents, converging on a confidence gate that routes to autonomous execution or human escalation",
+      },
+      {
+        heading: "The confidence gate",
+        paragraphs: [
+          "The core mechanism is confidence-based routing rather than rule-based routing. Each decision agent scores its own certainty alongside its recommendation. High-confidence cases—where evidence is clear, policy terms are unambiguous, and no exception flags are raised—execute autonomously. The agent routes anything it judges ambiguous to an underwriter or compliance reviewer, with its full reasoning trace attached so the reviewer can act immediately rather than reconstruct the case.",
+          "The escalation threshold started conservative in Phase 1 and tightened as case outcomes were reviewed and fed back into calibration. This gave the carrier a clear audit trail and a way to increase autonomous resolution incrementally without changing the underlying architecture.",
+        ],
+      },
+      {
+        heading: "Phased rollout",
+        paragraphs: [
+          "We structured the rollout in two live phases to manage regulatory exposure and build internal confidence in the system before expanding scope. Phase 1 covered non-payment cancellations — the highest-volume, most structured case type — with autonomous execution for high-confidence cases and escalation for everything else.",
+          "Phase 2 extended to underwriting-reason cancellations, with mandatory human sign-off regardless of confidence score during an initial audit period. A third phase covering reinstatement processing and full accounting reconciliation via a dedicated ledger agent is planned once the Phase 1 and 2 audit review is complete.",
+        ],
+        list: [
+          "Phase 1 (live): Non-payment cancellations — autonomous execution for high-confidence, escalate low-confidence",
+          "Phase 2 (live): Underwriting-reason cancellations — mandatory underwriter sign-off throughout initial period",
+          "Phase 3 (planned): Reinstatement and accounting reconciliation — pending Phase 1–2 audit outcomes",
+        ],
+      },
+      {
+        heading: "Results and conclusion",
+        paragraphs: [
+          "The Phase 1 deployment resolved the majority of non-payment cancellations without underwriter involvement, materially reducing per-case handling time and freeing the operations team from decisions that didn't require their judgment. Staff previously absorbed by routine NOC review were redirected to fraud indicators, borderline reinstatements, and multi-factor risk situations — work where their expertise compounds rather than gets consumed by process. Phase 2 is building the audit dataset that will allow the confidence threshold to tighten further, increasing autonomous resolution across underwriting-reason cases without relaxing compliance controls. At current volumes, the two live phases are on track to eliminate a significant share of manual NOC handling while maintaining a full audit trail and human oversight on every ambiguous case.",
+        ],
+      },
+      {
+        heading: "What stayed human",
+        paragraphs: [
+          "Underwriting-reason cancellations in Phase 2 required human sign-off regardless of agent confidence—a deliberate choice to accumulate a reviewed dataset before increasing autonomy in the most judgment-heavy case type. In all phases, low-confidence escalations route to underwriters or compliance reviewers with the full agent reasoning trace.",
+          "The system was designed so that the humans handling escalations are doing higher-value work: reviewing edge cases with context already assembled, not re-entering data or reconstructing case history from scattered systems.",
+        ],
+      },
+    ],
+  },
   "regional-logistics-network": {
     slug: "regional-logistics-network",
     accent: "#7fd1ae",

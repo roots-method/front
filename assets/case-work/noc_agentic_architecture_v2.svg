@@ -1,0 +1,75 @@
+<svg width="100%" viewBox="0 0 680 580" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Notice of cancellation agentic architecture with confidence-based escalation</title>
+<desc>A trigger event flows into an orchestrator agent, which fans out to specialist decision agents. Their outputs converge on a confidence gate, which branches to either autonomous execution or human escalation based on the agent's self-rated confidence.</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <filter id="redact" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="5"/>
+  </filter>
+</defs>
+
+<!-- Trigger event -->
+<rect x="190" y="40" width="300" height="56" rx="8" fill="rgb(241,239,232)" stroke="rgb(95,94,90)" stroke-width="0.5"/>
+<text x="340" y="62" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(68,68,65)">Trigger event</text>
+<text x="340" y="80" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(95,94,90)">Non-payment, risk, or fraud</text>
+
+<!-- Trigger → Orchestrator -->
+<line x1="340" y1="96" x2="340" y2="146" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Orchestrator agent -->
+<rect x="180" y="146" width="320" height="56" rx="8" fill="rgb(238,237,254)" stroke="rgb(83,74,183)" stroke-width="0.5"/>
+<text x="340" y="168" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(60,52,137)">Orchestrator agent</text>
+<text x="340" y="186" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(83,74,183)">Tracks case lifecycle state</text>
+
+<!-- Orchestrator → Risk agent -->
+<path d="M340,202 L340,227 L140,227 L140,252" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<!-- Orchestrator → Exception agent -->
+<line x1="340" y1="202" x2="340" y2="252" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Risk agent -->
+<rect x="48" y="252" width="185" height="56" rx="8" fill="rgb(250,236,231)" stroke="rgb(153,60,29)" stroke-width="0.5"/>
+<text x="140" y="274" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(113,43,19)">Risk agent</text>
+<text x="140" y="292" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(153,60,29)">Weighs risk evidence</text>
+
+<!-- Exception agent -->
+<rect x="248" y="252" width="185" height="56" rx="8" fill="rgb(250,236,231)" stroke="rgb(153,60,29)" stroke-width="0.5"/>
+<text x="340" y="274" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(113,43,19)">Exception agent</text>
+<text x="340" y="292" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(153,60,29)">Handles reinstatements</text>
+
+<!-- Ledger agent — blurred (planned Phase 3, not yet in production) -->
+<g filter="url(#redact)" opacity="0.28">
+  <path d="M340,202 L340,227 L541,227 L541,252" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="448" y="252" width="185" height="56" rx="8" fill="rgb(250,236,231)" stroke="rgb(153,60,29)" stroke-width="0.5"/>
+  <text x="540" y="274" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(113,43,19)">Ledger agent</text>
+  <text x="540" y="292" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(153,60,29)">Calculates refunds</text>
+  <path d="M541,308 L541,338 L340,338 L340,368" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+</g>
+
+<!-- Risk + Exception → Confidence gate -->
+<path d="M140,308 L140,338 L340,338 L340,368" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="340" y1="308" x2="340" y2="368" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Confidence gate -->
+<rect x="140" y="368" width="400" height="56" rx="8" fill="rgb(250,238,218)" stroke="rgb(133,79,11)" stroke-width="0.5"/>
+<text x="340" y="390" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(99,56,6)">Confidence gate</text>
+<text x="340" y="408" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(133,79,11)">Agent scores own certainty</text>
+
+<!-- Gate → Autonomous / Human -->
+<path d="M340,424 L340,454 L190,454 L190,484" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M340,424 L340,454 L490,454 L490,484" fill="none" stroke="rgb(137,135,129)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="230" y="446" text-anchor="middle" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(82,81,78)">high confidence</text>
+<text x="450" y="446" text-anchor="middle" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(82,81,78)">low confidence</text>
+
+<!-- Autonomous execution -->
+<rect x="60" y="484" width="260" height="56" rx="8" fill="rgb(225,245,238)" stroke="rgb(15,110,86)" stroke-width="0.5"/>
+<text x="190" y="506" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(8,80,65)">Autonomous execution</text>
+<text x="190" y="524" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(15,110,86)">Executes decision directly</text>
+
+<!-- Escalate to human -->
+<rect x="360" y="484" width="260" height="56" rx="8" fill="rgb(241,239,232)" stroke="rgb(95,94,90)" stroke-width="0.5"/>
+<text x="490" y="506" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="14" font-weight="500" fill="rgb(68,68,65)">Escalate to human</text>
+<text x="490" y="524" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,system-ui,sans-serif" font-size="12" fill="rgb(95,94,90)">Underwriter or compliance review</text>
+
+</svg>
