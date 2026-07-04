@@ -71,7 +71,8 @@ window.CASE_STUDIES = {
       {
         heading: "Results and conclusion",
         paragraphs: [
-          "The Phase 1 deployment resolved the majority of non-payment cancellations without underwriter involvement, materially reducing per-case handling time and freeing the operations team from decisions that didn't require their judgment. Staff previously absorbed by routine NOC review were redirected to fraud indicators, borderline reinstatements, and multi-factor risk situations — work where their expertise compounds rather than gets consumed by process. Phase 2 is building the audit dataset that will allow the confidence threshold to tighten further, increasing autonomous resolution across underwriting-reason cases without relaxing compliance controls. At current volumes, the two live phases are on track to eliminate a significant share of manual NOC handling while maintaining a full audit trail and human oversight on every ambiguous case.",
+          "The Phase 1 deployment resolved the majority of non-payment cancellations without underwriter involvement, materially reducing per-case handling time and freeing the operations team from decisions that didn't require their judgment. Staff previously absorbed by routine NOC review were redirected to fraud indicators, borderline reinstatements, and multi-factor risk situations — work where their expertise compounds rather than gets consumed by process.", 
+          "Phase 2 is building the audit dataset that will allow the confidence threshold to tighten further, increasing autonomous resolution across underwriting-reason cases without relaxing compliance controls. At current volumes, the two live phases are on track to eliminate a significant share of manual NOC handling while maintaining a full audit trail and human oversight on every ambiguous case.",
         ],
       },
       {
