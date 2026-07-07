@@ -1,5 +1,5 @@
 (function () {
-  var STORAGE_KEY = "surajanalytics-theme";
+  var STORAGE_KEY = "arkaflow-theme";
 
   function getPreference() {
     var stored = localStorage.getItem(STORAGE_KEY);
@@ -42,7 +42,7 @@
     updateToggleButtons(getPreference());
   }
 
-  window.SurajAnalyticsTheme = {
+  window.ArkaFlowTheme = {
     bind: bindToggleButtons,
     apply: applyPreference,
   };

@@ -1,5 +1,5 @@
 (function () {
-  var FORM_ENDPOINT = "https://formsubmit.co/ajax/info@surajanalytics.com";
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/info@arkaflow.com";
 
   function setStatus(statusNode, message, type) {
     if (!statusNode) return;
@@ -33,7 +33,7 @@
       }
 
       var payload = new FormData(form);
-      payload.append("_subject", "New inquiry from Suraj Analytics website");
+      payload.append("_subject", "New inquiry from ArkaFlow website");
       payload.append("_template", "table");
       payload.append("_captcha", "false");
 
@@ -68,7 +68,7 @@
         .catch(function () {
           setStatus(
             statusNode,
-            "Something went wrong. Please email us directly at info@surajanalytics.com.",
+            "Something went wrong. Please email us directly at info@arkaflow.com.",
             "error"
           );
         })

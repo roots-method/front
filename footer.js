@@ -1,6 +1,6 @@
 (function () {
-  const INQUIRY_EMAIL = "info@surajanalytics.com";
-  const CONTACT_EMAIL = "info@surajanalytics.com";
+  const INQUIRY_EMAIL = "info@arkaflow.com";
+  const CONTACT_EMAIL = "info@arkaflow.com";
 
   const menuItems = window.SITE_MENU_ITEMS || [];
 
@@ -11,10 +11,10 @@
     "mailto:" +
     INQUIRY_EMAIL +
     "?subject=" +
-    encodeURIComponent("Inquiry from Suraj Analytics Website") +
+    encodeURIComponent("Inquiry from ArkaFlow Website") +
     "&body=" +
     encodeURIComponent(
-      "Hello Suraj Analytics,\n\nI would like to discuss a workflow or business opportunity.\n\n"
+      "Hello ArkaFlow,\n\nI would like to discuss a workflow or business opportunity.\n\n"
     );
 
   const menuMarkup = menuItems
@@ -35,8 +35,8 @@
   const footerMarkup =
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
-    '<a class="site-footer__brand-link" href="index.html" aria-label="Suraj Analytics home">' +
-    '<span class="site-footer__mark">Suraj / Analytics</span>' +
+    '<a class="site-footer__brand-link" href="index.html" aria-label="ArkaFlow home">' +
+    '<span class="site-footer__mark">ArkaFlow</span>' +
     "</a>" +
     "</div>" +
     '<div class="site-footer__column">' +
@@ -72,7 +72,7 @@
     "</div>" +
     "</div>" +
     '<div class="site-footer__legal">' +
-    '<span>&copy; <span id="footer-year"></span> Suraj Analytics</span>' +
+    '<span>&copy; <span id="footer-year"></span> ArkaFlow</span>' +
     "</div>";
 
   document.querySelectorAll("[data-component='site-footer']").forEach(function (footer) {

@@ -126,7 +126,7 @@
   }
 
   function renderNotFound() {
-    document.title = "Case study not found — Suraj Analytics";
+    document.title = "Case study not found — ArkaFlow";
 
     container.innerHTML =
       '<section class="page-hero">' +
@@ -145,7 +145,7 @@
     return;
   }
 
-  document.title = study.title + " — Case Work — Suraj Analytics";
+  document.title = study.title + " — Case Work — ArkaFlow";
 
   var description = document.querySelector('meta[name="description"]');
   if (description) {
