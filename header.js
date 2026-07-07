@@ -21,7 +21,7 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="Suraj Analytics home">' +
+    '<a class="brand" href="index.html" aria-label="Suraj home">' +
     '<svg class="brand__mark" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
     '<circle cx="18" cy="18" r="3.2" fill="currentColor"/>' +
     '<line x1="18" y1="14.5" x2="18" y2="4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
@@ -35,7 +35,6 @@
     '</svg>' +
     '<div class="brand__wordmark">' +
     '<span class="brand__name">Suraj</span>' +
-    '<span class="brand__sub">Analytics</span>' +
     '</div>' +
     '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +

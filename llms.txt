@@ -1,6 +1,6 @@
-# Suraj Analytics
+# Suraj
 
-> Suraj Analytics is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
+> Suraj is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
 
 ## Services
 

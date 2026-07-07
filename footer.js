@@ -11,10 +11,10 @@
     "mailto:" +
     INQUIRY_EMAIL +
     "?subject=" +
-    encodeURIComponent("Inquiry from Suraj Analytics Website") +
+    encodeURIComponent("Inquiry from Suraj Website") +
     "&body=" +
     encodeURIComponent(
-      "Hello Suraj Analytics,\n\nI would like to discuss a workflow or business opportunity.\n\n"
+      "Hello Suraj,\n\nI would like to discuss a workflow or business opportunity.\n\n"
     );
 
   const menuMarkup = menuItems
@@ -35,7 +35,7 @@
   const footerMarkup =
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
-    '<a class="site-footer__brand-link" href="index.html" aria-label="Suraj Analytics home">' +
+    '<a class="site-footer__brand-link" href="index.html" aria-label="Suraj home">' +
     '<span class="site-footer__mark">Suraj / Analytics</span>' +
     "</a>" +
     "</div>" +
@@ -72,7 +72,7 @@
     "</div>" +
     "</div>" +
     '<div class="site-footer__legal">' +
-    '<span>&copy; <span id="footer-year"></span> Suraj Analytics</span>' +
+    '<span>&copy; <span id="footer-year"></span> Suraj</span>' +
     "</div>";
 
   document.querySelectorAll("[data-component='site-footer']").forEach(function (footer) {

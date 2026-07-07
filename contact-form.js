@@ -33,7 +33,7 @@
       }
 
       var payload = new FormData(form);
-      payload.append("_subject", "New inquiry from Suraj Analytics website");
+      payload.append("_subject", "New inquiry from Suraj website");
       payload.append("_template", "table");
       payload.append("_captcha", "false");
 
