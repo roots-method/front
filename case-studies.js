@@ -141,9 +141,9 @@ window.CASE_STUDIES = {
     label: "Finance · Professional services",
     title: "Multi-office advisory firm",
     summary:
-      "Month-end reporting consumed two full weeks across four locations. Suraj standardized data capture, introduced approval checkpoints, and layered in light automation for recurring reconciliations.",
+      "Month-end reporting consumed two full weeks across four locations. ArkaFlow standardized data capture, introduced approval checkpoints, and layered in light automation for recurring reconciliations.",
     teaser:
-      "Month-end reporting consumed two full weeks across four locations. Suraj standardized data capture, introduced approval checkpoints, and layered in light automation for recurring reconciliations freeing analysts to focus on review instead of assembly.",
+      "Month-end reporting consumed two full weeks across four locations. ArkaFlow standardized data capture, introduced approval checkpoints, and layered in light automation for recurring reconciliations freeing analysts to focus on review instead of assembly.",
     readTime: "7 min read",
     engagement: "18-week engagement",
     metrics: [
@@ -294,9 +294,9 @@ window.CASE_STUDIES = {
     label: "Sustainability · Supply chain",
     title: "Agricultural export cooperative",
     summary:
-      "Traceability data was scattered across field notes, vendor emails, and legacy ERP exports. Suraj unified the pipeline, added validation at each step, and gave operations a live picture of shipment readiness.",
+      "Traceability data was scattered across field notes, vendor emails, and legacy ERP exports. ArkaFlow unified the pipeline, added validation at each step, and gave operations a live picture of shipment readiness.",
     teaser:
-      "Traceability data was scattered across field notes, vendor emails, and legacy ERP exports. Suraj unified the pipeline, added validation at each step, and gave operations a live picture of shipment readiness without adding headcount.",
+      "Traceability data was scattered across field notes, vendor emails, and legacy ERP exports. ArkaFlow unified the pipeline, added validation at each step, and gave operations a live picture of shipment readiness without adding headcount.",
     readTime: "8 min read",
     engagement: "20-week engagement",
     metrics: [

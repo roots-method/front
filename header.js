@@ -21,7 +21,7 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="Suraj home">' +
+    '<a class="brand" href="index.html" aria-label="ArkaFlow home">' +
     '<svg class="brand__mark" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
     '<circle cx="18" cy="18" r="3.2" fill="currentColor"/>' +
     '<line x1="18" y1="14.5" x2="18" y2="4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
@@ -34,7 +34,7 @@
     '<line x1="15.5" y1="15.5" x2="8.5" y2="8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>' +
     '</svg>' +
     '<div class="brand__wordmark">' +
-    '<span class="brand__name">Suraj</span>' +
+    '<span class="brand__name">ArkaFlow</span>' +
     '</div>' +
     '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
@@ -58,8 +58,8 @@
     "</div>";
 
   function bindNavScroll() {
-    if (window.__surajNavScrollBound) return;
-    window.__surajNavScrollBound = true;
+    if (window.__arkaflowNavScrollBound) return;
+    window.__arkaflowNavScrollBound = true;
 
     var scrollThreshold = 48;
 
@@ -78,8 +78,8 @@
     header.innerHTML = headerMarkup;
     header.classList.add("nav--ready");
 
-    if (window.SurajAnalyticsTheme && typeof window.SurajAnalyticsTheme.bind === "function") {
-      window.SurajAnalyticsTheme.bind();
+    if (window.ArkaFlowTheme && typeof window.ArkaFlowTheme.bind === "function") {
+      window.ArkaFlowTheme.bind();
     }
   });
 

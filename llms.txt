@@ -1,6 +1,6 @@
-# Suraj
+# ArkaFlow
 
-> Suraj is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
+> ArkaFlow is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
 
 ## Services
 
@@ -21,8 +21,8 @@ Mid-market companies that need to improve operating clarity, reduce execution dr
 
 ## Pages
 
-- [Home](https://www.surajanalytics.com/)
-- [About](https://www.surajanalytics.com/about.html)
-- [Our Flow](https://www.surajanalytics.com/our-flow.html)
-- [Case Work](https://www.surajanalytics.com/results.html)
-- [Contact](https://www.surajanalytics.com/contact.html)
+- [Home](https://www.arkaflow.com/)
+- [About](https://www.arkaflow.com/about.html)
+- [Our Flow](https://www.arkaflow.com/our-flow.html)
+- [Case Work](https://www.arkaflow.com/results.html)
+- [Contact](https://www.arkaflow.com/contact.html)
