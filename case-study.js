@@ -126,7 +126,7 @@
   }
 
   function renderNotFound() {
-    document.title = "Case study not found — ArkaFlow";
+    document.title = "Case study not found — Arka";
 
     container.innerHTML =
       '<section class="page-hero">' +
@@ -145,7 +145,7 @@
     return;
   }
 
-  document.title = study.title + " — Case Work — ArkaFlow";
+  document.title = study.title + " — Case Work — Arka";
 
   var description = document.querySelector('meta[name="description"]');
   if (description) {

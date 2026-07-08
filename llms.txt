@@ -1,6 +1,6 @@
-# ArkaFlow
+# Arka
 
-> ArkaFlow is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
+> Arka is a technology consultancy that helps mid-market operations teams replace slow, manual processes with intelligent systems — improving execution, sharpening margins, and delivering measurable outcomes.
 
 ## Services
 

@@ -11,10 +11,10 @@
     "mailto:" +
     INQUIRY_EMAIL +
     "?subject=" +
-    encodeURIComponent("Inquiry from ArkaFlow Website") +
+    encodeURIComponent("Inquiry from Arka Website") +
     "&body=" +
     encodeURIComponent(
-      "Hello ArkaFlow,\n\nI would like to discuss a workflow or business opportunity.\n\n"
+      "Hello Arka,\n\nI would like to discuss a workflow or business opportunity.\n\n"
     );
 
   const menuMarkup = menuItems
@@ -35,8 +35,8 @@
   const footerMarkup =
     '<div class="site-footer__grid">' +
     '<div class="site-footer__brand">' +
-    '<a class="site-footer__brand-link" href="index.html" aria-label="ArkaFlow home">' +
-    '<span class="site-footer__mark">ArkaFlow</span>' +
+    '<a class="site-footer__brand-link" href="index.html" aria-label="Arka home">' +
+    '<span class="site-footer__mark">Arka</span>' +
     "</a>" +
     "</div>" +
     '<div class="site-footer__column">' +
@@ -72,7 +72,7 @@
     "</div>" +
     "</div>" +
     '<div class="site-footer__legal">' +
-    '<span>&copy; <span id="footer-year"></span> ArkaFlow</span>' +
+    '<span>&copy; <span id="footer-year"></span> Arka</span>' +
     "</div>";
 
   document.querySelectorAll("[data-component='site-footer']").forEach(function (footer) {
