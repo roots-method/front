@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" role="img">
-  <title>ArkaFlow</title>
+  <title>Arka</title>
 
   <!-- Sun ray mark — amber, centered at 40,40 -->
   <g transform="translate(12, 8)" fill="none">
@@ -24,6 +24,6 @@
     font-weight="700"
     letter-spacing="-1"
     fill="#f0e8d4"
-  >ArkaFlow</text>
+  >Arka</text>
 
 </svg>

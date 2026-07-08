@@ -33,7 +33,7 @@
       }
 
       var payload = new FormData(form);
-      payload.append("_subject", "New inquiry from ArkaFlow website");
+      payload.append("_subject", "New inquiry from Arka website");
       payload.append("_template", "table");
       payload.append("_captcha", "false");
 

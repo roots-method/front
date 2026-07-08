@@ -1,5 +1,5 @@
 (function () {
-  var STORAGE_KEY = "arkaflow-theme";
+  var STORAGE_KEY = "arka-theme";
   var stored = localStorage.getItem(STORAGE_KEY);
 
   if (stored === "system" || !stored) {
