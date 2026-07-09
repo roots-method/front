@@ -209,15 +209,6 @@ textarea {
   color: var(--fg);
 }
 
-.brand__sub {
-  font-family: var(--font);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
 .nav__links {
   display: flex;
   align-items: center;
