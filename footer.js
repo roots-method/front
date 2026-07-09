@@ -1,6 +1,6 @@
 (function () {
-  const INQUIRY_EMAIL = "info@arkaflow.com";
-  const CONTACT_EMAIL = "info@arkaflow.com";
+  const INQUIRY_EMAIL = "info@arkaflow.co";
+  const CONTACT_EMAIL = "info@arkaflow.co";
 
   const menuItems = window.SITE_MENU_ITEMS || [];
 
