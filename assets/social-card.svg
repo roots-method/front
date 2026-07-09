@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Solid square background -->
+  <rect width="512" height="512" fill="#0d1b35"/>
+  <!-- Sun mark centered at 256,256 — proportions match header nav mark exactly -->
+  <g transform="translate(256,256)" fill="none" stroke="#e8a030" stroke-linecap="round">
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="45.5" fill="#e8a030" stroke="none"/>
+    <!-- Cardinal rays (stroke-width scaled from nav 2.2/36 * 512) -->
+    <line x1="0"    y1="-67"  x2="0"    y2="-192" stroke-width="31.2"/>
+    <line x1="67"   y1="0"    x2="192"  y2="0"    stroke-width="31.2"/>
+    <line x1="0"    y1="67"   x2="0"    y2="192"  stroke-width="31.2"/>
+    <line x1="-67"  y1="0"    x2="-192" y2="0"    stroke-width="31.2"/>
+    <!-- Diagonal rays (stroke-width scaled from nav 1.8/36 * 512) -->
+    <line x1="47.5" y1="-47.5" x2="135"  y2="-135" stroke-width="25.6" opacity=".85"/>
+    <line x1="47.5" y1="47.5"  x2="135"  y2="135"  stroke-width="25.6" opacity=".85"/>
+    <line x1="-47.5" y1="47.5" x2="-135" y2="135"  stroke-width="25.6" opacity=".85"/>
+    <line x1="-47.5" y1="-47.5" x2="-135" y2="-135" stroke-width="25.6" opacity=".85"/>
+  </g>
+</svg>
