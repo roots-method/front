@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Circular navy background -->
+  <circle cx="256" cy="256" r="256" fill="#0d1b35"/>
+  <!-- Sun mark — logo-mark.svg geometry scaled exactly 14.22x (512/36)
+       Inner ray endpoints overlap center dot edge → rays merge into dot
+       Outer ray endpoints at 78% of circle radius → clear gap from edge -->
+  <g transform="translate(256,256)" fill="none" stroke="#e8a030" stroke-linecap="round">
+    <!-- Center dot: r=3.2 * 14.22 = 46 -->
+    <circle cx="0" cy="0" r="46" fill="#e8a030" stroke="none"/>
+    <!-- Cardinal rays: inner=3.5*14.22=50, outer=14*14.22=199, sw=2.2*14.22=31 -->
+    <line x1="0"    y1="-50"  x2="0"    y2="-199" stroke-width="31"/>
+    <line x1="50"   y1="0"    x2="199"  y2="0"    stroke-width="31"/>
+    <line x1="0"    y1="50"   x2="0"    y2="199"  stroke-width="31"/>
+    <line x1="-50"  y1="0"    x2="-199" y2="0"    stroke-width="31"/>
+    <!-- Diagonal rays: inner=2.5*14.22=36, outer=9.5*14.22=135, sw=1.8*14.22=26 -->
+    <line x1="36"   y1="-36"  x2="135"  y2="-135" stroke-width="26" opacity=".85"/>
+    <line x1="36"   y1="36"   x2="135"  y2="135"  stroke-width="26" opacity=".85"/>
+    <line x1="-36"  y1="36"   x2="-135" y2="135"  stroke-width="26" opacity=".85"/>
+    <line x1="-36"  y1="-36"  x2="-135" y2="-135" stroke-width="26" opacity=".85"/>
+  </g>
+</svg>
