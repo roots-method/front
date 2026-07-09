@@ -84,57 +84,6 @@ window.CASE_STUDIES = {
       },
     ],
   },
-  "regional-logistics-network": {
-    slug: "regional-logistics-network",
-    accent: "#7fd1ae",
-    label: "Operations · Distribution",
-    title: "Regional logistics network",
-    summary:
-      "Dispatch and invoicing lived in three disconnected tools. We mapped the handoffs, automated status updates, and built a single intake view for the ops team.",
-    teaser:
-      "Dispatch and invoicing lived in three disconnected tools. We mapped the handoffs, automated status updates, and built a single intake view for the ops team. Cycle time dropped from 18 days to 6, and error-related rework fell by roughly a third.",
-    readTime: "6 min read",
-    engagement: "14-week engagement",
-    metrics: [
-      { value: "67%", label: "Faster workflow cycle" },
-      { value: "33%", label: "Less error-related rework" },
-      { value: "1", label: "Unified ops intake view" },
-    ],
-    sections: [
-      {
-        heading: "The challenge",
-        paragraphs: [
-          "A regional distributor was moving freight across twelve depots with dispatch notes in one system, billing in another, and customer updates buried in email threads. Ops managers spent the first hour of each day reconciling what had actually shipped versus what finance could invoice.",
-          "Handoffs between dispatch, warehouse, and accounts receivable had no shared status model. When a delivery exception occurred, teams discovered it days later—often after a customer had already called.",
-        ],
-      },
-      {
-        heading: "What we did",
-        paragraphs: [
-          "We mapped the full shipment lifecycle from order release through proof of delivery, identifying seven manual checkpoints that could be standardized or automated without removing human judgment on exceptions.",
-        ],
-        list: [
-          "Documented handoffs and decision points across dispatch, warehouse, and finance",
-          "Introduced a shared status model with automated updates at each milestone",
-          "Built a single intake dashboard for the ops team with exception routing rules",
-          "Connected invoicing triggers to verified delivery events instead of manual sign-off",
-        ],
-      },
-      {
-        heading: "Results",
-        paragraphs: [
-          "Cycle time dropped from 18 days to 6 on average. Error-related rework fell by roughly a third because teams were working from the same source of truth instead of reconciling parallel records.",
-          "The ops lead described the change as shifting effort from chasing updates to resolving exceptions—the work that actually required experience and context.",
-        ],
-      },
-      {
-        heading: "What stayed human",
-        paragraphs: [
-          "High-variance routes, damaged goods, and credit holds still route to experienced coordinators. Automation handles the predictable path so people can focus where judgment matters.",
-        ],
-      },
-    ],
-  },
   "multi-office-advisory-firm": {
     slug: "multi-office-advisory-firm",
     accent: "#c4bda5",
