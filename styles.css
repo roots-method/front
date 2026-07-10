@@ -851,6 +851,42 @@ main {
   background: var(--surface);
 }
 
+.client-logo--card {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 8vw, 5rem);
+  min-height: auto;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.client-logo--card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  width: 3rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 0 0 2px 2px;
+}
+
+.client-logo--card:hover {
+  border-color: rgba(232, 160, 48, 0.25);
+}
+
+.client-logo__svg {
+  display: block;
+  width: clamp(120px, 22vw, 200px);
+  height: auto;
+  fill: var(--fg);
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.client-logo--card:hover .client-logo__svg {
+  opacity: 1;
+}
+
 .client-logo img {
   display: block;
   width: auto;
