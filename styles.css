@@ -853,11 +853,11 @@ main {
 
 .client-logos--grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .client-logos--grid {
     grid-template-columns: 1fr;
   }
@@ -897,6 +897,10 @@ main {
 
 .client-logo__svg--jpm {
   width: clamp(140px, 26vw, 240px);
+}
+
+.client-logo__svg--kroger {
+  width: clamp(120px, 22vw, 200px);
 }
 
 .client-logo--card:hover .client-logo__svg {
