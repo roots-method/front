@@ -886,24 +886,28 @@ main {
   border-color: rgba(232, 160, 48, 0.25);
 }
 
-.client-logo__svg {
+.client-logo__img {
   display: block;
   width: clamp(120px, 22vw, 200px);
   height: auto;
-  fill: var(--fg);
   opacity: 0.9;
+  filter: brightness(0) invert(1);
   transition: opacity 0.2s ease;
 }
 
-.client-logo__svg--jpm {
+[data-theme="light"] .client-logo__img {
+  filter: brightness(0);
+}
+
+.client-logo__img--jpm {
   width: clamp(140px, 26vw, 240px);
 }
 
-.client-logo__svg--kroger {
+.client-logo__img--kroger {
   width: clamp(120px, 22vw, 200px);
 }
 
-.client-logo--card:hover .client-logo__svg {
+.client-logo--card:hover .client-logo__img {
   opacity: 1;
 }
 
