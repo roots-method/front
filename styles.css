@@ -851,6 +851,18 @@ main {
   background: var(--surface);
 }
 
+.client-logos--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 560px) {
+  .client-logos--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .client-logo--card {
   position: relative;
   padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 8vw, 5rem);
@@ -881,6 +893,10 @@ main {
   fill: var(--fg);
   opacity: 0.9;
   transition: opacity 0.2s ease;
+}
+
+.client-logo__svg--jpm {
+  width: clamp(140px, 26vw, 240px);
 }
 
 .client-logo--card:hover .client-logo__svg {
