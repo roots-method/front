@@ -2428,6 +2428,14 @@ main {
   color: var(--muted);
 }
 
+.site-footer__tagline {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 22ch;
+}
+
 .site-footer__heading {
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
