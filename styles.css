@@ -2849,6 +2849,476 @@ main {
   }
 }
 
+/* ── Case detail page ─────────────────────────────────────────── */
+
+/* Horizontal metric strip */
+.cs-stat {
+  display: flex;
+  align-items: center;
+  padding: clamp(2rem, 5vw, 3rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.cs-stat__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.cs-stat__item:first-child { padding-left: 0; }
+.cs-stat__item:last-child  { padding-right: 0; }
+
+.cs-stat__divider {
+  width: 1px;
+  height: 3rem;
+  background: var(--line);
+  flex: none;
+}
+
+.cs-stat__value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.cs-stat__label {
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 22ch;
+}
+
+@media (max-width: 560px) {
+  .cs-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .cs-stat__item {
+    padding: 1.1rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .cs-stat__item:last-child { border-bottom: none; }
+  .cs-stat__divider { display: none; }
+}
+
+/* Section nav pills */
+.cs-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: clamp(1rem, 2.5vw, 1.5rem) 0;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cs-nav::-webkit-scrollbar { display: none; }
+
+.cs-nav__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+.cs-nav__pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cs-nav__pill.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Case Work page ───────────────────────────────────────────── */
+
+/* Outcome stats bar */
+.results-stats {
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.results-stats__eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.results-stats__row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.results-stats__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.results-stats__item:first-child { padding-left: 0; }
+.results-stats__item:last-child  { padding-right: 0; }
+
+.results-stats__divider {
+  width: 1px;
+  height: 3rem;
+  background: var(--line);
+  flex: none;
+}
+
+.results-stats__value {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.results-stats__label {
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 22ch;
+}
+
+@media (max-width: 600px) {
+  .results-stats__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .results-stats__item {
+    padding: 1.1rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .results-stats__item:last-child { border-bottom: none; }
+  .results-stats__divider { display: none; }
+}
+
+/* Industry filter pills */
+.case-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.case-filter__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 0.5rem;
+  flex: none;
+}
+
+.case-filter__pill {
+  padding: 0.4em 1em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+.case-filter__pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.case-filter__pill.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Enriched case card */
+.case-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.case-card__duration {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  flex: none;
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+}
+
+.case-card__metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+
+.case-card__metric-value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  flex: none;
+}
+
+.case-card__metric-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.case-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.case-card__read-time {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+  flex: none;
+}
+
+/* ── Contact page ─────────────────────────────────────────────── */
+
+.contact-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: start;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 10vw, 7rem);
+}
+
+/* Left info column */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  position: sticky;
+  top: 5rem;
+}
+
+.contact-info__hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-top: 0.65rem;
+  margin-bottom: 0.85rem;
+  max-width: 16ch;
+}
+
+.contact-info__lede {
+  font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+/* What happens next */
+.contact-next__heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+
+.contact-next__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.contact-next__steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-next__num {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  flex: none;
+}
+
+.contact-next__text {
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Testimonial snippet */
+.contact-quote {
+  margin: 0;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 1rem 1rem 0;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.contact-quote__text {
+  font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 0.85rem;
+}
+
+.contact-quote__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact-quote__name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.contact-quote__role {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* Direct contact links */
+.contact-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.contact-direct__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  background: var(--surface);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-direct__link:hover,
+.contact-direct__link:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Right form card */
+.contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+}
+
+.contact-form-wrap .contact-form {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.contact-form__note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .contact-page {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-info {
+    position: static;
+  }
+
+  .contact-info__hero h1 {
+    max-width: none;
+  }
+}
+
 /* ── About page ───────────────────────────────────────────────── */
 
 /* Hero tagline — shared via .page-hero--about already exists,

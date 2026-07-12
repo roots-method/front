@@ -55,66 +55,106 @@
     <header class="nav" data-component="site-header"></header>
 
     <main>
-      <section class="contact-layout">
-        <div class="page-hero page-hero--contact">
-          <p class="eyebrow">
-            <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
-            Contact
-          </p>
-          <h1>Let’s find the workflow worth fixing first.</h1>
-          <p>
-            Tell us where operations feel slow, manual, or unclear. We will
-            start by looking for the practical business case before recommending
-            a system.
-          </p>
-          <div class="contact-methods">
-            <a href="mailto:info@arkaflow.co">info@arkaflow.co</a>
-            <a href="https://calendar.notion.so/meet/sumit-ntn/arka" aria-label="Booking link placeholder" target="_blank">Booking link coming soon</a>
+      <section class="contact-page">
+
+        <!-- Left column: trust content -->
+        <div class="contact-info">
+          <div class="contact-info__hero">
+            <p class="eyebrow">
+              <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+              Contact
+            </p>
+            <h1>Let's find the workflow worth fixing first.</h1>
+            <p class="contact-info__lede">Tell us where operations feel slow, manual, or unclear. We start by finding the practical business case before recommending a system.</p>
+          </div>
+
+          <!-- What happens next -->
+          <div class="contact-next">
+            <p class="contact-next__heading">What happens next</p>
+            <ol class="contact-next__steps">
+              <li>
+                <span class="contact-next__num">01</span>
+                <span class="contact-next__text">We review your inquiry and identify the most relevant angle within one business day</span>
+              </li>
+              <li>
+                <span class="contact-next__num">02</span>
+                <span class="contact-next__text">We reach out to schedule a 30-min scoping call — no commitment required</span>
+              </li>
+              <li>
+                <span class="contact-next__num">03</span>
+                <span class="contact-next__text">Together we scope the highest-value workflow opportunity and outline a path forward</span>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Testimonial snippet -->
+          <blockquote class="contact-quote">
+            <p class="contact-quote__text">"The ROI Blueprint alone changed how we think about operations. They found inefficiencies we'd been ignoring for years."</p>
+            <footer class="contact-quote__footer">
+              <span class="contact-quote__name">David R.</span>
+              <span class="contact-quote__role">Director of Operations &middot; B2B Technology</span>
+            </footer>
+          </blockquote>
+
+          <!-- Direct contact -->
+          <div class="contact-direct">
+            <a class="contact-direct__link" href="mailto:info@arkaflow.co">info@arkaflow.co</a>
+            <a class="contact-direct__link" href="https://calendar.notion.so/meet/sumit-ntn/arka" target="_blank" rel="noopener">
+              Book a call directly
+              <span aria-hidden="true">&#8599;</span>
+            </a>
           </div>
         </div>
 
-        <form class="contact-form" id="contact-form" novalidate>
-          <p
-            class="contact-form__status field-full"
-            id="contact-form-status"
-            role="status"
-            aria-live="polite"
-            hidden
-          ></p>
-          <label class="contact-form__honeypot" aria-hidden="true">
-            Leave blank
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
-          </label>
-          <label>
-            First name
-            <input type="text" name="first-name" placeholder="Your first name" required />
-          </label>
-          <label>
-            Last name
-            <input type="text" name="last-name" placeholder="Your last name" required />
-          </label>
-          <label>
-            Work email
-            <input type="email" name="email" placeholder="you@company.com" required />
-          </label>
-          <label>
-            Company
-            <input type="text" name="company" placeholder="Company name" />
-          </label>
-          <label class="field-full">
-            What should improve?
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Share the workflow, bottleneck, or opportunity you want to explore."
-              required
-            ></textarea>
-          </label>
-          <button class="btn btn--primary field-full" type="submit">
-            <span class="btn__label">Send inquiry</span>
-            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
-          </button>
-        </form>
+        <!-- Right column: form card -->
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contact-form" novalidate>
+            <p
+              class="contact-form__status field-full"
+              id="contact-form-status"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+            <label class="contact-form__honeypot" aria-hidden="true">
+              Leave blank
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </label>
+            <label>
+              First name
+              <input type="text" name="first-name" placeholder="Your first name" required />
+            </label>
+            <label>
+              Last name
+              <input type="text" name="last-name" placeholder="Your last name" required />
+            </label>
+            <label>
+              Work email
+              <input type="email" name="email" placeholder="you@company.com" required />
+            </label>
+            <label>
+              Company
+              <input type="text" name="company" placeholder="Company name" />
+            </label>
+            <label class="field-full">
+              What should improve?
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Share the workflow, bottleneck, or opportunity you want to explore."
+                required
+              ></textarea>
+            </label>
+            <div class="contact-form__footer field-full">
+              <button class="btn btn--primary" type="submit">
+                <span class="btn__label">Send inquiry</span>
+                <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+              </button>
+              <p class="contact-form__note">We respond within one business day.</p>
+            </div>
+          </form>
+        </div>
+
       </section>
     </main>
 
