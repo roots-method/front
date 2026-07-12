@@ -34,7 +34,7 @@
     Helvetica, Arial, sans-serif;
   --font-heading: "Bricolage Grotesque", "Plus Jakarta Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --maxw: 1180px;
+  --maxw: 1400px;
 }
 
 [data-theme="dark"] {
@@ -131,7 +131,7 @@ textarea {
   min-height: 100dvh;
   width: min(100%, var(--maxw));
   margin: 0 auto;
-  padding: clamp(1rem, 2.5vh, 1.75rem) clamp(1.25rem, 5vw, 3rem);
+  padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(1rem, 2.5vh, 1.75rem);
 }
 
 .icon-sm {
@@ -155,8 +155,7 @@ textarea {
   justify-content: space-between;
   gap: 1.5rem;
   margin-inline: calc(-1 * clamp(1.25rem, 5vw, 3rem));
-  padding: clamp(0.35rem, 1.2vw, 0.65rem) clamp(1.25rem, 5vw, 3rem)
-    clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(0.35rem, 1.2vw, 0.65rem) clamp(1.25rem, 5vw, 3rem);
   background: transparent;
   border-top: 3px solid var(--accent);
   border-bottom: 1px solid transparent;
@@ -192,6 +191,11 @@ textarea {
   height: 28px;
   flex: none;
   color: var(--accent);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand:hover .brand__mark {
+  transform: rotate(360deg);
 }
 
 .brand__wordmark {
@@ -344,6 +348,56 @@ main {
 .cta-panel,
 .contact-form {
   animation: rise-in 0.8s ease both;
+}
+
+
+/* CTA process steps */
+.cta-panel__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.cta-panel__steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  counter-increment: step;
+}
+
+.cta-panel__steps li::before {
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.cta-panel__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  flex: none;
+}
+
+.cta-panel__note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: right;
 }
 
 .eyebrow {
