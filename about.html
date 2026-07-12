@@ -55,170 +55,137 @@
     <header class="nav" data-component="site-header"></header>
 
     <main>
+
+      <!-- 1. Hero -->
       <section class="page-hero page-hero--about">
         <p class="eyebrow">
           <img class="icon-sm" src="assets/icons-ai/16_knowledge_graph.svg" alt="" />
           Company
         </p>
-        <h1>Who We Are</h1>
+        <h1>We build systems that keep working after we leave the room.</h1>
         <p class="page-hero__tagline">
-          We help growing businesses build systems that are clear, steady, and designed
-          to get better over time.
+          Arka partners with mid-market operations teams to replace manual, fragmented workflows with intelligent systems that improve execution, sharpen margins, and compound in value over time.
         </p>
       </section>
 
-      <section class="section our-story">
-        <div class="our-story__frame">
-          <div class="our-story__visual" aria-hidden="true">
-            <div class="story-field">
-              <div class="story-field__glow story-field__glow--one"></div>
-              <div class="story-field__glow story-field__glow--two"></div>
-              <div class="story-field__grid"></div>
-              <svg class="story-field__svg" viewBox="0 0 360 420" role="presentation">
-                <defs>
-                  <linearGradient id="story-flow" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="var(--story-stroke-soft)" />
-                    <stop offset="55%" stop-color="var(--story-stroke-mid)" />
-                    <stop offset="100%" stop-color="var(--story-stroke-end)" />
-                  </linearGradient>
-                </defs>
-                <path
-                  class="story-field__curve"
-                  d="M 72 48 C 148 92, 196 132, 168 196 S 108 300, 196 372"
-                  fill="none"
-                  stroke="url(#story-flow)"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-                <path
-                  class="story-field__pulse"
-                  d="M 72 48 C 148 92, 196 132, 168 196 S 108 300, 196 372"
-                  fill="none"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <circle class="story-field__node" cx="72" cy="48" r="5" />
-                <circle class="story-field__node" cx="168" cy="196" r="6" />
-                <circle class="story-field__node" cx="196" cy="372" r="5" />
-              </svg>
-              <ol class="story-field__beats">
-                <li class="story-beat">
-                  <span class="story-beat__index">01</span>
-                  <span class="story-beat__label">Friction</span>
-                </li>
-                <li class="story-beat">
-                  <span class="story-beat__index">02</span>
-                  <span class="story-beat__label">Reflection</span>
-                </li>
-                <li class="story-beat">
-                  <span class="story-beat__index">03</span>
-                  <span class="story-beat__label">Alignment</span>
-                </li>
-              </ol>
+      <!-- 2. Mission strip -->
+      <section class="about-mission">
+        <div class="about-mission__col">
+          <p class="about-mission__label">Mission</p>
+          <p class="about-mission__text">To help enterprises adopt intelligent workflows that deliver practical, measurable improvement — not vague transformation promises.</p>
+        </div>
+        <div class="about-mission__divider" aria-hidden="true"></div>
+        <div class="about-mission__col">
+          <p class="about-mission__label">Approach</p>
+          <p class="about-mission__text">We blend thoughtful automation with human judgment. Every system is built to your workflow, not a template — and we stay close long after deployment.</p>
+        </div>
+      </section>
+
+      <!-- 3. Story -->
+      <section class="about-story">
+        <header class="about-story__header">
+          <p class="eyebrow">Our Story</p>
+          <h2>Built from the frustration of watching capable teams move slowly.</h2>
+        </header>
+        <div class="about-story__body">
+          <p>Arka began with a simple observation: capable teams were being held back not by talent, but by systems. Disconnected tools, manual handoffs, and processes built for a smaller business — all quietly eating into time and margin.</p>
+          <p>We started working alongside operations leaders to map where execution actually slipped — not where they thought it did, but where the data showed it. What we found, consistently, was that the gap between a high-performing team and a struggling one was rarely about people. It was about infrastructure.</p>
+          <p>So we built a firm around fixing that. Not with off-the-shelf software or generic automation playbooks, but with systems designed around how each business actually operates — its tools, its decision points, its constraints. We stay close through deployment and beyond, because the value of a well-built system compounds over time — and only if someone is paying attention.</p>
+        </div>
+      </section>
+
+      <!-- 4. Stats bar -->
+      <section class="about-stats" aria-label="Arka in numbers">
+        <div class="about-stats__item">
+          <span class="about-stats__value">37</span>
+          <span class="about-stats__label">Clients &amp; counting</span>
+        </div>
+        <div class="about-stats__divider" aria-hidden="true"></div>
+        <div class="about-stats__item">
+          <span class="about-stats__value">425</span>
+          <span class="about-stats__label">Projects of experience</span>
+        </div>
+        <div class="about-stats__divider" aria-hidden="true"></div>
+        <div class="about-stats__item">
+          <span class="about-stats__value">20</span>
+          <span class="about-stats__label">Years of industry experience</span>
+        </div>
+      </section>
+
+      <!-- 5. Team -->
+      <section class="about-team">
+        <header class="about-team__header">
+          <p class="eyebrow">The Team</p>
+          <h2>People who've done the work.</h2>
+          <p class="about-team__sub">Not consultants who recommend. Practitioners who build, deploy, and own outcomes.</p>
+        </header>
+        <div class="about-team__grid">
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/avatars/AMaheshwari.png" alt="Vijaya Nikant" loading="lazy" />
             </div>
-          </div>
-
-          <div class="our-story__content">
-            <h2 class="our-story__title">Our Story</h2>
-            <div class="our-story__body">
-              <p>
-                Arka began with a simple idea: modern tools should make work feel easier,
-                not heavier. We kept seeing capable teams slowed by disconnected workflows
-                and processes that added friction instead of focus.
-              </p>
-              <p>
-                We partner with enterprise businesses to see where time
-                and margin quietly slip away, then design systems that make better execution
-              </p>
-              <p>
-                We blend thoughtful automation with human judgment, and stay close from design
-                through deployment. When people, process, and tools align, improvement compounds
-                over time.
-                
-              </p>
-             </div>
-            <p class="our-story__closing">
-              We build systems that let companies move faster, decide better, and keep improving without us in the room.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="mission-vision">
-        <div class="mission-vision__col">
-          <p class="mission-vision__label">Mission</p>
-          <p class="mission-vision__text">
-            To help enterprises adopt digital workflows that improve business
-            revenue — delivering practical, measurable change in today's
-            competitive global market.
-          </p>
-        </div>
-        <div class="mission-vision__col">
-          <p class="mission-vision__label">Vision</p>
-          <p class="mission-vision__text">
-            To become pioneers of the next generation digital ecosystem —
-            building the infrastructure that lets enterprises operate with
-            clarity, speed, and intelligence.
-          </p>
-        </div>
-      </section>
-
-      <section class="section numbers-section">
-        <h2 class="numbers-section__title">Arka in Numbers</h2>
-        <div class="metric-band metric-band--about">
-          <article class="metric-card">
-            <span class="metric-card__value">37</span>
-            <p>Customers &amp; counting</p>
+            <div class="team-card__body">
+              <h3 class="team-card__name">Vijaya <em>Nikant</em></h3>
+              <p class="team-card__title">VP of Engineering &amp; Strategy</p>
+              <p class="team-card__bio">15 years building and scaling operations systems across logistics, finance, and B2B technology.</p>
+            </div>
           </article>
-          <article class="metric-card">
-            <span class="metric-card__value">425</span>
-            <p>Projects of experience</p>
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/avatars/AkkiMahesh.png" alt="Akki Maheshwari" loading="lazy" />
+            </div>
+            <div class="team-card__body">
+              <h3 class="team-card__name">Akki <em>Maheshwari</em></h3>
+              <p class="team-card__title">Head of Brand &amp; People</p>
+              <p class="team-card__bio">Shapes how Arka communicates and grows — connecting brand clarity with the talent that delivers it.</p>
+            </div>
           </article>
-          <article class="metric-card">
-            <span class="metric-card__value">20</span>
-            <p>Years of industry experience</p>
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/avatars/SJazzy.png" alt="Pankaj Jaju" loading="lazy" />
+            </div>
+            <div class="team-card__body">
+              <h3 class="team-card__name">Pankaj <em>Jaju</em></h3>
+              <p class="team-card__title">Director of Technology &amp; Operations</p>
+              <p class="team-card__bio">Leads the technical architecture of every engagement — from workflow design through long-term system performance.</p>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="section leadership-section">
-        <h2 class="leadership-section__title">Meet Our Doers</h2>
-        <div class="leadership-grid">
-          <article class="leader-card reveal">
-            <div class="leader-card__photo leader-card__photo--avatar">
-              <img
-                src="assets/avatars/AMaheshwari.png"
-                alt="Illustrated portrait of Anubha Maheshwari"
-                loading="lazy"
-              />
-            </div>
-            <h3>Vijaya <i>Nikant</i></h3>
-            <p>VP of Engineering & Strategy</p>
-          </article>
-          <article class="leader-card reveal">
-            <div class="leader-card__photo leader-card__photo--avatar">
-              <img
-                src="assets/avatars/AkkiMahesh.png"
-                alt="Illustrated portrait of Anubha Maheshwari"
-                loading="lazy"
-              />
-            </div>
-            <h3>Akki <i>Maheshwari</i></h3>
-            <p>Head of Brand & People</p>
-          </article>
-          <article class="leader-card reveal">
-            <div class="leader-card__photo leader-card__photo--avatar">
-              <img
-                src="assets/avatars/SJazzy.png"
-                alt="Illustrated portrait of Anubha Maheshwari"
-                loading="lazy"
-              />
-            </div>
-            <h3>Pankaj <i>Jaju</i></h3>
-            <p>Director of Technology & Operations</p>
-          </article>
+      <!-- 6. CTA -->
+      <section class="cta-panel">
+        <div class="cta-panel__header">
+          <p class="eyebrow">Work With Us</p>
+          <h2>If your operations have room to improve, we'll find it.</h2>
+        </div>
+        <ol class="cta-panel__steps">
+          <li>
+            <span class="cta-panel__step-num">01</span>
+            <span class="cta-panel__step-text">Book a 30-min scoping call — no commitment required</span>
+          </li>
+          <li>
+            <span class="cta-panel__step-num">02</span>
+            <span class="cta-panel__step-text">We map your highest-value workflow opportunity</span>
+          </li>
+          <li>
+            <span class="cta-panel__step-num">03</span>
+            <span class="cta-panel__step-text">You receive a tailored ROI Blueprint within 5 business days</span>
+          </li>
+        </ol>
+        <div class="cta-panel__action">
+          <a class="btn btn--primary" href="contact.html">
+            Book a discovery call
+            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+          <a class="btn btn--ghost" href="our-flow.html">
+            How we work
+            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+          <p class="cta-panel__note">We respond within one business day.</p>
         </div>
       </section>
+
     </main>
 
     <footer class="site-footer" data-component="site-footer"></footer>
