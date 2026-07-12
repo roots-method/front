@@ -101,32 +101,84 @@
           </div>
         </div>
 
-        <div class="intelligence-card" aria-label="Client outcomes model">
-          <div class="orbit orbit--one"></div>
-          <div class="orbit orbit--two"></div>
-          <div class="node-map">
-            <span class="node node--center">Your<br>Business</span>
-            <span class="node node--one">Revenue</span>
-            <span class="node node--two">Clarity</span>
-            <span class="node node--three">Speed</span>
-            <span class="node node--four">Control</span>
+        <div class="outcome-card" aria-label="Client engagement result">
+          <div class="outcome-card__header">
+            <span class="outcome-card__tag">Client Result</span>
+            <span class="outcome-card__client">Mid-Market Logistics &middot; 8 weeks</span>
+          </div>
+          <div class="outcome-card__transform">
+            <div class="outcome-card__col">
+              <p class="outcome-card__col-label">Before</p>
+              <p class="outcome-card__col-value">40 hrs/wk</p>
+              <p class="outcome-card__col-desc">manual reporting</p>
+            </div>
+            <div class="outcome-card__arrow" aria-hidden="true">&#8594;</div>
+            <div class="outcome-card__col outcome-card__col--after">
+              <p class="outcome-card__col-label">After</p>
+              <p class="outcome-card__col-value">&lt;&thinsp;2 hrs</p>
+              <p class="outcome-card__col-desc">fully automated</p>
+            </div>
+          </div>
+          <div class="outcome-card__metrics">
+            <div class="outcome-card__metric">
+              <span class="outcome-card__metric-value">39%</span>
+              <span class="outcome-card__metric-label">cost reduction</span>
+            </div>
+            <div class="outcome-card__metric">
+              <span class="outcome-card__metric-value">48&times;</span>
+              <span class="outcome-card__metric-label">faster turnaround</span>
+            </div>
+            <div class="outcome-card__metric">
+              <span class="outcome-card__metric-value">6 wks</span>
+              <span class="outcome-card__metric-label">to deployment</span>
+            </div>
+          </div>
+          <div class="outcome-card__journey">
+            <span class="outcome-card__step outcome-card__step--done">ROI Blueprint</span>
+            <span class="outcome-card__step-sep" aria-hidden="true">&#8250;</span>
+            <span class="outcome-card__step outcome-card__step--done">System Build</span>
+            <span class="outcome-card__step-sep" aria-hidden="true">&#8250;</span>
+            <span class="outcome-card__step outcome-card__step--done">Live</span>
           </div>
         </div>
       </section>
 
-      <section class="metric-band" aria-label="Business outcome highlights">
-        <article class="metric-card">
-          <span class="metric-card__value">39%</span>
-          <p>Operational cost reduced</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__value">40 hrs</span>
-          <p>Manual hours eliminated weekly</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__value">48x</span>
-          <p>Faster workflow turnaround</p>
-        </article>
+      <section class="social-proof" aria-label="Client testimonials">
+        <div class="testimonial-strip">
+          <blockquote class="testimonial">
+            <p class="testimonial__quote">"Arka eliminated 40 hours of manual reporting from our week in under two months. The system keeps improving — we haven't touched it since deployment."</p>
+            <footer class="testimonial__footer">
+              <span class="testimonial__name">James K.</span>
+              <span class="testimonial__role">VP Operations &middot; Global Logistics</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p class="testimonial__quote">"We went from email chains and spreadsheets to a fully automated back-office in six weeks. Our team now focuses on decisions, not data entry."</p>
+            <footer class="testimonial__footer">
+              <span class="testimonial__name">Maria L.</span>
+              <span class="testimonial__role">COO &middot; Healthcare Distribution</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p class="testimonial__quote">"The ROI Blueprint alone changed how we think about operations. They found inefficiencies we'd been ignoring for years and had a fix deployed within a month."</p>
+            <footer class="testimonial__footer">
+              <span class="testimonial__name">David R.</span>
+              <span class="testimonial__role">Director of Operations &middot; B2B Technology</span>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="industry-strip" aria-label="Industries served">
+        <span class="industry-strip__label">Industries served</span>
+        <ul class="industry-strip__list">
+          <li>Logistics</li>
+          <li>Healthcare</li>
+          <li>Finance</li>
+          <li>B2B Technology</li>
+          <li>Distribution</li>
+          <li>Professional Services</li>
+        </ul>
       </section>
 
       <section class="section what-we-do">
@@ -275,5 +327,6 @@
   <script src="header.js"></script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
+  <script src="outcome-card.js"></script>
 </body>
 </html>
