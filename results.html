@@ -55,34 +55,86 @@
     <header class="nav" data-component="site-header"></header>
 
     <main>
+
+      <!-- Hero -->
       <section class="page-hero">
         <p class="eyebrow">
           <img class="icon-sm" src="assets/icons-ai/07_data_stack.svg" alt="" />
           Case Work
         </p>
         <h1>Systems built for clarity, speed, and compounding returns.</h1>
-        <p>
-          A sample of the kinds of outcomes we pursue with clients—reducing manual
-          drag, tightening workflows, and making execution easier to measure.
-        </p>
+        <p class="page-hero__sub">A sample of the kinds of outcomes we pursue with clients — reducing manual drag, tightening workflows, and making execution easier to measure.</p>
       </section>
 
-      <section class="metric-band metric-band--large" aria-label="Outcome highlights">
-        <article class="metric-card">
-          <span class="metric-card__value">39%</span>
-          <p>Reduction in manual operating effort</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__value">$240k</span>
-          <p>Annual efficiency opportunity identified</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__value">12 days</span>
-          <p>Saved per workflow cycle on average</p>
-        </article>
+      <!-- Outcome stats bar -->
+      <section class="results-stats" aria-label="Aggregate outcomes">
+        <p class="results-stats__eyebrow">Across all engagements</p>
+        <div class="results-stats__row">
+          <div class="results-stats__item">
+            <span class="results-stats__value">39%</span>
+            <span class="results-stats__label">Reduction in manual operating effort</span>
+          </div>
+          <div class="results-stats__divider" aria-hidden="true"></div>
+          <div class="results-stats__item">
+            <span class="results-stats__value">$240k</span>
+            <span class="results-stats__label">Annual efficiency opportunity identified</span>
+          </div>
+          <div class="results-stats__divider" aria-hidden="true"></div>
+          <div class="results-stats__item">
+            <span class="results-stats__value">12 days</span>
+            <span class="results-stats__label">Saved per workflow cycle on average</span>
+          </div>
+        </div>
       </section>
 
+      <!-- Industry filter -->
+      <div class="case-filter" role="group" aria-label="Filter by industry">
+        <span class="case-filter__label">Filter</span>
+        <button class="case-filter__pill is-active" data-filter="all">All</button>
+        <button class="case-filter__pill" data-filter="Insurance">Insurance</button>
+        <button class="case-filter__pill" data-filter="Finance">Finance</button>
+        <button class="case-filter__pill" data-filter="Growth">Consumer</button>
+        <button class="case-filter__pill" data-filter="Technology">Technology</button>
+        <button class="case-filter__pill" data-filter="Sustainability">Supply Chain</button>
+        <button class="case-filter__pill" data-filter="Healthcare">Healthcare</button>
+      </div>
+
+      <!-- Case card grid -->
       <section class="case-grid" data-component="case-grid" aria-live="polite"></section>
+
+      <!-- CTA panel -->
+      <section class="cta-panel">
+        <div class="cta-panel__header">
+          <p class="eyebrow">Work With Us</p>
+          <h2>Ready to find your highest-value workflow?</h2>
+        </div>
+        <ol class="cta-panel__steps">
+          <li>
+            <span class="cta-panel__step-num">01</span>
+            <span class="cta-panel__step-text">Book a 30-min scoping call — no commitment required</span>
+          </li>
+          <li>
+            <span class="cta-panel__step-num">02</span>
+            <span class="cta-panel__step-text">We map your highest-value workflow opportunity</span>
+          </li>
+          <li>
+            <span class="cta-panel__step-num">03</span>
+            <span class="cta-panel__step-text">You receive a tailored ROI Blueprint within 5 business days</span>
+          </li>
+        </ol>
+        <div class="cta-panel__action">
+          <a class="btn btn--primary" href="contact.html">
+            Book a discovery call
+            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+          <a class="btn btn--ghost" href="our-flow.html">
+            How we work
+            <span class="nav__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+          <p class="cta-panel__note">We respond within one business day.</p>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer" data-component="site-footer"></footer>
