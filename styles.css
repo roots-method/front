@@ -1873,6 +1873,169 @@ main {
   border-top: 1px solid var(--line);
 }
 
+/* Flow step layout — Our Flow page */
+.flow-stack {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+}
+
+.flow-step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0 clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.flow-step--last {
+  padding-bottom: 0;
+}
+
+.flow-step__spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.2rem;
+}
+
+.flow-step__node {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.flow-step__line {
+  flex: 1;
+  width: 1px;
+  margin-top: 0.5rem;
+  background: linear-gradient(to bottom, var(--accent), var(--line));
+  opacity: 0.5;
+}
+
+.flow-step__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.flow-step__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flow-step__num {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.flow-step__duration {
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.flow-step__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg);
+  margin: 0;
+}
+
+.flow-step__desc {
+  max-width: 62ch;
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.flow-step__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.flow-step__list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.flow-step__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.flow-step__deliverable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: clamp(0.9rem, 2vw, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.flow-step__deliverable-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.1rem;
+}
+
+.page-hero__sub {
+  max-width: 58ch;
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .flow-step {
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0 1rem;
+  }
+
+  .flow-step__node {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
+
 .check-list {
   display: grid;
   gap: 0.55rem;
