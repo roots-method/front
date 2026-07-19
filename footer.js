@@ -1,5 +1,5 @@
 (function () {
-  const CONTACT_EMAIL = "info@arkaflow.co";
+  const CONTACT_EMAIL = "build@arkaflow.co";
   const BOOKING_URL = "https://calendar.notion.so/meet/sumit-ntn/arka";
 
   const menuItems = window.SITE_MENU_ITEMS || [];
@@ -23,7 +23,10 @@
     // Brand + tagline
     '<div class="site-footer__brand">' +
       '<a class="site-footer__brand-link" href="index.html" aria-label="Arka home">' +
-        '<span class="site-footer__mark">Arka</span>' +
+        '<span class="site-footer__mark">' +
+          '<img class="site-footer__logo" src="assets/arkaflow-newlogo.svg" alt="Arka" width="36" height="36" />' +
+          'Arka' +
+        '</span>' +
       "</a>" +
       '<p class="site-footer__tagline">Intelligent systems for mid-market operations.</p>' +
     "</div>" +
