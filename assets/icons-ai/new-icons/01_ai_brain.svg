@@ -1,0 +1,8 @@
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#1e3a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 22 Q15 15 23 13 Q27 7 32 11 Q37 7 41 13 Q49 15 44 22 Q51 28 46 32 Q49 39 43 41 Q41 47 35 45 Q33 50 29 45 Q23 47 21 41 Q15 39 18 32 Q13 28 20 22 Z" fill="#dde3ef"/>
+  <path d="M32 11 Q31 28 32 45"/>
+  <path d="M22 26 Q26 28 24 33"/>
+  <path d="M20 34 Q24 36 23 40"/>
+  <path d="M42 26 Q38 28 40 33"/>
+  <path d="M44 34 Q40 36 41 40"/>
+</svg>
