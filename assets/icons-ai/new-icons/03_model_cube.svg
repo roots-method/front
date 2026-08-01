@@ -1,5 +1,0 @@
-<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#1e3a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M32 8 Q42 13 52 18 Q42 23 32 28 Q22 23 12 18 Q22 13 32 8 Z" fill="#dde3ef"/>
-  <path d="M12 18 Q12 31 12 44 Q22 50 32 55 L32 28 Q22 23 12 18 Z" fill="#dde3ef"/>
-  <path d="M52 18 Q52 31 52 44 Q42 50 32 55 L32 28 Q42 23 52 18 Z" fill="#dde3ef"/>
-</svg>
