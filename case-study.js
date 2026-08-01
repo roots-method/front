@@ -158,10 +158,54 @@
     return;
   }
 
-  document.title = study.title + " — Case Work — Arka";
+  var pageTitle = study.title + " — Case Work — Arka";
+  var pageUrl = "https://www.arkaflow.co/case-study.html?slug=" + slug;
+  document.title = pageTitle;
 
   var description = document.querySelector('meta[name="description"]');
   if (description) description.setAttribute("content", study.summary);
+
+  var canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute("href", pageUrl);
+
+  function setMeta(selector, attr, value) {
+    var el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, value);
+  }
+  setMeta('meta[property="og:url"]', "content", pageUrl);
+  setMeta('meta[property="og:title"]', "content", pageTitle);
+  setMeta('meta[property="og:description"]', "content", study.summary);
+  setMeta('meta[name="twitter:title"]', "content", pageTitle);
+  setMeta('meta[name="twitter:description"]', "content", study.summary);
+
+  var jsonld = document.getElementById("case-study-jsonld");
+  if (jsonld) {
+    jsonld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": pageUrl + "#article",
+          "url": pageUrl,
+          "name": study.title,
+          "headline": study.title,
+          "description": study.summary,
+          "articleSection": study.label,
+          "isPartOf": { "@id": "https://www.arkaflow.co/#website" },
+          "author": { "@id": "https://www.arkaflow.co/#org" },
+          "publisher": { "@id": "https://www.arkaflow.co/#org" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arkaflow.co/" },
+            { "@type": "ListItem", "position": 2, "name": "Case Work", "item": "https://www.arkaflow.co/results.html" },
+            { "@type": "ListItem", "position": 3, "name": study.title, "item": pageUrl }
+          ]
+        }
+      ]
+    });
+  }
 
   if (study.accent) container.style.setProperty("--case-accent", study.accent);
 
