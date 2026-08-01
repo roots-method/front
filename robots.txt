@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /verify-icons.html
+Disallow: /verify-icons-ai.html
 
 Sitemap: https://www.arkaflow.co/sitemap.xml
