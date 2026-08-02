@@ -167,7 +167,7 @@
   />
   <meta name="color-scheme" content="light dark" />
   <script src="theme-init.js"></script>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="site-shell">
@@ -180,11 +180,11 @@
             For enterprise operations teams
           </p>
           <h1 class="hero__title">
-            Turn complex operations into <span class="accent">clear, measurable systems.</span>
+            Turn <em>complex operations</em> into <span class="accent">clear, measurable systems.</span>
           </h1>
           <p class="hero__lede">
             We work with enterprises to replace slow, manual processes with
-            intelligent systems that improve execution, sharpen margins, and compound
+            <span class="highlight">intelligent systems</span> that improve execution, sharpen margins, and compound
             in value over time.
           </p>
           <div class="hero__actions">
@@ -293,65 +293,158 @@
         <h2 class="what-we-do__title">A four-step engagement built for lasting change.</h2>
         <div class="what-we-do__intro">
           <p>
-            Every engagement follows the same proven sequence from diagnosing
+            Every engagement follows the same proven sequence — from diagnosing
             where the value is, through building and deploying the system, to
             owning it with you long after launch.
           </p>
         </div>
       </section>
 
-      <section class="process-list" aria-label="Our engagement process">
-        <div class="process-step reveal">
-          <div class="process-step__marker">
-            <span class="process-step__number">01</span>
-            <span class="process-step__line" aria-hidden="true"></span>
-          </div>
-          <div class="process-step__body">
-            <div class="process-step__head">
-              <h3>ROI Blueprint</h3>
-              <span class="process-step__duration">Weeks 1–2</span>
-            </div>
+      <section class="process-split" aria-label="Our engagement process">
+
+        <!-- Left: scrollable steps -->
+        <div class="process-split__steps">
+          <div class="process-split__step" data-step="1">
+            <span class="process-split__num">01 &mdash; Weeks 1&ndash;2</span>
+            <h3>ROI Blueprint</h3>
             <p>We map your workflows, tools, costs, and decision points to identify exactly where intelligent automation creates the strongest return. You leave with a prioritized plan.</p>
           </div>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-step__marker">
-            <span class="process-step__number">02</span>
-            <span class="process-step__line" aria-hidden="true"></span>
+          <div class="process-split__step" data-step="2">
+            <span class="process-split__num">02 &mdash; Weeks 3&ndash;8</span>
+            <h3>AI Automation</h3>
+            <p>We design and deploy automation around repeatable decisions, documents, customer operations, and data movement — built to your workflows, not generic templates.</p>
           </div>
-          <div class="process-step__body">
-            <div class="process-step__head">
-              <h3>AI Automation</h3>
-              <span class="process-step__duration">Weeks 3–8</span>
-            </div>
-            <p>We design and deploy automation around repeatable decisions, documents, customer operations, and data movement built to your workflows, instead of generic templates.</p>
-          </div>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-step__marker">
-            <span class="process-step__number">03</span>
-            <span class="process-step__line" aria-hidden="true"></span>
-          </div>
-          <div class="process-step__body">
-            <div class="process-step__head">
-              <h3>Workflow Intelligence</h3>
-              <span class="process-step__duration">Weeks 6–12</span>
-            </div>
+          <div class="process-split__step" data-step="3">
+            <span class="process-split__num">03 &mdash; Weeks 6&ndash;12</span>
+            <h3>Workflow Intelligence</h3>
             <p>We connect your systems into a clear operating layer so your team moves faster without losing judgment, context, or quality in the handoff.</p>
           </div>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-step__marker">
-            <span class="process-step__number">04</span>
+          <div class="process-split__step" data-step="4">
+            <span class="process-split__num">04 &mdash; Ongoing</span>
+            <h3>Back-Office Operations</h3>
+            <p>We don't just launch and hand off. We own ongoing performance, maintenance, and optimization so value compounds without adding to your operational burden.</p>
           </div>
-          <div class="process-step__body">
-            <div class="process-step__head">
-              <h3>Back-Office Operations</h3>
-              <span class="process-step__duration">Ongoing</span>
+        </div>
+
+        <!-- Right: sticky visual panels -->
+        <div class="process-split__sticky">
+          <div class="process-visual" id="process-visual">
+
+            <!-- Panel 1: ROI Blueprint -->
+            <div class="process-visual__panel is-active" data-panel="1">
+              <span class="process-visual__tag">Step 01</span>
+              <p class="process-visual__heading">Blueprint findings &mdash; enterprise logistics</p>
+              <ul class="pv-list">
+                <li>3 high-ROI automation opportunities identified</li>
+                <li>$180k/yr operational savings projected</li>
+                <li>Prioritized plan delivered in 2 weeks</li>
+              </ul>
+              <div class="pv-stats">
+                <div class="pv-stat">
+                  <span class="pv-stat__val">3</span>
+                  <span class="pv-stat__lbl">Opportunities found</span>
+                </div>
+                <div class="pv-stat">
+                  <span class="pv-stat__val">$180k</span>
+                  <span class="pv-stat__lbl">Projected savings</span>
+                </div>
+                <div class="pv-stat">
+                  <span class="pv-stat__val">2 wks</span>
+                  <span class="pv-stat__lbl">Blueprint delivered</span>
+                </div>
+              </div>
             </div>
-            <p>We don't just launch and handoff. We own ongoing performance, maintenance, and optimization so value compounds without adding to your operational burden.</p>
+
+            <!-- Panel 2: AI Automation -->
+            <div class="process-visual__panel" data-panel="2">
+              <span class="process-visual__tag">Step 02</span>
+              <p class="process-visual__heading">Multi-agent system — deployed in 6 weeks</p>
+              <div class="pv-flow">
+                <span class="pv-flow__node">Trigger</span>
+                <span class="pv-flow__arrow" aria-hidden="true">&#8594;</span>
+                <span class="pv-flow__node pv-flow__node--accent">AI Agent</span>
+                <span class="pv-flow__arrow" aria-hidden="true">&#8594;</span>
+                <span class="pv-flow__node">Decision gate</span>
+                <span class="pv-flow__arrow" aria-hidden="true">&#8594;</span>
+                <span class="pv-flow__node pv-flow__node--accent">Execute</span>
+              </div>
+              <div class="pv-stats">
+                <div class="pv-stat">
+                  <span class="pv-stat__val">6 wks</span>
+                  <span class="pv-stat__lbl">To deployment</span>
+                </div>
+                <div class="pv-stat">
+                  <span class="pv-stat__val">0</span>
+                  <span class="pv-stat__lbl">Compliance issues at go-live</span>
+                </div>
+                <div class="pv-stat">
+                  <span class="pv-stat__val">48&times;</span>
+                  <span class="pv-stat__lbl">Faster turnaround</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Workflow Intelligence -->
+            <div class="process-visual__panel" data-panel="3">
+              <span class="process-visual__tag">Step 03</span>
+              <p class="process-visual__heading">Connected operating layer — 3 systems unified</p>
+              <div class="pv-kv">
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Routing accuracy</span>
+                  <span class="pv-kv__val pv-kv__val--up">94%</span>
+                </div>
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Manual handoffs eliminated</span>
+                  <span class="pv-kv__val pv-kv__val--up">12/day</span>
+                </div>
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Decision latency</span>
+                  <span class="pv-kv__val pv-kv__val--up">&#8595; 83%</span>
+                </div>
+              </div>
+              <div class="pv-tags">
+                <span class="pv-tag">ERP</span>
+                <span class="pv-tag">CRM</span>
+                <span class="pv-tag">Slack</span>
+                <span class="pv-tag">Email</span>
+                <span class="pv-tag">Docs</span>
+                <span class="pv-tag">Reports</span>
+              </div>
+            </div>
+
+            <!-- Panel 4: Back-Office Operations -->
+            <div class="process-visual__panel" data-panel="4">
+              <span class="process-visual__tag">Step 04 &mdash; Ongoing</span>
+              <p class="process-visual__heading">Compounding performance &mdash; 6 months post-launch</p>
+              <div class="pv-kv">
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Cost reduction</span>
+                  <span class="pv-kv__val pv-kv__val--up">39% &#8593; 2% since launch</span>
+                </div>
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Weekly hours recovered</span>
+                  <span class="pv-kv__val pv-kv__val--up">40 hrs &#8594; &lt;2 hrs</span>
+                </div>
+                <div class="pv-kv__row">
+                  <span class="pv-kv__key">Last optimization</span>
+                  <span class="pv-kv__val">3 days ago</span>
+                </div>
+              </div>
+              <div class="pv-stats pv-stats--2">
+                <div class="pv-stat">
+                  <span class="pv-stat__val">$240k</span>
+                  <span class="pv-stat__lbl">Annualized savings</span>
+                </div>
+                <div class="pv-stat">
+                  <span class="pv-stat__val">0</span>
+                  <span class="pv-stat__lbl">Client system touches</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
       </section>
 
       <section class="why-arka">
@@ -395,7 +488,53 @@
         </div>
       </section>
 
+      <section class="faq" aria-label="Frequently asked questions">
+        <div class="faq__header">
+          <p class="eyebrow">Common questions</p>
+          <h2>What teams ask us</h2>
+        </div>
+        <ul class="faq__list">
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-1">
+              What does the ROI Blueprint actually deliver?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-1" role="region">
+              <p class="faq__body-inner">A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan — not a vague proposal.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-2">
+              How long until we see results?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-2" role="region">
+              <p class="faq__body-inner">First automation systems are live within 6–8 weeks of starting the engagement. The ROI Blueprint in weeks 1–2 gives you the business case before any build begins.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-3">
+              Do you work with businesses outside the US?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-3" role="region">
+              <p class="faq__body-inner">Yes — we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-4">
+              What happens if the system needs changes after launch?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-4" role="region">
+              <p class="faq__body-inner">We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements — so the system keeps getting better as your workflows evolve.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
       <section class="cta-panel">
+        <img class="cta-panel__watermark" src="assets/arkaflow-newlogo.svg" alt="" aria-hidden="true" />
         <div class="cta-panel__header">
           <p class="eyebrow">Ready When You Are</p>
           <h2>The gap between where you are and where you want to be is a systems problem. Let's close it.</h2>
@@ -437,5 +576,6 @@
   <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="outcome-card.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>
