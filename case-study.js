@@ -36,17 +36,18 @@
     );
   }
 
-  // 4. Section nav — scrollable pill list linking to anchors
+  // 4. Section nav — vertical timeline linking to anchors
   function renderSectionNav(sections) {
     if (!sections || sections.length < 2) return "";
-    var pills = sections.map(function (section, i) {
+    var items = sections.map(function (section, i) {
       return (
-        '<a class="cs-nav__pill" href="#cs-section-' + i + '">' +
-          escapeHtml(section.heading) +
+        '<a class="cs-nav__item" href="#cs-section-' + i + '">' +
+          '<span class="cs-nav__dot"></span>' +
+          '<span class="cs-nav__label">' + escapeHtml(section.heading) + "</span>" +
         "</a>"
       );
     }).join("");
-    return '<nav class="cs-nav" aria-label="Jump to section">' + pills + "</nav>";
+    return '<nav class="cs-nav" aria-label="Jump to section">' + items + "</nav>";
   }
 
   function renderSections(sections) {
@@ -210,33 +211,42 @@
   if (study.accent) container.style.setProperty("--case-accent", study.accent);
 
   container.innerHTML =
-    // Header
-    '<header class="case-article__header">' +
-      '<a class="case-article__back" href="results.html"><span aria-hidden="true">&#8592;</span> Back to Case Work</a>' +
-      '<p class="case-article__label">' + escapeHtml(study.label) + "</p>" +
-      "<h1>" + escapeHtml(study.title) + "</h1>" +
-      '<p class="case-article__summary">' + escapeHtml(study.summary) + "</p>" +
-      '<div class="case-article__meta">' +
-        "<span>" + escapeHtml(study.readTime) + "</span>" +
-        "<span>" + escapeHtml(study.engagement) + "</span>" +
-      "</div>" +
-    "</header>" +
+    '<div class="case-article__wrap">' +
 
-    // 1. Horizontal metric strip
-    renderMetrics(study.metrics) +
+      // Left sticky sidebar
+      '<aside class="case-article__sidebar">' +
+        '<a class="case-article__back" href="results.html"><span aria-hidden="true">&#8592;</span> Back to Case Work</a>' +
+        renderSectionNav(study.sections) +
+      "</aside>" +
 
-    // 4. Section nav
-    renderSectionNav(study.sections) +
+      // Right main content
+      '<div class="case-article__main">' +
 
-    // Article body
-    '<div class="case-article__body">' +
-      renderSections(study.sections) +
-    "</div>" +
+        // Header (no back link — it lives in the sidebar)
+        '<header class="case-article__header">' +
+          '<p class="case-article__label">' + escapeHtml(study.label) + "</p>" +
+          "<h1>" + escapeHtml(study.title) + "</h1>" +
+          '<p class="case-article__summary">' + escapeHtml(study.summary) + "</p>" +
+          '<div class="case-article__meta">' +
+            "<span>" + escapeHtml(study.readTime) + "</span>" +
+            "<span>" + escapeHtml(study.engagement) + "</span>" +
+          "</div>" +
+        "</header>" +
 
-    // Related cases
+        // Horizontal metric strip
+        renderMetrics(study.metrics) +
+
+        // Article body
+        '<div class="case-article__body">' +
+          renderSections(study.sections) +
+        "</div>" +
+
+      "</div>" + // end .case-article__main
+    "</div>" + // end .case-article__wrap
+
+    // Full-width sections below the sidebar layout
     renderRelatedCases(study.slug) +
 
-    // 2. Full CTA panel
     '<section class="cta-panel case-article__cta">' +
       '<div class="cta-panel__header">' +
         '<p class="eyebrow">Your workflow</p>' +
@@ -254,31 +264,36 @@
       "</div>" +
     "</section>";
 
-  // Smooth scroll for section nav pills
-  container.querySelectorAll(".cs-nav__pill").forEach(function (pill) {
-    pill.addEventListener("click", function (e) {
-      var target = document.querySelector(pill.getAttribute("href"));
+  var NAV_OFFSET = 100; // sticky header height + breathing room
+
+  // Click: scroll section heading into view below the sticky header
+  container.querySelectorAll(".cs-nav__item").forEach(function (item) {
+    item.addEventListener("click", function (e) {
+      var target = document.querySelector(item.getAttribute("href"));
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+        window.scrollTo({ top: top, behavior: "smooth" });
       }
     });
   });
 
-  // Highlight active pill on scroll
+  // Active highlight: whichever section's top has most recently scrolled past the threshold
   var sections = container.querySelectorAll(".case-article__section");
-  var pills = container.querySelectorAll(".cs-nav__pill");
-  if (sections.length && pills.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.id;
-          pills.forEach(function (p) {
-            p.classList.toggle("is-active", p.getAttribute("href") === "#" + id);
-          });
-        }
-      });
-    }, { rootMargin: "-20% 0px -60% 0px" });
-    sections.forEach(function (s) { observer.observe(s); });
+  var navItems = container.querySelectorAll(".cs-nav__item");
+
+  function updateActiveNav() {
+    if (!sections.length || !navItems.length) return;
+    var threshold = NAV_OFFSET + 16;
+    var activeIdx = 0;
+    sections.forEach(function (sec, i) {
+      if (sec.getBoundingClientRect().top <= threshold) activeIdx = i;
+    });
+    navItems.forEach(function (item, i) {
+      item.classList.toggle("is-active", i === activeIdx);
+    });
   }
+
+  window.addEventListener("scroll", updateActiveNav, { passive: true });
+  updateActiveNav();
 })();
