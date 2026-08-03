@@ -157,7 +157,6 @@ textarea {
   margin-inline: calc(-1 * clamp(1.25rem, 5vw, 3rem));
   padding: clamp(0.35rem, 1.2vw, 0.65rem) clamp(1.25rem, 5vw, 3rem);
   background: transparent;
-  border-top: 3px solid var(--accent);
   border-bottom: 1px solid transparent;
   animation: fade-in 0.7s ease both;
   transition:
