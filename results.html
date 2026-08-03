@@ -117,50 +117,17 @@
     <main>
 
       <!-- Hero -->
-      <section class="page-hero">
+      <section class="page-hero page-hero--cases">
         <p class="eyebrow">
           <img class="icon-sm" src="assets/icons-ai/07_data_stack.svg" alt="" />
           Case Work
         </p>
-        <h1>Systems built for clarity, speed, and compounding returns.</h1>
-        <p class="page-hero__sub">A sample of the kinds of outcomes we pursue with clients — reducing manual drag, tightening workflows, and making execution easier to measure.</p>
+        <h1>Systems built for <em>clarity, speed,</em> and <span class="accent">compounding returns.</span></h1>
+        <p class="page-hero__sub">A sample of the kinds of outcomes we pursue with clients — reducing manual drag, tightening workflows, and making <span class="highlight">execution easier to measure</span>.</p>
       </section>
 
-      <!-- Outcome stats bar -->
-      <section class="results-stats" aria-label="Aggregate outcomes">
-        <p class="results-stats__eyebrow">Across all engagements</p>
-        <div class="results-stats__row">
-          <div class="results-stats__item">
-            <span class="results-stats__value">39%</span>
-            <span class="results-stats__label">Reduction in manual operating effort</span>
-          </div>
-          <div class="results-stats__divider" aria-hidden="true"></div>
-          <div class="results-stats__item">
-            <span class="results-stats__value">$240k</span>
-            <span class="results-stats__label">Annual efficiency opportunity identified</span>
-          </div>
-          <div class="results-stats__divider" aria-hidden="true"></div>
-          <div class="results-stats__item">
-            <span class="results-stats__value">12 days</span>
-            <span class="results-stats__label">Saved per workflow cycle on average</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Industry filter -->
-      <div class="case-filter" role="group" aria-label="Filter by industry">
-        <span class="case-filter__label">Filter</span>
-        <button class="case-filter__pill is-active" data-filter="all">All</button>
-        <button class="case-filter__pill" data-filter="Insurance">Insurance</button>
-        <button class="case-filter__pill" data-filter="Finance">Finance</button>
-        <button class="case-filter__pill" data-filter="Growth">Consumer</button>
-        <button class="case-filter__pill" data-filter="Technology">Technology</button>
-        <button class="case-filter__pill" data-filter="Sustainability">Supply Chain</button>
-        <button class="case-filter__pill" data-filter="Healthcare">Healthcare</button>
-      </div>
-
-      <!-- Case card grid -->
-      <section class="case-grid" data-component="case-grid" aria-live="polite"></section>
+      <!-- Featured case + card grid (rendered by case-work.js) -->
+      <div class="case-work-layout" data-component="case-grid" aria-live="polite"></div>
 
       <!-- CTA panel -->
       <section class="cta-panel">

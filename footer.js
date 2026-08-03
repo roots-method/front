@@ -28,7 +28,7 @@
           'Arka' +
         '</span>' +
       "</a>" +
-      '<p class="site-footer__tagline">Intelligent systems for mid-market operations.</p>' +
+      '<p class="site-footer__tagline">Intelligent systems for enterprise operations.</p>' +
     "</div>" +
 
     // Menu
