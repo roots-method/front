@@ -44,7 +44,7 @@
       '<h2 class="site-footer__heading">Contact</h2>' +
       '<ul class="site-footer__list">' +
         '<li><a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a></li>" +
-        '<li><a href="' + BOOKING_URL + '" target="_blank" rel="noopener">Book a call &#8599;</a></li>' +
+        '<li><a href="' + BOOKING_URL + '" target="_blank" rel="noopener">Book a call<span class="nav__arrow" aria-hidden="true">&#8599;</span></a></li>' +
       "</ul>" +
     "</div>" +
 
@@ -52,8 +52,9 @@
     '<div class="site-footer__column">' +
       '<h2 class="site-footer__heading">Follow</h2>' +
       '<div class="site-footer__social" aria-label="Social links">' +
-        '<a class="site-footer__social-link" target="_blank" rel="noopener" href="https://www.linkedin.com/company/dhee-node/?viewAsMember=true" aria-label="LinkedIn">in</a>' +
-        '<a class="site-footer__social-link" target="_blank" rel="noopener" href="https://x.com/_jazoo" aria-label="X / Twitter">X</a>' +
+        '<a class="site-footer__social-link" target="_blank" rel="noopener" href="https://www.linkedin.com/company/dhee-node/?viewAsMember=true" aria-label="LinkedIn"><span class="social-icon social-icon--linkedin" aria-hidden="true"></span></a>' +
+        '<a class="site-footer__social-link" target="_blank" rel="noopener" href="https://x.com/_jazoo" aria-label="X / Twitter"><span class="social-icon social-icon--x" aria-hidden="true"></span></a>' +
+        '<a class="site-footer__social-link" target="_blank" rel="noopener" href="https://github.com/roots-method" aria-label="GitHub"><span class="social-icon social-icon--github" aria-hidden="true"></span></a>' +
       "</div>" +
     "</div>" +
 

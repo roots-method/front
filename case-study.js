@@ -147,7 +147,7 @@
     document.title = "Case study not found — Arka";
     container.innerHTML =
       '<section class="page-hero">' +
-        '<p class="eyebrow"><img class="icon-sm" src="assets/icons-ai/07_data_stack.svg" alt="" />Case Work</p>' +
+        '<p class="eyebrow"><img class="icon-sm" src="assets/icons-ai-ibm/data-analytics.svg" alt="" />Case Work</p>' +
         "<h1>We could not find that case study.</h1>" +
         "<p>The link may be outdated or the case study may have moved.</p>" +
         '<a class="btn btn--ghost case-article__back" href="results.html">Back to Case Work</a>' +
