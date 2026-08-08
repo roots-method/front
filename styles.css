@@ -138,12 +138,19 @@ textarea {
   width: 1.25em;
   height: 1.25em;
   flex: none;
+  /* Carbon icons are filled paths, not strokes — opacity is the only
+     lever for line weight, and it doubles as the muted tone. */
+  opacity: 0.6;
 }
 
 [data-theme="dark"] .icon-sm,
 [data-theme="dark"] .feature-card__icon,
 [data-theme="dark"] .philosophy-card__icon {
   filter: brightness(0) invert(0.92);
+}
+
+[data-theme="dark"] .icon-sm {
+  opacity: 0.7;
 }
 
 .nav {
@@ -322,9 +329,27 @@ textarea {
   color: var(--surface);
 }
 
+/* Carbon arrow via mask so it inherits currentColor — white on .btn--primary,
+   dark on .btn--ghost, amber on ghost hover. An <img> could not follow any of
+   those. font-size:0 hides the ↗ fallback glyph the markup still carries. */
 .nav__arrow {
   display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: none;
+  font-size: 0;
+  /* Buttons are flex and ignore this; inline contexts (footer list link)
+     need it or the zero-font-size box drops below the baseline. */
+  vertical-align: middle;
+  background-color: currentColor;
+  -webkit-mask: url("assets/icons-ai-ibm/arrow--up-right.svg") center / contain no-repeat;
+  mask: url("assets/icons-ai-ibm/arrow--up-right.svg") center / contain no-repeat;
   transition: transform 0.2s ease;
+}
+
+/* Inline usages have no flex gap to separate glyph from text */
+.site-footer__list .nav__arrow {
+  margin-left: 0.3rem;
 }
 
 .nav__link:hover .nav__arrow,
@@ -596,9 +621,10 @@ main {
   background: var(--surface);
 }
 
-.btn--ghost:hover {
-  border-color: var(--fg);
-  color: var(--fg);
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Outcome snapshot card — replaces abstract orbit diagram in hero */
@@ -2545,7 +2571,7 @@ main {
 .site-footer__heading {
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 
@@ -2557,8 +2583,8 @@ main {
 .site-footer__menu-link {
   text-decoration: none;
   color: var(--muted);
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
   transition: color 0.2s ease;
 }
 
@@ -2614,6 +2640,36 @@ main {
 .site-footer__social-link:focus-visible {
   transform: translateY(-1px);
   opacity: 0.88;
+}
+
+/* Brand glyphs masked so they take the link's currentColor, which flips
+   with the theme alongside the circle behind them. */
+.social-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.social-icon--linkedin {
+  -webkit-mask-image: url("assets/icons-ai-ibm/logo-linkedin.svg");
+  mask-image: url("assets/icons-ai-ibm/logo-linkedin.svg");
+}
+
+.social-icon--x {
+  -webkit-mask-image: url("assets/icons-ai-ibm/logo-x.svg");
+  mask-image: url("assets/icons-ai-ibm/logo-x.svg");
+}
+
+.social-icon--github {
+  -webkit-mask-image: url("assets/icons-ai-ibm/logo-github.svg");
+  mask-image: url("assets/icons-ai-ibm/logo-github.svg");
 }
 
 .site-footer__cta {
@@ -3595,7 +3651,7 @@ main {
   gap: 0.35rem;
   padding: 0.6rem 1rem;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 4px;
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--fg);

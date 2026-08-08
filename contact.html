@@ -46,6 +46,45 @@
             { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.arkaflow.co/contact.html" }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.arkaflow.co/contact.html#faq",
+        "isPartOf": { "@id": "https://www.arkaflow.co/contact.html#webpage" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the ROI Blueprint actually deliver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan — not a vague proposal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long until we see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "First automation systems are live within 6–8 weeks of starting the engagement. The ROI Blueprint in weeks 1–2 gives you the business case before any build begins."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with businesses outside the US?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if the system needs changes after launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements — so the system keeps getting better as your workflows evolve."
+            }
+          }
+        ]
       }
     ]
   }
@@ -73,7 +112,7 @@
         <div class="contact-info">
           <div class="contact-info__hero">
             <p class="eyebrow">
-              <img class="icon-sm" src="assets/icons/24_mail.svg" alt="" />
+              <img class="icon-sm" src="assets/icons-ai-ibm/send.svg" alt="" />
               Contact
             </p>
             <h1>Let's find the workflow worth fixing first.</h1>
@@ -113,7 +152,7 @@
             <a class="contact-direct__link" href="mailto:build@arkaflow.co">build@arkaflow.co</a>
             <a class="contact-direct__link" href="https://calendar.notion.so/meet/sumit-ntn/arka" target="_blank" rel="noopener">
               Book a call directly
-              <span aria-hidden="true">&#8599;</span>
+              <span class="nav__arrow" aria-hidden="true">&#8599;</span>
             </a>
           </div>
         </div>
@@ -168,6 +207,51 @@
         </div>
 
       </section>
+
+      <section class="faq" aria-label="Frequently asked questions">
+        <div class="faq__header">
+          <p class="eyebrow">Common questions</p>
+          <h2>What teams ask us</h2>
+        </div>
+        <ul class="faq__list">
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-1">
+              What does the ROI Blueprint actually deliver?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-1" role="region">
+              <p class="faq__body-inner">A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan — not a vague proposal.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-2">
+              How long until we see results?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-2" role="region">
+              <p class="faq__body-inner">First automation systems are live within 6–8 weeks of starting the engagement. The ROI Blueprint in weeks 1–2 gives you the business case before any build begins.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-3">
+              Do you work with businesses outside the US?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-3" role="region">
+              <p class="faq__body-inner">Yes — we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions.</p>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__btn" aria-expanded="false" aria-controls="faq-4">
+              What happens if the system needs changes after launch?
+              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="faq__body" id="faq-4" role="region">
+              <p class="faq__body-inner">We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements — so the system keeps getting better as your workflows evolve.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer class="site-footer" data-component="site-footer"></footer>
@@ -179,5 +263,6 @@
   <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="contact-form.js"></script>
+  <script src="faq.js"></script>
 </body>
 </html>
