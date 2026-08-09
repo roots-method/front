@@ -1049,12 +1049,32 @@ main {
 }
 
 .problem-frame__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+}
+
+/* Accent rule sweeps left to right on hover, sitting over the divider */
+.problem-frame__item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.problem-frame__item:hover::after,
+.problem-frame__item:focus-within::after {
+  transform: scaleX(1);
 }
 
 .problem-frame__item:nth-child(2n) {
@@ -1355,8 +1375,8 @@ main {
 .why-arka__item:last-child  { border-right: none; padding-right: 0; }
 
 .why-arka__icon {
-  width: 2rem;
-  height: 2rem;
+  width: 5rem;
+  height: 5rem;
   flex: none;
   filter: brightness(0) invert(1);
   opacity: 0.55;
