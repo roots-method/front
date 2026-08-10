@@ -1387,16 +1387,34 @@ main {
 .why-arka__item:first-child { padding-left: 0; }
 .why-arka__item:last-child  { border-right: none; padding-right: 0; }
 
+/* Masked rather than <img> so the glyph takes var(--accent) and flips with
+   the theme — a filter chain cannot reach an arbitrary brand colour. */
 .why-arka__icon {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   flex: none;
-  filter: brightness(0) invert(1);
-  opacity: 0.55;
+  background-color: var(--accent);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-[data-theme="light"] .why-arka__icon {
-  filter: brightness(0);
+.why-arka__icon--ownership {
+  -webkit-mask-image: url("assets/icons-ai-ibm/continuous-deployment.svg");
+  mask-image: url("assets/icons-ai-ibm/continuous-deployment.svg");
+}
+
+.why-arka__icon--margins {
+  -webkit-mask-image: url("assets/icons-ai-ibm/business-metrics.svg");
+  mask-image: url("assets/icons-ai-ibm/business-metrics.svg");
+}
+
+.why-arka__icon--workflow {
+  -webkit-mask-image: url("assets/icons-ai-ibm/branch.svg");
+  mask-image: url("assets/icons-ai-ibm/branch.svg");
 }
 
 .why-arka__content h3 {
