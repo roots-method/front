@@ -1,35 +1,42 @@
+/* Brand palette — two colours split by role.
+   --accent (cobalt) = identity + wayfinding: eyebrows, links, borders, buttons.
+   --data   (ochre)  = evidence: numbers only. See README.md.
+   Keeping ochre off labels and controls is what preserves the hierarchy. */
 :root {
   color-scheme: light;
-  --bg: #ffffff;
-  --bg-rgb: 255, 255, 255;
-  --surface: #f7f8fc;
-  --surface-rgb: 247, 248, 252;
-  --inset: #eceff6;
-  --fg: #1e3a5f;
-  --muted: #1e3a5f;
-  --accent: #c97a0a;
-  --accent-strong: #9e5d00;
-  --accent-soft: #e49c2a;
-  --accent-rgb: 201, 122, 10;
-  --line: rgba(30, 58, 95, 0.1);
-  --shadow: 0 1px 4px rgba(30, 58, 95, 0.06), 0 0 0 1px rgba(30, 58, 95, 0.07);
-  --shadow-strong: 0 8px 32px rgba(30, 58, 95, 0.08), 0 0 0 1px rgba(30, 58, 95, 0.08);
+  --bg: #faf8f4;
+  --bg-rgb: 250, 248, 244;
+  --surface: #f2eee8;
+  --surface-rgb: 242, 238, 232;
+  --inset: #e9e4db;
+  --fg: #12213a;
+  --muted: #12213a;
+  --accent: #0047ab;
+  --accent-strong: #003380;
+  --accent-soft: #7aa5e8;
+  --accent-rgb: 0, 71, 171;
+  --data: #8c5810;
+  --data-soft: #e3a84a;
+  --data-rgb: 140, 88, 16;
+  --line: rgba(18, 33, 58, 0.14);
+  --shadow: 0 1px 4px rgba(18, 33, 58, 0.06), 0 0 0 1px rgba(18, 33, 58, 0.07);
+  --shadow-strong: 0 8px 32px rgba(18, 33, 58, 0.08), 0 0 0 1px rgba(18, 33, 58, 0.08);
   --canvas-glow: transparent;
-  --grid-line: rgba(30, 58, 95, 0.07);
+  --grid-line: rgba(18, 33, 58, 0.07);
   --grid-opacity: 0;
-  --nav-link: rgba(30, 58, 95, 0.58);
-  --eyebrow: #1e3a5f;
-  --btn-primary-hover: #2d5490;
-  --btn-primary-shadow: rgba(30, 58, 95, 0.22);
-  --story-end: #dde3ef;
-  --story-stroke: rgba(30, 58, 95, 0.55);
-  --story-stroke-soft: rgba(201, 122, 10, 0.22);
-  --story-stroke-mid: rgba(30, 58, 95, 0.45);
-  --story-stroke-end: rgba(201, 122, 10, 0.28);
-  --story-glow-secondary: rgba(201, 122, 10, 0.12);
+  --nav-link: rgba(18, 33, 58, 0.58);
+  --eyebrow: #12213a;
+  --btn-primary-hover: #1f3a63;
+  --btn-primary-shadow: rgba(18, 33, 58, 0.22);
+  --story-end: #e3ded5;
+  --story-stroke: rgba(18, 33, 58, 0.55);
+  --story-stroke-soft: rgba(0, 71, 171, 0.22);
+  --story-stroke-mid: rgba(18, 33, 58, 0.45);
+  --story-stroke-end: rgba(0, 71, 171, 0.28);
+  --story-glow-secondary: rgba(0, 71, 171, 0.12);
   --story-grid-opacity: 0.35;
-  --placeholder: rgba(30, 58, 95, 0.38);
-  --label: rgba(30, 58, 95, 0.7);
+  --placeholder: rgba(18, 33, 58, 0.38);
+  --label: rgba(18, 33, 58, 0.7);
   --font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Helvetica, Arial, sans-serif;
   --font-heading: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -37,38 +44,43 @@
   --maxw: 1400px;
 }
 
+/* Dark theme. Cobalt and ochre are both too dark to read on ink, so each
+   flips to its tint — this is structural, not decorative. */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #080f1f;
-  --bg-rgb: 8, 15, 31;
-  --surface: #0d1b35;
-  --surface-rgb: 13, 27, 53;
-  --inset: #1a2d50;
-  --fg: #f0e8d4;
-  --muted: #f0e8d4;
-  --accent: #e8a030;
-  --accent-strong: #f0c060;
-  --accent-soft: #c97a0a;
-  --accent-rgb: 232, 160, 48;
-  --line: rgba(240, 232, 212, 0.12);
+  --bg: #0e1a2b;
+  --bg-rgb: 14, 26, 43;
+  --surface: #16283f;
+  --surface-rgb: 22, 40, 63;
+  --inset: #1e3350;
+  --fg: #eef2f8;
+  --muted: #eef2f8;
+  --accent: #7aa5e8;
+  --accent-strong: #a8c5f0;
+  --accent-soft: #0047ab;
+  --accent-rgb: 122, 165, 232;
+  --data: #e3a84a;
+  --data-soft: #9c6414;
+  --data-rgb: 227, 168, 74;
+  --line: rgba(238, 242, 248, 0.12);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.6);
   --canvas-glow: transparent;
-  --grid-line: rgba(240, 232, 212, 0.06);
+  --grid-line: rgba(238, 242, 248, 0.06);
   --grid-opacity: 0;
-  --nav-link: rgba(240, 232, 212, 0.58);
-  --eyebrow: #f0e8d4;
-  --btn-primary-hover: #e0d4b8;
+  --nav-link: rgba(238, 242, 248, 0.58);
+  --eyebrow: #eef2f8;
+  --btn-primary-hover: #d6e0ee;
   --btn-primary-shadow: rgba(0, 0, 0, 0.5);
-  --story-end: #111d36;
-  --story-stroke: rgba(240, 232, 212, 0.7);
-  --story-stroke-soft: rgba(232, 160, 48, 0.28);
-  --story-stroke-mid: rgba(240, 232, 212, 0.55);
-  --story-stroke-end: rgba(232, 160, 48, 0.32);
-  --story-glow-secondary: rgba(232, 160, 48, 0.14);
+  --story-end: #132238;
+  --story-stroke: rgba(238, 242, 248, 0.7);
+  --story-stroke-soft: rgba(122, 165, 232, 0.28);
+  --story-stroke-mid: rgba(238, 242, 248, 0.55);
+  --story-stroke-end: rgba(122, 165, 232, 0.32);
+  --story-glow-secondary: rgba(122, 165, 232, 0.14);
   --story-grid-opacity: 0.55;
-  --placeholder: rgba(240, 232, 212, 0.38);
-  --label: rgba(240, 232, 212, 0.72);
+  --placeholder: rgba(238, 242, 248, 0.38);
+  --label: rgba(238, 242, 248, 0.72);
 }
 
 *,
@@ -1111,9 +1123,10 @@ main {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.08);
-  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  color: var(--data);
+  /* pill must sit in the same family as its text, not the cobalt accent */
+  background: rgba(var(--data-rgb), 0.08);
+  border: 1px solid rgba(var(--data-rgb), 0.22);
   padding: 0.22em 0.6em;
   border-radius: 999px;
   white-space: nowrap;
@@ -3075,7 +3088,7 @@ main {
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: var(--accent);
+  color: var(--data);
 }
 
 .cs-stat__label {
@@ -3241,7 +3254,7 @@ main {
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: var(--accent);
+  color: var(--data);
 }
 
 .results-stats__label {
@@ -3347,7 +3360,7 @@ main {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--accent);
+  color: var(--data);
   flex: none;
 }
 
@@ -3855,7 +3868,7 @@ main {
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: var(--accent);
+  color: var(--data);
 }
 
 .about-stats__label {
@@ -4018,13 +4031,13 @@ main {
 .hero--home {
   background-image:
     radial-gradient(ellipse 65% 85% at 88% 18%, rgba(var(--accent-rgb), 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 38% 55% at 102% 68%, rgba(30, 58, 95, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 38% 55% at 102% 68%, rgba(18, 33, 58, 0.04) 0%, transparent 55%),
     radial-gradient(ellipse 30% 42% at 58% 102%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%);
 }
 [data-theme="dark"] .hero--home {
   background-image:
     radial-gradient(ellipse 65% 85% at 88% 18%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 38% 55% at 102% 68%, rgba(240, 232, 212, 0.03) 0%, transparent 55%),
+    radial-gradient(ellipse 38% 55% at 102% 68%, rgba(238, 242, 248, 0.03) 0%, transparent 55%),
     radial-gradient(ellipse 30% 42% at 58% 102%, rgba(var(--accent-rgb), 0.06) 0%, transparent 50%);
 }
 
