@@ -99,15 +99,47 @@
     <header class="nav" data-component="site-header"></header>
 
     <main>
-      <section class="page-hero">
-        <p class="eyebrow">
-          <img class="icon-sm" src="assets/icons-ai-ibm/pipelines.svg" alt="" />
-          Our Flow
-        </p>
-        <h1>Four stages. One continuous engagement.</h1>
-        <p class="page-hero__sub">
-          Most transformation efforts fail at the handoff — between diagnosis and build, between launch and ownership. We close every gap. From the first workflow audit through long-term performance, we stay in the room.
-        </p>
+      <section class="page-hero page-hero--flow">
+        <div class="page-hero__main">
+          <p class="eyebrow">
+            <img class="icon-sm" src="assets/icons-ai-ibm/pipelines.svg" alt="" />
+            Our Flow
+          </p>
+          <h1>Four stages. One continuous engagement.</h1>
+          <p class="page-hero__sub">
+            Most transformation efforts fail at the handoff — between diagnosis and build, between launch and ownership. We close every gap. From the first workflow audit through long-term performance, we stay in the room.
+          </p>
+        </div>
+
+        <div class="flow-art" aria-hidden="true">
+          <svg viewBox="0 0 620 400" fill="none" preserveAspectRatio="xMidYMid meet">
+            <g class="flow-art__lines" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round">
+              <path class="flow-art__line" pathLength="1"
+                    d="M616 26 C516 40 552 116 444 134 C344 150 140 148 28 200" />
+              <path class="flow-art__line" pathLength="1"
+                    d="M616 118 C520 154 466 112 392 170 C312 226 156 174 28 200" />
+              <path class="flow-art__line" pathLength="1"
+                    d="M616 250 C536 228 452 296 394 242 C320 176 142 234 28 200" />
+              <path class="flow-art__line" pathLength="1"
+                    d="M616 374 C508 358 548 262 424 284 C328 300 150 250 28 200" />
+            </g>
+            <g class="flow-art__seeds" fill="currentColor">
+              <circle class="flow-art__seed" cx="616" cy="26" r="3.4" />
+              <circle class="flow-art__seed" cx="616" cy="118" r="3.4" />
+              <circle class="flow-art__seed" cx="616" cy="250" r="3.4" />
+              <circle class="flow-art__seed" cx="616" cy="374" r="3.4" />
+            </g>
+            <!-- sonar pulses radiating from the convergence point -->
+            <g class="flow-art__pulse" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="28" cy="200" r="12" />
+              <circle cx="28" cy="200" r="12" />
+              <circle cx="28" cy="200" r="12" />
+            </g>
+            <circle class="flow-art__halo" cx="28" cy="200" r="15" fill="currentColor" />
+            <circle class="flow-art__hub" cx="28" cy="200" r="6" fill="currentColor" />
+          </svg>
+        </div>
       </section>
 
       <section class="flow-stack" aria-label="Our engagement process">
@@ -117,15 +149,21 @@
             <div class="flow-step__node"></div>
             <div class="flow-step__line"></div>
           </div>
-          <div class="flow-step__body">
-            <div class="flow-step__meta">
-              <span class="flow-step__num">01</span>
-              <span class="flow-step__duration">Weeks 1–2</span>
-            </div>
+
+          <div class="flow-step__marker">
+            <span class="flow-step__icon flow-step__icon--blueprint" aria-hidden="true"></span>
+            <span class="flow-step__num">01</span>
+            <span class="flow-step__duration">Weeks 1–2</span>
+          </div>
+
+          <div class="flow-step__main">
             <h2 class="flow-step__title">ROI Blueprint</h2>
             <p class="flow-step__desc">
               Before we build anything, we map your workflows, tools, costs, handoffs, and decision points to find exactly where intelligent automation creates the strongest return. You leave this phase with a prioritised plan — not a vague proposal or a generic audit.
             </p>
+          </div>
+
+          <div class="flow-step__aside">
             <ul class="flow-step__list">
               <li>Workflow and cost-structure review</li>
               <li>Automation opportunity scoring</li>
@@ -143,15 +181,21 @@
             <div class="flow-step__node"></div>
             <div class="flow-step__line"></div>
           </div>
-          <div class="flow-step__body">
-            <div class="flow-step__meta">
-              <span class="flow-step__num">02</span>
-              <span class="flow-step__duration">Weeks 3–8</span>
-            </div>
+
+          <div class="flow-step__marker">
+            <span class="flow-step__icon flow-step__icon--automation" aria-hidden="true"></span>
+            <span class="flow-step__num">02</span>
+            <span class="flow-step__duration">Weeks 3–8</span>
+          </div>
+
+          <div class="flow-step__main">
             <h2 class="flow-step__title">AI Automation</h2>
             <p class="flow-step__desc">
               We design and deploy automation around repeatable decisions, documents, customer operations, internal coordination, and data movement — built specifically to your workflows, not adapted from a generic template.
             </p>
+          </div>
+
+          <div class="flow-step__aside">
             <ul class="flow-step__list">
               <li>Agentic workflow design</li>
               <li>Human-in-the-loop controls</li>
@@ -169,15 +213,21 @@
             <div class="flow-step__node"></div>
             <div class="flow-step__line"></div>
           </div>
-          <div class="flow-step__body">
-            <div class="flow-step__meta">
-              <span class="flow-step__num">03</span>
-              <span class="flow-step__duration">Weeks 6–12</span>
-            </div>
+
+          <div class="flow-step__marker">
+            <span class="flow-step__icon flow-step__icon--intelligence" aria-hidden="true"></span>
+            <span class="flow-step__num">03</span>
+            <span class="flow-step__duration">Weeks 6–12</span>
+          </div>
+
+          <div class="flow-step__main">
             <h2 class="flow-step__title">Workflow Intelligence</h2>
             <p class="flow-step__desc">
               We connect your systems into a clear operating layer — so your team moves faster without losing judgment, context, or quality in the handoff. Scattered tools become a coherent, observable process.
             </p>
+          </div>
+
+          <div class="flow-step__aside">
             <ul class="flow-step__list">
               <li>Process redesign and decision logic</li>
               <li>Data models and systems integration</li>
@@ -193,16 +243,23 @@
         <article class="flow-step flow-step--last reveal">
           <div class="flow-step__spine">
             <div class="flow-step__node"></div>
+            <div class="flow-step__line"></div>
           </div>
-          <div class="flow-step__body">
-            <div class="flow-step__meta">
-              <span class="flow-step__num">04</span>
-              <span class="flow-step__duration">Ongoing</span>
-            </div>
+
+          <div class="flow-step__marker">
+            <span class="flow-step__icon flow-step__icon--operations" aria-hidden="true"></span>
+            <span class="flow-step__num">04</span>
+            <span class="flow-step__duration">Ongoing</span>
+          </div>
+
+          <div class="flow-step__main">
             <h2 class="flow-step__title">Back-Office Operations</h2>
             <p class="flow-step__desc">
               We don't launch and leave. We take ownership of ongoing performance, maintenance, and optimisation — so value compounds without adding to your operational burden. Most firms measure success at go-live. We measure it at month twelve.
             </p>
+          </div>
+
+          <div class="flow-step__aside">
             <ul class="flow-step__list">
               <li>Continuous performance monitoring</li>
               <li>System refinement and evolution</li>
