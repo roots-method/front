@@ -31,6 +31,7 @@
     navMarkup +
     "</nav>" +
     '<div class="nav__tools">' +
+    '<a class="btn btn--primary btn--nav" href="contact.html">Get Started</a>' +
     '<button class="theme-toggle" type="button" data-theme-pref="light" aria-label="Switch to dark theme">' +
     '<svg class="theme-toggle__icon theme-toggle__icon--light" viewBox="0 0 24 24" aria-hidden="true">' +
     '<circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>' +

@@ -259,7 +259,7 @@
       "</ol>" +
       '<div class="cta-panel__action">' +
         '<a class="btn btn--primary" href="contact.html">Start with an ROI blueprint<span class="nav__arrow" aria-hidden="true">&#8599;</span></a>' +
-        '<a class="btn btn--ghost" href="results.html">View more case work<span class="nav__arrow" aria-hidden="true">&#8599;</span></a>' +
+        '<a class="btn btn--ghost" href="results.html">View more case work</a>' +
         '<p class="cta-panel__note">We respond within one business day.</p>' +
       "</div>" +
     "</section>";
