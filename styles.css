@@ -26,7 +26,7 @@
   --grid-opacity: 0;
   --nav-link: rgba(18, 33, 58, 0.58);
   --eyebrow: #12213a;
-  --btn-primary-hover: #1f3a63;
+  --btn-primary-hover: #0047ab;   /* accent blue on hover */
   --btn-primary-shadow: rgba(18, 33, 58, 0.22);
   --story-end: #e3ded5;
   --story-stroke: rgba(18, 33, 58, 0.55);
@@ -37,10 +37,12 @@
   --story-grid-opacity: 0.35;
   --placeholder: rgba(18, 33, 58, 0.38);
   --label: rgba(18, 33, 58, 0.7);
-  --font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
-  --font-heading: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
 }
 
@@ -70,7 +72,7 @@
   --grid-opacity: 0;
   --nav-link: rgba(238, 242, 248, 0.58);
   --eyebrow: #eef2f8;
-  --btn-primary-hover: #d6e0ee;
+  --btn-primary-hover: #7aa5e8;   /* accent tint; #0047ab is unreadable under dark text */
   --btn-primary-shadow: rgba(0, 0, 0, 0.5);
   --story-end: #132238;
   --story-stroke: rgba(238, 242, 248, 0.7);
@@ -89,6 +91,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* tracking is flat site-wide; per-element values were removed deliberately */
+  letter-spacing: 0;
 }
 
 html {
@@ -227,7 +231,6 @@ textarea {
   font-family: var(--font-heading);
   font-size: 1.5em;
   font-weight: 400;
-  letter-spacing: -0.01em;
   color: var(--fg);
 }
 
@@ -257,7 +260,7 @@ textarea {
   height: 2.5rem;
   padding: 0;
   border: 1px solid var(--line);
-  border-radius: 0.65rem;
+  border-radius: 999px;
   background: var(--surface);
   color: var(--fg);
   cursor: pointer;
@@ -314,7 +317,6 @@ textarea {
   text-decoration: none;
   font-size: 1em;
   font-weight: 400;
-  letter-spacing: 0;
   color: var(--nav-link);
   transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease,
     border-color 0.2s ease;
@@ -367,6 +369,17 @@ textarea {
 .nav__link:hover .nav__arrow,
 .btn:hover .nav__arrow {
   transform: translate(2px, -2px);
+}
+
+/* Horizontal variant — must follow the rule above to win on source order,
+   both being (0,3,0). Travels sideways rather than up-and-right. */
+.nav__arrow--right {
+  -webkit-mask-image: url("assets/icons-ai-ibm/arrow--right.svg");
+  mask-image: url("assets/icons-ai-ibm/arrow--right.svg");
+}
+
+.btn:hover .nav__arrow--right {
+  transform: translateX(3px);
 }
 
 main {
@@ -431,7 +444,6 @@ main {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
   color: var(--accent);
-  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -484,7 +496,6 @@ main {
   color: var(--eyebrow);
   font-size: 0.9em;
   font-weight: 400;
-  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -494,7 +505,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.9rem, 6vw, 4rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   line-height: 1.08;
 }
 
@@ -502,7 +512,6 @@ main {
 .page-hero h1 em {
   font-style: italic;
   font-weight: 400;
-  letter-spacing: -0.02em;
   color: var(--accent);
 }
 
@@ -602,9 +611,9 @@ main {
   gap: 0.45em;
   width: fit-content;
   min-height: 2.75rem;
-  padding: 0.72em 1.3em;
+  padding: 0.72em 1.45em;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 999px;
   cursor: pointer;
   font-size: 0.92rem;
   font-weight: 500;
@@ -615,6 +624,20 @@ main {
 
 .btn:hover {
   transform: translateY(-1px);
+}
+
+/* Nav-scale CTA: shorter than a page button so it sits level with the
+   2.5rem theme toggle beside it. */
+.btn--nav {
+  min-height: 2.5rem;
+  padding: 0.5em 1.25em;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .btn--nav {
+    display: none;
+  }
 }
 
 .btn--primary {
@@ -677,7 +700,6 @@ main {
 .outcome-card__tag {
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -701,7 +723,6 @@ main {
 .outcome-card__col-label {
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 0.3rem;
@@ -711,7 +732,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2.2vw, 1.45rem);
   font-weight: 600;
-  letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 0.2rem;
   color: var(--fg);
@@ -753,7 +773,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 600;
-  letter-spacing: -0.04em;
   color: var(--fg);
   line-height: 1;
 }
@@ -959,7 +978,6 @@ main {
   color: var(--fg);
   font-size: clamp(1.65rem, 3.8vw, 2.65rem);
   font-weight: 600;
-  letter-spacing: -0.05em;
   line-height: 1;
 }
 
@@ -996,7 +1014,6 @@ main {
   font-family: var(--font);
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1rem;
@@ -1022,7 +1039,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.8vw, 3.1rem);
   font-weight: 400;
-  letter-spacing: -0.02em;
   line-height: 1.12;
 }
 
@@ -1045,7 +1061,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3.5vw, 2.4rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   line-height: 1.15;
   margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
 }
@@ -1114,14 +1129,12 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1rem, 1.8vw, 1.25rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   color: var(--fg);
 }
 
 .problem-frame__cost {
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--data);
   /* pill must sit in the same family as its text, not the cobalt accent */
@@ -1202,7 +1215,6 @@ main {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
   color: var(--accent);
   flex: none;
 }
@@ -1232,14 +1244,12 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
   color: var(--fg);
 }
 
 .process-step__duration {
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
   white-space: nowrap;
@@ -1269,7 +1279,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.8vw, 3.1rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1.12;
 }
 
@@ -1322,7 +1331,6 @@ main {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -1334,7 +1342,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.12rem, 1.8vw, 1.38rem);
   font-weight: 400;
-  letter-spacing: -0.015em;
   line-height: 1.2;
 }
 
@@ -1357,7 +1364,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   line-height: 1.12;
   margin-bottom: 0.85rem;
 }
@@ -1421,7 +1427,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1rem, 1.8vw, 1.15rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
   color: var(--fg);
   margin-bottom: 0.5rem;
 }
@@ -1469,7 +1474,6 @@ main {
 .industry-strip__label {
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
@@ -1598,7 +1602,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 2.5vw, 1.85rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
@@ -1623,7 +1626,6 @@ main {
   color: var(--placeholder);
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -1644,7 +1646,6 @@ main {
 .client-bar__label {
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
@@ -1738,7 +1739,6 @@ main {
   font-size: clamp(2.4rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.0;
-  letter-spacing: -0.025em;
 }
 
 .page-hero--cases .page-hero__sub {
@@ -2039,14 +2039,12 @@ main {
   color: var(--eyebrow);
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
 }
 
 .story-beat__label {
   color: var(--fg);
   font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
 
 .our-story__content {
@@ -2061,7 +2059,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.8vw, 3.1rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1.12;
 }
 
@@ -2103,7 +2100,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3.8vw, 3.1rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1.12;
 }
 
@@ -2141,7 +2137,6 @@ main {
   color: var(--fg);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 600;
-  letter-spacing: 0.06em;
   overflow: hidden;
 }
 
@@ -2162,7 +2157,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   font-weight: 500;
-  letter-spacing: -0.015em;
 }
 
 .leader-card p {
@@ -2287,7 +2281,6 @@ main {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
   color: var(--accent);
-  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -2297,7 +2290,6 @@ main {
   border-radius: 2rem;
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -2306,7 +2298,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 400;
-  letter-spacing: -0.03em;
   line-height: 1.1;
   color: var(--fg);
   margin: 0;
@@ -2365,7 +2356,6 @@ main {
   display: block;
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.1rem;
@@ -2493,7 +2483,6 @@ main {
   color: var(--accent);
   font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
 }
 
 .case-card__cta::after {
@@ -2549,7 +2538,6 @@ main {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -2559,7 +2547,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4.5vw, 3.35rem);
   font-weight: 400;
-  letter-spacing: -0.03em;
   line-height: 1.08;
 }
 
@@ -2578,7 +2565,6 @@ main {
   color: var(--placeholder);
   font-size: 0.84rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -2614,7 +2600,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   font-weight: 400;
-  letter-spacing: -0.015em;
   line-height: 1.2;
 }
 
@@ -2657,7 +2642,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 2.5vw, 1.85rem);
   font-weight: 400;
-  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
@@ -2806,7 +2790,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -2819,7 +2802,6 @@ main {
 .site-footer__name {
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -2836,7 +2818,6 @@ main {
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
 .site-footer__menu {
@@ -2894,7 +2875,6 @@ main {
   color: var(--surface);
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
   text-decoration: none;
   text-transform: lowercase;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -3317,7 +3297,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 600;
-  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--data);
 }
@@ -3449,7 +3428,6 @@ main {
 .results-stats__eyebrow {
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: clamp(1.25rem, 3vw, 2rem);
@@ -3483,7 +3461,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--data);
 }
@@ -3522,7 +3499,6 @@ main {
 .case-filter__label {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   margin-right: 0.5rem;
@@ -3565,7 +3541,6 @@ main {
 .case-card__duration {
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
@@ -3590,7 +3565,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
   color: var(--data);
   flex: none;
 }
@@ -3678,7 +3652,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 600;
-  letter-spacing: -0.045em;
   line-height: 1;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -3690,7 +3663,6 @@ main {
 .case-featured__stat-label {
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.52);
 }
@@ -3718,7 +3690,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.45rem, 3vw, 2.1rem);
   font-weight: 400;
-  letter-spacing: -0.03em;
   line-height: 1.14;
   margin-bottom: clamp(0.85rem, 2vw, 1.25rem);
   color: var(--fg);
@@ -3810,7 +3781,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
-  letter-spacing: -0.03em;
   line-height: 1.08;
   margin-top: 0.65rem;
   margin-bottom: 0.85rem;
@@ -3828,7 +3798,6 @@ main {
 .contact-next__heading {
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.1rem;
@@ -3856,7 +3825,6 @@ main {
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
   color: var(--accent);
   flex: none;
 }
@@ -3913,9 +3881,9 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.1rem;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--fg);
@@ -4003,7 +3971,6 @@ main {
 .about-mission__label {
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.85rem;
@@ -4042,7 +4009,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   line-height: 1.1;
   margin-top: 0.75rem;
   max-width: 18ch;
@@ -4097,7 +4063,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--data);
 }
@@ -4107,7 +4072,6 @@ main {
   font-weight: 500;
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
 
 @media (max-width: 540px) {
@@ -4140,7 +4104,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   line-height: 1.1;
   margin-top: 0.65rem;
   margin-bottom: 0.65rem;
@@ -4198,7 +4161,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   font-weight: 500;
-  letter-spacing: -0.015em;
   color: var(--fg);
   margin: 0;
 }
@@ -4211,7 +4173,6 @@ main {
 .team-card__title {
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0;
@@ -4299,7 +4260,6 @@ main {
   display: inline-block;
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.65rem;
@@ -4309,7 +4269,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--fg);
   margin-bottom: 0.65rem;
@@ -4370,7 +4329,6 @@ main {
   border-radius: 999px;
   font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--accent);
   background: rgba(var(--accent-rgb), 0.06);
@@ -4382,7 +4340,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(0.92rem, 1.5vw, 1.05rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
   color: var(--fg);
   margin-bottom: 1.1rem;
   line-height: 1.35;
@@ -4450,7 +4407,6 @@ main {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
   color: var(--accent);
   line-height: 1;
   margin-bottom: 0.28rem;
@@ -4459,7 +4415,6 @@ main {
 .pv-stat__lbl {
   font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   line-height: 1.35;
@@ -4590,7 +4545,6 @@ main {
   font-size: clamp(3rem, 6.5vw, 5.5rem);
   font-weight: 300;
   line-height: 0.9;
-  letter-spacing: -0.04em;
   color: rgba(var(--accent-rgb), 0.18);
   user-select: none;
   transition: color 0.25s ease;
@@ -4613,14 +4567,12 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
   color: var(--fg);
 }
 
 .process-editorial__duration {
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--accent);
   white-space: nowrap;
@@ -4662,7 +4614,6 @@ main {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.8vw, 2rem);
   font-weight: 400;
-  letter-spacing: -0.025em;
   color: var(--fg);
   max-width: 24ch;
 }

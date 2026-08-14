@@ -60,14 +60,16 @@ If a change appears not to have applied, hard-reload (`Cmd+Shift+R`) before debu
 
 ## Typography
 
-IBM Plex Sans (400 / 500 / 600), loaded from Google Fonts.
+System font stack — no webfont is loaded. `--font` and `--font-heading` both resolve to
+the platform UI face (San Francisco on macOS/iOS, Segoe UI on Windows, Roboto on Android).
 
 - Headings `h1`, `h2` — weight 400
 - Headings `h3` — weight 500
 - Body — weight 400
 
-Note that `font-weight: 700` is still used in places but is **not loaded** — browsers
-synthesise a faux bold from 600. Either add `700` to the font URL or drop those rules to 600.
+Because nothing is downloaded there is no render-blocking font request and no FOUT, and
+every weight including 700 is genuinely available — the previous setup loaded only
+400/500/600 from Google Fonts, so any `font-weight: 700` was being faux-bolded.
 
 ## Icons
 
