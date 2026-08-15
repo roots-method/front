@@ -2,8 +2,14 @@
   var menuItems = (window.SITE_MENU_ITEMS || []).filter(function (item) {
     return item.href !== "index.html";
   });
-  var currentPage = window.location.pathname.split("/").pop() || "index.html";
-  var activePage = currentPage === "case-study.html" ? "results.html" : currentPage;
+  var activePage = window.SITE_ACTIVE_PAGE
+    ? window.SITE_ACTIVE_PAGE()
+    : window.location.pathname.split("/").pop() || "index.html";
+
+  // Root-absolute so the injected nav resolves the same from / and from /blog/.
+  function url(href) {
+    return "/" + href;
+  }
 
   var navMarkup = menuItems
     .map(function (item) {
@@ -12,7 +18,7 @@
         '<a class="nav__link' +
         active +
         '" href="' +
-        item.href +
+        url(item.href) +
         '">' +
         item.label +
         "</a>"
@@ -21,8 +27,8 @@
     .join("");
 
   var headerMarkup =
-    '<a class="brand" href="index.html" aria-label="Arka home">' +
-    '<img class="brand__mark" src="assets/arkaflow-newlogo.svg" alt="" width="32" height="32" aria-hidden="true" />' +
+    '<a class="brand" href="/index.html" aria-label="Arka home">' +
+    '<img class="brand__mark" src="/assets/arkaflow-newlogo.svg" alt="" width="32" height="32" aria-hidden="true" />' +
     '<div class="brand__wordmark">' +
     '<span class="brand__name">Arka</span>' +
     '</div>' +
@@ -31,7 +37,7 @@
     navMarkup +
     "</nav>" +
     '<div class="nav__tools">' +
-    '<a class="btn btn--primary btn--nav" href="contact.html">Get Started</a>' +
+    '<a class="btn btn--primary btn--nav" href="/contact.html">Get Started</a>' +
     '<button class="theme-toggle" type="button" data-theme-pref="light" aria-label="Switch to dark theme">' +
     '<svg class="theme-toggle__icon theme-toggle__icon--light" viewBox="0 0 24 24" aria-hidden="true">' +
     '<circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>' +
