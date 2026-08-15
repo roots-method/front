@@ -24,5 +24,11 @@ Mid-market companies that need to improve operating clarity, reduce execution dr
 - [Home](https://www.arkaflow.co/)
 - [About](https://www.arkaflow.co/about.html)
 - [Our Flow](https://www.arkaflow.co/our-flow.html)
-- [Case Work](https://www.arkaflow.co/results.html)
+- [Blog](https://www.arkaflow.co/blog.html)
 - [Contact](https://www.arkaflow.co/contact.html)
+
+## Blog
+
+- [When a workflow needs agents instead of another rule engine](https://www.arkaflow.co/blog/agents-vs-rule-engines.html): How to tell whether a decision needs deterministic rules or evidence-weighing agents.
+- [What actually goes into an ROI Blueprint](https://www.arkaflow.co/blog/inside-the-roi-blueprint.html): A walk through the scoping deliverable — current-state cost, intervention, measurement plan, risks.
+- [Finding your highest-value workflow before you automate anything](https://www.arkaflow.co/blog/finding-your-highest-value-workflow.html): Four signals that identify the costliest workflow rather than the loudest one.

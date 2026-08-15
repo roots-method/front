@@ -16,7 +16,7 @@ Open via `http://localhost:8080` — file:// URLs break some scripts due to CORS
 
 ## Deployment
 
-GitHub Actions (`.github/workflows/`) auto-deploys the entire root directory to GitHub Pages on every push to `main`. Custom domain: `www.dheesystems.com` (set via `CNAME`). No build step — what's in the repo is what gets served.
+GitHub Actions (`.github/workflows/`) auto-deploys the entire root directory to GitHub Pages on every push to `main`. Custom domain: `www.arkaflow.co` (set via `CNAME`). No build step — what's in the repo is what gets served.
 
 ## Architecture
 
@@ -44,7 +44,25 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 
 ### Navigation active state
 
-Active nav link is determined by matching `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`. `case-study.html` is treated as an alias for `results.html` so the Case Work nav item stays active on individual case study pages.
+`window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
+
+**Case Work is currently hidden from navigation.** `results.html` and `case-study.html` are still live, still deployed, and still in `sitemap.xml` — they're just not linked from the header, footer, or any page CTA. The `case-study.html` → `results.html` alias is deliberately kept so the section works if restored. To bring it back, re-add `{ href: "results.html", label: "Case Work" }` to `SITE_MENU_ITEMS`.
+
+### Link paths in injected components
+
+`header.js` and `footer.js` emit **root-absolute** hrefs (`/our-flow.html`, `/assets/...`). This is required because blog posts live in the `/blog/` subdirectory — relative hrefs would resolve to `/blog/our-flow.html` there. `SITE_MENU_ITEMS` stores bare filenames; the components prefix `/` when rendering. This means the site must be served from a domain root (it is, via `CNAME`), so serve locally from the repo root, not a subpath.
+
+### Blog
+
+Split across two layers, deliberately different from the case studies:
+
+- `blog-posts.js` — `window.BLOG_POSTS` + `window.BLOG_POST_ORDER` (newest first). **Card metadata only**, no body content.
+- `blog.js` renders the index grid on `blog.html` from that data, reusing the `.case-featured` / `.case-card` shells.
+- Each post is a **static file** at `blog/<slug>.html` with its prose inline in the HTML — unlike case studies, post bodies are not client-rendered, so crawlers get real content and each post carries its own title, description, canonical, OG tags, and `BlogPosting` JSON-LD.
+
+Post pages reuse the case-study article shell (`.case-article`, `.case-article__wrap`, `.cs-nav`) plus a small `.post-*` layer at the end of `styles.css` for prose links, bold/italic, and the featured-card kicker.
+
+**Adding a post:** create `blog/<slug>.html` (copy an existing one), add the slug to `BLOG_POST_ORDER` and its metadata object to `BLOG_POSTS`, then add the URL to `sitemap.xml`, `llms.txt`, and the `ItemList` JSON-LD in `blog.html`.
 
 ### Case studies data layer
 
@@ -56,7 +74,7 @@ All case study content lives in `case-studies.js` as two globals:
 
 ### Theme system
 
-Only `"light"` and `"dark"` are valid theme values. `"system"` preference and anything unrecognised both resolve to `"light"`. Stored in `localStorage` under the key `dheesystems-theme`. The public API is `window.DheeSystemsTheme.bind()` and `window.DheeSystemsTheme.apply(pref)`.
+Only `"light"` and `"dark"` are valid theme values. `"system"` preference and anything unrecognised both resolve to `"dark"`. Stored in `localStorage` under the key `arka-theme`. The public API is `window.ArkaTheme.bind()` and `window.ArkaTheme.apply(pref)`.
 
 ### Contact form
 
