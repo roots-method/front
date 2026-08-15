@@ -3,14 +3,15 @@
   const BOOKING_URL = "https://calendar.notion.so/meet/sumit-ntn/arka";
 
   const menuItems = window.SITE_MENU_ITEMS || [];
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const activePage = currentPage === "case-study.html" ? "results.html" : currentPage;
+  const activePage = window.SITE_ACTIVE_PAGE
+    ? window.SITE_ACTIVE_PAGE()
+    : window.location.pathname.split("/").pop() || "index.html";
 
   const menuMarkup = menuItems
     .map(function (item) {
       const active = item.href === activePage ? " is-active" : "";
       return (
-        '<a class="site-footer__menu-link' + active + '" href="' + item.href + '">' +
+        '<a class="site-footer__menu-link' + active + '" href="/' + item.href + '">' +
         item.label +
         "</a>"
       );
@@ -22,9 +23,9 @@
 
     // Brand + tagline
     '<div class="site-footer__brand">' +
-      '<a class="site-footer__brand-link" href="index.html" aria-label="Arka home">' +
+      '<a class="site-footer__brand-link" href="/index.html" aria-label="Arka home">' +
         '<span class="site-footer__mark">' +
-          '<img class="site-footer__logo" src="assets/arkaflow-newlogo.svg" alt="Arka" width="36" height="36" />' +
+          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg" alt="Arka" width="36" height="36" />' +
           'Arka' +
         '</span>' +
       "</a>" +
@@ -60,7 +61,7 @@
 
     // CTA
     '<div class="site-footer__cta">' +
-      '<a class="btn btn--primary site-footer__inquiry" href="contact.html">' +
+      '<a class="btn btn--primary site-footer__inquiry" href="/contact.html">' +
         'Book a discovery call' +
         '<span class="nav__arrow" aria-hidden="true">&#8599;</span>' +
       "</a>" +
