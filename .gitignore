@@ -1,2 +1,15 @@
 .DS_Store
 **/.DS_Store
+
+# Installers and disk images — a stray download here can exceed GitHub's
+# 100 MB file limit and is painful to remove once committed.
+*.dmg
+*.pkg
+*.zip
+
+# Generated collateral. The brochure is a build artifact rebuilt from the
+# generator script, not a source file; it changes wholesale on every edit.
+assets/Arka-Brochure*.pdf
+
+# Unreferenced working assets
+assets/tools-banner-tp.png
