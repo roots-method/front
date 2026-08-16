@@ -1747,12 +1747,166 @@ main {
   margin-top: clamp(0.85rem, 2vw, 1.25rem);
 }
 
+/* ── About hero: two columns, matching the Our Flow treatment ────────── */
+.page-hero--about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(290px, 0.68fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  background-image:
+    radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.07) 0%, transparent 62%),
+    radial-gradient(ellipse 34% 50% at 104% 72%, rgba(18, 33, 58, 0.04) 0%, transparent 58%);
+}
+
+[data-theme="dark"] .page-hero--about {
+  background-image:
+    radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.09) 0%, transparent 62%),
+    radial-gradient(ellipse 34% 50% at 104% 72%, rgba(238, 242, 248, 0.03) 0%, transparent 58%);
+}
+
+/* Sized so each sentence fits its column on one line, and set as blocks so
+   the two-line break is structural rather than dependent on text metrics. */
+.page-hero--about h1 {
+  max-width: none;
+  font-size: clamp(2.1rem, 4vw, 3.35rem);
+  line-height: 1.12;
+}
+
+.page-hero--about h1 .about-hero__line {
+  display: block;
+}
+
 .page-hero--about .page-hero__tagline {
-  max-width: 42ch;
+  max-width: 46ch;
   margin-top: clamp(0.75rem, 2vw, 1.25rem);
   color: var(--muted);
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   line-height: 1.55;
+}
+
+/* A fixed core with orbits that keep turning — "systems that keep working"
+   drawn rather than stated. Rings use pathLength="1" so all three draw at a
+   uniform rate despite differing circumferences. */
+.about-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-left: clamp(-3rem, -3vw, -1rem);
+}
+
+.about-art svg {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  overflow: visible;
+}
+
+.about-art__ring {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.55;
+  animation: about-draw 2.1s cubic-bezier(0.33, 0.68, 0.35, 1) forwards;
+}
+
+.about-art__ring:nth-child(1) { animation-delay: 0.15s; }
+.about-art__ring:nth-child(2) { animation-delay: 0.38s; opacity: 0.4; }
+.about-art__ring:nth-child(3) { animation-delay: 0.61s; opacity: 0.28; }
+
+/* orbits share a centre; inner turns fastest, as it would in a real system */
+.about-art__orbit {
+  transform-box: view-box;
+  transform-origin: 250px 200px;
+  animation: about-orbit linear infinite;
+}
+
+.about-art__orbit--inner { animation-duration: 28s; }
+.about-art__orbit--mid   { animation-duration: 44s; }
+.about-art__orbit--outer { animation-duration: 64s; }
+
+.about-art__node {
+  opacity: 0;
+  animation: about-appear 0.5s ease-out forwards;
+}
+
+.about-art__orbit--inner .about-art__node { animation-delay: 1.5s; }
+.about-art__orbit--mid .about-art__node   { animation-delay: 1.75s; }
+.about-art__orbit--outer .about-art__node { animation-delay: 2s; }
+
+/* core lands once the rings have closed */
+.about-art__core {
+  opacity: 0;
+  animation: about-appear 0.5s ease-out 2.4s forwards;
+}
+
+.about-art__halo {
+  transform-box: view-box;
+  transform-origin: 250px 200px;
+  opacity: 0;
+  animation: about-halo 0.9s ease-out 2.4s forwards;
+}
+
+.about-art__pulse circle {
+  transform-box: view-box;
+  transform-origin: 250px 200px;
+  opacity: 0;
+  animation: about-pulse 3.2s ease-out 2.6s infinite;
+}
+
+.about-art__pulse circle:nth-child(2) { animation-delay: 3.67s; }
+.about-art__pulse circle:nth-child(3) { animation-delay: 4.74s; }
+
+@keyframes about-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes about-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes about-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes about-halo {
+  0%   { opacity: 0.26; transform: scale(0.35); }
+  100% { opacity: 0.10; transform: scale(1); }
+}
+
+@keyframes about-pulse {
+  0%   { transform: scale(0.35); opacity: 0; }
+  12%  { opacity: 0.42; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* The global reduced-motion block kills the animations, which would leave
+   every ring at dashoffset 1 — i.e. invisible. Paint the end state instead. */
+@media (prefers-reduced-motion: reduce) {
+  .about-art__ring { stroke-dashoffset: 0; }
+  .about-art__orbit { animation: none; }
+  .about-art__node,
+  .about-art__core { opacity: 1; }
+  .about-art__halo { opacity: 0.1; }
+  .about-art__pulse { display: none; }
+}
+
+@media (max-width: 860px) {
+  .page-hero--about {
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .page-hero--about h1,
+  .page-hero--about .page-hero__tagline {
+    max-width: none;
+  }
+
+  .about-art {
+    margin-left: 0;
+  }
 }
 
 /* ── Our Flow hero: two columns, with the page's missing CTA on the right ──
