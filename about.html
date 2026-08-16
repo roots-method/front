@@ -60,14 +60,49 @@
 
       <!-- 1. Hero -->
       <section class="page-hero page-hero--about">
-        <p class="eyebrow">
-          <img class="icon-sm" src="assets/icons-ai-ibm/collaborate.svg" alt="" />
-          Company
-        </p>
-        <h1>We build systems that keep working.</h1>
-        <p class="page-hero__tagline">
-          Arka partners with enterprise operations teams to replace manual, fragmented workflows with intelligent systems that improve execution, sharpen margins, and compound in value over time.
-        </p>
+        <div class="page-hero__main">
+          <p class="eyebrow">
+            <img class="icon-sm" src="assets/icons-ai-ibm/collaborate.svg" alt="" />
+            Company
+          </p>
+          <h1><span class="about-hero__line">Systems that <em>keep working.</em></span> <span class="about-hero__line accent">Partnerships that keep going.</span></h1>
+          <p class="page-hero__tagline">
+            Arka partners with enterprise operations teams to replace manual, fragmented workflows with intelligent systems that improve execution, sharpen margins, and compound in value over time.
+          </p>
+        </div>
+
+        <!-- A steady core with orbits that keep turning: the page's claim drawn
+             rather than stated. Rings draw in, then rotate indefinitely. -->
+        <div class="about-art" aria-hidden="true">
+          <svg viewBox="0 0 500 400" fill="none" preserveAspectRatio="xMidYMid meet">
+            <g class="about-art__rings" fill="none" stroke="currentColor">
+              <circle class="about-art__ring" pathLength="1" cx="250" cy="200" r="62" stroke-width="1.6" />
+              <circle class="about-art__ring" pathLength="1" cx="250" cy="200" r="116" stroke-width="1.4" />
+              <circle class="about-art__ring" pathLength="1" cx="250" cy="200" r="170" stroke-width="1.2" />
+            </g>
+
+            <g class="about-art__orbit about-art__orbit--inner">
+              <circle class="about-art__node" cx="297.5" cy="160.1" r="4.4" fill="currentColor" />
+            </g>
+            <g class="about-art__orbit about-art__orbit--mid">
+              <circle class="about-art__node" cx="149.5" cy="258.0" r="3.8" fill="currentColor" />
+              <circle class="about-art__node" cx="359.0" cy="160.3" r="3.8" fill="currentColor" />
+            </g>
+            <g class="about-art__orbit about-art__orbit--outer">
+              <circle class="about-art__node" cx="308.1" cy="359.7" r="3.2" fill="currentColor" />
+              <circle class="about-art__node" cx="90.2" cy="141.8" r="3.2" fill="currentColor" />
+            </g>
+
+            <!-- sonar pulses radiating from the core -->
+            <g class="about-art__pulse" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="250" cy="200" r="14" />
+              <circle cx="250" cy="200" r="14" />
+              <circle cx="250" cy="200" r="14" />
+            </g>
+            <circle class="about-art__halo" cx="250" cy="200" r="17" fill="currentColor" />
+            <circle class="about-art__core" cx="250" cy="200" r="6.5" fill="currentColor" />
+          </svg>
+        </div>
       </section>
 
       <!-- 2. Mission strip -->
