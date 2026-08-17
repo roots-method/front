@@ -1690,6 +1690,54 @@ main {
   opacity: 0.9;
 }
 
+/* ── Technology partner bar ─────────────────── */
+.tech-bar {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 2rem) 0;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tech-bar::-webkit-scrollbar { display: none; }
+
+.tech-bar__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+  flex: none;
+  padding-right: clamp(1.5rem, 4vw, 3rem);
+  border-right: 1px solid var(--line);
+}
+
+.tech-bar__logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 4rem);
+  flex: none;
+}
+
+.tech-bar__logo {
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  opacity: 0.28;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tech-bar__logo:hover {
+  opacity: 0.65;
+}
+
 .vision-panel {
   display: flex;
   align-items: center;
