@@ -29,7 +29,7 @@
           'Arka' +
         '</span>' +
       "</a>" +
-      '<p class="site-footer__tagline">Intelligent systems for enterprise operations.</p>' +
+      '<p class="site-footer__tagline">Building Intelligent Software for Enterprise Operations.</p>' +
     "</div>" +
 
     // Menu
