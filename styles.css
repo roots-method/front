@@ -37,10 +37,13 @@
   --story-grid-opacity: 0.35;
   --placeholder: rgba(18, 33, 58, 0.38);
   --label: rgba(18, 33, 58, 0.7);
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  /* Barlow (headings) and Nunito Sans (body) load from Google Fonts in each
+     page's <head>. The system stack stays behind them so the page is readable
+     before the webfonts arrive and if they never do. */
+  --font: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
-  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --font-heading: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
@@ -110,6 +113,20 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.55;
+}
+
+/* Headings take Barlow wherever a component rule has not already said so.
+   Several headings (the footer column titles, for one) only ever inherited the
+   body face; "Barlow for headings" is not true until this rule exists. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Kickers and menu labels are subheadings in everything but tag name. */
+.eyebrow,
+.megamenu__item-label,
+.megamenu__panel-kicker {
+  font-family: var(--font-heading);
 }
 
 body::before {
@@ -341,6 +358,224 @@ textarea {
   background-color: var(--fg);
   border-color: var(--fg);
   color: var(--surface);
+}
+
+/* ── Solution mega-menu ─────────────────────────────────────────────────────
+   Three solutions on the left, one description panel on the right that swaps
+   as you hover a row. The panel is absolute against .nav (which is sticky, so
+   it is the containing block) rather than against the trigger — that keeps it
+   aligned to the page gutter and stops it running off the right edge on
+   narrower laptops. megamenu.js owns the open/selected state. */
+
+.nav__trigger {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nav__chevron {
+  display: inline-block;
+  width: 0.66rem;
+  height: 0.66rem;
+  flex: none;
+  background-color: currentColor;
+  -webkit-mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav__trigger .nav__chevron {
+  transform: rotate(90deg);
+  opacity: 0.7;
+}
+
+.nav__group.is-open .nav__trigger {
+  color: var(--fg);
+}
+
+.nav__group.is-open .nav__trigger .nav__chevron {
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+
+.megamenu {
+  position: absolute;
+  top: 100%;
+  left: clamp(1.25rem, 5vw, 3rem);
+  width: min(760px, calc(100% - 2 * clamp(1.25rem, 5vw, 3rem)));
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--bg);
+  box-shadow: var(--shadow-strong);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.nav__group.is-open .megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.megamenu__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 0.6rem;
+}
+
+.megamenu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.megamenu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 0.85rem;
+  text-decoration: none;
+  color: var(--fg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.megamenu__item.is-selected,
+.megamenu__item:hover,
+.megamenu__item:focus-visible {
+  background: var(--surface);
+}
+
+.megamenu__item-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: none;
+  background-color: var(--accent);
+  -webkit-mask: var(--menu-icon) center / contain no-repeat;
+  mask: var(--menu-icon) center / contain no-repeat;
+}
+
+.megamenu__item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.megamenu__item-label {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.megamenu__item-summary {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--nav-link);
+}
+
+.megamenu__item .nav__chevron {
+  margin-left: auto;
+  opacity: 0;
+  color: var(--accent);
+}
+
+.megamenu__item.is-selected .nav__chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.megamenu__panels {
+  position: relative;
+  display: grid;
+  border-radius: 0.9rem;
+  background: var(--surface);
+}
+
+.megamenu__panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 1.15rem 1.25rem 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s;
+}
+
+.megamenu__panel.is-selected {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Only earns its place on mobile, where the row list is hidden. */
+.megamenu__panel-kicker {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+}
+
+.megamenu__panel-kicker .megamenu__item-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.megamenu__panel-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.06rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--fg);
+}
+
+.megamenu__panel-copy {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--label);
+}
+
+/* A plain link, not a button — the panel already sits under the nav bar's
+   Get Started pill, and two filled buttons that close together read as a
+   choice the reader has to make. */
+.megamenu__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+
+.megamenu__cta:hover,
+.megamenu__cta:focus-visible {
+  color: var(--accent-strong);
+}
+
+.megamenu__cta:hover .nav__arrow {
+  transform: translate(2px, -2px);
+}
+
+.megamenu__cta:hover .nav__arrow--right {
+  transform: translateX(3px);
 }
 
 /* Carbon arrow via mask so it inherits currentColor — white on .btn--primary,
@@ -1350,6 +1585,146 @@ main {
   font-weight: 500;
 }
 
+/* ── Home: the three solution pillars ───────────────────────────────────────
+   Whole-card links, so the hit target is the card and the "Explore" line is a
+   visual affordance rather than a second link competing with it. Mirrors the
+   Solution mega-menu, icons included. */
+.solution-pillars__title {
+  max-width: 22ch;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.solution-pillars__intro {
+  max-width: 56ch;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.solution-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pillar-card:hover,
+.pillar-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(var(--accent-rgb), 0.28);
+}
+
+.pillar-card__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: 1.15rem;
+  background-color: var(--accent);
+  -webkit-mask: var(--menu-icon) center / contain no-repeat;
+  mask: var(--menu-icon) center / contain no-repeat;
+}
+
+.pillar-card__label {
+  margin-bottom: 0.6rem;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.pillar-card h3 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.12rem, 1.8vw, 1.34rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--fg);
+}
+
+.pillar-card p {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+/* Pushed to the foot of the card so the three CTAs line up across the row
+   even when the descriptions run to different lengths. */
+.pillar-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.pillar-card:hover .nav__arrow--right {
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .solution-pillars__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Software page hero — two columns, matching the About and Our Flow
+   treatment, now that it carries the illustration that used to sit on home. */
+.page-hero--software {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.page-hero--software h1 {
+  max-width: 20ch;
+}
+
+.page-hero--software .page-hero__sub {
+  max-width: 54ch;
+}
+
+@media (max-width: 860px) {
+  .page-hero--software {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The illustration is decoration, not information — below the fold of a
+     phone it costs more than it earns. */
+  .page-hero--software .hero__visual {
+    display: none;
+  }
+}
+
+/* The buttons the page-hero pattern does not ship with. */
+.page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
 /* Why Arka — differentiation statements */
 .why-arka {
   padding: clamp(3rem, 8vw, 6rem) 0;
@@ -1690,6 +2065,54 @@ main {
   opacity: 0.9;
 }
 
+/* ── Technology partner bar ─────────────────── */
+.tech-bar {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 2rem) 0;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tech-bar::-webkit-scrollbar { display: none; }
+
+.tech-bar__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+  flex: none;
+  padding-right: clamp(1.5rem, 4vw, 3rem);
+  border-right: 1px solid var(--line);
+}
+
+.tech-bar__logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 4rem);
+  flex: none;
+}
+
+.tech-bar__logo {
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  opacity: 0.28;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tech-bar__logo:hover {
+  opacity: 0.65;
+}
+
 .vision-panel {
   display: flex;
   align-items: center;
@@ -1794,6 +2217,13 @@ main {
   justify-content: center;
   color: var(--accent);
   margin-left: clamp(-3rem, -3vw, -1rem);
+}
+
+/* The drawings arrive by fetch (svg-inline.js). Hold the row open until they
+   land, then get out of the way — .is-loaded is added on injection. */
+.about-art:not(.is-loaded),
+.flow-art:not(.is-loaded) {
+  min-height: clamp(200px, 24vw, 340px);
 }
 
 .about-art svg {
@@ -3335,6 +3765,75 @@ main {
     border-radius: 0.55rem;
   }
 
+  /* Inside the burger panel the mega-menu becomes a plain accordion: the row
+     list collapses away and the three description cards stack, each naming its
+     own solution via .megamenu__panel-kicker. No hover on touch, so nothing is
+     hidden behind one. */
+  .nav__group {
+    width: 100%;
+  }
+
+  .nav__trigger {
+    justify-content: space-between;
+  }
+
+  .nav__trigger .nav__chevron {
+    transform: rotate(90deg);
+  }
+
+  .megamenu {
+    position: static;
+    width: 100%;
+    margin-top: 0;
+    padding: 0 0 0.35rem;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .nav__group.is-open .megamenu {
+    display: block;
+  }
+
+  .megamenu__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  .megamenu__list {
+    display: none;
+  }
+
+  .megamenu__panels {
+    display: block;
+    background: none;
+  }
+
+  .megamenu__panel {
+    grid-area: auto;
+    opacity: 1;
+    visibility: visible;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--bg);
+  }
+
+  .megamenu__panel + .megamenu__panel {
+    margin-top: 0.5rem;
+  }
+
+  .megamenu__panel-kicker {
+    display: inline-flex;
+  }
+
+
   .nav.is-open .nav__toggle-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -4373,6 +4872,197 @@ main {
   color: var(--accent-soft);
 }
 
+/* ── Home hero: centered, over an ambient node network ───────────────────
+   The illustration moved to the Software page, so the hero is one centered
+   column with the network drifting behind it. overflow:hidden keeps the
+   network cropped to the hero; the content sits above it on z-index. */
+.hero--centered {
+  position: relative;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+  min-height: clamp(400px, 54vh, 540px);
+  overflow: hidden;
+}
+
+.hero--centered .hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 46rem;
+}
+
+.hero--centered .hero__title {
+  max-width: none;
+  margin-inline: auto;
+}
+
+.hero--centered .eyebrow,
+.hero--centered .hero__actions {
+  justify-content: center;
+}
+
+.hero--centered .hero__lede {
+  margin-inline: auto;
+}
+
+/* ── Ambient node network ─────────────────────────────────────────────── */
+.hero-nodes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: var(--accent);
+  opacity: 0.6;
+  pointer-events: none;
+  /* Fade the network out behind the centred copy. Without this the edges run
+     straight through the headline and eat its contrast, worst in light theme
+     where the accent is a dark cobalt. */
+  -webkit-mask: radial-gradient(
+    ellipse 48% 60% at 50% 48%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 52%,
+    #000 82%
+  );
+  mask: radial-gradient(
+    ellipse 48% 60% at 50% 48%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 52%,
+    #000 82%
+  );
+}
+
+.hero-nodes svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* On a narrow viewport the slice crop leaves only the middle band of the
+   network, which sits right where the eyebrow and headline are. Pull the
+   clear centre wider and taller so no edge crosses the copy. */
+@media (max-width: 720px) {
+  .hero-nodes {
+    -webkit-mask: radial-gradient(
+      ellipse 86% 46% at 50% 46%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 62%,
+      #000 92%
+    );
+    mask: radial-gradient(
+      ellipse 86% 46% at 50% 46%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 62%,
+      #000 92%
+    );
+  }
+}
+
+.hero-nodes__link {
+  stroke-opacity: 0.28;
+}
+
+/* pathLength="1" normalises every edge, so one dasharray gives the same
+   visual dash length on a short link and a long one. */
+.hero-nodes__pulse {
+  stroke-opacity: 0.9;
+  stroke-dasharray: 0.12 0.88;
+  stroke-dashoffset: 1;
+  animation: node-signal 5.5s linear infinite;
+}
+
+.hero-nodes__dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-breathe 4.2s ease-in-out infinite;
+}
+
+/* Staggered so the network reads as many independent signals rather than one
+   synchronised sweep. Primes against the 5.5s and 4.2s durations. */
+.hero-nodes__pulse:nth-child(3n)   { animation-delay: -0.9s;  animation-duration: 6.7s; }
+.hero-nodes__pulse:nth-child(3n+1) { animation-delay: -2.6s;  animation-duration: 5.1s; }
+.hero-nodes__pulse:nth-child(5n)   { animation-delay: -4.1s;  animation-duration: 7.3s; }
+.hero-nodes__pulse:nth-child(7n)   { animation-delay: -1.7s;  animation-duration: 4.6s; }
+
+.hero-nodes__dot:nth-child(3n)   { animation-delay: -1.4s; animation-duration: 5.3s; }
+.hero-nodes__dot:nth-child(3n+1) { animation-delay: -3.1s; animation-duration: 3.7s; }
+.hero-nodes__dot:nth-child(5n)   { animation-delay: -2.2s; animation-duration: 6.1s; }
+
+@keyframes node-signal {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes node-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(0.82); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-nodes__pulse,
+  .hero-nodes__dot {
+    animation: none;
+  }
+
+  .hero-nodes__pulse {
+    stroke-opacity: 0;
+  }
+}
+
+.hero__tagline {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+/* ── Typed word cycle in the hero headline ───────────────────────────────
+   inline-flex with a min-width set in JS (the longest word, in ch) so the
+   words after it do not jump on every keystroke. */
+.type-cycle {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  white-space: pre;
+}
+
+.type-cycle__word {
+  display: inline-block;
+  text-align: left;
+}
+
+/* align-self: stretch does nothing useful next to baseline-aligned text, so
+   the caret gets an explicit em-relative height instead. */
+.type-cycle__caret {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.74em;
+  margin-inline: 0.03em;
+  background: currentColor;
+  animation: type-caret 1s steps(2, start) infinite;
+}
+
+@keyframes type-caret {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-cycle__caret {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Visible to screen readers only — carries the headline wording that the
+   animated span hides from them. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ── 2. Hero painterly organic blobs ───────────────── */
 .hero--home {
   background-image:
@@ -4805,18 +5495,24 @@ main {
 
 .faq__btn:hover { color: var(--accent); }
 
+/* Masked rather than an inline <svg> so the same chevron asset the nav
+   already loads is reused, and four copies of the same path leave the HTML.
+   The source glyph points right; 90deg is the resting "closed" state. */
 .faq__chevron {
   flex: none;
   width: 0.95rem;
   height: 0.95rem;
-  color: var(--muted);
-  transition: transform 0.3s ease, color 0.18s ease;
+  background-color: var(--muted);
+  -webkit-mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease, background-color 0.18s ease;
 }
 
 .faq__item.is-open .faq__btn { color: var(--accent); }
 .faq__item.is-open .faq__chevron {
-  transform: rotate(180deg);
-  color: var(--accent);
+  transform: rotate(-90deg);
+  background-color: var(--accent);
 }
 
 .faq__body {

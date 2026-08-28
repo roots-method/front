@@ -14,17 +14,17 @@
   <meta property="og:site_name" content="Arka" />
   <meta property="og:title" content="Our Process | 4-Stage AI Automation Methodology | Arka" />
   <meta property="og:description" content="Arka's four-stage process goes from diagnosis to long-term ownership — ROI Blueprint, AI Automation, Workflow Intelligence, and Back-Office Operations." />
-  <meta property="og:image" content="https://www.arkaflow.co/assets/social-card.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="512" />
-  <meta property="og:image:height" content="512" />
+  <meta property="og:image" content="https://www.arkaflow.co/assets/social-card.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@_jazoo" />
   <meta name="twitter:title" content="Our Process | 4-Stage AI Automation Methodology | Arka" />
   <meta name="twitter:description" content="Arka's four-stage process goes from diagnosis to long-term ownership — ROI Blueprint, AI Automation, Workflow Intelligence, and Back-Office Operations." />
-  <meta name="twitter:image" content="https://www.arkaflow.co/assets/social-card.png" />
+  <meta name="twitter:image" content="https://www.arkaflow.co/assets/social-card.svg" />
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
       {
         "@type": "HowTo",
         "name": "How Arka Delivers AI Automation",
-        "description": "Arka's four-stage methodology for building and sustaining intelligent operations for mid-market businesses.",
+        "description": "Arka's four-stage methodology for building and sustaining intelligent software for enterprise operations.",
         "provider": { "@id": "https://www.arkaflow.co/#org" },
         "step": [
           {
@@ -85,8 +85,13 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js"></script>
-  <link rel="stylesheet" href="styles.css" />
+  <script src="theme-init.js?v=19"></script>
+  <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
+       files start downloading in parallel with the stylesheet. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body>
   <div class="site-shell">
@@ -105,35 +110,7 @@
           </p>
         </div>
 
-        <div class="flow-art" aria-hidden="true">
-          <svg viewBox="0 0 620 400" fill="none" preserveAspectRatio="xMidYMid meet">
-            <g class="flow-art__lines" stroke="currentColor" stroke-width="1.6"
-               stroke-linecap="round">
-              <path class="flow-art__line" pathLength="1"
-                    d="M616 26 C516 40 552 116 444 134 C344 150 140 148 28 200" />
-              <path class="flow-art__line" pathLength="1"
-                    d="M616 118 C520 154 466 112 392 170 C312 226 156 174 28 200" />
-              <path class="flow-art__line" pathLength="1"
-                    d="M616 250 C536 228 452 296 394 242 C320 176 142 234 28 200" />
-              <path class="flow-art__line" pathLength="1"
-                    d="M616 374 C508 358 548 262 424 284 C328 300 150 250 28 200" />
-            </g>
-            <g class="flow-art__seeds" fill="currentColor">
-              <circle class="flow-art__seed" cx="616" cy="26" r="3.4" />
-              <circle class="flow-art__seed" cx="616" cy="118" r="3.4" />
-              <circle class="flow-art__seed" cx="616" cy="250" r="3.4" />
-              <circle class="flow-art__seed" cx="616" cy="374" r="3.4" />
-            </g>
-            <!-- sonar pulses radiating from the convergence point -->
-            <g class="flow-art__pulse" fill="none" stroke="currentColor" stroke-width="1.2">
-              <circle cx="28" cy="200" r="12" />
-              <circle cx="28" cy="200" r="12" />
-              <circle cx="28" cy="200" r="12" />
-            </g>
-            <circle class="flow-art__halo" cx="28" cy="200" r="15" fill="currentColor" />
-            <circle class="flow-art__hub" cx="28" cy="200" r="6" fill="currentColor" />
-          </svg>
-        </div>
+        <div class="flow-art" data-svg="/assets/art/flow-art.svg" aria-hidden="true"></div>
       </section>
 
       <section class="flow-stack" aria-label="Our engagement process">
@@ -303,10 +280,12 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js"></script>
-  <script src="theme.js"></script>
-  <script src="header.js"></script>
-  <script src="nav.js"></script>
-  <script src="footer.js"></script>
+  <script src="site-menu.js?v=19"></script>
+  <script src="theme.js?v=19"></script>
+  <script src="header.js?v=19"></script>
+  <script src="nav.js?v=19"></script>
+  <script src="megamenu.js?v=19"></script>
+  <script src="footer.js?v=19"></script>
+  <script src="svg-inline.js?v=19"></script>
 </body>
 </html>

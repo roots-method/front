@@ -36,6 +36,7 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 <script src="theme.js"></script>
 <script src="header.js"></script>      <!-- reads SITE_MENU_ITEMS, injects nav -->
 <script src="nav.js"></script>         <!-- binds mobile toggle after header injects DOM -->
+<script src="megamenu.js"></script>    <!-- binds the Solution dropdown, also post-inject -->
 <script src="footer.js"></script>      <!-- reads SITE_MENU_ITEMS, injects footer -->
 <!-- page-specific scripts last -->
 ```
@@ -46,11 +47,113 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 
 `window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
 
+### Solution mega-menu
+
+`SITE_MENU_ITEMS` entries normally carry an `href`. The Solution entry instead
+carries `menu: "solutions"` and no href — it is a dropdown trigger, not a link.
+Its contents live in `window.SITE_SOLUTIONS` (also in `site-menu.js`): one entry
+per solution with `label`, `href`, `icon` (a filename in
+`assets/icons-ai-ibm/`), a one-line `summary` for the row, plus the `title`,
+`description` and `cta` shown in the panel.
+
+`header.js` renders it as a two-column panel — solution rows on the left, one
+description panel per solution stacked in the same grid cell on the right.
+`megamenu.js` swaps which panel is visible on hover/focus and owns the open
+state. Below 860px the row list is hidden by CSS and the panels stack as an
+accordion inside the burger menu, each labelled by `.megamenu__panel-kicker`.
+
+`footer.js` has no dropdown, so it flattens the entry into its child links. They
+are marked `noActive` because several currently share one destination and would
+otherwise all light up as the active page.
+
+Software points at `software.html`. Products and Support still point at
+`contact.html` until they get pages of their own — change `href` in
+`SITE_SOLUTIONS` when they do.
+
+Both `header.js` and `footer.js` refuse the active state to a solution whose
+`href` is also a top-level menu entry's. Without that, every page a solution
+merely borrows (the contact page, today) lights up two nav items at once.
+
 **Case Work is currently hidden from navigation.** `results.html` and `case-study.html` are still live, still deployed, and still in `sitemap.xml` — they're just not linked from the header, footer, or any page CTA. The `case-study.html` → `results.html` alias is deliberately kept so the section works if restored. To bring it back, re-add `{ href: "results.html", label: "Case Work" }` to `SITE_MENU_ITEMS`.
 
 ### Link paths in injected components
 
 `header.js` and `footer.js` emit **root-absolute** hrefs (`/our-flow.html`, `/assets/...`). This is required because blog posts live in the `/blog/` subdirectory — relative hrefs would resolve to `/blog/our-flow.html` there. `SITE_MENU_ITEMS` stores bare filenames; the components prefix `/` when rendering. This means the site must be served from a domain root (it is, via `CNAME`), so serve locally from the repo root, not a subpath.
+
+### Home page and the Software page
+
+`index.html` is the umbrella: hero, the three solution pillars, Industries
+served, testimonials, Trusted by, CTA.
+
+The hero is one centred column (`.hero--centered`) over `.hero-nodes`, an
+inline-SVG node network that drifts behind it at 0.6 opacity — nodes breathe,
+and a short dash travels along each edge. It is masked with a radial gradient
+so it fades out behind the copy; without that the edges cut through the
+headline, worst in light theme where the accent is a dark cobalt. The node
+coordinates deliberately avoid the middle band for the same reason.
+
+Its headline runs the braced word through a typewriter loop
+(`type-cycle.js`, driven by `data-type-cycle` on the span). Two details there
+are deliberate and easy to undo by accident:
+
+- **The typed word's width is reserved, and measured rather than set in `ch`.**
+  Centred text would slide sideways on every keystroke without a fixed width,
+  and a `ch` is the width of `0` — wider than lowercase in most faces, which
+  leaves a permanent gap before the closing brace. It measures after
+  `document.fonts.ready` (the fallback face has different metrics) and re-measures
+  on resize (the headline is `clamp()`-sized).
+- **Backspacing stops at the prefix the next word shares.** `defacto` rewinds to
+  `defa` and types forward into `default`, so the braces never sit empty.
+- **The animated span is `aria-hidden`**, with a `.sr-only` sibling carrying the
+  word. Without it a screen reader re-reads the headline on every keystroke. The pillars (`.solution-pillars` / `.pillar-card`)
+mirror `SITE_SOLUTIONS` one-for-one but are **static markup**, not rendered from
+it — crawlers need to read them. If you change the mega-menu copy, change these
+too; nothing keeps them in sync.
+
+`software.html` holds what used to be the rest of the home page — The Problems,
+How We Work, the four-stage process, Why Arka, Built on, CTA — under its own
+two-column hero carrying the illustration that used to sit on home. Those sections live in exactly one place now; do not copy
+them back onto the home page.
+
+### Decorative SVG art
+
+The three big drawings — the home hero's node network, the About orbits, the Our
+Flow fan — live in `assets/art/*.svg` and are pulled in at runtime by
+`svg-inline.js`, which finds `<div data-svg="/assets/art/name.svg">` and injects
+the file's markup into it.
+
+**They are injected, not `<img src>`, and that is not incidental.** Each one
+paints with `currentColor` so it follows `--accent` through the theme toggle,
+and each is animated by rules in `styles.css` (`.hero-nodes__pulse`,
+`.flow-art__line`, `.about-art__orbit`…). Inside an `<img>`, `currentColor`
+resolves against the SVG's own root and comes out black, and a stylesheet cannot
+reach into a referenced document, so none of the animations would run. Swapping
+to `<img>` silently breaks both.
+
+The wrappers reserve height only while the fetch is in flight
+(`.about-art:not(.is-loaded)`); `svg-inline.js` adds `.is-loaded` on injection.
+Do not constrain the loaded wrapper with `aspect-ratio`/`max-height` — that
+clips the art.
+
+Small repeated icons stay out of this. The FAQ chevrons and the nav chevron are
+CSS masks over `assets/icons-ai-ibm/chevron--right.svg`, rotated per state,
+which costs no extra request. The two theme-toggle icons stay inline in
+`header.js` — they are ~200 bytes each, they live in JS rather than HTML, and
+that file is cached once for the whole site.
+
+### Cache busting
+
+Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
+**all of them share one number**. Bump it in every HTML file whenever you edit
+any CSS or JS:
+
+```bash
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=19"/?v=20"/g'
+```
+
+This is not optional polish. `site-menu.js` and `header.js` carry the nav's data
+and markup, so a stale copy silently serves the old menu — that is how the
+Software link kept pointing at the contact page after it had its own page.
 
 ### Blog
 

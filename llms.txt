@@ -24,6 +24,7 @@ Mid-market companies that need to improve operating clarity, reduce execution dr
 - [Home](https://www.arkaflow.co/)
 - [About](https://www.arkaflow.co/about.html)
 - [Our Flow](https://www.arkaflow.co/our-flow.html)
+- [Software](https://www.arkaflow.co/software.html)
 - [Blog](https://www.arkaflow.co/blog.html)
 - [Contact](https://www.arkaflow.co/contact.html)
 
