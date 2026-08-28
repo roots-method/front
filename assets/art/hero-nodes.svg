@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" fill="none">
+  <g stroke="currentColor" stroke-width="1" stroke-linecap="round">
+<line class="hero-nodes__link" pathLength="1" x1="80" y1="120" x2="170" y2="300" />
+<line class="hero-nodes__link" pathLength="1" x1="170" y1="300" x2="60" y2="430" />
+<line class="hero-nodes__link" pathLength="1" x1="80" y1="120" x2="250" y2="90" />
+<line class="hero-nodes__link" pathLength="1" x1="170" y1="300" x2="280" y2="470" />
+<line class="hero-nodes__link" pathLength="1" x1="60" y1="430" x2="280" y2="470" />
+<line class="hero-nodes__link" pathLength="1" x1="250" y1="90" x2="430" y2="60" />
+<line class="hero-nodes__link" pathLength="1" x1="280" y1="470" x2="470" y2="500" />
+<line class="hero-nodes__link" pathLength="1" x1="430" y1="60" x2="600" y2="130" />
+<line class="hero-nodes__link" pathLength="1" x1="470" y1="500" x2="620" y2="450" />
+<line class="hero-nodes__link" pathLength="1" x1="600" y1="130" x2="760" y2="70" />
+<line class="hero-nodes__link" pathLength="1" x1="620" y1="450" x2="740" y2="490" />
+<line class="hero-nodes__link" pathLength="1" x1="760" y1="70" x2="930" y2="110" />
+<line class="hero-nodes__link" pathLength="1" x1="740" y1="490" x2="890" y2="420" />
+<line class="hero-nodes__link" pathLength="1" x1="930" y1="110" x2="1010" y2="290" />
+<line class="hero-nodes__link" pathLength="1" x1="1010" y1="290" x2="890" y2="420" />
+<line class="hero-nodes__link" pathLength="1" x1="930" y1="110" x2="1140" y2="180" />
+<line class="hero-nodes__link" pathLength="1" x1="1010" y1="290" x2="1140" y2="180" />
+<line class="hero-nodes__link" pathLength="1" x1="1010" y1="290" x2="1120" y2="410" />
+<line class="hero-nodes__link" pathLength="1" x1="890" y1="420" x2="1120" y2="410" />
+<line class="hero-nodes__link" pathLength="1" x1="170" y1="300" x2="250" y2="90" />
+  </g>
+  <!-- Same geometry again, drawn as a short travelling dash so a
+       signal appears to run along each connection. -->
+  <g stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<line class="hero-nodes__pulse" pathLength="1" x1="80" y1="120" x2="170" y2="300" />
+<line class="hero-nodes__pulse" pathLength="1" x1="170" y1="300" x2="60" y2="430" />
+<line class="hero-nodes__pulse" pathLength="1" x1="80" y1="120" x2="250" y2="90" />
+<line class="hero-nodes__pulse" pathLength="1" x1="170" y1="300" x2="280" y2="470" />
+<line class="hero-nodes__pulse" pathLength="1" x1="60" y1="430" x2="280" y2="470" />
+<line class="hero-nodes__pulse" pathLength="1" x1="250" y1="90" x2="430" y2="60" />
+<line class="hero-nodes__pulse" pathLength="1" x1="280" y1="470" x2="470" y2="500" />
+<line class="hero-nodes__pulse" pathLength="1" x1="430" y1="60" x2="600" y2="130" />
+<line class="hero-nodes__pulse" pathLength="1" x1="470" y1="500" x2="620" y2="450" />
+<line class="hero-nodes__pulse" pathLength="1" x1="600" y1="130" x2="760" y2="70" />
+<line class="hero-nodes__pulse" pathLength="1" x1="620" y1="450" x2="740" y2="490" />
+<line class="hero-nodes__pulse" pathLength="1" x1="760" y1="70" x2="930" y2="110" />
+<line class="hero-nodes__pulse" pathLength="1" x1="740" y1="490" x2="890" y2="420" />
+<line class="hero-nodes__pulse" pathLength="1" x1="930" y1="110" x2="1010" y2="290" />
+<line class="hero-nodes__pulse" pathLength="1" x1="1010" y1="290" x2="890" y2="420" />
+<line class="hero-nodes__pulse" pathLength="1" x1="930" y1="110" x2="1140" y2="180" />
+<line class="hero-nodes__pulse" pathLength="1" x1="1010" y1="290" x2="1140" y2="180" />
+<line class="hero-nodes__pulse" pathLength="1" x1="1010" y1="290" x2="1120" y2="410" />
+<line class="hero-nodes__pulse" pathLength="1" x1="890" y1="420" x2="1120" y2="410" />
+<line class="hero-nodes__pulse" pathLength="1" x1="170" y1="300" x2="250" y2="90" />
+  </g>
+  <g fill="currentColor">
+<circle class="hero-nodes__dot" cx="80" cy="120" r="3" />
+<circle class="hero-nodes__dot" cx="170" cy="300" r="5" />
+<circle class="hero-nodes__dot" cx="60" cy="430" r="3.2" />
+<circle class="hero-nodes__dot" cx="250" cy="90" r="2.6" />
+<circle class="hero-nodes__dot" cx="280" cy="470" r="3.4" />
+<circle class="hero-nodes__dot" cx="430" cy="60" r="3" />
+<circle class="hero-nodes__dot" cx="470" cy="500" r="2.8" />
+<circle class="hero-nodes__dot" cx="600" cy="130" r="4.6" />
+<circle class="hero-nodes__dot" cx="620" cy="450" r="3.2" />
+<circle class="hero-nodes__dot" cx="760" cy="70" r="2.8" />
+<circle class="hero-nodes__dot" cx="740" cy="490" r="3" />
+<circle class="hero-nodes__dot" cx="930" cy="110" r="3.4" />
+<circle class="hero-nodes__dot" cx="1010" cy="290" r="5" />
+<circle class="hero-nodes__dot" cx="890" cy="420" r="3" />
+<circle class="hero-nodes__dot" cx="1140" cy="180" r="2.8" />
+<circle class="hero-nodes__dot" cx="1120" cy="410" r="3.2" />
+  </g>
+</svg>

@@ -92,8 +92,13 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js"></script>
-  <link rel="stylesheet" href="styles.css" />
+  <script src="theme-init.js?v=19"></script>
+  <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
+       files start downloading in parallel with the stylesheet. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body>
   <div class="site-shell">
@@ -211,7 +216,7 @@
           <li class="faq__item">
             <button class="faq__btn" aria-expanded="false" aria-controls="faq-1">
               What does the ROI Blueprint actually deliver?
-              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+              <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__body" id="faq-1" role="region">
               <p class="faq__body-inner">A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan — not a vague proposal.</p>
@@ -220,7 +225,7 @@
           <li class="faq__item">
             <button class="faq__btn" aria-expanded="false" aria-controls="faq-2">
               How long until we see results?
-              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+              <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__body" id="faq-2" role="region">
               <p class="faq__body-inner">First automation systems are live within 6–8 weeks of starting the engagement. The ROI Blueprint in weeks 1–2 gives you the business case before any build begins.</p>
@@ -229,7 +234,7 @@
           <li class="faq__item">
             <button class="faq__btn" aria-expanded="false" aria-controls="faq-3">
               Do you work with businesses outside the US?
-              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+              <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__body" id="faq-3" role="region">
               <p class="faq__body-inner">Yes — we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions.</p>
@@ -238,7 +243,7 @@
           <li class="faq__item">
             <button class="faq__btn" aria-expanded="false" aria-controls="faq-4">
               What happens if the system needs changes after launch?
-              <svg class="faq__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg>
+              <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__body" id="faq-4" role="region">
               <p class="faq__body-inner">We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements — so the system keeps getting better as your workflows evolve.</p>
@@ -251,12 +256,13 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js"></script>
-  <script src="theme.js"></script>
-  <script src="header.js"></script>
-  <script src="nav.js"></script>
-  <script src="footer.js"></script>
-  <script src="contact-form.js"></script>
-  <script src="faq.js"></script>
+  <script src="site-menu.js?v=19"></script>
+  <script src="theme.js?v=19"></script>
+  <script src="header.js?v=19"></script>
+  <script src="nav.js?v=19"></script>
+  <script src="megamenu.js?v=19"></script>
+  <script src="footer.js?v=19"></script>
+  <script src="contact-form.js?v=19"></script>
+  <script src="faq.js?v=19"></script>
 </body>
 </html>

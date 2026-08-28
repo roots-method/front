@@ -123,26 +123,43 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js"></script>
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <script src="theme-init.js?v=19"></script>
+  <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
+       files start downloading in parallel with the stylesheet. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body>
   <div class="site-shell">
     <header class="nav" data-component="site-header"></header>
 
     <main>
-      <section class="hero hero--home">
+      <section class="hero hero--home hero--centered">
+        <!-- Ambient node network. Decorative only, so aria-hidden and no text.
+             Nodes sit toward the edges and corners; the middle band is left
+             clear so nothing competes with the centered headline. -->
+        <div class="hero-nodes" data-svg="/assets/art/hero-nodes.svg" aria-hidden="true"></div>
+
         <div class="hero__content">
           <p class="eyebrow">
             For enterprise operations teams
           </p>
           <h1 class="hero__title">
-            Turn <em>complex operations</em> into <span class="accent">clear, measurable systems.</span>
+            Your Only
+            <!-- The braced word types and retypes between "defacto" and
+                 "default" (type-cycle.js). aria-hidden because a screen reader
+                 should not have the headline rewritten under it letter by
+                 letter; the .sr-only span carries the sentence instead. -->
+            <span class="type-cycle" aria-hidden="true">{<span
+              class="type-cycle__word"
+              data-type-cycle='["defacto", "default"]'></span><span
+              class="type-cycle__caret"></span>}</span><span class="sr-only">defacto</span><br />
+            Digital Partner.
           </h1>
-          <p class="hero__lede">
-            We work with enterprises to replace slow, manual processes with
-            <span class="highlight">intelligent systems</span> that improve execution, sharpen margins, and compound
-            in value over time.
+          <p class="hero__lede hero__tagline">
+            Build with us. Grow with us.
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="our-flow.html">
@@ -151,9 +168,55 @@
             </a>
           </div>
         </div>
+      </section>
 
-        <div class="hero__visual">
-          <img src="assets/tools-banner-tpchg.svg" alt="AI automation platform tools" class="hero__illustration" />
+      <!-- The three pillars mirror the Solution mega-menu one-for-one, so the
+           nav and the page tell the same story. Static markup, not rendered
+           from SITE_SOLUTIONS, because crawlers need to read it. -->
+      <section class="section solution-pillars" aria-labelledby="what-arka-does">
+        <p class="eyebrow">
+          <img class="icon-sm" src="assets/icons-ai-ibm/arrange.svg" alt="" />
+          What Arka Does
+        </p>
+        <h2 class="solution-pillars__title" id="what-arka-does">Three ways we take work off your plate.</h2>
+        <p class="solution-pillars__intro">
+          We build what doesn&rsquo;t exist yet, set up what already does, and keep all of it
+          running. Most clients start with one and grow into the others.
+        </p>
+
+        <div class="solution-pillars__grid">
+          <a class="pillar-card" href="software.html">
+            <span class="pillar-card__icon" style="--menu-icon: url('assets/icons-ai-ibm/ibm-watsonx--code-assistant.svg')" aria-hidden="true"></span>
+            <span class="pillar-card__label">Software</span>
+            <h3>Build Custom Digital Solutions</h3>
+            <p>Software shaped around the way your business already works &mdash; not a template you have to bend around. Start with a free hour to find where the real gaps are.</p>
+            <span class="pillar-card__cta">
+              Explore software
+              <span class="nav__arrow nav__arrow--right" aria-hidden="true">&#8594;</span>
+            </span>
+          </a>
+
+          <a class="pillar-card" href="contact.html">
+            <span class="pillar-card__icon" style="--menu-icon: url('assets/icons-ai-ibm/ibm-granite.svg')" aria-hidden="true"></span>
+            <span class="pillar-card__label">Products</span>
+            <h3>Deploy World-Class Products</h3>
+            <p>Google Workspace, Zoho, CRM, sales platforms &mdash; the everyday tools your team already trusts, configured and connected so they work together from day one.</p>
+            <span class="pillar-card__cta">
+              Explore products
+              <span class="nav__arrow nav__arrow--right" aria-hidden="true">&#8594;</span>
+            </span>
+          </a>
+
+          <a class="pillar-card" href="contact.html">
+            <span class="pillar-card__icon" style="--menu-icon: url('assets/icons-ai-ibm/operations--field.svg')" aria-hidden="true"></span>
+            <span class="pillar-card__label">Support</span>
+            <h3>Support and Operations</h3>
+            <p>Continuous back-office operations and day-to-day care for your whole digital ecosystem &mdash; and yes, that includes the infrastructure underneath it all.</p>
+            <span class="pillar-card__cta">
+              Explore support
+              <span class="nav__arrow nav__arrow--right" aria-hidden="true">&#8594;</span>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -167,154 +230,6 @@
           <li>Distribution</li>
           <li>Professional Services</li>
         </ul>
-      </section>
-
-      <section class="problem-frame">
-        <p class="eyebrow">The Problems</p>
-        <h2 class="problem-frame__title">Most operations teams are held back by the same problems.</h2>
-        <ul class="problem-frame__list">
-          <li class="problem-frame__item">
-            <div class="problem-frame__item-head">
-              <span class="problem-frame__key">Reporting</span>
-              <span class="problem-frame__cost">12 hrs/wk, already stale</span>
-            </div>
-            <p class="problem-frame__quote">"By the time the report lands, it's already three days wrong — and we're still making decisions on it."</p>
-          </li>
-          <li class="problem-frame__item">
-            <div class="problem-frame__item-head">
-              <span class="problem-frame__key">Decisions</span>
-              <span class="problem-frame__cost">3 systems, 0 single source</span>
-            </div>
-            <p class="problem-frame__quote">"We know the answer is in the data. But the data is in three systems and nobody has time to reconcile them."</p>
-          </li>
-          <li class="problem-frame__item">
-            <div class="problem-frame__item-head">
-              <span class="problem-frame__key">Handoffs</span>
-              <span class="problem-frame__cost">every transfer is a risk</span>
-            </div>
-            <p class="problem-frame__quote">"Every time work moves between teams, we lose an hour and introduce a new version of the truth."</p>
-          </li>
-          <li class="problem-frame__item">
-            <div class="problem-frame__item-head">
-              <span class="problem-frame__key">Your people</span>
-              <span class="problem-frame__cost">best talent on lowest-value work</span>
-            </div>
-            <p class="problem-frame__quote">"Our most capable people spend their day copy-pasting data and chasing approvals — work a well-built system would handle automatically."</p>
-          </li>
-        </ul>
-        <p class="problem-frame__bridge">These aren't effort problems. They're systems problems — and systems can be fixed.</p>
-      </section>
-
-      <section class="section what-we-do">
-        <p class="eyebrow">How We Work</p>
-        <h2 class="what-we-do__title">A four-step engagement built for lasting change.</h2>
-        <div class="what-we-do__intro">
-          <p>
-            Every engagement follows the same proven sequence — from diagnosing
-            where the value is, through building and deploying the system, to
-            owning it with you long after launch.
-          </p>
-        </div>
-      </section>
-
-      <section class="process-editorial" aria-label="Our engagement process">
-
-        <div class="process-editorial__step">
-          <span class="process-editorial__num" aria-hidden="true">01</span>
-          <div class="process-editorial__body">
-            <div class="process-editorial__head">
-              <h3>ROI Blueprint</h3>
-              <span class="process-editorial__duration">Weeks 1&ndash;2</span>
-            </div>
-            <p>We map your workflows, tools, costs, and decision points to identify exactly where intelligent automation creates the strongest return. You leave with a prioritized plan.</p>
-          </div>
-        </div>
-
-        <div class="process-editorial__step">
-          <span class="process-editorial__num" aria-hidden="true">02</span>
-          <div class="process-editorial__body">
-            <div class="process-editorial__head">
-              <h3>AI Automation</h3>
-              <span class="process-editorial__duration">Weeks 3&ndash;8</span>
-            </div>
-            <p>We design and deploy automation around repeatable decisions, documents, customer operations, and data movement — built to your workflows, not generic templates.</p>
-          </div>
-        </div>
-
-        <div class="process-editorial__step">
-          <span class="process-editorial__num" aria-hidden="true">03</span>
-          <div class="process-editorial__body">
-            <div class="process-editorial__head">
-              <h3>Workflow Intelligence</h3>
-              <span class="process-editorial__duration">Weeks 6&ndash;12</span>
-            </div>
-            <p>We connect your systems into a clear operating layer so your team moves faster without losing judgment, context, or quality in the handoff.</p>
-          </div>
-        </div>
-
-        <div class="process-editorial__step">
-          <span class="process-editorial__num" aria-hidden="true">04</span>
-          <div class="process-editorial__body">
-            <div class="process-editorial__head">
-              <h3>Back-Office Operations</h3>
-              <span class="process-editorial__duration">Ongoing</span>
-            </div>
-            <p>We don't just launch and hand off. We own ongoing performance, maintenance, and optimization so value compounds without adding to your operational burden.</p>
-          </div>
-        </div>
-
-      </section>
-
-      <section class="why-arka">
-        <header class="why-arka__header">
-          <p class="eyebrow">Why Arka</p>
-          <h2>Built for outcomes that compound.</h2>
-          <p class="why-arka__sub">We measure success by margins moved, hours recovered, and systems that keep improving without us holding your hand.</p>
-        </header>
-        <div class="why-arka__list">
-          <div class="why-arka__item reveal">
-            <span class="why-arka__icon why-arka__icon--ownership" aria-hidden="true"></span>
-            <div class="why-arka__content">
-              <h3>We stay after deployment.</h3>
-              <p>Most firms hand you a system and move on. We own ongoing performance alongside you every upgrade, every optimization, for as long as you need it.</p>
-            </div>
-          </div>
-          <div class="why-arka__item reveal">
-            <span class="why-arka__icon why-arka__icon--margins" aria-hidden="true"></span>
-            <div class="why-arka__content">
-              <h3>We measure in margins, not deliverables.</h3>
-              <p>We don't track hours or features shipped. We track operational cost reduction, workflow turnaround, and recovered hours the numbers that show up in your P&amp;L.</p>
-            </div>
-          </div>
-          <div class="why-arka__item reveal">
-            <span class="why-arka__icon why-arka__icon--workflow" aria-hidden="true"></span>
-            <div class="why-arka__content">
-              <h3>We build to your workflow, not a template.</h3>
-              <p>There's no off-the-shelf solution here. Every system is designed around how your specific team operates your tools, your decision points and your constraints.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="client-bar" aria-label="Our clients">
-        <span class="client-bar__label">Trusted by</span>
-        <div class="client-bar__logos">
-          <img class="client-bar__logo" src="assets/clients/IBM-logo.svg" alt="IBM" loading="lazy" />
-          <img class="client-bar__logo client-bar__logo--jpm" src="assets/clients/JP-Morgan-Chase-Logo.svg" alt="JPMorgan Chase &amp; Co." loading="lazy" />
-          <img class="client-bar__logo client-bar__logo--kroger" src="assets/clients/kroger-logo.svg" alt="Kroger" loading="lazy" />
-          <img class="client-bar__logo client-bar__logo--capone" src="assets/clients/capital-one-logo.svg" alt="Capital One" loading="lazy" />
-        </div>
-      </section>
-
-      <section class="tech-bar" aria-label="Technology partners">
-        <span class="tech-bar__label">Built on</span>
-        <div class="tech-bar__logos">
-          <span class="tech-bar__logo">Anthropic</span>
-          <span class="tech-bar__logo">AWS</span>
-          <span class="tech-bar__logo">Azure</span>
-          <span class="tech-bar__logo">n8n</span>
-          <span class="tech-bar__logo">Make</span>
-        </div>
       </section>
 
       <section class="social-proof" aria-label="Client testimonials">
@@ -340,6 +255,16 @@
               <span class="testimonial__role">Director of Operations &middot; B2B Technology</span>
             </footer>
           </blockquote>
+        </div>
+      </section>
+
+      <section class="client-bar" aria-label="Our clients">
+        <span class="client-bar__label">Trusted by</span>
+        <div class="client-bar__logos">
+          <img class="client-bar__logo" src="assets/clients/IBM-logo.svg" alt="IBM" loading="lazy" />
+          <img class="client-bar__logo client-bar__logo--jpm" src="assets/clients/JP-Morgan-Chase-Logo.svg" alt="JPMorgan Chase &amp; Co." loading="lazy" />
+          <img class="client-bar__logo client-bar__logo--kroger" src="assets/clients/kroger-logo.svg" alt="Kroger" loading="lazy" />
+          <img class="client-bar__logo client-bar__logo--capone" src="assets/clients/capital-one-logo.svg" alt="Capital One" loading="lazy" />
         </div>
       </section>
 
@@ -379,12 +304,15 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js"></script>
-  <script src="theme.js"></script>
-  <script src="header.js"></script>
-  <script src="nav.js"></script>
-  <script src="footer.js"></script>
-  <script src="outcome-card.js"></script>
-  <script src="home.js"></script>
+  <script src="site-menu.js?v=19"></script>
+  <script src="theme.js?v=19"></script>
+  <script src="header.js?v=19"></script>
+  <script src="nav.js?v=19"></script>
+  <script src="megamenu.js?v=19"></script>
+  <script src="footer.js?v=19"></script>
+  <script src="svg-inline.js?v=19"></script>
+  <script src="type-cycle.js?v=19"></script>
+  <script src="outcome-card.js?v=19"></script>
+  <script src="home.js?v=19"></script>
 </body>
 </html>

@@ -7,9 +7,34 @@
     ? window.SITE_ACTIVE_PAGE()
     : window.location.pathname.split("/").pop() || "index.html";
 
-  const menuMarkup = menuItems
+  // Dropdown triggers carry no href of their own — the footer flattens them
+  // into their child links so every destination stays one click away.
+  const flatMenuItems = menuItems.reduce(function (list, item) {
+    if (item.menu === "solutions") {
+      const data = window.SITE_SOLUTIONS;
+      const children = (data && data.items) || [];
+      return list.concat(
+        children.map(function (solution) {
+          // Solutions that still share a destination must not all light up as
+          // the active page; one with a page of its own can claim it.
+          var shared =
+            children.filter(function (other) {
+              return other.href === solution.href;
+            }).length > 1 ||
+            menuItems.some(function (entry) {
+              return entry.href === solution.href;
+            });
+          return { href: solution.href, label: solution.label, noActive: shared };
+        })
+      );
+    }
+    return list.concat(item);
+  }, []);
+
+  const menuMarkup = flatMenuItems
     .map(function (item) {
-      const active = item.href === activePage ? " is-active" : "";
+      const active =
+        !item.noActive && item.href === activePage ? " is-active" : "";
       return (
         '<a class="site-footer__menu-link' + active + '" href="/' + item.href + '">' +
         item.label +
