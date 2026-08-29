@@ -74,7 +74,20 @@ Both `header.js` and `footer.js` refuse the active state to a solution whose
 `href` is also a top-level menu entry's. Without that, every page a solution
 merely borrows (the contact page, today) lights up two nav items at once.
 
-**Case Work is currently hidden from navigation.** `results.html` and `case-study.html` are still live, still deployed, and still in `sitemap.xml` — they're just not linked from the header, footer, or any page CTA. The `case-study.html` → `results.html` alias is deliberately kept so the section works if restored. To bring it back, re-add `{ href: "results.html", label: "Case Work" }` to `SITE_MENU_ITEMS`.
+**Case Work, Our Flow and Blog are hidden from navigation.** `results.html`,
+`case-study.html`, `our-flow.html`, `blog.html` and every post are still live,
+still deployed and still in `sitemap.xml` — they are simply absent from
+`SITE_MENU_ITEMS`, so neither the header nor the footer links them. Restore an
+entry there to bring one back.
+
+Both `SITE_ACTIVE_PAGE` aliases (`case-study.html` → `results.html`, `/blog/` →
+`blog.html`) are deliberately kept so each section resolves correctly the moment
+it returns.
+
+In-page CTAs still point at these pages on purpose — hidden from nav is not the
+same as retired. `index.html`'s hero button goes to Our Flow, and several CTA
+panels link to the blog. Remove those separately if a section is being retired
+rather than de-emphasised.
 
 ### Link paths in injected components
 

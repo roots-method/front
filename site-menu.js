@@ -1,16 +1,21 @@
-// Case Work is hidden from navigation for now. results.html and case-study.html
-// are still live and reachable by direct URL — to bring the section back, restore
-// the { href: "results.html", label: "Case Work" } entry below.
+// Case Work, Our Flow and Blog are hidden from navigation for now. All of those
+// pages are still live, still deployed and still in sitemap.xml — they are just
+// not linked from the header or footer. To bring one back, restore its entry:
+//
+//   { href: "our-flow.html", label: "Our Flow" }
+//   { href: "blog.html",     label: "Blog" }
+//   { href: "results.html",  label: "Case Work" }
+//
+// The SITE_ACTIVE_PAGE aliases below are deliberately kept so each section still
+// resolves correctly the moment it is restored.
 //
 // An item with `menu: "solutions"` and no `href` is a dropdown trigger, not a link.
 // header.js renders it as the Solution mega-menu from window.SITE_SOLUTIONS;
 // footer.js flattens its children into plain links.
 window.SITE_MENU_ITEMS = [
   { href: "index.html", label: "Home" },
-  { href: "our-flow.html", label: "Our Flow" },
   { label: "Solution", menu: "solutions" },
   { href: "about.html", label: "About" },
-  { href: "blog.html", label: "Blog" },
   { href: "contact.html", label: "Contact" },
 ];
 
