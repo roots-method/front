@@ -1,7 +1,11 @@
+// Sticky split-scroll: the steps column scrolls while the visual column stays
+// pinned, and the panel matching the step in view is the one shown.
+//
+// Markup contract: .process-split__step[data-step="N"] on the left,
+// .process-visual__panel[data-panel="N"] in the sticky column on the right.
 (function () {
   'use strict';
 
-  // ── Sticky split-scroll: activate visual panel matching visible step ──
   var steps = document.querySelectorAll('.process-split__step');
   var panels = document.querySelectorAll('.process-visual__panel');
 

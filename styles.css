@@ -47,6 +47,7 @@
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
+  --shell-gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
 /* Dark theme. Cobalt and ochre are both too dark to read on ink, so each
@@ -164,7 +165,7 @@ textarea {
   min-height: 100dvh;
   width: min(100%, var(--maxw));
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(1rem, 2.5vh, 1.75rem);
+  padding: 0 var(--shell-gutter) clamp(1rem, 2.5vh, 1.75rem);
 }
 
 .icon-sm {
@@ -1628,8 +1629,10 @@ main {
   transition: background-color 0.25s ease;
 }
 
-.pillar:first-child { padding-left: 0; }
-.pillar:last-child  { border-right: none; padding-right: 0; }
+/* Every column carries the same padding, including the outer two. Flushing the
+   first and last to the page margin lined the text up with the headings above,
+   but left the first card looking cramped against the edge. */
+.pillar:last-child { border-right: none; }
 
 /* No lift and no shadow — the row is flat, so the whole-block link shows it is
    live with a wash and the accent picking up instead. */
@@ -1695,6 +1698,30 @@ main {
   transform: translateX(3px);
 }
 
+/* Products page: two of the three blocks are links, the third is a plain
+   block with nothing to click yet. The badge says so rather than leaving a
+   dead-looking column. */
+.pillar__badge {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.pillar--soon h3,
+.pillar--soon p {
+  opacity: 0.82;
+}
+
 @media (max-width: 700px) {
   .solution-pillars__grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1707,6 +1734,21 @@ main {
   }
 
   .pillar:last-child { border-bottom: none; }
+}
+
+/* Products hero. The default 18ch measure snaps this headline into five short
+   lines; the phrase needs room to breathe. Single column with no art, so the
+   copy is capped rather than run edge to edge.
+
+   The emphasis uses .accent--alt, not .accent: .accent draws an absolutely
+   positioned underline anchored to the element's box, which on a phrase that
+   wraps lands under the last line fragment only. */
+.page-hero--products h1 {
+  max-width: 22ch;
+}
+
+.page-hero--products .page-hero__sub {
+  max-width: 56ch;
 }
 
 /* Software page hero — two columns, matching the About and Our Flow
@@ -5098,13 +5140,18 @@ main {
     radial-gradient(ellipse 30% 42% at 58% 102%, rgba(var(--accent-rgb), 0.06) 0%, transparent 50%);
 }
 
-/* ── 3. Sticky split-scroll process layout ─────────── */
+/* ── Sticky split-scroll process layout ─────────────────────────────────────
+   The steps scroll on the left while the right half is a full-height screen
+   pinned to the viewport, bleeding past the page gutter to the browser edge.
+   process-split.js swaps the panel to match the step in view. */
 .process-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 5rem);
   align-items: start;
-  padding-bottom: clamp(3rem, 8vw, 6rem);
+  /* clip, not hidden: hidden would make this a scroll container and the sticky
+     child would stop sticking. clip also lets overflow-y stay visible. */
+  overflow-x: clip;
 }
 
 .process-split__steps {
@@ -5112,8 +5159,14 @@ main {
   flex-direction: column;
 }
 
+/* Each step holds most of a screen so there is room to scroll one stage at a
+   time against the pinned panel, and lands centred opposite it. */
 .process-split__step {
-  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 78vh;
+  padding: clamp(2rem, 5vw, 3rem) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -5125,6 +5178,7 @@ main {
   display: inline-block;
   font-size: 0.65rem;
   font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.65rem;
@@ -5132,60 +5186,69 @@ main {
 
 .process-split__step h3 {
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
   line-height: 1.15;
   color: var(--fg);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.7rem;
 }
 
 .process-split__step p {
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
-  line-height: 1.72;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
   color: var(--muted);
-  max-width: 46ch;
+  max-width: 34ch;
 }
 
-/* Sticky visual column */
+/* ── The screen ───────────────────────────────────────────────────────────
+   Distance from the shell's content edge to the viewport edge is half the
+   leftover width plus the gutter. Pulling the panel right by that much and
+   padding it back by the same keeps its content in the column. */
 .process-split__sticky {
+  --bleed: calc((100vw - min(100vw, var(--maxw))) / 2 + var(--shell-gutter));
   position: sticky;
-  top: 5rem;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  height: 100dvh;
+  margin-right: calc(-1 * var(--bleed));
+  padding: clamp(2rem, 5vw, 4rem) var(--bleed) clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  background: var(--surface);
+  border-left: 1px solid var(--line);
 }
 
 .process-visual {
-  border: 1px solid var(--line);
-  border-radius: clamp(0.875rem, 2vw, 1.25rem);
-  background: var(--surface);
-  box-shadow: var(--shadow-strong);
-  overflow: hidden;
-  position: relative;
-}
-
-.process-visual::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, transparent 75%);
-  pointer-events: none;
+  width: 100%;
+  max-width: 30rem;
 }
 
 .process-visual__panel {
   display: none;
-  padding: clamp(1.25rem, 2.5vw, 1.875rem);
 }
 
 .process-visual__panel.is-active {
   display: block;
-  animation: pv-panel-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: pv-panel-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes pv-panel-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Step badge */
+.process-visual__icon {
+  /* A bare span is inline, and width/height do nothing to an inline box —
+     .pillar__icon only gets away with it because its parent is a flex column. */
+  display: block;
+  width: clamp(3.25rem, 6vw, 4.75rem);
+  height: clamp(3.25rem, 6vw, 4.75rem);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  background-color: var(--accent);
+  -webkit-mask: var(--menu-icon) center / contain no-repeat;
+  mask: var(--menu-icon) center / contain no-repeat;
+}
+
 .process-visual__tag {
   display: inline-flex;
   align-items: center;
@@ -5194,20 +5257,20 @@ main {
   border-radius: 999px;
   font-size: 0.62rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   background: rgba(var(--accent-rgb), 0.06);
   margin-bottom: 0.9rem;
 }
 
-/* Panel heading */
 .process-visual__heading {
   font-family: var(--font-heading);
-  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
-  font-weight: 700;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
   color: var(--fg);
-  margin-bottom: 1.1rem;
-  line-height: 1.35;
+  margin-bottom: 1.15rem;
+  line-height: 1.3;
 }
 
 /* Checklist */
@@ -5215,16 +5278,17 @@ main {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  margin-bottom: 1.25rem;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
 }
 
 .pv-list li {
   display: flex;
   align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.86rem;
-  line-height: 1.45;
+  gap: 0.6rem;
+  font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -5373,17 +5437,48 @@ main {
   background: var(--bg);
 }
 
-/* Responsive: collapse on smaller screens */
+/* Responsive: collapse on smaller screens.
+   There is nothing to be sticky against once this is one column, so the screen
+   goes back to normal flow and every panel is shown in order after the steps,
+   each labelled by its own stage tag. */
 @media (max-width: 860px) {
   .process-split {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0;
+  }
+
+  .process-split__step {
+    min-height: 0;
+    padding: clamp(1.5rem, 4vw, 2.25rem) 0;
   }
 
   .process-split__sticky {
     position: static;
-    order: -1;
-    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    height: auto;
+    display: block;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    /* Full-bleed both ways here so the band spans the phone. */
+    margin-inline: calc(-1 * var(--shell-gutter));
+    padding: clamp(1.75rem, 6vw, 2.5rem) var(--shell-gutter);
+    border-left: none;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-visual {
+    max-width: none;
+  }
+
+  .process-visual__panel,
+  .process-visual__panel.is-active {
+    display: block;
+    animation: none;
+  }
+
+  .process-visual__panel + .process-visual__panel {
+    margin-top: clamp(1.75rem, 6vw, 2.5rem);
+    padding-top: clamp(1.75rem, 6vw, 2.5rem);
+    border-top: 1px solid var(--line);
   }
 }
 

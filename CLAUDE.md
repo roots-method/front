@@ -66,9 +66,9 @@ accordion inside the burger menu, each labelled by `.megamenu__panel-kicker`.
 are marked `noActive` because several currently share one destination and would
 otherwise all light up as the active page.
 
-Software points at `software.html`. Products and Support still point at
-`contact.html` until they get pages of their own — change `href` in
-`SITE_SOLUTIONS` when they do.
+Software points at `software.html` and Products at `products.html`. Support
+still points at `contact.html` until it gets a page of its own — change `href`
+in `SITE_SOLUTIONS` when it does.
 
 Both `header.js` and `footer.js` refuse the active state to a solution whose
 `href` is also a top-level menu entry's. Without that, every page a solution
@@ -141,6 +141,41 @@ which costs no extra request. The two theme-toggle icons stay inline in
 `header.js` — they are ~200 bytes each, they live in JS rather than HTML, and
 that file is cached once for the whole site.
 
+### The Products page
+
+`products.html` is the Arka ONE page. Two things on it are worth knowing:
+
+- The three product blocks reuse `.solution-pillars` / `.pillar` from the home
+  page, so the site states its "three things" one way everywhere. The third has
+  no destination yet and is a plain `div` rather than an `<a>`, carrying
+  `.pillar--soon` and a `.pillar__badge`.
+- "How we work" uses `.process-split`, the sticky split-scroll: the steps column
+  scrolls while the right half is a full-height screen pinned to the viewport,
+  and `process-split.js` swaps the panel to match the step in view. It pairs
+  `.process-split__step[data-step="N"]` with
+  `.process-visual__panel[data-panel="N"]` — the numbers must match or nothing
+  swaps. Below 860px there is nothing to be sticky against, so CSS shows every
+  panel in order after the steps instead of one that would swap off-screen.
+
+  Three details there are load-bearing:
+
+  - **The screen bleeds to the browser edge** with a negative `margin-right` of
+    `--bleed`, computed from `--maxw` and `--shell-gutter`. That variable exists
+    so `.site-shell` and this calculation cannot drift apart; change the gutter
+    in one place only.
+  - **`.process-split` uses `overflow-x: clip`, never `hidden`.** `hidden` would
+    make it a scroll container and the sticky child would stop sticking. `clip`
+    also allows `overflow-y` to stay visible, which `hidden` does not.
+  - **Each step is `min-height: 78vh`.** The pinned screen needs scroll runway;
+    with short copy and no minimum, all three stages fly past in one flick.
+
+`process-split.js` was `home.js`; the home page no longer has a `.process-split`
+so the script was inert there.
+
+Headline emphasis: `.accent` draws an absolutely positioned underline anchored
+to the element's box, so on a phrase that wraps it lands under the last line
+only. Use `.accent--alt` (colour, no underline) for anything multi-line.
+
 ### Cache busting
 
 Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
@@ -148,7 +183,7 @@ Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
 any CSS or JS:
 
 ```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=19"/?v=20"/g'
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=25"/?v=26"/g'
 ```
 
 This is not optional polish. `site-menu.js` and `header.js` carry the nav's data
