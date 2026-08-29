@@ -1629,8 +1629,10 @@ main {
   transition: background-color 0.25s ease;
 }
 
-.pillar:first-child { padding-left: 0; }
-.pillar:last-child  { border-right: none; padding-right: 0; }
+/* Every column carries the same padding, including the outer two. Flushing the
+   first and last to the page margin lined the text up with the headings above,
+   but left the first card looking cramped against the edge. */
+.pillar:last-child { border-right: none; }
 
 /* No lift and no shadow — the row is flat, so the whole-block link shows it is
    live with a wash and the accent picking up instead. */
