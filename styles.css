@@ -1213,6 +1213,16 @@ main {
   line-height: 1.6;
 }
 
+/* Anchor targets have to clear the sticky nav, or an in-page jump parks the
+   heading underneath it. */
+h1[id],
+h2[id],
+h3[id] {
+  /* Enough for the sticky nav plus the eyebrow that sits above these headings —
+     clearing only the heading itself leaves the kicker tucked under the bar. */
+  scroll-margin-top: clamp(5.5rem, 10vw, 8rem);
+}
+
 .section {
   padding: clamp(3rem, 8vw, 6rem) 0 clamp(1.5rem, 4vw, 3rem);
 }
