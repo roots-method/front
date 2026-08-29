@@ -2,15 +2,40 @@
    --accent (cobalt) = identity + wayfinding: eyebrows, links, borders, buttons.
    --data   (ochre)  = evidence: numbers only. See README.md.
    Keeping ochre off labels and controls is what preserves the hierarchy. */
+/* ── Palette ────────────────────────────────────────────────────────────────
+   Light only. Three families and one neutral ramp:
+
+     cobalt   #0047ab  identity, wayfinding — eyebrows, links, borders, buttons
+     tint     #7aa5e8  cobalt's quiet half — soft fills, hover washes, art
+     ochre    #8c5810  evidence, numbers ONLY. Keeping it off labels and
+                       controls is what preserves the hierarchy.
+
+   Everything that is not one of those comes from --n-*, the neutral ramp. That
+   ramp is the point of this file: before it, every hairline and muted label was
+   a hand-rolled rgba(), which is why adding a colour always meant inventing
+   four more. Reach for a step, do not invent a grey.
+
+   The semantic names below (--bg, --fg, --line…) are what the rest of the
+   stylesheet uses. Re-point them and the whole site moves. */
 :root {
   color-scheme: light;
-  --bg: #faf8f4;
-  --bg-rgb: 250, 248, 244;
-  --surface: #f2eee8;
-  --surface-rgb: 242, 238, 232;
-  --inset: #e9e4db;
-  --fg: #12213a;
-  --muted: #12213a;
+
+  /* Neutral ramp — near-white to near-black, one hue, even steps. */
+  --n-0:   #ffffff;
+  --n-25:  #fcfcfd;
+  --n-50:  #f4f6f9;
+  --n-100: #eaedf2;
+  --n-150: #dfe3ea;
+  --n-200: #d2d7e1;
+  --n-300: #b8bfcd;
+  --n-400: #949cad;
+  --n-500: #6d7585;
+  --n-600: #545b69;
+  --n-700: #3c424e;
+  --n-800: #272c36;
+  --n-900: #1b202a;
+
+  /* Brand */
   --accent: #0047ab;
   --accent-strong: #003380;
   --accent-soft: #7aa5e8;
@@ -18,28 +43,52 @@
   --data: #8c5810;
   --data-soft: #e3a84a;
   --data-rgb: 140, 88, 16;
-  --line: rgba(18, 33, 58, 0.14);
-  --shadow: 0 1px 4px rgba(18, 33, 58, 0.06), 0 0 0 1px rgba(18, 33, 58, 0.07);
-  --shadow-strong: 0 8px 32px rgba(18, 33, 58, 0.08), 0 0 0 1px rgba(18, 33, 58, 0.08);
+
+  /* Semantic surfaces and text, all drawn from the ramp.
+     Not pure white on purpose: #ffffff is the most common background on the
+     web and reads as a default rather than a choice. --n-0 stays available for
+     cards that need to sit above the page. */
+  --bg: var(--n-25);
+  --bg-rgb: 252, 252, 253;
+  --surface: var(--n-50);
+  --surface-rgb: 244, 246, 249;
+  --inset: var(--n-100);
+  --fg: var(--n-900);
+  --muted: var(--n-600);
+  --label: var(--n-700);
+  --placeholder: var(--n-400);
+  --line: var(--n-200);
+  --nav-link: var(--n-500);
+  --eyebrow: var(--n-800);
+
+  --shadow: 0 1px 4px rgba(27, 32, 42, 0.05), 0 0 0 1px rgba(27, 32, 42, 0.06);
+  --shadow-strong: 0 8px 32px rgba(27, 32, 42, 0.07), 0 0 0 1px rgba(27, 32, 42, 0.07);
   --canvas-glow: transparent;
-  --grid-line: rgba(18, 33, 58, 0.07);
+  --grid-line: var(--n-100);
   --grid-opacity: 0;
-  --nav-link: rgba(18, 33, 58, 0.58);
-  --eyebrow: #12213a;
-  --btn-primary-hover: #0047ab;   /* accent blue on hover */
-  --btn-primary-shadow: rgba(18, 33, 58, 0.22);
-  --story-end: #e3ded5;
-  --story-stroke: rgba(18, 33, 58, 0.55);
+  --btn-primary-hover: #0047ab;
+  --btn-primary-shadow: rgba(27, 32, 42, 0.2);
+  --story-end: var(--n-100);
+  --story-stroke: var(--n-600);
   --story-stroke-soft: rgba(0, 71, 171, 0.22);
-  --story-stroke-mid: rgba(18, 33, 58, 0.45);
+  --story-stroke-mid: var(--n-500);
   --story-stroke-end: rgba(0, 71, 171, 0.28);
   --story-glow-secondary: rgba(0, 71, 171, 0.12);
   --story-grid-opacity: 0.35;
-  --placeholder: rgba(18, 33, 58, 0.38);
-  --label: rgba(18, 33, 58, 0.7);
-  /* Barlow (headings) and Nunito Sans (body) load from Google Fonts in each
-     page's <head>. The system stack stays behind them so the page is readable
-     before the webfonts arrive and if they never do. */
+
+  /* Products composition. Violet is deliberately outside the system; it is the
+     one drawing that does not follow brand colour. */
+  --viz-violet: #7c3aed;
+  --viz-violet-pale: #c4b5fd;
+  --viz-blue: #7cc0f8;
+  --viz-blue-strong: #3b82f6;
+  --viz-dot: var(--n-0);
+  --viz-grid: var(--n-200);
+  --viz-line: var(--n-200);
+  --viz-halo: var(--n-50);
+  --viz-halo-strong: var(--n-100);
+  --viz-grey-dot: var(--n-400);
+
   --font: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
@@ -48,70 +97,6 @@
     "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
   --shell-gutter: clamp(1.25rem, 5vw, 3rem);
-  /* Violet family — used only by the Products hero composition, which is drawn
-     from a supplied reference rather than the cobalt/ochre system. Kept in
-     variables so the drawing can follow the theme; see assets/art/products-grid.svg. */
-  --viz-violet: #7c3aed;
-  --viz-violet-pale: #c4b5fd;
-  --viz-blue: #7cc0f8;
-  --viz-blue-strong: #3b82f6;
-  --viz-dot: #ffffff;
-  --viz-grid: rgba(18, 33, 58, 0.16);
-  --viz-line: rgba(18, 33, 58, 0.16);
-  --viz-halo: rgba(18, 33, 58, 0.045);
-  --viz-halo-strong: rgba(18, 33, 58, 0.09);
-  --viz-grey-dot: rgba(18, 33, 58, 0.42);
-}
-
-/* Dark theme. Cobalt and ochre are both too dark to read on ink, so each
-   flips to its tint — this is structural, not decorative. */
-[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0e1a2b;
-  --bg-rgb: 14, 26, 43;
-  --surface: #16283f;
-  --surface-rgb: 22, 40, 63;
-  --inset: #1e3350;
-  --fg: #eef2f8;
-  --muted: #eef2f8;
-  --accent: #7aa5e8;
-  --accent-strong: #a8c5f0;
-  --accent-soft: #0047ab;
-  --accent-rgb: 122, 165, 232;
-  --data: #e3a84a;
-  --data-soft: #9c6414;
-  --data-rgb: 227, 168, 74;
-  --line: rgba(238, 242, 248, 0.12);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.6);
-  --canvas-glow: transparent;
-  --grid-line: rgba(238, 242, 248, 0.06);
-  --grid-opacity: 0;
-  --nav-link: rgba(238, 242, 248, 0.58);
-  --eyebrow: #eef2f8;
-  --btn-primary-hover: #7aa5e8;   /* accent tint; #0047ab is unreadable under dark text */
-  --btn-primary-shadow: rgba(0, 0, 0, 0.5);
-  --story-end: #132238;
-  --story-stroke: rgba(238, 242, 248, 0.7);
-  --story-stroke-soft: rgba(122, 165, 232, 0.28);
-  --story-stroke-mid: rgba(238, 242, 248, 0.55);
-  --story-stroke-end: rgba(122, 165, 232, 0.32);
-  --story-glow-secondary: rgba(122, 165, 232, 0.14);
-  --story-grid-opacity: 0.55;
-  --placeholder: rgba(238, 242, 248, 0.38);
-  --label: rgba(238, 242, 248, 0.72);
-  /* Violet at #7c3aed disappears against ink, so the drawing shifts to its
-     tints on dark exactly the way cobalt and ochre do. */
-  --viz-violet: #a78bfa;
-  --viz-violet-pale: #7c5cd6;
-  --viz-blue: #6aa9f0;
-  --viz-blue-strong: #5b93ee;
-  --viz-dot: #0e1a2b;
-  --viz-grid: rgba(238, 242, 248, 0.14);
-  --viz-line: rgba(238, 242, 248, 0.14);
-  --viz-halo: rgba(238, 242, 248, 0.04);
-  --viz-halo-strong: rgba(238, 242, 248, 0.08);
-  --viz-grey-dot: rgba(238, 242, 248, 0.4);
 }
 
 *,
@@ -202,16 +187,6 @@ textarea {
   opacity: 0.6;
 }
 
-[data-theme="dark"] .icon-sm,
-[data-theme="dark"] .feature-card__icon,
-[data-theme="dark"] .philosophy-card__icon {
-  filter: brightness(0) invert(0.92);
-}
-
-[data-theme="dark"] .icon-sm {
-  opacity: 0.7;
-}
-
 .nav {
   position: sticky;
   top: 0;
@@ -293,41 +268,6 @@ textarea {
   align-items: center;
   gap: 0.55rem;
   margin-left: auto;
-}
-
-.theme-toggle {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--fg);
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
-  border-color: var(--fg);
-}
-
-.theme-toggle__icon {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.theme-toggle__icon--light,
-.theme-toggle__icon--dark {
-  display: none;
-}
-
-.theme-toggle[data-theme-pref="light"] .theme-toggle__icon--dark,
-.theme-toggle[data-theme-pref="dark"] .theme-toggle__icon--light {
-  display: block;
 }
 
 .nav__toggle {
@@ -2293,12 +2233,10 @@ main {
   height: clamp(1.25rem, 2.5vw, 1.75rem);
   width: auto;
   opacity: 0.55;
-  filter: brightness(0) invert(1);
-  transition: opacity 0.2s ease;
-}
-
-[data-theme="light"] .client-bar__logo {
+  /* Was inverted to white for the dark theme, with a light-theme override
+     flipping it back. Light only now, so black is the base. */
   filter: brightness(0);
+  transition: opacity 0.2s ease;
 }
 
 .client-bar__logo--jpm {
@@ -2432,12 +2370,6 @@ main {
   background-image:
     radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.07) 0%, transparent 62%),
     radial-gradient(ellipse 34% 50% at 104% 72%, rgba(18, 33, 58, 0.04) 0%, transparent 58%);
-}
-
-[data-theme="dark"] .page-hero--about {
-  background-image:
-    radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.09) 0%, transparent 62%),
-    radial-gradient(ellipse 34% 50% at 104% 72%, rgba(238, 242, 248, 0.03) 0%, transparent 58%);
 }
 
 /* Sized so each sentence fits its column on one line, and set as blocks so
@@ -2603,12 +2535,6 @@ main {
   background-image:
     radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.07) 0%, transparent 62%),
     radial-gradient(ellipse 34% 50% at 104% 72%, rgba(18, 33, 58, 0.04) 0%, transparent 58%);
-}
-
-[data-theme="dark"] .page-hero--flow {
-  background-image:
-    radial-gradient(ellipse 60% 80% at 92% 22%, rgba(var(--accent-rgb), 0.09) 0%, transparent 62%),
-    radial-gradient(ellipse 34% 50% at 104% 72%, rgba(238, 242, 248, 0.03) 0%, transparent 58%);
 }
 
 /* the column is narrower than the full row, so the 12.5ch cap can relax */
@@ -3302,11 +3228,6 @@ main {
   border-color: var(--case-accent-border);
 }
 
-[data-theme="dark"] .case-card {
-  --case-accent-bg: color-mix(in srgb, var(--case-accent, var(--surface)) 26%, var(--surface));
-  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 34%, var(--line));
-}
-
 .case-card--compact {
   padding: clamp(1.1rem, 2.5vw, 1.6rem);
 }
@@ -3335,11 +3256,6 @@ main {
   padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(3rem, 7vw, 5rem);
   --case-accent-bg: var(--case-accent, var(--surface));
   --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 42%, var(--line));
-}
-
-[data-theme="dark"] .case-article {
-  --case-accent-bg: color-mix(in srgb, var(--case-accent, var(--surface)) 26%, var(--surface));
-  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 34%, var(--line));
 }
 
 .case-article__loading {
@@ -4534,10 +4450,6 @@ main {
   overflow: hidden;
 }
 
-[data-theme="dark"] .case-featured__visual {
-  background: color-mix(in srgb, var(--case-accent, var(--accent)) 55%, var(--bg));
-}
-
 .case-featured__visual::before {
   content: "";
   position: absolute;
@@ -4561,19 +4473,11 @@ main {
   color: rgba(0, 0, 0, 0.7);
 }
 
-[data-theme="dark"] .case-featured__stat-value {
-  color: rgba(255, 255, 255, 0.82);
-}
-
 .case-featured__stat-label {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.52);
-}
-
-[data-theme="dark"] .case-featured__stat-label {
-  color: rgba(255, 255, 255, 0.55);
 }
 
 .case-featured__body {
@@ -4635,10 +4539,6 @@ main {
   border-radius: 0.95rem 0.95rem 0 0;
   position: relative;
   overflow: hidden;
-}
-
-[data-theme="dark"] .case-card__visual {
-  background: color-mix(in srgb, var(--case-accent, var(--accent)) 50%, var(--bg));
 }
 
 .case-card__visual::after {
@@ -5119,11 +5019,6 @@ main {
   color: var(--accent-strong);
   font-weight: 500;
 }
-[data-theme="dark"] .highlight {
-  background: rgba(var(--accent-rgb), 0.17);
-  color: var(--accent-soft);
-}
-
 /* ── Home hero: centered, over an ambient node network ───────────────────
    The illustration moved to the Software page, so the hero is one centered
    column with the network drifting behind it. overflow:hidden keeps the
@@ -5322,13 +5217,6 @@ main {
     radial-gradient(ellipse 38% 55% at 102% 68%, rgba(18, 33, 58, 0.04) 0%, transparent 55%),
     radial-gradient(ellipse 30% 42% at 58% 102%, rgba(var(--accent-rgb), 0.05) 0%, transparent 50%);
 }
-[data-theme="dark"] .hero--home {
-  background-image:
-    radial-gradient(ellipse 65% 85% at 88% 18%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 38% 55% at 102% 68%, rgba(238, 242, 248, 0.03) 0%, transparent 55%),
-    radial-gradient(ellipse 30% 42% at 58% 102%, rgba(var(--accent-rgb), 0.06) 0%, transparent 50%);
-}
-
 /* ── Sticky split-scroll process layout ─────────────────────────────────────
    The steps scroll on the left while the right half is a full-height screen
    pinned to the viewport, bleeding past the page gutter to the browser edge.
@@ -5489,14 +5377,11 @@ main {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
+  /* Cobalt, not ochre. A tick is an affordance, and ochre is reserved for
+     numbers — an ochre tick inside a cobalt circle broke both rules at once. */
   background-color: rgba(var(--accent-rgb), 0.12);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' stroke='%23c97a0a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' stroke='%230047ab' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: cover;
-}
-
-[data-theme="dark"] .pv-list li::before {
-  background-color: rgba(var(--accent-rgb), 0.15);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' stroke='%23e8a030' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 /* Stat grid */
@@ -5563,10 +5448,6 @@ main {
   border-color: rgba(var(--accent-rgb), 0.28);
   color: var(--accent-strong);
   font-weight: 600;
-}
-
-[data-theme="dark"] .pv-flow__node--accent {
-  color: var(--accent);
 }
 
 .pv-flow__arrow {
@@ -5850,11 +5731,6 @@ main {
   filter: saturate(0) brightness(0);
 }
 
-[data-theme="dark"] .cta-panel__watermark {
-  filter: saturate(0) brightness(10);
-  opacity: 0.055;
-}
-
 /* ── Blog ─────────────────────────────────────────────────────────────
    The blog reuses the case-work card and article shells verbatim
    (.case-featured, .case-card, .case-article, .cs-nav) so both sections
@@ -5871,10 +5747,6 @@ main {
   font-weight: 600;
   line-height: 1.1;
   color: rgba(0, 0, 0, 0.7);
-}
-
-[data-theme="dark"] .post-featured__kicker {
-  color: rgba(255, 255, 255, 0.82);
 }
 
 /* Inline prose links — case studies have none, so this stays scoped */

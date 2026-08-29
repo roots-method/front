@@ -33,7 +33,6 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 
 ```html
 <script src="site-menu.js"></script>   <!-- must be first: sets window.SITE_MENU_ITEMS -->
-<script src="theme.js"></script>
 <script src="header.js"></script>      <!-- reads SITE_MENU_ITEMS, injects nav -->
 <script src="nav.js"></script>         <!-- binds mobile toggle after header injects DOM -->
 <script src="megamenu.js"></script>    <!-- binds the Solution dropdown, also post-inject -->
@@ -41,7 +40,8 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 <!-- page-specific scripts last -->
 ```
 
-`theme-init.js` is a `<script>` in `<head>` (before CSS) to prevent flash of unstyled theme. All other scripts are at the bottom of `<body>`.
+All scripts are at the bottom of `<body>`. (On `main` there is also a
+`theme-init.js` in `<head>`; this branch has no theme system, so it is gone.)
 
 ### Navigation active state
 
@@ -89,8 +89,8 @@ The hero is one centred column (`.hero--centered`) over `.hero-nodes`, an
 inline-SVG node network that drifts behind it at 0.6 opacity — nodes breathe,
 and a short dash travels along each edge. It is masked with a radial gradient
 so it fades out behind the copy; without that the edges cut through the
-headline, worst in light theme where the accent is a dark cobalt. The node
-coordinates deliberately avoid the middle band for the same reason.
+headline. The node coordinates deliberately avoid the middle band for the same
+reason.
 
 Its headline runs the braced word through a typewriter loop
 (`type-cycle.js`, driven by `data-type-cycle` on the span). Two details there
@@ -123,8 +123,8 @@ Flow fan — live in `assets/art/*.svg` and are pulled in at runtime by
 the file's markup into it.
 
 **They are injected, not `<img src>`, and that is not incidental.** Each one
-paints with `currentColor` so it follows `--accent` through the theme toggle,
-and each is animated by rules in `styles.css` (`.hero-nodes__pulse`,
+paints with `currentColor` so it picks up `--accent` from the page, and each is
+animated by rules in `styles.css` (`.hero-nodes__pulse`,
 `.flow-art__line`, `.about-art__orbit`…). Inside an `<img>`, `currentColor`
 resolves against the SVG's own root and comes out black, and a stylesheet cannot
 reach into a referenced document, so none of the animations would run. Swapping
@@ -137,9 +137,7 @@ clips the art.
 
 Small repeated icons stay out of this. The FAQ chevrons and the nav chevron are
 CSS masks over `assets/icons-ai-ibm/chevron--right.svg`, rotated per state,
-which costs no extra request. The two theme-toggle icons stay inline in
-`header.js` — they are ~200 bytes each, they live in JS rather than HTML, and
-that file is cached once for the whole site.
+which costs no extra request.
 
 ### The Products page
 
@@ -242,9 +240,40 @@ All case study content lives in `case-studies.js` as two globals:
 
 `results.html` uses `case-work.js` to render the grid from this data. `case-study.html` uses `case-study.js` to render a single study, reading `?slug=` from the URL query string.
 
-### Theme system
+### Palette (PROTOTYPE BRANCH — light only)
 
-Only `"light"` and `"dark"` are valid theme values. `"system"` preference and anything unrecognised both resolve to `"dark"`. Stored in `localStorage` under the key `arka-theme`. The public API is `window.ArkaTheme.bind()` and `window.ArkaTheme.apply(pref)`.
+**This branch has no theme system.** `theme.js`, `theme-init.js`, the header
+toggle and every `[data-theme="dark"]` rule are gone, along with the
+`arka-theme` localStorage key and `window.ArkaTheme`. `main` still has all of
+it; this branch exists to see the light-only direction.
+
+The palette is three families plus one neutral ramp, all at the top of
+`styles.css`:
+
+- **cobalt** `#0047ab` — identity and wayfinding: eyebrows, links, borders,
+  buttons, ticks.
+- **tint** `#7aa5e8` — cobalt's quiet half: soft fills, hover washes.
+- **ochre** `#8c5810` — evidence, **numbers only**. Keeping it off labels and
+  controls is what preserves the hierarchy.
+- **`--n-0` … `--n-900`** — the neutral ramp. Near-white to near-black in one
+  hue, even steps.
+
+**Reach for a ramp step; do not invent a grey.** That rule is the whole point of
+this branch. Before it, every hairline and muted label was a hand-rolled
+`rgba(18, 33, 58, 0.14)`, which is why adding one colour always meant inventing
+four more — the thing that made the palette feel inextensible was never the
+theme, it was the missing ramp.
+
+The semantic tokens (`--bg`, `--fg`, `--line`, `--muted`…) are what the rest of
+the stylesheet reads. They now point at ramp steps, so re-pointing that one
+block moves the whole site.
+
+The background is `--n-25` (`#fcfcfd`), not `#ffffff`, on purpose: pure white is
+the most common background on the web and reads as a default rather than a
+choice. `--n-0` stays available for anything that needs to sit above the page.
+
+The Products composition's violet is the one deliberate exception, and it is
+still confined to `--viz-*`.
 
 ### Contact form
 
