@@ -69,13 +69,13 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js?v=23"></script>
+  <script src="theme-init.js?v=25"></script>
   <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
        files start downloading in parallel with the stylesheet. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=23" />
+  <link rel="stylesheet" href="styles.css?v=25" />
 </head>
 <body>
   <div class="site-shell">
@@ -152,106 +152,66 @@
         </p>
         <h2 class="what-we-do__title">Three stages, and you are live.</h2>
         <div class="what-we-do__intro">
-          <p>
-            Moving a business onto new tools goes wrong in the handover, not the setup.
-            We stay on it from the first audit until the last mailbox lands.
-          </p>
+          <p>Moving goes wrong in the handover, not the setup. We stay on it throughout.</p>
         </div>
       </section>
 
-      <!-- Sticky split-scroll: the steps scroll, the panel beside them swaps to
-           match whichever step is in view (process-split.js). -->
+      <!-- Sticky split-scroll: the steps scroll, the screen beside them stays
+           pinned and swaps to match the stage in view (process-split.js). -->
       <section class="process-split" aria-label="Our deployment process">
         <div class="process-split__steps">
           <div class="process-split__step" data-step="1">
             <span class="process-split__num">Stage 01</span>
             <h3>We assess</h3>
-            <p>
-              We look at what you run today &mdash; the mailboxes, the shared drives, the
-              spreadsheets doing jobs they were never meant to do &mdash; and work out what
-              should move, what should be retired, and what should stay exactly as it is.
-              You get the plan and the licence costs in writing before anything changes.
-            </p>
+            <p>What you run today, what should move, and what it will cost &mdash; in writing, before anything changes.</p>
           </div>
 
           <div class="process-split__step" data-step="2">
             <span class="process-split__num">Stage 02</span>
             <h3>Migrate</h3>
-            <p>
-              Mail, files, calendars and contacts move across with their history intact.
-              We run it alongside your existing setup rather than instead of it, so nobody
-              loses a working day and there is always a way back if something looks wrong.
-            </p>
+            <p>Mail, files and calendars move with their history, running alongside your old setup until it is proven.</p>
           </div>
 
           <div class="process-split__step" data-step="3">
             <span class="process-split__num">Stage 03</span>
             <h3>Go live</h3>
-            <p>
-              We cut over, walk your team through the parts that are genuinely different,
-              and stay reachable while everyone settles in. Admin policies, security
-              settings and backups are configured before the switch, not after it.
-            </p>
+            <p>We cut over, walk your team through what changed, and stay reachable while everyone settles in.</p>
           </div>
         </div>
 
         <div class="process-split__sticky">
           <div class="process-visual">
             <div class="process-visual__panel is-active" data-panel="1">
+              <span class="process-visual__icon" style="--menu-icon: url('assets/icons-ai-ibm/read-me.svg')" aria-hidden="true"></span>
               <span class="process-visual__tag">Stage 01</span>
-              <p class="process-visual__heading">What the assessment covers</p>
+              <p class="process-visual__heading">We read your whole setup first.</p>
               <ul class="pv-list">
-                <li>Every mailbox, shared drive and licence you are paying for today</li>
+                <li>Every mailbox, drive and licence you pay for</li>
                 <li>Which tools overlap, and what you can stop renewing</li>
-                <li>The data that has to move, and the data that should not</li>
-                <li>A written plan with licence costs and a migration window</li>
+                <li>A costed plan and a migration window</li>
               </ul>
-              <div class="pv-kv">
-                <div class="pv-kv__row">
-                  <span class="pv-kv__key">Typical duration</span>
-                  <span class="pv-kv__val">3&ndash;5 days</span>
-                </div>
-                <div class="pv-kv__row">
-                  <span class="pv-kv__key">What you get</span>
-                  <span class="pv-kv__val pv-kv__val--up">Costed plan</span>
-                </div>
-              </div>
             </div>
 
             <div class="process-visual__panel" data-panel="2">
+              <span class="process-visual__icon" style="--menu-icon: url('assets/icons-ai-ibm/migrate.svg')" aria-hidden="true"></span>
               <span class="process-visual__tag">Stage 02</span>
-              <p class="process-visual__heading">Moving without a lost day</p>
-              <div class="pv-flow">
-                <span class="pv-flow__node">Old stack</span>
-                <span class="pv-flow__arrow" aria-hidden="true">&#8594;</span>
-                <span class="pv-flow__node pv-flow__node--accent">Run in parallel</span>
-                <span class="pv-flow__arrow" aria-hidden="true">&#8594;</span>
-                <span class="pv-flow__node">Arka ONE</span>
-              </div>
+              <p class="process-visual__heading">Nobody loses a working day.</p>
               <ul class="pv-list">
-                <li>Mail, files, calendars and contacts move with their history</li>
-                <li>Both systems run side by side until the new one is proven</li>
-                <li>Shared drives keep their folder structure and permissions</li>
+                <li>Mail, files, calendars and contacts keep their history</li>
+                <li>Old and new run side by side until the new one is proven</li>
                 <li>A tested way back, for as long as you want it</li>
               </ul>
             </div>
 
             <div class="process-visual__panel" data-panel="3">
+              <span class="process-visual__icon" style="--menu-icon: url('assets/icons-ai-ibm/delivery.svg')" aria-hidden="true"></span>
               <span class="process-visual__tag">Stage 03</span>
-              <p class="process-visual__heading">Live, and looked after</p>
+              <p class="process-visual__heading">Live, and looked after.</p>
               <ul class="pv-list">
-                <li>Cutover scheduled around your quiet hours, not ours</li>
-                <li>Admin policies, security settings and backups set before the switch</li>
-                <li>A walkthrough for the parts that genuinely changed</li>
+                <li>Cutover scheduled around your quiet hours</li>
+                <li>Policies, security and backups set before the switch</li>
                 <li>Someone reachable while the team settles in</li>
               </ul>
-              <div class="pv-tags">
-                <span class="pv-tag">SSO</span>
-                <span class="pv-tag">2FA</span>
-                <span class="pv-tag">Backups</span>
-                <span class="pv-tag">Retention</span>
-                <span class="pv-tag">Device policy</span>
-              </div>
             </div>
           </div>
         </div>
@@ -293,12 +253,12 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js?v=23"></script>
-  <script src="theme.js?v=23"></script>
-  <script src="header.js?v=23"></script>
-  <script src="nav.js?v=23"></script>
-  <script src="megamenu.js?v=23"></script>
-  <script src="footer.js?v=23"></script>
-  <script src="process-split.js?v=23"></script>
+  <script src="site-menu.js?v=25"></script>
+  <script src="theme.js?v=25"></script>
+  <script src="header.js?v=25"></script>
+  <script src="nav.js?v=25"></script>
+  <script src="megamenu.js?v=25"></script>
+  <script src="footer.js?v=25"></script>
+  <script src="process-split.js?v=25"></script>
 </body>
 </html>

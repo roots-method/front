@@ -150,12 +150,24 @@ that file is cached once for the whole site.
   no destination yet and is a plain `div` rather than an `<a>`, carrying
   `.pillar--soon` and a `.pillar__badge`.
 - "How we work" uses `.process-split`, the sticky split-scroll: the steps column
-  scrolls while the visual column stays pinned, and `process-split.js` swaps the
-  panel to match the step in view. It pairs
+  scrolls while the right half is a full-height screen pinned to the viewport,
+  and `process-split.js` swaps the panel to match the step in view. It pairs
   `.process-split__step[data-step="N"]` with
   `.process-visual__panel[data-panel="N"]` — the numbers must match or nothing
   swaps. Below 860px there is nothing to be sticky against, so CSS shows every
   panel in order after the steps instead of one that would swap off-screen.
+
+  Three details there are load-bearing:
+
+  - **The screen bleeds to the browser edge** with a negative `margin-right` of
+    `--bleed`, computed from `--maxw` and `--shell-gutter`. That variable exists
+    so `.site-shell` and this calculation cannot drift apart; change the gutter
+    in one place only.
+  - **`.process-split` uses `overflow-x: clip`, never `hidden`.** `hidden` would
+    make it a scroll container and the sticky child would stop sticking. `clip`
+    also allows `overflow-y` to stay visible, which `hidden` does not.
+  - **Each step is `min-height: 78vh`.** The pinned screen needs scroll runway;
+    with short copy and no minimum, all three stages fly past in one flick.
 
 `process-split.js` was `home.js`; the home page no longer has a `.process-split`
 so the script was inert there.
@@ -171,7 +183,7 @@ Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
 any CSS or JS:
 
 ```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=23"/?v=24"/g'
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=25"/?v=26"/g'
 ```
 
 This is not optional polish. `site-menu.js` and `header.js` carry the nav's data
