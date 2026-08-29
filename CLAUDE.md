@@ -275,6 +275,16 @@ choice. `--n-0` stays available for anything that needs to sit above the page.
 The Products composition's violet is the one deliberate exception, and it is
 still confined to `--viz-*`.
 
+**Primary buttons** rest at cobalt, so hover can no longer signal by turning
+cobalt the way it used to. Instead `.btn--primary::after` is an overlay ring in
+`--accent-soft` that wipes in left to right on hover and focus. It is an overlay
+rather than the button's own border because a real border cannot be revealed
+along one axis; `clip-path: inset(0 100% 0 0)` animating to `0` does exactly
+that, and reverses itself when the pointer leaves. `inset: -1px` sits it over
+the 1px transparent ring `.btn` already reserves, so nothing shifts. Ghost
+buttons are untouched — the tint is too light on a pale surface to read as a
+border, and their cobalt hover already works.
+
 ### Contact form
 
 Submits to `formsubmit.co` via AJAX (no backend). The endpoint is hardcoded in `contact-form.js`. Includes a honeypot field (`name="_gotcha"`) for spam filtering.

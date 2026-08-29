@@ -66,8 +66,7 @@
   --canvas-glow: transparent;
   --grid-line: var(--n-100);
   --grid-opacity: 0;
-  --btn-primary-hover: #0047ab;
-  --btn-primary-shadow: rgba(27, 32, 42, 0.2);
+  --btn-primary-shadow: rgba(0, 71, 171, 0.26);
   --story-end: var(--n-100);
   --story-stroke: var(--n-600);
   --story-stroke-soft: rgba(0, 71, 171, 0.22);
@@ -844,14 +843,34 @@ main {
   }
 }
 
+/* Cobalt is the resting state now, so hover cannot signal by turning cobalt the
+   way it used to. The border does that job instead. */
 .btn--primary {
-  background-color: var(--fg);
-  color: var(--surface);
+  position: relative;
+  background-color: var(--accent);
+  color: var(--n-0);
   box-shadow: 0 14px 32px var(--btn-primary-shadow);
 }
 
-.btn--primary:hover {
-  background-color: var(--btn-primary-hover);
+/* The drawn border is an overlay, not the button's own border: a real border
+   cannot be revealed along one axis. inset:-1px puts it exactly over the 1px
+   transparent ring .btn already reserves, so nothing shifts when it appears.
+   clip-path insets from the right, so animating it to 0 wipes left to right —
+   and it reverses on its own when the pointer leaves. */
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--accent-soft);
+  border-radius: inherit;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn--primary:hover::after,
+.btn--primary:focus-visible::after {
+  clip-path: inset(0 0 0 0);
 }
 
 .btn--ghost {
