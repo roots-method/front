@@ -69,13 +69,13 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js?v=29"></script>
+  <script src="theme-init.js?v=31"></script>
   <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
        files start downloading in parallel with the stylesheet. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="styles.css?v=31" />
 </head>
 <body>
   <div class="site-shell">
@@ -88,19 +88,19 @@
             <img class="icon-sm" src="assets/icons-ai-ibm/ibm-granite.svg" alt="" />
             Arka ONE
           </p>
-          <h1>
-            Bring your
-            <!-- Types through communication / collaboration / confluence
-                 (type-cycle.js). aria-hidden so a screen reader is not fed the
-                 headline again on every keystroke; the .sr-only span carries
-                 the full sentence. -->
-            <span class="type-cycle" aria-hidden="true"><span
-              class="type-cycle__word"
-              data-type-cycle='["communication", "collaboration", "confluence"]'
-              data-type-cycle-reserve="none"></span><span
-              class="type-cycle__caret"></span></span><span class="sr-only">communication, collaboration and confluence</span><br />
-            at one place.
-          </h1>
+          <h1>Bring your 3 Cs at one place.</h1>
+
+          <!-- All three named and readable at once. A CSS-only sequential
+               highlight walks the accent across them, so there is motion
+               without the headline ever being mid-word or incomplete. -->
+          <p class="threec">
+            <span class="threec__word">Communication</span>
+            <span class="threec__sep" aria-hidden="true">&middot;</span>
+            <span class="threec__word">Collaboration</span>
+            <span class="threec__sep" aria-hidden="true">&middot;</span>
+            <span class="threec__word">Confluence</span>
+          </p>
+
           <p class="page-hero__sub">
             Make the tools your team already knows work the way you need them to &mdash;
             effective, proactive and accountable.
@@ -263,14 +263,13 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js?v=29"></script>
-  <script src="theme.js?v=29"></script>
-  <script src="header.js?v=29"></script>
-  <script src="nav.js?v=29"></script>
-  <script src="megamenu.js?v=29"></script>
-  <script src="footer.js?v=29"></script>
-  <script src="process-split.js?v=29"></script>
-  <script src="type-cycle.js?v=29"></script>
-  <script src="svg-inline.js?v=29"></script>
+  <script src="site-menu.js?v=31"></script>
+  <script src="theme.js?v=31"></script>
+  <script src="header.js?v=31"></script>
+  <script src="nav.js?v=31"></script>
+  <script src="megamenu.js?v=31"></script>
+  <script src="footer.js?v=31"></script>
+  <script src="process-split.js?v=31"></script>
+  <script src="svg-inline.js?v=31"></script>
 </body>
 </html>

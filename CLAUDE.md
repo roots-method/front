@@ -144,8 +144,14 @@ that file is cached once for the whole site.
 ### The Products page
 
 `products.html` is the Arka ONE page. Its hero is two columns: the headline
-cycles the three C words through `type-cycle.js`, and `assets/art/products-grid.svg`
-sits beside it.
+names the three Cs and `.threec` lists them under it, with
+`assets/art/products-grid.svg` beside it.
+
+`.threec` deliberately does **not** use `type-cycle.js`. Typing through words
+this long left the headline showing a mid-word fragment most of the time, and
+one loop ran about 11 seconds. All three words now stay readable and the only
+motion is the accent walking between them — no reflow, nothing incomplete. The
+stagger uses `:nth-of-type(3)` / `(5)` because the separators are spans too.
 
 That drawing is the one place the cobalt/ochre system does not hold. It is drawn
 from a supplied reference in a **violet** family, kept in `--viz-*` variables so
@@ -164,10 +170,10 @@ Two traps inside that SVG:
   dots included, and matches nothing.
 
 `type-cycle.js` reserves the field width by default, which is right for the home
-hero (centred, with a closing brace after the word). Where the caret is the last
-thing on the line, that reservation strands it to the right of the text — the
-Products headline opts out with `data-type-cycle-reserve="none"` and relies on a
-`<br />` to stop anything after it moving.
+hero (centred, with a closing brace after the word). Where the caret would be the
+last thing on a line, that reservation strands it to the right of the text —
+pass `data-type-cycle-reserve="none"` there. Only the home page uses the script
+now.
 
 Two more things on the page are worth knowing:
 
@@ -209,7 +215,7 @@ Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
 any CSS or JS:
 
 ```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=28"/?v=29"/g'
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=31"/?v=32"/g'
 ```
 
 This is not optional polish. `site-menu.js` and `header.js` carry the nav's data

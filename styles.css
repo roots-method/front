@@ -1773,11 +1773,57 @@ main {
 }
 
 /* Size and measure come from the shared .page-hero h1 rule, the same as every
-   other page. The <br /> in the markup ends the line after the cycling word, so
-   the column only has to hold "communication" at full size — it does, down to
-   the 860px breakpoint where this stacks anyway. */
+   other page. */
 .page-hero--products h1 {
-  max-width: 16ch;
+  max-width: 14ch;
+}
+
+/* ── The three Cs ─────────────────────────────────────────────────────────
+   All three stay readable at all times. The only motion is the accent walking
+   from one to the next, so nothing ever reflows and the line is never caught
+   mid-word — which is what made the typewriter tiring on words this long. */
+.threec {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5em;
+  margin-top: clamp(0.9rem, 2vw, 1.35rem);
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.threec__word {
+  color: var(--muted);
+  opacity: 0.65;
+  transition: color 0.4s ease, opacity 0.4s ease;
+  animation: threec-lit 9s ease-in-out infinite;
+}
+
+/* Words and separators are all spans, so nth-of-type counts both: the second
+   and third words are the 3rd and 5th spans. Negative delays run the loop
+   backwards to the right offset, lighting them in reading order. */
+.threec__word:nth-of-type(3) { animation-delay: -6s; }
+.threec__word:nth-of-type(5) { animation-delay: -3s; }
+
+.threec__sep {
+  color: var(--muted);
+  opacity: 0.35;
+}
+
+/* Lit for a third of the loop, resting for the rest. */
+@keyframes threec-lit {
+  0%, 24%   { color: var(--accent); opacity: 1; }
+  33%, 100% { color: var(--muted);  opacity: 0.65; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .threec__word {
+    animation: none;
+    color: var(--fg);
+    opacity: 1;
+  }
 }
 
 .page-hero--products .page-hero__sub {
