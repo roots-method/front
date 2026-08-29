@@ -1,5 +1,5 @@
 (function () {
-  var FORM_ENDPOINT = "https://formsubmit.co/ajax/info@arkaflow.co";
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/build@arkaflow.co";
 
   function setStatus(statusNode, message, type) {
     if (!statusNode) return;
@@ -68,7 +68,7 @@
         .catch(function () {
           setStatus(
             statusNode,
-            "Something went wrong. Please email us directly at info@arkaflow.co.",
+            "Something went wrong. Please email us directly at build@arkaflow.co.",
             "error"
           );
         })
