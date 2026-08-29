@@ -765,6 +765,9 @@ main {
   max-width: 18ch;
   font-family: var(--font-heading);
   font-size: clamp(1.9rem, 6vw, 4rem);
+  /* Barlow's default tracking is set for text sizes. At display sizes the gaps
+     open up and the line reads loose, so pull it in slightly. */
+  letter-spacing: -0.02em;
   font-weight: 400;
   line-height: 1.08;
 }
