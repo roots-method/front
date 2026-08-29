@@ -69,13 +69,13 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/arkaflow-newlogo.svg" />
   <meta name="color-scheme" content="light dark" />
-  <script src="theme-init.js?v=26"></script>
+  <script src="theme-init.js?v=28"></script>
   <!-- Barlow for headings, Nunito Sans for body. Preconnect first so the font
        files start downloading in parallel with the stylesheet. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300..700&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=26" />
+  <link rel="stylesheet" href="styles.css?v=28" />
 </head>
 <body>
   <div class="site-shell">
@@ -89,7 +89,17 @@
             Arka ONE
           </p>
           <h1>
-            Bring your <span class="accent--alt">communication, collaboration &amp; confluence</span> at one place.
+            Bring your
+            <!-- Types through communication / collaboration / confluence
+                 (type-cycle.js). aria-hidden so a screen reader is not fed the
+                 headline again on every keystroke; the .sr-only span carries
+                 the full sentence. -->
+            <span class="type-cycle" aria-hidden="true"><span
+              class="type-cycle__word"
+              data-type-cycle='["communication", "collaboration", "confluence"]'
+              data-type-cycle-reserve="none"></span><span
+              class="type-cycle__caret"></span></span><span class="sr-only">communication, collaboration and confluence</span><br />
+            at one place.
           </h1>
           <p class="page-hero__sub">
             Make the tools your team already knows work the way you need them to &mdash;
@@ -106,6 +116,8 @@
             </a>
           </div>
         </div>
+
+        <div class="products-art" data-svg="/assets/art/products-grid.svg" aria-hidden="true"></div>
       </section>
 
       <!-- Same hairline treatment as the home page pillars and .why-arka__list,
@@ -251,12 +263,14 @@
     <footer class="site-footer" data-component="site-footer"></footer>
   </div>
 
-  <script src="site-menu.js?v=26"></script>
-  <script src="theme.js?v=26"></script>
-  <script src="header.js?v=26"></script>
-  <script src="nav.js?v=26"></script>
-  <script src="megamenu.js?v=26"></script>
-  <script src="footer.js?v=26"></script>
-  <script src="process-split.js?v=26"></script>
+  <script src="site-menu.js?v=28"></script>
+  <script src="theme.js?v=28"></script>
+  <script src="header.js?v=28"></script>
+  <script src="nav.js?v=28"></script>
+  <script src="megamenu.js?v=28"></script>
+  <script src="footer.js?v=28"></script>
+  <script src="process-split.js?v=28"></script>
+  <script src="type-cycle.js?v=28"></script>
+  <script src="svg-inline.js?v=28"></script>
 </body>
 </html>

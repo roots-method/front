@@ -48,6 +48,19 @@
     "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
   --shell-gutter: clamp(1.25rem, 5vw, 3rem);
+  /* Violet family — used only by the Products hero composition, which is drawn
+     from a supplied reference rather than the cobalt/ochre system. Kept in
+     variables so the drawing can follow the theme; see assets/art/products-grid.svg. */
+  --viz-violet: #7c3aed;
+  --viz-violet-pale: #c4b5fd;
+  --viz-blue: #7cc0f8;
+  --viz-blue-strong: #3b82f6;
+  --viz-dot: #ffffff;
+  --viz-grid: rgba(18, 33, 58, 0.16);
+  --viz-line: rgba(18, 33, 58, 0.16);
+  --viz-halo: rgba(18, 33, 58, 0.045);
+  --viz-halo-strong: rgba(18, 33, 58, 0.09);
+  --viz-grey-dot: rgba(18, 33, 58, 0.42);
 }
 
 /* Dark theme. Cobalt and ochre are both too dark to read on ink, so each
@@ -87,6 +100,18 @@
   --story-grid-opacity: 0.55;
   --placeholder: rgba(238, 242, 248, 0.38);
   --label: rgba(238, 242, 248, 0.72);
+  /* Violet at #7c3aed disappears against ink, so the drawing shifts to its
+     tints on dark exactly the way cobalt and ochre do. */
+  --viz-violet: #a78bfa;
+  --viz-violet-pale: #7c5cd6;
+  --viz-blue: #6aa9f0;
+  --viz-blue-strong: #5b93ee;
+  --viz-dot: #0e1a2b;
+  --viz-grid: rgba(238, 242, 248, 0.14);
+  --viz-line: rgba(238, 242, 248, 0.14);
+  --viz-halo: rgba(238, 242, 248, 0.04);
+  --viz-halo-strong: rgba(238, 242, 248, 0.08);
+  --viz-grey-dot: rgba(238, 242, 248, 0.4);
 }
 
 *,
@@ -1736,19 +1761,136 @@ main {
   .pillar:last-child { border-bottom: none; }
 }
 
-/* Products hero. The default 18ch measure snaps this headline into five short
-   lines; the phrase needs room to breathe. Single column with no art, so the
-   copy is capped rather than run edge to edge.
+/* ── Products hero ────────────────────────────────────────────────────────
+   Two columns: copy left, the geometric composition right. The headline is
+   smaller than the site default because it now shares the row with the art and
+   because the cycling word needs to fit one line at most widths. */
+.page-hero--products {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
 
-   The emphasis uses .accent--alt, not .accent: .accent draws an absolutely
-   positioned underline anchored to the element's box, which on a phrase that
-   wraps lands under the last line fragment only. */
 .page-hero--products h1 {
-  max-width: 22ch;
+  max-width: 15ch;
+  font-size: clamp(1.75rem, 3.4vw, 2.85rem);
+  line-height: 1.12;
 }
 
 .page-hero--products .page-hero__sub {
-  max-width: 56ch;
+  max-width: 44ch;
+}
+
+/* ── Products composition ─────────────────────────────────────────────── */
+.products-art {
+  position: relative;
+  color: var(--viz-violet);
+}
+
+.products-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Reserves the box while the fetch is in flight; svg-inline.js adds
+   .is-loaded on injection. */
+.products-art:not(.is-loaded) {
+  aspect-ratio: 1000 / 820;
+}
+
+.pg-path {
+  stroke-opacity: 0.55;
+}
+
+.pg-signal {
+  stroke-dasharray: 0.1 0.9;
+  stroke-dashoffset: 1;
+  animation: pg-travel 7s linear infinite;
+}
+
+.pg-signal:nth-child(2) {
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.pg-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pg-ring-pulse 4.5s ease-in-out infinite;
+}
+
+/* The rings alternate with their centre dots, so they are children 1, 3, 5 —
+   nth-of-type would count every circle in the group, dots included. */
+.pg-ring:nth-child(3) { animation-delay: -1.6s; }
+.pg-ring:nth-child(5) { animation-delay: -3.1s; }
+
+.pg-stack {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pg-stack-breathe 5s ease-in-out infinite;
+}
+
+.pg-stack:nth-child(2) { animation-delay: -0.6s; }
+.pg-stack:nth-child(3) { animation-delay: -1.2s; }
+.pg-stack:nth-child(4) { animation-delay: -1.8s; }
+.pg-stack:nth-child(6) { animation-delay: -2.4s; }
+.pg-stack:nth-child(7) { animation-delay: -3s; }
+.pg-stack:nth-child(8) { animation-delay: -3.6s; }
+
+.pg-diamond {
+  animation: pg-float 8s ease-in-out infinite;
+}
+
+.pg-diamond:nth-child(2) { animation-delay: -2s; }
+.pg-diamond:nth-child(3) { animation-delay: -4s; }
+.pg-diamond:nth-child(4) { animation-delay: -6s; }
+
+@keyframes pg-travel {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pg-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%      { transform: scale(1.22); opacity: 0.45; }
+}
+
+@keyframes pg-stack-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(0.78); }
+}
+
+/* The diamonds already carry a rotate() in the markup, so this animates the
+   parent group's translate only — a rotate here would undo the 45deg. */
+@keyframes pg-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-signal,
+  .pg-ring,
+  .pg-stack,
+  .pg-diamond {
+    animation: none;
+  }
+
+  .pg-signal { stroke-opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .page-hero--products {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-hero--products h1 {
+    max-width: 18ch;
+  }
+
+  .products-art {
+    max-width: 30rem;
+  }
 }
 
 /* Software page hero — two columns, matching the About and Our Flow

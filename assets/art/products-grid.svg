@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 820" fill="none" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <pattern id="pg-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="2.4" cy="2.4" r="2.4" fill="var(--viz-grid)" />
+    </pattern>
+
+    <linearGradient id="pg-rule" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--viz-line)" stop-opacity="0" />
+      <stop offset="0.18" stop-color="var(--viz-line)" stop-opacity="1" />
+      <stop offset="0.82" stop-color="var(--viz-line)" stop-opacity="1" />
+      <stop offset="1" stop-color="var(--viz-line)" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="pg-rule-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--viz-violet)" stop-opacity="0" />
+      <stop offset="0.5" stop-color="var(--viz-violet)" stop-opacity="0.45" />
+      <stop offset="1" stop-color="var(--viz-violet)" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="pg-capsule" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--viz-violet)" stop-opacity="1" />
+      <stop offset="1" stop-color="var(--viz-violet)" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="pg-trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--viz-blue)" stop-opacity="0.32" />
+      <stop offset="1" stop-color="var(--viz-blue)" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dot grid -->
+  <rect width="1000" height="820" fill="url(#pg-grid)" />
+
+  <!-- Thin vertical rules, faded at both ends -->
+  <g stroke="url(#pg-rule)" stroke-width="1.4">
+    <line x1="85" y1="30" x2="85" y2="800" />
+    <line x1="318" y1="30" x2="318" y2="800" />
+    <line x1="434" y1="30" x2="434" y2="800" />
+    <line x1="608" y1="30" x2="608" y2="800" />
+    <line x1="840" y1="30" x2="840" y2="800" />
+  </g>
+
+  <!-- Faint horizontal rules with a small square marker on each -->
+  <g>
+    <line x1="0" y1="200" x2="200" y2="200" stroke="url(#pg-rule-h)" stroke-width="1.4" />
+    <rect x="80" y="195" width="10" height="10" fill="var(--viz-violet)" />
+    <line x1="500" y1="480" x2="720" y2="480" stroke="url(#pg-rule-h)" stroke-width="1.4" />
+    <rect x="603" y="475" width="10" height="10" fill="var(--viz-violet)" />
+  </g>
+
+  <!-- Connecting paths. pathLength normalises them so one dash length reads the
+       same on the short curve and the long one. -->
+  <g stroke="var(--viz-line)" stroke-width="1.6" stroke-linecap="round">
+    <path class="pg-path" pathLength="1"
+          d="M85 470 C85 640 130 720 205 720 C280 720 318 640 318 470" />
+    <path class="pg-path" pathLength="1"
+          d="M608 250 C608 400 745 400 800 480 C855 560 935 560 985 505" />
+  </g>
+  <g stroke="var(--viz-violet)" stroke-width="1.9" stroke-linecap="round">
+    <path class="pg-signal" pathLength="1"
+          d="M85 470 C85 640 130 720 205 720 C280 720 318 640 318 470" />
+    <path class="pg-signal" pathLength="1"
+          d="M608 250 C608 400 745 400 800 480 C855 560 935 560 985 505" />
+  </g>
+
+  <!-- Soft halo behind the diamond run -->
+  <circle cx="608" cy="375" r="118" fill="var(--viz-halo)" />
+  <circle cx="608" cy="375" r="54" fill="var(--viz-halo)" />
+
+  <!-- The diamond run: large and pale on the left, tightening to the right -->
+  <!-- Two nested groups on purpose: the inner one carries the placement and the
+       45deg rotation as an attribute, the outer one is free for CSS to animate.
+       Animating the same element would replace the attribute and collapse every
+       diamond onto the origin, unrotated. -->
+  <g class="pg-diamonds">
+    <g class="pg-diamond">
+      <g transform="translate(430 375) rotate(45)">
+        <rect x="-44" y="-44" width="88" height="88" fill="var(--viz-violet-pale)" />
+      </g>
+    </g>
+    <g class="pg-diamond">
+      <g transform="translate(524 375) rotate(45)">
+        <rect x="-33" y="-33" width="66" height="66" fill="var(--viz-violet)" />
+      </g>
+    </g>
+    <g class="pg-diamond">
+      <g transform="translate(578 375) rotate(45)">
+        <rect x="-17" y="-17" width="34" height="34" fill="var(--viz-violet)" />
+      </g>
+    </g>
+    <g class="pg-diamond">
+      <g transform="translate(618 375) rotate(45)">
+        <rect x="-19" y="-19" width="38" height="38" fill="var(--viz-violet)" />
+      </g>
+    </g>
+  </g>
+  <!-- Centre dots sit outside the rotated groups so they stay circular -->
+  <g fill="var(--viz-dot)">
+    <circle cx="430" cy="375" r="5" />
+    <circle cx="578" cy="375" r="4" />
+    <circle cx="618" cy="375" r="4.5" />
+  </g>
+
+  <!-- Diamond, trail, and a pair of overlapping circles -->
+  <g class="pg-run">
+    <rect x="95" y="298" width="95" height="26" fill="url(#pg-trail)" />
+    <g transform="translate(88 311) rotate(45)">
+      <rect x="-16" y="-16" width="32" height="32" fill="var(--viz-blue-strong)" />
+    </g>
+    <circle cx="88" cy="311" r="4" fill="var(--viz-dot)" />
+    <circle cx="188" cy="311" r="19" fill="var(--viz-blue)" fill-opacity="0.85" />
+    <circle cx="208" cy="311" r="21" fill="var(--viz-blue)" fill-opacity="0.75" />
+  </g>
+  <g class="pg-run">
+    <rect x="441" y="587" width="95" height="26" fill="url(#pg-trail)" />
+    <g transform="translate(434 600) rotate(45)">
+      <rect x="-16" y="-16" width="32" height="32" fill="var(--viz-blue-strong)" />
+    </g>
+    <circle cx="434" cy="600" r="4" fill="var(--viz-dot)" />
+    <circle cx="534" cy="600" r="19" fill="var(--viz-blue)" fill-opacity="0.85" />
+    <circle cx="554" cy="600" r="21" fill="var(--viz-blue)" fill-opacity="0.75" />
+  </g>
+
+  <!-- Dot columns, fading downward -->
+  <g fill="var(--viz-violet)">
+    <circle class="pg-stack" cx="608" cy="120" r="9" fill-opacity="1" />
+    <circle class="pg-stack" cx="608" cy="150" r="9" fill-opacity="0.72" />
+    <circle class="pg-stack" cx="608" cy="180" r="9" fill-opacity="0.48" />
+    <circle class="pg-stack" cx="608" cy="210" r="9" fill-opacity="0.28" />
+
+    <circle class="pg-stack" cx="85" cy="378" r="9" fill-opacity="1" />
+    <circle class="pg-stack" cx="85" cy="408" r="9" fill-opacity="0.72" />
+    <circle class="pg-stack" cx="85" cy="438" r="9" fill-opacity="0.48" />
+    <circle class="pg-stack" cx="85" cy="468" r="9" fill-opacity="0.28" />
+  </g>
+
+  <!-- Grey nodes with a solid centre -->
+  <g>
+    <circle cx="318" cy="480" r="24" fill="var(--viz-halo-strong)" />
+    <circle cx="318" cy="480" r="8" fill="var(--viz-grey-dot)" />
+    <circle cx="434" cy="712" r="24" fill="var(--viz-halo-strong)" />
+    <circle cx="434" cy="712" r="8" fill="var(--viz-grey-dot)" />
+  </g>
+
+  <!-- Ring nodes -->
+  <g>
+    <circle class="pg-ring" cx="205" cy="655" r="17" stroke="var(--viz-violet)" stroke-width="1.6" />
+    <circle cx="205" cy="655" r="7" fill="var(--viz-violet)" />
+    <circle class="pg-ring" cx="434" cy="480" r="17" stroke="var(--viz-violet)" stroke-width="1.6" />
+    <circle cx="434" cy="480" r="7" fill="var(--viz-violet)" />
+    <circle class="pg-ring" cx="608" cy="712" r="17" stroke="var(--viz-violet)" stroke-width="1.6" />
+    <circle cx="608" cy="712" r="7" fill="var(--viz-violet)" />
+  </g>
+
+  <!-- A dot riding the right-hand curve -->
+  <circle cx="800" cy="480" r="9" fill="var(--viz-violet)" />
+
+  <!-- Gradient capsules -->
+  <rect x="835" y="248" width="11" height="130" rx="5.5" fill="url(#pg-capsule)" />
+  <rect x="312" y="640" width="11" height="150" rx="5.5" fill="url(#pg-capsule)" />
+</svg>
