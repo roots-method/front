@@ -1695,6 +1695,30 @@ main {
   transform: translateX(3px);
 }
 
+/* Products page: two of the three blocks are links, the third is a plain
+   block with nothing to click yet. The badge says so rather than leaving a
+   dead-looking column. */
+.pillar__badge {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.pillar--soon h3,
+.pillar--soon p {
+  opacity: 0.82;
+}
+
 @media (max-width: 700px) {
   .solution-pillars__grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1707,6 +1731,21 @@ main {
   }
 
   .pillar:last-child { border-bottom: none; }
+}
+
+/* Products hero. The default 18ch measure snaps this headline into five short
+   lines; the phrase needs room to breathe. Single column with no art, so the
+   copy is capped rather than run edge to edge.
+
+   The emphasis uses .accent--alt, not .accent: .accent draws an absolutely
+   positioned underline anchored to the element's box, which on a phrase that
+   wraps lands under the last line fragment only. */
+.page-hero--products h1 {
+  max-width: 22ch;
+}
+
+.page-hero--products .page-hero__sub {
+  max-width: 56ch;
 }
 
 /* Software page hero — two columns, matching the About and Our Flow
@@ -5373,7 +5412,11 @@ main {
   background: var(--bg);
 }
 
-/* Responsive: collapse on smaller screens */
+/* Responsive: collapse on smaller screens.
+   There is no sticky column to scroll against once this is one column, and the
+   panel would sit above the steps swapping to match a step already scrolled
+   past. So every panel is shown, in order, after the steps — each one is
+   already labelled by its .process-visual__tag. */
 @media (max-width: 860px) {
   .process-split {
     grid-template-columns: 1fr;
@@ -5382,8 +5425,17 @@ main {
 
   .process-split__sticky {
     position: static;
-    order: -1;
-    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .process-visual__panel,
+  .process-visual__panel.is-active {
+    display: block;
+    animation: none;
+  }
+
+  .process-visual__panel + .process-visual__panel {
+    border-top: 1px solid var(--line);
   }
 }
 

@@ -19,8 +19,8 @@ window.SITE_MENU_ITEMS = [
 // Written for business owners, not engineers — plain language, one promise each.
 //
 // `href` is where the row itself goes; `cta` is the link at the foot of the panel.
-// Software has its own page; Products and Support still point at the contact
-// page until dedicated pages exist.
+// Software and Products have their own pages; Support still points at the
+// contact page until it gets one.
 window.SITE_SOLUTIONS = {
   id: "solutions",
   label: "Solution",
@@ -43,7 +43,7 @@ window.SITE_SOLUTIONS = {
     {
       id: "products",
       label: "Products",
-      href: "contact.html",
+      href: "products.html",
       icon: "ibm-granite",
       summary: "The apps your team already knows",
       title: "Business-first apps, set up and ready to run",
@@ -51,7 +51,7 @@ window.SITE_SOLUTIONS = {
         "Deploy the everyday tools your team already trusts — Google Workspace, Zoho, CRM, sales platforms and many more — configured, connected and working together from day one.",
       cta: {
         label: "See what we can set up",
-        href: "contact.html",
+        href: "products.html",
       },
     },
     {
