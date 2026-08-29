@@ -80,15 +80,6 @@
           '" data-panel="' +
           esc(solution.id) +
           '">' +
-          // Repeats the row label. Hidden on desktop (the row beside it already
-          // says this); on mobile the row list collapses away and this is the
-          // only thing naming the solution.
-          '<span class="megamenu__panel-kicker">' +
-          '<span class="megamenu__item-icon" aria-hidden="true" style="--menu-icon: url(\'/assets/icons-ai-ibm/' +
-          esc(solution.icon) +
-          '.svg\')"></span>' +
-          esc(solution.label) +
-          "</span>" +
           '<h2 class="megamenu__panel-title">' + esc(solution.title) + "</h2>" +
           '<p class="megamenu__panel-copy">' + esc(solution.description) + "</p>" +
           '<a class="megamenu__cta" href="' +

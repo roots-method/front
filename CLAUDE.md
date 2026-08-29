@@ -59,8 +59,13 @@ per solution with `label`, `href`, `icon` (a filename in
 `header.js` renders it as a two-column panel — solution rows on the left, one
 description panel per solution stacked in the same grid cell on the right.
 `megamenu.js` swaps which panel is visible on hover/focus and owns the open
-state. Below 860px the row list is hidden by CSS and the panels stack as an
-accordion inside the burger menu, each labelled by `.megamenu__panel-kicker`.
+state.
+
+Below 860px the panels are hidden and **the rows are the navigation** — each is
+an `<a>` to its solution's page. Do not flip this around. It was the other way
+once, and it broke navigation outright: with the rows hidden, the only tappable
+thing in each panel was its CTA, and Software's CTA is the external booking
+calendar, so `software.html` was unreachable from a phone.
 
 `footer.js` has no dropdown, so it flattens the entry into its child links. They
 are marked `noActive` because several currently share one destination and would

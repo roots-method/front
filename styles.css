@@ -134,8 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Kickers and menu labels are subheadings in everything but tag name. */
 .eyebrow,
-.megamenu__item-label,
-.megamenu__panel-kicker {
+.megamenu__item-label {
   font-family: var(--font-heading);
 }
 
@@ -480,23 +479,6 @@ textarea {
 .megamenu__panel.is-selected {
   opacity: 1;
   visibility: visible;
-}
-
-/* Only earns its place on mobile, where the row list is hidden. */
-.megamenu__panel-kicker {
-  display: none;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--eyebrow);
-}
-
-.megamenu__panel-kicker .megamenu__item-icon {
-  width: 1.1rem;
-  height: 1.1rem;
 }
 
 .megamenu__panel-title {
@@ -3962,10 +3944,14 @@ h3[id] {
     border-radius: 0.55rem;
   }
 
-  /* Inside the burger panel the mega-menu becomes a plain accordion: the row
-     list collapses away and the three description cards stack, each naming its
-     own solution via .megamenu__panel-kicker. No hover on touch, so nothing is
-     hidden behind one. */
+  /* Inside the burger panel the mega-menu is a plain accordion of links. The
+     rows ARE the navigation — each one goes to its solution's page — so they
+     stay and the description panels go.
+
+     They used to be the other way round, which broke navigation outright: with
+     the rows hidden, the only tappable thing in each panel was its CTA, and
+     Software's CTA is the booking calendar. There was no way to reach
+     software.html from a phone at all. */
   .nav__group {
     width: 100%;
   }
@@ -4004,30 +3990,25 @@ h3[id] {
   }
 
   .megamenu__list {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  /* The long descriptions belong on the pages they describe, not in a burger
+     menu. The row's own summary line carries enough here. */
+  .megamenu__panels {
     display: none;
   }
 
-  .megamenu__panels {
-    display: block;
-    background: none;
+  .megamenu__item {
+    padding: 0.75rem 0.75rem;
+    border-radius: 0.55rem;
   }
 
-  .megamenu__panel {
-    grid-area: auto;
+  /* The chevron marks the selected row on desktop; on touch there is no
+     selection, so show it on every row as a "goes somewhere" affordance. */
+  .megamenu__item .nav__chevron {
     opacity: 1;
-    visibility: visible;
-    padding: 0.9rem 1rem 1rem;
-    border: 1px solid var(--line);
-    border-radius: 0.85rem;
-    background: var(--bg);
-  }
-
-  .megamenu__panel + .megamenu__panel {
-    margin-top: 0.5rem;
-  }
-
-  .megamenu__panel-kicker {
-    display: inline-flex;
   }
 
 
