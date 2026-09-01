@@ -35,7 +35,6 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 <script src="site-menu.js"></script>   <!-- must be first: sets window.SITE_MENU_ITEMS -->
 <script src="header.js"></script>      <!-- reads SITE_MENU_ITEMS, injects nav -->
 <script src="nav.js"></script>         <!-- binds mobile toggle after header injects DOM -->
-<script src="megamenu.js"></script>    <!-- binds the Solution dropdown, also post-inject -->
 <script src="footer.js"></script>      <!-- reads SITE_MENU_ITEMS, injects footer -->
 <!-- page-specific scripts last -->
 ```
@@ -47,52 +46,24 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 `window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
 
-### Solution mega-menu
+### Menu data
 
-`SITE_MENU_ITEMS` entries normally carry an `href`. The Solution entry instead
-carries `menu: "solutions"` and no href — it is a dropdown trigger, not a link.
-Its contents live in `window.SITE_SOLUTIONS` (also in `site-menu.js`): one entry
-per solution with `label`, `href`, `icon` (a filename in
-`assets/icons-ai-ibm/`), a one-line `summary` for the row, plus the `title`,
-`description` and `cta` shown in the panel.
+`window.SITE_MENU_ITEMS` in `site-menu.js` is the whole nav. Both `header.js`
+and `footer.js` render straight from it — there is no dropdown, and the three
+solutions sit directly in the bar.
 
-`header.js` renders it as a two-column panel — solution rows on the left, one
-description panel per solution stacked in the same grid cell on the right.
-`megamenu.js` swaps which panel is visible on hover/focus and owns the open
-state.
+An entry may carry `noActive: true`. Support and Contact both point at
+`contact.html`, and without the flag both would light up as the current page at
+once; the flag keeps that to one. Anything else that ends up sharing a
+destination needs the same treatment.
 
-Below 860px the panels are hidden and **the rows are the navigation** — each is
-an `<a>` to its solution's page. Do not flip this around. It was the other way
-once, and it broke navigation outright: with the rows hidden, the only tappable
-thing in each panel was its CTA, and Software's CTA is the external booking
-calendar, so `software.html` was unreachable from a phone.
+`header.js` drops the `index.html` entry — the brand mark is the link home — so
+the bar reads Software, Products, Support, About, Contact. The footer keeps
+Home and lists all six.
 
-`footer.js` has no dropdown, so it flattens the entry into its child links. They
-are marked `noActive` because several currently share one destination and would
-otherwise all light up as the active page.
-
-Software points at `software.html` and Products at `products.html`. Support
-still points at `contact.html` until it gets a page of its own — change `href`
-in `SITE_SOLUTIONS` when it does.
-
-Both `header.js` and `footer.js` refuse the active state to a solution whose
-`href` is also a top-level menu entry's. Without that, every page a solution
-merely borrows (the contact page, today) lights up two nav items at once.
-
-**Case Work, Our Flow and Blog are hidden from navigation.** `results.html`,
-`case-study.html`, `our-flow.html`, `blog.html` and every post are still live,
-still deployed and still in `sitemap.xml` — they are simply absent from
-`SITE_MENU_ITEMS`, so neither the header nor the footer links them. Restore an
-entry there to bring one back.
-
-Both `SITE_ACTIVE_PAGE` aliases (`case-study.html` → `results.html`, `/blog/` →
-`blog.html`) are deliberately kept so each section resolves correctly the moment
-it returns.
-
-In-page CTAs still point at these pages on purpose — hidden from nav is not the
-same as retired. `index.html`'s hero button goes to Our Flow, and several CTA
-panels link to the blog. Remove those separately if a section is being retired
-rather than de-emphasised.
+There was a Solution mega-menu here until the nav was flattened; `megamenu.js`,
+`window.SITE_SOLUTIONS` and the `.megamenu*` layer went with it. The home page's
+three pillars are now the only place that copy lives.
 
 ### Link paths in injected components
 
@@ -123,10 +94,11 @@ are deliberate and easy to undo by accident:
 - **Backspacing stops at the prefix the next word shares.** `defacto` rewinds to
   `defa` and types forward into `default`, so the braces never sit empty.
 - **The animated span is `aria-hidden`**, with a `.sr-only` sibling carrying the
-  word. Without it a screen reader re-reads the headline on every keystroke. The pillars (`.solution-pillars` / `.pillar-card`)
-mirror `SITE_SOLUTIONS` one-for-one but are **static markup**, not rendered from
-it — crawlers need to read them. If you change the mega-menu copy, change these
-too; nothing keeps them in sync.
+  word. Without it a screen reader re-reads the headline on every keystroke.
+
+The pillars (`.solution-pillars` / `.pillar`) are **static markup**, and since the mega-menu was removed they are the only
+place that copy lives. The nav labels in `SITE_MENU_ITEMS` need to keep agreeing
+with them; nothing enforces it.
 
 `software.html` holds what used to be the rest of the home page — The Problems,
 How We Work, the four-stage process, Why Arka, Built on, CTA — under its own

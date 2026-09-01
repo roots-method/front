@@ -132,9 +132,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* Kickers and menu labels are subheadings in everything but tag name. */
-.eyebrow,
-.megamenu__item-label {
+/* Kickers are subheadings in everything but tag name. */
+.eyebrow {
   font-family: var(--font-heading);
 }
 
@@ -186,9 +185,7 @@ textarea {
 }
 
 /* Three tracks so the links sit on the true centre of the bar rather than
-   wherever the brand's width leaves them. Grid, not absolute positioning: an
-   absolutely positioned .nav__links would become the containing block for
-   .megamenu, whose width and offset are measured against .nav. */
+   wherever the brand's width leaves them. */
 .nav {
   position: sticky;
   top: 0;
@@ -323,210 +320,7 @@ textarea {
   background-color: var(--fg);
   border-color: var(--fg);
   color: var(--surface);
-}
-
-/* ── Solution mega-menu ─────────────────────────────────────────────────────
-   Three solutions on the left, one description panel on the right that swaps
-   as you hover a row. The panel is absolute against .nav (which is sticky, so
-   it is the containing block) rather than against the trigger — that keeps it
-   aligned to the page gutter and stops it running off the right edge on
-   narrower laptops. megamenu.js owns the open/selected state. */
-
-.nav__trigger {
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  cursor: pointer;
-}
-
-.nav__chevron {
-  display: inline-block;
-  width: 0.66rem;
-  height: 0.66rem;
-  flex: none;
-  background-color: currentColor;
-  -webkit-mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
-  mask: url("assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.nav__trigger .nav__chevron {
-  transform: rotate(90deg);
-  opacity: 0.7;
-}
-
-.nav__group.is-open .nav__trigger {
-  color: var(--fg);
-}
-
-.nav__group.is-open .nav__trigger .nav__chevron {
-  transform: rotate(-90deg);
-  opacity: 1;
-}
-
-.megamenu {
-  position: absolute;
-  top: 100%;
-  left: clamp(1.25rem, 5vw, 3rem);
-  width: min(760px, calc(100% - 2 * clamp(1.25rem, 5vw, 3rem)));
-  margin-top: 0.5rem;
-  padding: 0.6rem;
-  border: 1px solid var(--line);
-  border-radius: 1.25rem;
-  background: var(--bg);
-  box-shadow: var(--shadow-strong);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-}
-
-.nav__group.is-open .megamenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.megamenu__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-  gap: 0.6rem;
-}
-
-.megamenu__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.megamenu__item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.7rem 0.75rem;
-  border-radius: 0.85rem;
-  text-decoration: none;
-  color: var(--fg);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.megamenu__item.is-selected,
-.megamenu__item:hover,
-.megamenu__item:focus-visible {
-  background: var(--surface);
-}
-
-.megamenu__item-icon {
-  width: 1.35rem;
-  height: 1.35rem;
-  flex: none;
-  background-color: var(--accent);
-  -webkit-mask: var(--menu-icon) center / contain no-repeat;
-  mask: var(--menu-icon) center / contain no-repeat;
-}
-
-.megamenu__item-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  min-width: 0;
-}
-
-.megamenu__item-label {
-  font-size: 0.98rem;
-  font-weight: 500;
-  color: var(--fg);
-}
-
-.megamenu__item-summary {
-  font-size: 0.78rem;
-  line-height: 1.35;
-  color: var(--nav-link);
-}
-
-.megamenu__item .nav__chevron {
-  margin-left: auto;
-  opacity: 0;
-  color: var(--accent);
-}
-
-.megamenu__item.is-selected .nav__chevron {
-  opacity: 1;
-  transform: translateX(2px);
-}
-
-.megamenu__panels {
-  position: relative;
-  display: grid;
-  border-radius: 0.9rem;
-  background: var(--surface);
-}
-
-.megamenu__panel {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.7rem;
-  padding: 1.15rem 1.25rem 1.25rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.18s ease, visibility 0.18s;
-}
-
-.megamenu__panel.is-selected {
-  opacity: 1;
-  visibility: visible;
-}
-
-.megamenu__panel-title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: 1.06rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--fg);
-}
-
-.megamenu__panel-copy {
-  margin: 0;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--label);
-}
-
-/* A plain link, not a button — the panel already sits under the nav bar's
-   Get Started pill, and two filled buttons that close together read as a
-   choice the reader has to make. */
-.megamenu__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: auto;
-  font-size: 0.86rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--accent);
-  transition: color 0.2s ease;
-}
-
-.megamenu__cta:hover,
-.megamenu__cta:focus-visible {
-  color: var(--accent-strong);
-}
-
-.megamenu__cta:hover .nav__arrow {
-  transform: translate(2px, -2px);
-}
-
-.megamenu__cta:hover .nav__arrow--right {
-  transform: translateX(3px);
-}
-
-/* Carbon arrow via mask so it inherits currentColor — white on .btn--primary,
+}/* Carbon arrow via mask so it inherits currentColor — white on .btn--primary,
    dark on .btn--ghost, amber on ghost hover. An <img> could not follow any of
    those. font-size:0 hides the ↗ fallback glyph the markup still carries. */
 .nav__arrow {
@@ -597,7 +391,6 @@ main {
   max-width: 480px;
   height: auto;
 }
-
 
 /* CTA process steps */
 .cta-panel__steps {
@@ -744,7 +537,6 @@ main {
     background-position: -30% 0;
   }
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .brand__rest,
@@ -2358,7 +2150,6 @@ h3[id] {
   padding-bottom: clamp(1.25rem, 3vw, 2rem);
 }
 
-
 .page-hero.page-hero--cases h1 {
   max-width: 20ch;
   font-size: clamp(2.4rem, 5vw, 4rem);
@@ -3946,77 +3737,7 @@ h3[id] {
     width: 100%;
     padding: 0.65rem 0.75rem;
     border-radius: 0.55rem;
-  }
-
-  /* Inside the burger panel the mega-menu is a plain accordion of links. The
-     rows ARE the navigation — each one goes to its solution's page — so they
-     stay and the description panels go.
-
-     They used to be the other way round, which broke navigation outright: with
-     the rows hidden, the only tappable thing in each panel was its CTA, and
-     Software's CTA is the booking calendar. There was no way to reach
-     software.html from a phone at all. */
-  .nav__group {
-    width: 100%;
-  }
-
-  .nav__trigger {
-    justify-content: space-between;
-  }
-
-  .nav__trigger .nav__chevron {
-    transform: rotate(90deg);
-  }
-
-  .megamenu {
-    position: static;
-    width: 100%;
-    margin-top: 0;
-    padding: 0 0 0.35rem;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-    display: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
-  }
-
-  .nav__group.is-open .megamenu {
-    display: block;
-  }
-
-  .megamenu__inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.5rem;
-  }
-
-  .megamenu__list {
-    display: flex;
-    gap: 0.2rem;
-  }
-
-  /* The long descriptions belong on the pages they describe, not in a burger
-     menu. The row's own summary line carries enough here. */
-  .megamenu__panels {
-    display: none;
-  }
-
-  .megamenu__item {
-    padding: 0.75rem 0.75rem;
-    border-radius: 0.55rem;
-  }
-
-  /* The chevron marks the selected row on desktop; on touch there is no
-     selection, so show it on every row as a "goes somewhere" affordance. */
-  .megamenu__item .nav__chevron {
-    opacity: 1;
-  }
-
-
-  .nav.is-open .nav__toggle-bar:nth-child(1) {
+  }  .nav.is-open .nav__toggle-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
 
@@ -5018,7 +4739,6 @@ h3[id] {
   .team-card:first-child { padding-left: 0; }
   .team-card:last-child  { border-bottom: none; padding-right: 0; }
 }
-
 
 /* ═══════════════════════════════════════════════════
    EGO-INSPIRED HOMEPAGE FEATURES
