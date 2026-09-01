@@ -46,6 +46,31 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 `window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
 
+### Logo
+
+`assets/arka-wordmark.svg` is the brand mark: lowercase "arka" cut from eight
+horizontal bands, on the same construction as the IBM logo. `header.js` renders
+it alone — the wordmark carries the name, so there is no separate text beside
+it, and `alt="Arka"` is what a screen reader gets.
+
+Two things in that file are deliberate:
+
+- **The `a` is double-storey.** A single-storey `a` is a closed bowl with a
+  straight right side, and with no curves available it is indistinguishable from
+  an `o` — the first version of this read "orko".
+- **`k` spans all eight bands, `a` and `r` only the bottom five.** That is the
+  ascender against the x-height, and it is what gives the word a silhouette
+  instead of a solid rectangle.
+
+`.brand__logo` is 36px tall, not the ~28px the old icon used. Roughly a third of
+a banded mark's area is gaps, so it reads lighter than solid type at the same
+height and needs more of it to hold against the nav links. Below about 26px the
+gaps close up and it turns into a block.
+
+The old `arkaflow-newlogo.svg` (the ochre asterisk) is still the favicon, the
+footer mark and the CTA watermark. The wordmark is 2:1 so it cannot be a
+favicon; a square lockup is still needed there.
+
 ### Menu data
 
 `window.SITE_MENU_ITEMS` in `site-menu.js` is the whole nav. Both `header.js`
