@@ -26,7 +26,7 @@
     '<div class="site-footer__brand">' +
       '<a class="site-footer__brand-link" href="/index.html" aria-label="Arka home">' +
         '<span class="site-footer__mark">' +
-          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg?v=48" alt="Arka" width="36" height="36" />' +
+          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg?v=49" alt="Arka" width="36" height="36" />' +
           'Arka' +
         '</span>' +
       "</a>" +

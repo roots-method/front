@@ -48,10 +48,14 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk, recoloured from ochre
-`#c97a0a` to cobalt `#0047ab` so it matches the palette. It is used by the
-header lockup (`.brand__mark` beside `.brand__name`), the footer, the favicon
-and the CTA watermark, so recolouring the file moves all four at once.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#161616`.
+It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
+footer, the favicon and the CTA watermark, so recolouring the file moves all
+four at once.
+
+`#161616` is deliberately outside the neutral ramp — the ramp's darkest step is
+`--n-900` `#1b202a`, which carries a slight blue cast. The logo is the one place
+a flat neutral is wanted.
 
 **That reference carries a `?v=` like the scripts do.** Image assets had no
 cache key, so recolouring the file left returning visitors on the old ochre
