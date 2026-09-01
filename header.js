@@ -29,10 +29,11 @@
     .join("");
 
   var headerMarkup =
-    // The striped wordmark carries the name itself, so there is no separate
-    // text to set beside it. alt covers what the image says.
     '<a class="brand" href="/index.html" aria-label="Arka home">' +
-    '<img class="brand__logo" src="/assets/arka-wordmark.svg" alt="Arka" width="255" height="130" />' +
+    '<img class="brand__mark" src="/assets/arkaflow-newlogo.svg?v=48" alt="" width="32" height="32" aria-hidden="true" />' +
+    '<div class="brand__wordmark">' +
+    '<span class="brand__name">Arka</span>' +
+    '</div>' +
     '</a>' +
     '<nav class="nav__links" id="primary-nav" aria-label="Primary navigation">' +
     navMarkup +

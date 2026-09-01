@@ -48,28 +48,28 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arka-wordmark.svg` is the brand mark: lowercase "arka" cut from eight
-horizontal bands, on the same construction as the IBM logo. `header.js` renders
-it alone — the wordmark carries the name, so there is no separate text beside
-it, and `alt="Arka"` is what a screen reader gets.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk, recoloured from ochre
+`#c97a0a` to cobalt `#0047ab` so it matches the palette. It is used by the
+header lockup (`.brand__mark` beside `.brand__name`), the footer, the favicon
+and the CTA watermark, so recolouring the file moves all four at once.
 
-Two things in that file are deliberate:
+**That reference carries a `?v=` like the scripts do.** Image assets had no
+cache key, so recolouring the file left returning visitors on the old ochre
+mark. Bump it with everything else.
 
-- **The `a` is double-storey.** A single-storey `a` is a closed bowl with a
-  straight right side, and with no curves available it is indistinguishable from
-  an `o` — the first version of this read "orko".
-- **`k` spans all eight bands, `a` and `r` only the bottom five.** That is the
-  ascender against the x-height, and it is what gives the word a silhouette
-  instead of a solid rectangle.
+**Do not put a double hyphen in that file's comment.** `--` is illegal inside an
+XML comment; it makes the SVG malformed and the browser renders a broken-image
+icon rather than failing loudly. Writing `(--accent)` in a note there is exactly
+how that happened once.
 
-`.brand__logo` is 36px tall, not the ~28px the old icon used. Roughly a third of
-a banded mark's area is gaps, so it reads lighter than solid type at the same
-height and needs more of it to hold against the nav links. Below about 26px the
-gaps close up and it turns into a block.
-
-The old `arkaflow-newlogo.svg` (the ochre asterisk) is still the favicon, the
-footer mark and the CTA watermark. The wordmark is 2:1 so it cannot be a
-favicon; a square lockup is still needed there.
+`assets/arka-wordmark.svg` is the striped lowercase wordmark — lowercase "arka"
+cut from eight horizontal bands, on the IBM construction. It is **not currently
+referenced anywhere**; it was briefly the header mark and was reverted. Kept
+because it works as a secondary device. Two things in it are deliberate: the `a`
+is double-storey (a single-storey one is indistinguishable from an `o` with the
+curves gone — the first version read "orko"), and `k` spans all eight bands
+while `a` and `r` take the bottom five. It stops being legible below about 24px,
+where the gaps fall under one physical pixel.
 
 ### Menu data
 

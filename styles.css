@@ -225,19 +225,29 @@ textarea {
   flex: none;
 }
 
-/* The wordmark is banded, so roughly a third of its area is gaps — it reads
-   lighter than solid type at the same height and needs a little more of it to
-   hold its own against the nav links. */
-.brand__logo {
-  display: block;
-  height: 36px;
-  width: auto;
+.brand__mark {
+  width: 28px;
+  height: 28px;
   flex: none;
-  transition: opacity 0.2s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.brand:hover .brand__logo {
-  opacity: 0.78;
+.brand:hover .brand__mark {
+  transform: rotate(360deg);
+}
+
+.brand__wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1;
+}
+
+.brand__name {
+  font-family: var(--font-heading);
+  font-size: 1.5em;
+  font-weight: 400;
+  color: var(--fg);
 }
 
 .nav__links {
@@ -528,7 +538,8 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand__logo,
+  .brand__mark,
+  .brand__name,
   .nav {
     transition: none;
   }
