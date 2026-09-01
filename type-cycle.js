@@ -27,15 +27,19 @@
   }
 
   function start(node, words) {
-    // The headline is centre-aligned, so a line whose width changes would slide
-    // sideways on every keystroke. Hold the field at the width of the widest
-    // word to keep the line fixed.
-    //
+    // Whether the field holds a fixed width. Worth it when something sits after
+    // the word on the same line (the home hero's closing brace) or when the line
+    // is centred and would otherwise slide about. Not worth it when the caret is
+    // the last thing on the line — the reservation would strand it to the right
+    // of the text instead of letting it follow along.
+    var reserve = node.getAttribute("data-type-cycle-reserve") !== "none";
+
     // Measured, not computed in ch: a ch is the width of "0", and in most
     // proportional faces that is wider than lowercase letters, which would
-    // leave a permanent gap before the closing brace. The widest word by
-    // character count is not always the widest word on screen either.
+    // leave a permanent gap. The widest word by character count is not always
+    // the widest word on screen either.
     function reserveWidth(current) {
+      if (!reserve) return;
       node.style.minWidth = "";
       var widest = words.reduce(function (max, word) {
         node.textContent = word;

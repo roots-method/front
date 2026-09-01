@@ -7,31 +7,7 @@
     ? window.SITE_ACTIVE_PAGE()
     : window.location.pathname.split("/").pop() || "index.html";
 
-  // Dropdown triggers carry no href of their own — the footer flattens them
-  // into their child links so every destination stays one click away.
-  const flatMenuItems = menuItems.reduce(function (list, item) {
-    if (item.menu === "solutions") {
-      const data = window.SITE_SOLUTIONS;
-      const children = (data && data.items) || [];
-      return list.concat(
-        children.map(function (solution) {
-          // Solutions that still share a destination must not all light up as
-          // the active page; one with a page of its own can claim it.
-          var shared =
-            children.filter(function (other) {
-              return other.href === solution.href;
-            }).length > 1 ||
-            menuItems.some(function (entry) {
-              return entry.href === solution.href;
-            });
-          return { href: solution.href, label: solution.label, noActive: shared };
-        })
-      );
-    }
-    return list.concat(item);
-  }, []);
-
-  const menuMarkup = flatMenuItems
+  const menuMarkup = menuItems
     .map(function (item) {
       const active =
         !item.noActive && item.href === activePage ? " is-active" : "";
@@ -50,7 +26,7 @@
     '<div class="site-footer__brand">' +
       '<a class="site-footer__brand-link" href="/index.html" aria-label="Arka home">' +
         '<span class="site-footer__mark">' +
-          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg" alt="Arka" width="36" height="36" />' +
+          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg?v=53" alt="Arka" width="36" height="36" />' +
           'Arka' +
         '</span>' +
       "</a>" +

@@ -33,48 +33,78 @@ There is no framework. Shared UI (header, footer) is injected via JavaScript int
 
 ```html
 <script src="site-menu.js"></script>   <!-- must be first: sets window.SITE_MENU_ITEMS -->
-<script src="theme.js"></script>
 <script src="header.js"></script>      <!-- reads SITE_MENU_ITEMS, injects nav -->
 <script src="nav.js"></script>         <!-- binds mobile toggle after header injects DOM -->
-<script src="megamenu.js"></script>    <!-- binds the Solution dropdown, also post-inject -->
 <script src="footer.js"></script>      <!-- reads SITE_MENU_ITEMS, injects footer -->
 <!-- page-specific scripts last -->
 ```
 
-`theme-init.js` is a `<script>` in `<head>` (before CSS) to prevent flash of unstyled theme. All other scripts are at the bottom of `<body>`.
+All scripts are at the bottom of `<body>`. (On `main` there is also a
+`theme-init.js` in `<head>`; this branch has no theme system, so it is gone.)
 
 ### Navigation active state
 
 `window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
 
-### Solution mega-menu
+### Logo
 
-`SITE_MENU_ITEMS` entries normally carry an `href`. The Solution entry instead
-carries `menu: "solutions"` and no href — it is a dropdown trigger, not a link.
-Its contents live in `window.SITE_SOLUTIONS` (also in `site-menu.js`): one entry
-per solution with `label`, `href`, `icon` (a filename in
-`assets/icons-ai-ibm/`), a one-line `summary` for the row, plus the `title`,
-`description` and `cta` shown in the panel.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk in `#c97a0a`, the
+original gold. It was tried in cobalt, near-black, a pale tint, ink navy and
+violet, and gold won — it is the one colour on the page that is unmistakably the
+logo and nothing else.
+It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
+footer, the favicon and the CTA watermark, so recolouring the file moves all
+four at once.
 
-`header.js` renders it as a two-column panel — solution rows on the left, one
-description panel per solution stacked in the same grid cell on the right.
-`megamenu.js` swaps which panel is visible on hover/focus and owns the open
-state. Below 860px the row list is hidden by CSS and the panels stack as an
-accordion inside the burger menu, each labelled by `.megamenu__panel-kicker`.
+**Gold is the mark's colour, not a fourth accent.** The `--data` ochre
+(`#8c5810`) is still reserved for numbers, and the logo's gold is a near
+relative rather than the same token — do not reach for `#c97a0a` anywhere else.
 
-`footer.js` has no dropdown, so it flattens the entry into its child links. They
-are marked `noActive` because several currently share one destination and would
-otherwise all light up as the active page.
+Contrast is not what decides a logo colour here — every candidate tried cleared
+the 3:1 floor easily. What matters is that the mark reads as itself: cobalt made
+it merge with the CTA, and the dark options merged with the wordmark beside it.
+Gold does neither.
 
-Software points at `software.html` and Products at `products.html`. Support
-still points at `contact.html` until it gets a page of its own — change `href`
-in `SITE_SOLUTIONS` when it does.
+Flat, not a gradient: at favicon size a gradient averages to a flat colour
+anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
+returns, and one-colour reproduction needs a flat version regardless.
 
-Both `header.js` and `footer.js` refuse the active state to a solution whose
-`href` is also a top-level menu entry's. Without that, every page a solution
-merely borrows (the contact page, today) lights up two nav items at once.
+**That reference carries a `?v=` like the scripts do.** Image assets had no
+cache key, so recolouring the file left returning visitors on the old ochre
+mark. Bump it with everything else.
 
-**Case Work is currently hidden from navigation.** `results.html` and `case-study.html` are still live, still deployed, and still in `sitemap.xml` — they're just not linked from the header, footer, or any page CTA. The `case-study.html` → `results.html` alias is deliberately kept so the section works if restored. To bring it back, re-add `{ href: "results.html", label: "Case Work" }` to `SITE_MENU_ITEMS`.
+**Do not put a double hyphen in that file's comment.** `--` is illegal inside an
+XML comment; it makes the SVG malformed and the browser renders a broken-image
+icon rather than failing loudly. Writing `(--accent)` in a note there is exactly
+how that happened once.
+
+`assets/arka-wordmark.svg` is the striped lowercase wordmark — lowercase "arka"
+cut from eight horizontal bands, on the IBM construction. It is **not currently
+referenced anywhere**; it was briefly the header mark and was reverted. Kept
+because it works as a secondary device. Two things in it are deliberate: the `a`
+is double-storey (a single-storey one is indistinguishable from an `o` with the
+curves gone — the first version read "orko"), and `k` spans all eight bands
+while `a` and `r` take the bottom five. It stops being legible below about 24px,
+where the gaps fall under one physical pixel.
+
+### Menu data
+
+`window.SITE_MENU_ITEMS` in `site-menu.js` is the whole nav. Both `header.js`
+and `footer.js` render straight from it — there is no dropdown, and the three
+solutions sit directly in the bar.
+
+An entry may carry `noActive: true`. Support and Contact both point at
+`contact.html`, and without the flag both would light up as the current page at
+once; the flag keeps that to one. Anything else that ends up sharing a
+destination needs the same treatment.
+
+`header.js` drops the `index.html` entry — the brand mark is the link home — so
+the bar reads Software, Products, Support, About, Contact. The footer keeps
+Home and lists all six.
+
+There was a Solution mega-menu here until the nav was flattened; `megamenu.js`,
+`window.SITE_SOLUTIONS` and the `.megamenu*` layer went with it. The home page's
+three pillars are now the only place that copy lives.
 
 ### Link paths in injected components
 
@@ -89,8 +119,8 @@ The hero is one centred column (`.hero--centered`) over `.hero-nodes`, an
 inline-SVG node network that drifts behind it at 0.6 opacity — nodes breathe,
 and a short dash travels along each edge. It is masked with a radial gradient
 so it fades out behind the copy; without that the edges cut through the
-headline, worst in light theme where the accent is a dark cobalt. The node
-coordinates deliberately avoid the middle band for the same reason.
+headline. The node coordinates deliberately avoid the middle band for the same
+reason.
 
 Its headline runs the braced word through a typewriter loop
 (`type-cycle.js`, driven by `data-type-cycle` on the span). Two details there
@@ -105,10 +135,11 @@ are deliberate and easy to undo by accident:
 - **Backspacing stops at the prefix the next word shares.** `defacto` rewinds to
   `defa` and types forward into `default`, so the braces never sit empty.
 - **The animated span is `aria-hidden`**, with a `.sr-only` sibling carrying the
-  word. Without it a screen reader re-reads the headline on every keystroke. The pillars (`.solution-pillars` / `.pillar-card`)
-mirror `SITE_SOLUTIONS` one-for-one but are **static markup**, not rendered from
-it — crawlers need to read them. If you change the mega-menu copy, change these
-too; nothing keeps them in sync.
+  word. Without it a screen reader re-reads the headline on every keystroke.
+
+The pillars (`.solution-pillars` / `.pillar`) are **static markup**, and since the mega-menu was removed they are the only
+place that copy lives. The nav labels in `SITE_MENU_ITEMS` need to keep agreeing
+with them; nothing enforces it.
 
 `software.html` holds what used to be the rest of the home page — The Problems,
 How We Work, the four-stage process, Why Arka, Built on, CTA — under its own
@@ -123,8 +154,8 @@ Flow fan — live in `assets/art/*.svg` and are pulled in at runtime by
 the file's markup into it.
 
 **They are injected, not `<img src>`, and that is not incidental.** Each one
-paints with `currentColor` so it follows `--accent` through the theme toggle,
-and each is animated by rules in `styles.css` (`.hero-nodes__pulse`,
+paints with `currentColor` so it picks up `--accent` from the page, and each is
+animated by rules in `styles.css` (`.hero-nodes__pulse`,
 `.flow-art__line`, `.about-art__orbit`…). Inside an `<img>`, `currentColor`
 resolves against the SVG's own root and comes out black, and a stylesheet cannot
 reach into a referenced document, so none of the animations would run. Swapping
@@ -137,13 +168,43 @@ clips the art.
 
 Small repeated icons stay out of this. The FAQ chevrons and the nav chevron are
 CSS masks over `assets/icons-ai-ibm/chevron--right.svg`, rotated per state,
-which costs no extra request. The two theme-toggle icons stay inline in
-`header.js` — they are ~200 bytes each, they live in JS rather than HTML, and
-that file is cached once for the whole site.
+which costs no extra request.
 
 ### The Products page
 
-`products.html` is the Arka ONE page. Two things on it are worth knowing:
+`products.html` is the Arka ONE page. Its hero is two columns: the headline
+names the three Cs and `.threec` lists them under it, with
+`assets/art/products-grid.svg` beside it.
+
+`.threec` deliberately does **not** use `type-cycle.js`. Typing through words
+this long left the headline showing a mid-word fragment most of the time, and
+one loop ran about 11 seconds. All three words now stay readable and the only
+motion is the accent walking between them — no reflow, nothing incomplete. The
+stagger uses `:nth-of-type(3)` / `(5)` because the separators are spans too.
+
+That drawing is the one place the cobalt/ochre system does not hold. It is drawn
+from a supplied reference in a **violet** family, kept in `--viz-*` variables so
+it still flips with the theme (violet is unreadable on ink at full saturation).
+Those variables exist only for this drawing — do not reach for them elsewhere or
+the site gains a third accent by accident.
+
+Two traps inside that SVG:
+
+- Each diamond is **two nested groups**: the inner one carries `translate()` and
+  `rotate(45)` as an attribute, the outer one is what CSS animates. A CSS
+  `transform` on the same element replaces the attribute, collapsing every
+  diamond onto the origin, unrotated.
+- The ring nodes alternate with their centre dots, so the stagger uses
+  `:nth-child(3)` / `(5)`. `:nth-of-type` counts every `circle` in the group,
+  dots included, and matches nothing.
+
+`type-cycle.js` reserves the field width by default, which is right for the home
+hero (centred, with a closing brace after the word). Where the caret would be the
+last thing on a line, that reservation strands it to the right of the text —
+pass `data-type-cycle-reserve="none"` there. Only the home page uses the script
+now.
+
+Two more things on the page are worth knowing:
 
 - The three product blocks reuse `.solution-pillars` / `.pillar` from the home
   page, so the site states its "three things" one way everywhere. The third has
@@ -183,7 +244,7 @@ Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
 any CSS or JS:
 
 ```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=25"/?v=26"/g'
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=31"/?v=32"/g'
 ```
 
 This is not optional polish. `site-menu.js` and `header.js` carry the nav's data
@@ -210,9 +271,50 @@ All case study content lives in `case-studies.js` as two globals:
 
 `results.html` uses `case-work.js` to render the grid from this data. `case-study.html` uses `case-study.js` to render a single study, reading `?slug=` from the URL query string.
 
-### Theme system
+### Palette (PROTOTYPE BRANCH — light only)
 
-Only `"light"` and `"dark"` are valid theme values. `"system"` preference and anything unrecognised both resolve to `"dark"`. Stored in `localStorage` under the key `arka-theme`. The public API is `window.ArkaTheme.bind()` and `window.ArkaTheme.apply(pref)`.
+**This branch has no theme system.** `theme.js`, `theme-init.js`, the header
+toggle and every `[data-theme="dark"]` rule are gone, along with the
+`arka-theme` localStorage key and `window.ArkaTheme`. `main` still has all of
+it; this branch exists to see the light-only direction.
+
+The palette is three families plus one neutral ramp, all at the top of
+`styles.css`:
+
+- **cobalt** `#0047ab` — identity and wayfinding: eyebrows, links, borders,
+  buttons, ticks.
+- **tint** `#7aa5e8` — cobalt's quiet half: soft fills, hover washes.
+- **ochre** `#8c5810` — evidence, **numbers only**. Keeping it off labels and
+  controls is what preserves the hierarchy.
+- **`--n-0` … `--n-900`** — the neutral ramp. Near-white to near-black in one
+  hue, even steps.
+
+**Reach for a ramp step; do not invent a grey.** That rule is the whole point of
+this branch. Before it, every hairline and muted label was a hand-rolled
+`rgba(18, 33, 58, 0.14)`, which is why adding one colour always meant inventing
+four more — the thing that made the palette feel inextensible was never the
+theme, it was the missing ramp.
+
+The semantic tokens (`--bg`, `--fg`, `--line`, `--muted`…) are what the rest of
+the stylesheet reads. They now point at ramp steps, so re-pointing that one
+block moves the whole site.
+
+The background is `--n-25` (`#fcfcfd`), not `#ffffff`, on purpose: pure white is
+the most common background on the web and reads as a default rather than a
+choice. `--n-0` stays available for anything that needs to sit above the page.
+
+The Products composition's violet is the one deliberate exception, and it is
+still confined to `--viz-*`.
+
+**Primary buttons** rest at cobalt, so hover can no longer signal by turning
+cobalt the way it used to. Instead `.btn--primary::after` is an overlay ring in
+`--accent-soft` that wipes in left to right on hover and focus. It is an overlay
+rather than the button's own border because a real border cannot be revealed
+along one axis; `clip-path: inset(0 100% 0 0)` animating to `0` does exactly
+that, and reverses itself when the pointer leaves. `inset: -1px` sits it over
+the 1px transparent ring `.btn` already reserves, so nothing shifts. Ghost
+buttons are untouched — the tint is too light on a pale surface to read as a
+border, and their cobalt hover already works.
 
 ### Contact form
 
