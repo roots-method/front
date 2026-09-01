@@ -48,17 +48,23 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#cbd4ff`.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#0b2545`,
+ink navy.
 It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
 footer, the favicon and the CTA watermark, so recolouring the file moves all
 four at once.
 
-**That colour is a pale tint on a near-white site.** It measures 1.42:1 against
-`--bg` and 1.35:1 against `--surface`, where 3:1 is the accessible floor for a
-graphical element — the mark is close to invisible in the header. It was asked
-for explicitly and is a one-line change to reverse. It only reaches 3:1 on a
-background darker than about `#6f7690`, so it belongs on an inverted header or a
-dark surface rather than this one.
+The colour is chosen against the **button**, not just the background. Every
+plausible candidate clears the 3:1 contrast floor easily, so legibility does not
+decide it; what decides it is that the mark must not read as the same blue as
+the primary CTA. `#0b2545` is 15.0:1 on the page and 1.82:1 away from the button
+cobalt — near enough to belong to the family, far enough that the mark anchors
+and the button acts. A lighter cobalt like `#233b7a` sits only 1.26:1 from the
+button and the two blur into one another.
+
+Flat, not a gradient, on purpose: at favicon size a gradient averages to a flat
+colour anyway, it cannot be driven by `currentColor` or a CSS mask if theming
+ever returns, and one-colour reproduction needs a flat version regardless.
 
 **That reference carries a `?v=` like the scripts do.** Image assets had no
 cache key, so recolouring the file left returning visitors on the old ochre
