@@ -30,7 +30,7 @@
 
   var headerMarkup =
     '<a class="brand" href="/index.html" aria-label="Arka home">' +
-    '<img class="brand__mark" src="/assets/arkaflow-newlogo.svg?v=49" alt="" width="32" height="32" aria-hidden="true" />' +
+    '<img class="brand__mark" src="/assets/arkaflow-newlogo.svg?v=50" alt="" width="32" height="32" aria-hidden="true" />' +
     '<div class="brand__wordmark">' +
     '<span class="brand__name">Arka</span>' +
     '</div>' +
