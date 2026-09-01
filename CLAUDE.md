@@ -48,25 +48,26 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#7c3aed` —
-the same violet as `--viz-violet`, the Products composition.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk in `#c97a0a`, the
+original gold. It was tried in cobalt, near-black, a pale tint, ink navy and
+violet, and gold won — it is the one colour on the page that is unmistakably the
+logo and nothing else.
 It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
 footer, the favicon and the CTA watermark, so recolouring the file moves all
 four at once.
 
-Violet was previously an exception confined to the Products drawing. Putting it
-on the mark **promotes it to a real brand colour** and resolves that orphan — the
-composition now looks deliberate rather than a one-off. Ochre stays reserved for
-numbers; cobalt stays the action colour.
+**Gold is the mark's colour, not a fourth accent.** The `--data` ochre
+(`#8c5810`) is still reserved for numbers, and the logo's gold is a near
+relative rather than the same token — do not reach for `#c97a0a` anywhere else.
 
-Contrast is not what decides a logo colour here — every candidate cleared the
-3:1 floor easily. What matters is that the mark must not read as the same blue
-as the primary CTA, or the header has no hierarchy. Violet is a different hue
-entirely, so the question does not arise.
+Contrast is not what decides a logo colour here — every candidate tried cleared
+the 3:1 floor easily. What matters is that the mark reads as itself: cobalt made
+it merge with the CTA, and the dark options merged with the wordmark beside it.
+Gold does neither.
 
-Flat, not a gradient, on purpose: at favicon size a gradient averages to a flat
-colour anyway, it cannot be driven by `currentColor` or a CSS mask if theming
-ever returns, and one-colour reproduction needs a flat version regardless.
+Flat, not a gradient: at favicon size a gradient averages to a flat colour
+anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
+returns, and one-colour reproduction needs a flat version regardless.
 
 **That reference carries a `?v=` like the scripts do.** Image assets had no
 cache key, so recolouring the file left returning visitors on the old ochre
@@ -181,10 +182,11 @@ one loop ran about 11 seconds. All three words now stay readable and the only
 motion is the accent walking between them — no reflow, nothing incomplete. The
 stagger uses `:nth-of-type(3)` / `(5)` because the separators are spans too.
 
-That drawing is where the violet family lives, kept in `--viz-*` variables. The
-logo mark is now the same violet, so this is a brand colour rather than a
-one-off — but it is still the *third* colour, behind cobalt for action and ochre
-for numbers. Use it for identity and imagery, not for controls.
+That drawing is the one place the cobalt/ochre system does not hold. It is drawn
+from a supplied reference in a **violet** family, kept in `--viz-*` variables so
+it still flips with the theme (violet is unreadable on ink at full saturation).
+Those variables exist only for this drawing — do not reach for them elsewhere or
+the site gains a third accent by accident.
 
 Two traps inside that SVG:
 
