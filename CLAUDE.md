@@ -48,19 +48,21 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#0b2545`,
-ink navy.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk, drawn in `#7c3aed` —
+the same violet as `--viz-violet`, the Products composition.
 It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
 footer, the favicon and the CTA watermark, so recolouring the file moves all
 four at once.
 
-The colour is chosen against the **button**, not just the background. Every
-plausible candidate clears the 3:1 contrast floor easily, so legibility does not
-decide it; what decides it is that the mark must not read as the same blue as
-the primary CTA. `#0b2545` is 15.0:1 on the page and 1.82:1 away from the button
-cobalt — near enough to belong to the family, far enough that the mark anchors
-and the button acts. A lighter cobalt like `#233b7a` sits only 1.26:1 from the
-button and the two blur into one another.
+Violet was previously an exception confined to the Products drawing. Putting it
+on the mark **promotes it to a real brand colour** and resolves that orphan — the
+composition now looks deliberate rather than a one-off. Ochre stays reserved for
+numbers; cobalt stays the action colour.
+
+Contrast is not what decides a logo colour here — every candidate cleared the
+3:1 floor easily. What matters is that the mark must not read as the same blue
+as the primary CTA, or the header has no hierarchy. Violet is a different hue
+entirely, so the question does not arise.
 
 Flat, not a gradient, on purpose: at favicon size a gradient averages to a flat
 colour anyway, it cannot be driven by `currentColor` or a CSS mask if theming
@@ -179,11 +181,10 @@ one loop ran about 11 seconds. All three words now stay readable and the only
 motion is the accent walking between them — no reflow, nothing incomplete. The
 stagger uses `:nth-of-type(3)` / `(5)` because the separators are spans too.
 
-That drawing is the one place the cobalt/ochre system does not hold. It is drawn
-from a supplied reference in a **violet** family, kept in `--viz-*` variables so
-it still flips with the theme (violet is unreadable on ink at full saturation).
-Those variables exist only for this drawing — do not reach for them elsewhere or
-the site gains a third accent by accident.
+That drawing is where the violet family lives, kept in `--viz-*` variables. The
+logo mark is now the same violet, so this is a brand colour rather than a
+one-off — but it is still the *third* colour, behind cobalt for action and ochre
+for numbers. Use it for identity and imagery, not for controls.
 
 Two traps inside that SVG:
 
