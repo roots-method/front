@@ -29,8 +29,9 @@
     .join("");
 
   var headerMarkup =
+    // Wordmark only — the mark was pulled from the lockup. .brand__name carries
+    // the cobalt, since it is the sole brand element left in the bar.
     '<a class="brand" href="/index.html" aria-label="Arka home">' +
-    '<img class="brand__mark" src="/assets/arkaflow-newlogo.svg?v=53" alt="" width="32" height="32" aria-hidden="true" />' +
     '<div class="brand__wordmark">' +
     '<span class="brand__name">Arka</span>' +
     '</div>' +
