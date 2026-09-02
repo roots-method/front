@@ -48,30 +48,45 @@ All scripts are at the bottom of `<body>`. (On `main` there is also a
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk in `#c97a0a`, the
-original gold. It was tried in cobalt, near-black, a pale tint, ink navy and
-violet, and gold won — it is the one colour on the page that is unmistakably the
-logo and nothing else.
-It is used by the header lockup (`.brand__mark` beside `.brand__name`), the
-footer, the favicon and the CTA watermark, so recolouring the file moves all
-four at once.
+`assets/arkaflow-newlogo.svg` is the mark: the asterisk, now in `#0047ab`,
+cobalt.
 
-**Gold is the mark's colour, not a fourth accent.** The `--data` ochre
-(`#8c5810`) is still reserved for numbers, and the logo's gold is a near
-relative rather than the same token — do not reach for `#c97a0a` anywhere else.
+**The brand is cobalt end to end, and the gold is gone.** The mark was gold
+(`#c97a0a`) for a long time, and the argument for it was that it was the one
+colour on the page that could only be the logo. That argument died when the mark
+left the header: once the bar was a cobalt wordmark alone, gold survived only in
+a 16px favicon, where it read as a leftover rather than a signature. Do not
+reintroduce it as "the logo colour" — there is no longer a place on the site it
+would agree with.
 
-Contrast is not what decides a logo colour here — every candidate tried cleared
-the 3:1 floor easily. What matters is that the mark reads as itself: cobalt made
-it merge with the CTA, and the dark options merged with the wordmark beside it.
-Gold does neither.
+The three surfaces the mark still touches, and how each gets its colour — they
+do **not** move together, which is the trap:
+
+- **Favicon** — the only one that reads this file's fill. Recolouring the SVG
+  changes the favicon and nothing else.
+- **Footer** (`.site-footer__logo`) — a CSS mask painting `--accent` at opacity
+  0.25, so it reads blue-grey. The file's own fill never reaches it. It is
+  masked rather than an `<img>` precisely so it can be coloured; dimming a gold
+  `<img>` gives pale ochre, not blue-grey.
+- **CTA watermark** — `filter: saturate(0) brightness(0)` at opacity 0.045, so
+  it is a black ghost whatever the file says.
+
+**The header and footer no longer show a lockup.** The bar is `.brand__name`
+alone in `--accent`; `.brand__mark` and the hover spin are gone from the CSS —
+do not write a rule for a class nothing emits. The header wordmark takes
+`--accent` rather than `--fg` on purpose: it is the only brand element left in
+the bar, so it carries the identity colour itself.
+
+`--data` ochre (`#8c5810`) is still reserved for numbers, and is now unrelated
+to anything in the logo.
 
 Flat, not a gradient: at favicon size a gradient averages to a flat colour
 anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
 returns, and one-colour reproduction needs a flat version regardless.
 
-**That reference carries a `?v=` like the scripts do.** Image assets had no
-cache key, so recolouring the file left returning visitors on the old ochre
-mark. Bump it with everything else.
+**Every reference carries a `?v=` like the scripts do — including the `mask:`
+URL in `styles.css`.** Image assets had no cache key at first, so recolouring
+the file left returning visitors on the old mark. Bump it with everything else.
 
 **Do not put a double hyphen in that file's comment.** `--` is illegal inside an
 XML comment; it makes the SVG malformed and the browser renders a broken-image

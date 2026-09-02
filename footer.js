@@ -26,7 +26,9 @@
     '<div class="site-footer__brand">' +
       '<a class="site-footer__brand-link" href="/index.html" aria-label="Arka home">' +
         '<span class="site-footer__mark">' +
-          '<img class="site-footer__logo" src="/assets/arkaflow-newlogo.svg?v=53" alt="Arka" width="36" height="36" />' +
+          // Masked, not an <img>, so CSS owns the colour: this renders cobalt
+          // at 0.25 regardless of the fill in the source file.
+          '<span class="site-footer__logo" aria-hidden="true"></span>' +
           'Arka' +
         '</span>' +
       "</a>" +
@@ -72,6 +74,7 @@
 
     '<div class="site-footer__legal">' +
       '<span>&copy; <span id="footer-year"></span> Arka. All rights reserved.</span>' +
+      '<button class="site-footer__privacy-link" type="button" data-privacy-modal>Privacy Policy</button>' +
     "</div>";
 
   document.querySelectorAll("[data-component='site-footer']").forEach(function (footer) {

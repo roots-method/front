@@ -225,17 +225,6 @@ textarea {
   flex: none;
 }
 
-.brand__mark {
-  width: 28px;
-  height: 28px;
-  flex: none;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.brand:hover .brand__mark {
-  transform: rotate(360deg);
-}
-
 .brand__wordmark {
   display: flex;
   flex-direction: column;
@@ -243,11 +232,13 @@ textarea {
   line-height: 1;
 }
 
+/* Cobalt, not --fg. With the mark gone the wordmark is the only brand element
+   in the bar, so it carries the identity colour itself. */
 .brand__name {
   font-family: var(--font-heading);
   font-size: 1.5em;
   font-weight: 400;
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .nav__links {
@@ -538,7 +529,6 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand__mark,
   .brand__name,
   .nav {
     transition: none;
@@ -3343,14 +3333,21 @@ h3[id] {
   gap: 0.5rem;
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
 }
 
+/* Cobalt via mask rather than the gold source file, held back to 0.25 so it
+   reads as a blue-grey watermark beside the wordmark instead of a second
+   focal point. Recolouring arkaflow-newlogo.svg does not move this. */
 .site-footer__logo {
-  flex-shrink: 0;
+  flex: none;
   width: 2rem;
   height: 2rem;
+  opacity: 0.25;
+  background-color: var(--accent);
+  -webkit-mask: url("assets/arkaflow-newlogo.svg?v=57") center / contain no-repeat;
+  mask: url("assets/arkaflow-newlogo.svg?v=57") center / contain no-repeat;
 }
 
 .site-footer__name {
@@ -5522,4 +5519,170 @@ h3[id] {
 
 .post-article .case-article__related .eyebrow {
   margin-bottom: 0.25rem;
+}
+
+/* ── Cookie consent banner ─────────────────────────────────────────────── */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: var(--n-900);
+  color: var(--n-0);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.cookie-banner--visible {
+  transform: translateY(0);
+}
+.cookie-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1rem var(--shell-gutter);
+}
+.cookie-banner__text {
+  flex: 1;
+  min-width: 18rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--n-100);
+  margin: 0;
+}
+.cookie-banner__policy {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cookie-banner__policy:hover {
+  opacity: 0.8;
+}
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.cookie-banner__accept {
+  /* inherits .btn .btn--primary styles */
+}
+.cookie-banner__decline {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--n-300);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.cookie-banner__decline:hover {
+  color: var(--n-0);
+}
+
+/* ── Privacy Policy modal ───────────────────────────────────────────────── */
+.privacy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.privacy-modal[hidden] {
+  display: none !important;
+}
+.privacy-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.privacy-modal__panel {
+  position: relative;
+  background: var(--bg);
+  width: min(680px, 100vw);
+  height: 100dvh;
+  overflow-y: auto;
+  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+.privacy-modal__close {
+  position: sticky;
+  top: 0;
+  align-self: flex-end;
+  background: var(--bg);
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  color: var(--fg);
+  z-index: 1;
+}
+.privacy-modal__close:hover {
+  color: var(--accent);
+}
+.privacy-modal__body {
+  padding: 0 clamp(1.5rem, 5vw, 3rem) 3rem;
+}
+.privacy-modal__body h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  margin: 0.5rem 0 0.25rem;
+}
+.privacy-modal__body h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+  color: var(--fg);
+}
+.privacy-modal__body p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+.privacy-modal__body a {
+  color: var(--accent);
+}
+.privacy-modal__body code {
+  font-family: monospace;
+  font-size: 0.875em;
+  background: var(--n-100);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+.privacy-modal__meta {
+  font-size: 0.8125rem !important;
+  color: var(--muted);
+  margin-bottom: 2rem !important;
+}
+
+/* Footer privacy link */
+.site-footer__privacy-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-left: 1.5rem;
+}
+.site-footer__privacy-link:hover {
+  color: var(--fg);
 }
