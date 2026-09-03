@@ -3346,8 +3346,8 @@ h3[id] {
   height: 2rem;
   opacity: 0.25;
   background-color: var(--accent);
-  -webkit-mask: url("assets/arkaflow-newlogo.svg?v=57") center / contain no-repeat;
-  mask: url("assets/arkaflow-newlogo.svg?v=57") center / contain no-repeat;
+  -webkit-mask: url("assets/arkaflow-newlogo.svg?v=58") center / contain no-repeat;
+  mask: url("assets/arkaflow-newlogo.svg?v=58") center / contain no-repeat;
 }
 
 .site-footer__name {
@@ -4880,6 +4880,105 @@ h3[id] {
 
   .hero-nodes__pulse {
     stroke-opacity: 0;
+  }
+}
+
+/* ── Hero cell grid ──────────────────────────────────────────────────────
+   The home hero's background: a field of squares that dim and brighten, with
+   a highlight sweeping across. Replaces the node network on index.html;
+   hero-nodes.svg and its rules above are kept because nothing else supplies
+   that look if we want it back.
+
+   Same container treatment as .hero-nodes, and for the same reasons: it
+   paints with --accent through currentColor, and the radial mask clears the
+   centre so no cell crosses the headline. The artwork also leaves a hole in
+   the middle geometrically — belt and braces, because the mask alone still
+   lets faint edges sit under the type. */
+.hero-cells {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: var(--accent);
+  opacity: 0.6;
+  pointer-events: none;
+  -webkit-mask: radial-gradient(
+    ellipse 48% 60% at 50% 48%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 52%,
+    #000 82%
+  );
+  mask: radial-gradient(
+    ellipse 48% 60% at 50% 48%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 52%,
+    #000 82%
+  );
+}
+
+.hero-cells svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* As with the network, the slice crop on a phone leaves the middle band
+   sitting right under the copy. Widen the clear centre. */
+@media (max-width: 720px) {
+  .hero-cells {
+    -webkit-mask: radial-gradient(
+      ellipse 86% 46% at 50% 46%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 62%,
+      #000 92%
+    );
+    mask: radial-gradient(
+      ellipse 86% 46% at 50% 46%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 62%,
+      #000 92%
+    );
+  }
+}
+
+/* stroke-opacity is inherited, which is the whole trick: the shine layer is a
+   <use> of this same group, so setting the value here and a brighter one on
+   .hero-cells__shine gives the sweep without duplicating 257 rects. Never set
+   stroke-opacity on the rects themselves or the <use> can no longer override
+   it. */
+.hero-cells__grid { stroke-opacity: 0.26; }
+.hero-cells__shine { stroke-opacity: 1; }
+
+.hero-cells__lit  { fill-opacity: 0.5;  animation: cell-glow 6s ease-in-out infinite; }
+.hero-cells__chip { fill-opacity: 0.45; animation: cell-glow 6s ease-in-out infinite; }
+
+/* Staggered so the grid reads as cells thinking independently rather than one
+   synchronised flash. Durations are mutually prime-ish against each other and
+   against the 7s shine sweep, so the pattern does not visibly loop.
+   nth-child, not nth-of-type: .hero-cells__lit and .hero-cells__chip are both
+   <rect>, so nth-of-type would count them as one sequence anyway, but
+   nth-child stays correct if a different element is ever added. */
+.hero-cells__active > *:nth-child(5n)   { animation-duration: 4.3s; animation-delay: -0.7s; }
+.hero-cells__active > *:nth-child(5n+1) { animation-duration: 6.1s; animation-delay: -3.4s; }
+.hero-cells__active > *:nth-child(5n+2) { animation-duration: 7.7s; animation-delay: -1.9s; }
+.hero-cells__active > *:nth-child(5n+3) { animation-duration: 5.2s; animation-delay: -5.1s; }
+.hero-cells__active > *:nth-child(5n+4) { animation-duration: 8.6s; animation-delay: -2.6s; }
+
+@keyframes cell-glow {
+  0%, 100% { opacity: 0.2; }
+  50%      { opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cells__lit,
+  .hero-cells__chip {
+    animation: none;
+    opacity: 0.45;
+  }
+
+  /* The sweep is SMIL inside the SVG, so CSS cannot pause it — hide the layer
+     instead. */
+  .hero-cells__shine {
+    display: none;
   }
 }
 
