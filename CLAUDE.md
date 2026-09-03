@@ -130,12 +130,32 @@ three pillars are now the only place that copy lives.
 `index.html` is the umbrella: hero, the three solution pillars, Industries
 served, testimonials, Trusted by, CTA.
 
-The hero is one centred column (`.hero--centered`) over `.hero-nodes`, an
-inline-SVG node network that drifts behind it at 0.6 opacity — nodes breathe,
-and a short dash travels along each edge. It is masked with a radial gradient
-so it fades out behind the copy; without that the edges cut through the
-headline. The node coordinates deliberately avoid the middle band for the same
-reason.
+The hero is one centred column (`.hero--centered`) over `.hero-cells`
+(`assets/art/hero-cubes.svg`), a field of squares behind it at 0.6 opacity —
+cells dim and brighten on staggered cycles, and a highlight sweeps across. It
+is masked with a radial gradient so it fades out behind the copy; the artwork
+*also* leaves the middle empty, because the mask alone still lets faint edges
+sit under the headline.
+
+Three things in that file are load-bearing:
+
+- **`stroke-opacity` is set on the parent group, never on the rects.** It is an
+  inherited property, which is what lets the shine layer be a `<use>` of the
+  same geometry at a brighter value rather than a second copy of 257 rects.
+  Setting it per-rect makes the `<use>` unable to override it and doubles the
+  DOM to fix.
+- **The sweep is SMIL (`<animate>` on a gradient), not a CSS mask.** CSS
+  masking of an SVG `<g>` is uneven across browsers, and when it fails the
+  shine layer renders at full strength permanently rather than degrading
+  quietly. The cost is that `prefers-reduced-motion` cannot pause it, so the
+  reduced-motion rule hides the layer instead.
+- **No double hyphen in that file's comment**, the same trap as the logo: it is
+  illegal inside an XML comment and silently breaks the file. Writing a token
+  name with its leading dashes is exactly how that happened once.
+
+`assets/art/hero-nodes.svg` and its `.hero-nodes*` rules are kept but no longer
+referenced — it was the hero until the cell grid replaced it, and nothing else
+supplies that look if it is wanted back.
 
 Its headline runs the braced word through a typewriter loop
 (`type-cycle.js`, driven by `data-type-cycle` on the span). Two details there

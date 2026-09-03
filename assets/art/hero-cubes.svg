@@ -1,0 +1,396 @@
+<!-- Hero cell grid. Injected by svg-inline.js, NOT used as <img src>:
+     every rect paints with currentColor so it picks up the accent token, and
+     the lit/dim and shine animations live in styles.css. Inside an <img> both
+     would be lost. See the "Decorative SVG art" note in CLAUDE.md.
+
+     No inline styles and no per-element timing here, matching hero-nodes.svg;
+     the stagger is done with :nth-child() rules in styles.css.
+
+     stroke-opacity is deliberately NOT set on the rects. It is an inherited
+     property set on the parent group, which lets the shine layer re-use this
+     same geometry through <use> at a brighter value instead of duplicating
+     257 elements.
+
+     Careful editing this note: a double hyphen is illegal inside an XML
+     comment and silently breaks the file. Write token names without the
+     leading dashes. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs>
+    <!-- The travelling highlight. SMIL rather than a CSS mask on a <g>:
+         CSS masking of SVG groups is uneven across browsers, and if it fails
+         the shine layer would render at full strength permanently. -->
+    <linearGradient id="hero-cells-shine-grad" gradientUnits="objectBoundingBox" x1="-0.45" y1="0" x2="-0.05" y2="0">
+      <stop offset="0" stop-color="#000"/>
+      <stop offset="0.5" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+      <animate attributeName="x1" values="-0.45;1.05" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="-0.05;1.45" dur="7s" repeatCount="indefinite"/>
+    </linearGradient>
+    <mask id="hero-cells-shine-mask">
+      <rect width="1200" height="560" fill="url(#hero-cells-shine-grad)"/>
+    </mask>
+  </defs>
+
+  <g id="hero-cells-grid" class="hero-cells__grid" stroke="currentColor" stroke-width="1">
+    
+    <rect class="hero-cells__cell" x="-54" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="-54" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="0" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="54" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="108" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="162" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="216" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="270" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="324" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="378" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="432" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="486" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="540" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="594" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="648" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="702" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="756" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="810" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="864" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="918" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="972" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1026" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1080" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1134" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1188" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__cell" x="1242" y="594" width="44" height="44" rx="5"/>
+  </g>
+
+  <use class="hero-cells__shine" href="#hero-cells-grid" xlink:href="#hero-cells-grid" mask="url(#hero-cells-shine-mask)"/>
+
+  <g class="hero-cells__active" fill="currentColor">
+    
+    <rect class="hero-cells__lit" x="-54" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="-54" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="-54" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="13.2" y="175.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="13.2" y="283.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="13.2" y="337.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="54" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="67.2" y="13.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="67.2" y="67.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="54" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="54" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="67.2" y="391.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="67.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="67.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="108" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="108" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="108" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="162" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="162" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="162" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="162" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="162" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="175.2" y="607.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="229.2" y="-40.8" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="216" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="229.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="283.2" y="67.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="324" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="337.2" y="121.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="324" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="378" y="540" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="432" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="445.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="499.2" y="67.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="499.2" y="445.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="540" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="540" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="540" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="607.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="661.2" y="13.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="661.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="661.2" y="607.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="702" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="702" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="769.2" y="13.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="823.2" y="-40.8" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="810" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="810" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="823.2" y="445.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="810" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="823.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="864" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="864" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="877.2" y="391.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="877.2" y="445.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="877.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="931.2" y="-40.8" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="918" y="162" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="931.2" y="229.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="918" y="324" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="918" y="378" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="931.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="918" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="972" y="108" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="985.2" y="229.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="972" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="985.2" y="391.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="985.2" y="445.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="985.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="985.2" y="607.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1026" y="0" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="1026" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1039.2" y="175.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="1039.2" y="337.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1026" y="594" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="1080" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__lit" x="1080" y="54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1093.2" y="121.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1080" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1093.2" y="337.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="1093.2" y="445.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1080" y="486" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1093.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="1147.2" y="67.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1134" y="432" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1147.2" y="607.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1188" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1201.2" y="13.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1188" y="216" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1201.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="1201.2" y="553.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1242" y="-54" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1255.2" y="175.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__lit" x="1242" y="270" width="44" height="44" rx="5"/>
+    <rect class="hero-cells__chip" x="1255.2" y="391.2" width="17.6" height="17.6" rx="2"/>
+    <rect class="hero-cells__chip" x="1255.2" y="499.2" width="17.6" height="17.6" rx="2"/>
+  </g>
+</svg>
