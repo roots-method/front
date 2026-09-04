@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // The dev-tools badge in the corner. It is injected by `next dev` only and
+  // never ships to production, but it sits over the footer while working.
+  devIndicators: false,
+
   // Trailing slashes off: the legacy site served /software.html, the new one
   // serves /software. Redirects below keep the old URLs alive for anything
   // already linked or indexed.

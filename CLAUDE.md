@@ -122,6 +122,15 @@ Flat, not a gradient: at favicon size a gradient averages to a flat colour
 anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
 returns, and one-colour reproduction needs a flat version regardless.
 
+**The file must stay transparent.** The footer mark is a CSS mask, and a mask
+reads the image's *alpha*: give the SVG a full-canvas background rect and the
+whole 32×32 box becomes opaque, so it paints as a solid cobalt square instead of
+the asterisk. The same edit turns the CTA watermark into a black square and
+flattens the favicon. A backgrounded variant belongs in its own file —
+`assets/arkaflow-logo-bg.svg` is that file — never in this one. To check: draw
+it to a canvas and measure opaque pixels; the mark is about 26% coverage, a
+broken one reads 100%.
+
 The mask URL lives in `styles/footer.css` and points at
 `/assets/arkaflow-newlogo.svg` — root-absolute, because the stylesheet is bundled
 to `/_next/static/css/` and a relative path would resolve from there. The old
