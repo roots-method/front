@@ -1,0 +1,34 @@
+/* Every stylesheet, imported in the exact order the original styles.css had
+   them. That order is load-bearing: the file relied on later sections
+   overriding earlier ones, so importing these individually from the components
+   that use them would let route-level bundling reshuffle the cascade and
+   change the design. One barrel, imported once in app/layout.tsx, keeps the
+   cascade byte-identical to the old single file while the sources stay split
+   per component for editing.
+
+   Splitting these back out to per-component imports is safe only for a file
+   whose rules nothing else overrides — check before moving one. */
+@import "./base.css";
+@import "./nav.css";
+@import "./hero.css";
+@import "./cards.css";
+@import "./pillars.css";
+@import "./products.css";
+@import "./partners.css";
+@import "./about-hero.css";
+@import "./our-flow.css";
+@import "./story.css";
+@import "./leaders.css";
+@import "./flow-steps.css";
+@import "./case-article.css";
+@import "./contact-methods.css";
+@import "./footer.css";
+@import "./case-detail.css";
+@import "./case-work.css";
+@import "./contact.css";
+@import "./about.css";
+@import "./home-hero.css";
+@import "./process-split.css";
+@import "./faq-cta.css";
+@import "./blog.css";
+@import "./consent.css";

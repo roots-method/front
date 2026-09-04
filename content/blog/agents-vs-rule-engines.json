@@ -1,0 +1,36 @@
+{
+  "slug": "agents-vs-rule-engines",
+  "summary": "Rule engines are excellent at binary conditions and quietly terrible at ambiguity. The dividing line isn't complexity — it's whether the decision requires weighing conflicting evidence.",
+  "meta": [
+    "12 August 2026",
+    "7 min read",
+    "Arka"
+  ],
+  "sections": [
+    {
+      "heading": "The wrong question",
+      "html": "<p>The question we get asked is usually \"should we use AI for this?\" That question can't be answered, because it's about the tool rather than the work. The question that can be answered is narrower: <em>does this decision require weighing evidence that points in different directions?</em></p>\n              <p>If the answer is no, you almost certainly want deterministic logic — and if you already have a rule engine, you want more rules, not a model. If the answer is yes, no amount of additional rules will get you there, and teams often spend a year discovering this the expensive way.</p>"
+    },
+    {
+      "heading": "What rule engines are genuinely good at",
+      "html": "<p>It's worth being precise about this, because the industry has drifted into treating rule engines as legacy. They aren't. For a large class of decisions they remain the correct answer, and they have properties that models don't.</p>\n              <ul class=\"check-list\">\n                <li>The output is deterministic — the same inputs produce the same result, every time, forever.</li>\n                <li>The logic is directly auditable. A compliance reviewer can read it without interpreting a probability.</li>\n                <li>Changes are surgical and their blast radius is knowable in advance.</li>\n                <li>They're cheap to run and effectively instant.</li>\n              </ul>\n              <p>Anything that is genuinely a matter of policy or law belongs here. Notice periods, required disclosure language, jurisdiction-specific requirements, retention windows — these are facts, not judgments. They should live in deterministic logic where they can be verified line by line.</p>"
+    },
+    {
+      "heading": "The evidence test",
+      "html": "<p>Here's the practical test. Take a case that a senior person on your team handled recently, and ask them to explain how they decided. Listen for the shape of the explanation.</p>\n              <p>If they say \"the policy was 47 days past due and the state requires 30 days' notice, so it cancelled\" — that's a lookup and a comparison. It's a rule. Write the rule.</p>\n              <p>If they say \"the payment history was actually pretty clean, and the inspection came back borderline rather than bad, so given how the market's been moving I gave them the benefit of the doubt\" — that's not a rule. That's three signals pointing in different directions, weighted against each other by someone with context. You can approximate it with rules, but the approximation degrades the moment reality produces a combination you didn't anticipate. And reality will.</p>\n              <p>Notice of cancellation in property and casualty insurance is a good worked example. It looks like a rules problem from the outside — it's regulated, it's high-volume, it's procedural. But the actual decisions underneath it involve exactly the kind of multi-factor weighing that rules handle badly: ambiguous fraud indicators, reinstatement edge cases, risk deterioration where the signals conflict.</p>"
+    },
+    {
+      "heading": "Volume matters as much as ambiguity",
+      "html": "<p>Ambiguity alone isn't sufficient. Plenty of decisions are genuinely hard and genuinely rare, and those should stay with humans — the engineering cost of automating a judgment call that occurs four times a year will never be recovered.</p>\n              <p>What makes a workflow a good candidate is the combination: decisions that require weighing evidence <em>and</em> arrive as a steady, predictable stream. A consistent case flow gives you enough volume for the economics to work, and enough repetition to calibrate against real outcomes rather than assumptions.</p>\n              <p>If you're looking at something ambiguous and rare, the useful automation is usually not the decision itself — it's the assembly. Gather the context, surface the relevant history, put it in front of the person, and let them decide in two minutes instead of forty.</p>"
+    },
+    {
+      "heading": "In practice the answer is usually both",
+      "html": "<p>The framing of \"agents versus rule engines\" is a false choice, and the systems that work in production are almost always layered. The split we keep coming back to is this: <strong>deterministic logic owns the facts, agents reason over the judgment.</strong></p>\n              <p>Regulatory requirements, policy terms, calculation formulas, and validity checks sit in a rules layer. The agent doesn't get to have an opinion about whether a notice period is 30 days. What the agent does is weigh the ambiguous, multi-factor evidence that determines which path a case should take — and then score how confident it is in its own answer.</p>\n              <p>That confidence score is what makes the whole arrangement safe. Instead of routing on rules, you route on certainty: clear cases proceed, ambiguous ones escalate to a human with the full reasoning trace attached, so the reviewer can act rather than reconstruct. You can start that threshold deliberately conservative and tighten it as real outcomes come back — which means you're increasing autonomy on evidence rather than on hope.</p>"
+    },
+    {
+      "heading": "Where to start",
+      "html": "<p>Before choosing an architecture, get specific about one workflow. Pull twenty recent cases and sort them into three piles: decided by lookup, decided by judgment, and decided by judgment that turned out to be wrong. The relative size of those piles tells you more about what to build than any vendor evaluation will.</p>\n              <p>If the first pile dominates, you have a rules problem and possibly a data-access problem. If the second and third are substantial and the case flow is steady, that's where agents earn their cost — and the third pile is where the return is largest, because those are the cases where consistent, well-reasoned judgment beats tired human judgment on a Friday afternoon.</p>"
+    }
+  ],
+  "tail": ""
+}

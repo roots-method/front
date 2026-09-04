@@ -13,3 +13,12 @@ assets/Arka-Brochure*.pdf
 
 # Unreferenced working assets
 assets/tools-banner-tp.png
+
+# Next.js
+/.next/
+/out/
+/build
+node_modules/
+.vercel
+*.tsbuildinfo
+next-env.d.ts
