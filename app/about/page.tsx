@@ -1,8 +1,9 @@
 import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel from "@/components/CtaPanel";
+import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import InlineSvg from "@/components/InlineSvg";
+import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About — practitioners, not consultants",
@@ -167,7 +168,9 @@ export default function AboutPage() {
       <CtaPanel
         eyebrow="Work With Us"
         heading="If your operations have room to improve, we'll find it."
-        primaryLabel="Book a discovery call"
+        steps={BLUEPRINT_CTA_STEPS}
+        primaryLabel="Schedule a call"
+        primaryHref={BOOKING_URL}
         watermark={false}
         secondary={
           <Link className="btn btn--ghost" href="/software">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import InlineSvg from "@/components/InlineSvg";
 import TypeCycle from "@/components/TypeCycle";
-import CtaPanel from "@/components/CtaPanel";
+import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -55,15 +55,6 @@ const CONSULT_REASSURANCE = [
   "Free, and free of a pitch",
   "40 minutes, one call",
   "No commitment either way",
-];
-
-/* Index-only. The shared default in CtaPanel still says 30-min, and so do
-   /products and /contact — see the note in that component before changing it
-   globally. */
-const HOME_CTA_STEPS = [
-  "Book a 40-mins scoping call. No commitment required.",
-  "We map your highest-value workflow opportunity",
-  "You receive a tailored ROI Blueprint within 5 business days",
 ];
 
 const INDUSTRIES = [
@@ -272,7 +263,7 @@ export default function HomePage() {
       </section>
 
       <CtaPanel
-        steps={HOME_CTA_STEPS}
+        steps={BLUEPRINT_CTA_STEPS}
         primaryLabel="Schedule a call"
         primaryHref={BOOKING_URL}
       />

@@ -10,6 +10,23 @@ function isExternal(href: string): boolean {
 const DEFAULT_HEADING =
   "The gap between where you are and where you want to be is a systems problem. Let’s close it.";
 
+/* Two step lists while the 40-minute offer is rolled out page by page.
+   BLUEPRINT_CTA_STEPS is the current copy and is what /, /software and /about
+   render; /products builds its own list from the same first step. DEFAULT_STEPS
+   is the old 30-minute wording, still rendered by /our-flow, /results, /blog and
+   the case studies because those pages have not been migrated yet.
+
+   When they are, delete DEFAULT_STEPS and make BLUEPRINT_CTA_STEPS the default.
+   /contact carries its own 30-minute line too — grep for "30-min". */
+export const SCOPING_CALL_STEP =
+  "Book a 40-mins scoping call. No commitment required.";
+
+export const BLUEPRINT_CTA_STEPS = [
+  SCOPING_CALL_STEP,
+  "We map your highest-value workflow opportunity",
+  "You receive a tailored ROI Blueprint within 5 business days",
+];
+
 const DEFAULT_STEPS = [
   "Book a 30-min scoping call — no commitment required",
   "We map your highest-value workflow opportunity",

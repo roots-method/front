@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel from "@/components/CtaPanel";
+import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,13 +21,13 @@ const PROBLEMS = [
     key: "Reporting",
     cost: "12 hrs/wk, already stale",
     quote:
-      "By the time the report lands, it's already three days wrong — and we're still making decisions on it.",
+      "By the time the report lands, it's already three days old and the decisions were made based on it.",
   },
   {
     key: "Decisions",
     cost: "3 systems, 0 single source",
     quote:
-      "We know the answer is in the data. But the data is in three systems and nobody has time to reconcile them.",
+      "The answer is in the data. The challenge is that it’s fragmented across three different systems, with no clear source of truth for what’s current and accurate.",
   },
   {
     key: "Handoffs",
@@ -39,7 +39,7 @@ const PROBLEMS = [
     key: "Your people",
     cost: "best talent on lowest-value work",
     quote:
-      "Our most capable people spend their day copy-pasting data and chasing approvals — work a well-built system would handle automatically.",
+      "Our most capable people spend their day copy-pasting data and chasing approvals work a well-built system would handle automatically.",
   },
 ];
 
@@ -53,7 +53,7 @@ const PROCESS = [
   {
     title: "AI Automation",
     duration: "Weeks 3–8",
-    body: "We design and deploy automation around repeatable decisions, documents, customer operations, and data movement — built to your workflows, not generic templates.",
+    body: "We are AI first company but we thoughtfully add where it's only necessary. We design and deploy automation around repeatable decisions, documents, customer operations, and data movement — built to your workflows, not generic templates.",
   },
   {
     title: "Workflow Intelligence",
@@ -102,17 +102,17 @@ export default function SoftwarePage() {
           </p>
           <h1>Custom digital solutions, shaped around your business.</h1>
           <p className="page-hero__sub">
-            Software that compliments your existing profit making machine. Not because of AI but the real humans make it happen. 
+            Software that compliments your existing profit making machine. Not because of AI but the Arka's team make it happen. 
           </p>
           <div className="page-hero__actions">
             <a className="btn btn--primary" href={BOOKING_URL} target="_blank" rel="noopener">
-              Claim your free 1-hour consult
+              Claim your free 40 mins consult
               <span className="nav__arrow" aria-hidden="true">
                 &#8599;
               </span>
             </a>
             <Link className="btn btn--ghost" href="/contact">
-              Speak with our team
+              Get in touch.
             </Link>
           </div>
         </div>
@@ -209,7 +209,11 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      <CtaPanel />
+      <CtaPanel
+        steps={BLUEPRINT_CTA_STEPS}
+        primaryLabel="Schedule a call"
+        primaryHref={BOOKING_URL}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel from "@/components/CtaPanel";
+import CtaPanel, { SCOPING_CALL_STEP } from "@/components/CtaPanel";
 import InlineSvg from "@/components/InlineSvg";
 import ProcessSplit from "@/components/ProcessSplit";
 import { BOOKING_URL } from "@/lib/site";
@@ -121,7 +121,7 @@ export default function ProductsPage() {
           </p>
 
           <p className="page-hero__sub">
-            Make the tools your team already knows work the way you need them to &mdash; effective,
+            Make the tools your team already knows work the way you need them to effective,
             proactive and accountable.
           </p>
           <div className="page-hero__actions">
@@ -191,10 +191,12 @@ export default function ProductsPage() {
       <CtaPanel
         heading="Tell us what your team runs on today. We will tell you what is worth changing."
         steps={[
-          "Book a 30-min call — no commitment required",
+          SCOPING_CALL_STEP,
           "We audit your current tools, licences and costs",
           "You get a costed migration plan within 5 business days",
         ]}
+        primaryLabel="Schedule a call"
+        primaryHref={BOOKING_URL}
         secondary={
           <Link className="btn btn--ghost" href="/software">
             See custom software
