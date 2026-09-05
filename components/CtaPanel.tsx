@@ -1,6 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+/** Booking links leave the site; internal routes must stay <Link> for
+ *  client-side navigation. */
+function isExternal(href: string): boolean {
+  return /^https?:\/\//.test(href);
+}
+
 const DEFAULT_HEADING =
   "The gap between where you are and where you want to be is a systems problem. Let’s close it.";
 
@@ -24,6 +30,7 @@ export default function CtaPanel({
   heading = DEFAULT_HEADING,
   steps = DEFAULT_STEPS,
   primaryLabel = "Speak with our team",
+  primaryHref = "/contact",
   secondary,
   watermark = true,
   className,
@@ -32,6 +39,8 @@ export default function CtaPanel({
   heading?: ReactNode;
   steps?: string[];
   primaryLabel?: string;
+  /** An absolute URL opens in a new tab; anything else routes internally. */
+  primaryHref?: string;
   secondary?: ReactNode;
   /** About drops it; every other page carries it. */
   watermark?: boolean;
@@ -62,12 +71,26 @@ export default function CtaPanel({
         ))}
       </ol>
       <div className="cta-panel__action">
-        <Link className="btn btn--primary" href="/contact">
-          {primaryLabel}
-          <span className="nav__arrow" aria-hidden="true">
-            &#8599;
-          </span>
-        </Link>
+        {isExternal(primaryHref) ? (
+          <a
+            className="btn btn--primary"
+            href={primaryHref}
+            target="_blank"
+            rel="noopener"
+          >
+            {primaryLabel}
+            <span className="nav__arrow" aria-hidden="true">
+              &#8599;
+            </span>
+          </a>
+        ) : (
+          <Link className="btn btn--primary" href={primaryHref}>
+            {primaryLabel}
+            <span className="nav__arrow" aria-hidden="true">
+              &#8599;
+            </span>
+          </Link>
+        )}
         {secondary}
         <p className="cta-panel__note">We respond within one business day.</p>
       </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import InlineSvg from "@/components/InlineSvg";
 import TypeCycle from "@/components/TypeCycle";
 import CtaPanel from "@/components/CtaPanel";
+import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Arka — AI for Enterprise Operations",
@@ -26,8 +27,8 @@ const PILLARS = [
     href: "/software",
     icon: "ibm-watsonx--code-assistant.svg",
     label: "Software",
-    title: "Build Custom Digital Solutions",
-    body: "Software shaped around the way your business already works — not a template you have to bend around. Start with a free hour to find where the real gaps are.",
+    title: "Build Custom AI Solutions",
+    body: "Software that compliments your existing profit making machine. Not because of AI but the real humans make it happen. ",
     cta: "Explore software",
   },
   {
@@ -35,17 +36,34 @@ const PILLARS = [
     icon: "ibm-granite.svg",
     label: "Products",
     title: "Deploy World-Class Products",
-    body: "Google Workspace, Zoho, CRM, sales platforms — the everyday tools your team already trusts, configured and connected so they work together from day one.",
+    body: "Google Workspace, Zoho, CRM, sales platforms the everyday tools your team already trusts. We can help you deploy and configure so your team can start using from day one.",
     cta: "Explore products",
   },
   {
     href: "/contact",
     icon: "operations--field.svg",
     label: "Support",
-    title: "Support and Operations",
-    body: "Continuous back-office operations and day-to-day care for your whole digital ecosystem — and yes, that includes the infrastructure underneath it all.",
+    title: "Back-office and Operations",
+    body: "Continuity of back-office operations, monthly maintainence across your digital ecosystem and yes, that includes the cloud infrastructure supporting that.",
     cta: "Explore support",
   },
+];
+
+// What the reader is actually agreeing to, sat under the button rather than
+// above it — this is where the hesitation is, so this is where it is answered.
+const CONSULT_REASSURANCE = [
+  "Free, and free of a pitch",
+  "40 minutes, one call",
+  "No commitment either way",
+];
+
+/* Index-only. The shared default in CtaPanel still says 30-min, and so do
+   /products and /contact — see the note in that component before changing it
+   globally. */
+const HOME_CTA_STEPS = [
+  "Book a 40-mins scoping call. No commitment required.",
+  "We map your highest-value workflow opportunity",
+  "You receive a tailored ROI Blueprint within 5 business days",
 ];
 
 const INDUSTRIES = [
@@ -61,20 +79,20 @@ const TESTIMONIALS = [
   {
     quote:
       "Arka eliminated 40 hours of manual reporting from our week in under two months. The system keeps improving, we haven't touched it since deployment.",
-    name: "James K.",
-    role: "VP Operations · Global Logistics",
+    name: "VP Operations",
+    role: "At Global Logistics Enterprise Firm.",
   },
   {
     quote:
       "We went from email chains and spreadsheets to a fully automated back-office in six weeks. Our team now focuses on decisions, not data entry.",
-    name: "Maria L.",
-    role: "COO · Healthcare Distribution",
+    name: "COO",
+    role: "At Healthcare Distribution Warehouse Center",
   },
   {
     quote:
       "The ROI Blueprint alone changed how we think about operations. They found inefficiencies we'd been ignoring for years and had a fix deployed within a month.",
-    name: "David R.",
-    role: "Director of Operations · B2B Technology",
+    name: "Director of Operations",
+    role: "At B2B Technology Wholesale / Reseller",
   },
 ];
 
@@ -127,7 +145,7 @@ export default function HomePage() {
             <br />
             Digital Partner.
           </h1>
-          <p className="hero__lede hero__tagline">Build with us. Grow with us.</p>
+          <p className="hero__lede hero__tagline">A Partner for Your Enterprise Operations.</p>
           <div className="hero__actions">
             <Link className="btn btn--primary" href="/contact">
               Contact Us
@@ -154,11 +172,11 @@ export default function HomePage() {
           What Arka Does
         </p>
         <h2 className="solution-pillars__title" id="what-arka-does">
-          Three ways we take work off your plate.
+          Bring AI to your digital ecosystem.
         </h2>
         <p className="solution-pillars__intro">
-          We build what doesn&rsquo;t exist yet, set up what already does, and keep all of it
-          running. Most clients start with one and grow into the others.
+          We develop AI softwares, integrate with existing systems and create a seemless workflow experience.  
+          
         </p>
 
         <div className="solution-pillars__grid">
@@ -187,6 +205,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Placed here on purpose: straight after the pillars, where the reader
+          has just learned what we do and is most likely to act. The page still
+          closes with the full CTA panel — this is the earlier of two chances,
+          not a duplicate of it. */}
+      <section className="consult-band" aria-labelledby="free-consult">
+        <div className="consult-band__copy">
+          <p className="eyebrow">Free consultation</p>
+          <h2 className="consult-band__title" id="free-consult">
+            Bring us the workflow that costs you the most.
+          </h2>
+          <p className="consult-band__sub">
+            Forty minutes, no charge. We&rsquo;ll tell you what we would automate first, roughly
+            what it would take, and whether it is worth doing at all &mdash; even if the answer is
+            not yet.
+          </p>
+        </div>
+
+        <div className="consult-band__action">
+          <a
+            className="btn btn--primary consult-band__cta"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener"
+          >
+            Claim free 40-mins call
+            <span className="nav__arrow" aria-hidden="true">
+              &#8599;
+            </span>
+          </a>
+          <ul className="consult-band__reassure">
+            {CONSULT_REASSURANCE.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="industry-strip" aria-label="Industries served">
         <span className="industry-strip__label">Industries served</span>
         <ul className="industry-strip__list">
@@ -211,7 +266,7 @@ export default function HomePage() {
       </section>
 
       <section className="client-bar" aria-label="Our clients">
-        <span className="client-bar__label">Trusted by</span>
+        <span className="client-bar__label">Trusted by Employees At</span>
         <div className="client-bar__logos">
           {CLIENTS.map((c) => (
             <img
@@ -225,7 +280,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CtaPanel />
+      <CtaPanel
+        steps={HOME_CTA_STEPS}
+        primaryLabel="Schedule a call"
+        primaryHref={BOOKING_URL}
+      />
     </>
   );
 }

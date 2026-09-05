@@ -1,0 +1,111 @@
+/* ── Free consultation band ──────────────────────────────────────────────
+   Sits between the solution pillars and the industry strip: the point where
+   a reader has just learned what we do and is most likely to act, which is
+   why the offer is here rather than only at the foot of the page.
+
+   Deliberately *not* another .cta-panel. The page already closes with one,
+   and two identical panels read as a repeat rather than as two chances to
+   act. This is a wide band — offer on the left, action on the right — so it
+   is unmistakably a different beat.
+
+   The tint wash is --accent-soft at low alpha, which is what tint is for
+   (soft fills, hover washes). No new colour is introduced. */
+.consult-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  background:
+    linear-gradient(
+      110deg,
+      rgba(var(--accent-rgb), 0.06),
+      rgba(var(--accent-rgb), 0) 62%
+    ),
+    var(--n-0);
+}
+
+.consult-band__copy {
+  max-width: 46ch;
+}
+
+.consult-band__title {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.25;
+}
+
+.consult-band__sub {
+  margin: 0.7rem 0 0;
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* The action column. Everything that answers "what am I signing up for?"
+   sits directly under the button, where the hesitation actually happens —
+   not above it, where it is read before the reader is deciding. */
+.consult-band__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  flex: none;
+}
+
+.consult-band__cta {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  padding: 0.95rem 1.6rem;
+}
+
+.consult-band__reassure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.consult-band__reassure li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+/* Cobalt tick, same mark the check-list uses, so the reassurance reads as
+   part of the same system rather than as decoration. */
+.consult-band__reassure li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 0.72rem;
+  height: 0.72rem;
+  background-color: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Stacking below 780px rather than 860px: this band has only two columns and
+   holds its shape longer than the page's three-column sections. */
+@media (max-width: 780px) {
+  .consult-band {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .consult-band__action {
+    width: 100%;
+  }
+
+  .consult-band__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
