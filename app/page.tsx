@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 // Module scope, not inline: a fresh array literal on every render would restart
 // the typing effect each time the page re-renders.
-const HERO_WORDS = ["defacto", "default"];
+const HERO_WORDS = ["AI", "Arka"];
 
 const PILLARS = [
   {
@@ -99,17 +99,31 @@ export default function HomePage() {
           <p className="eyebrow">For enterprise operations teams</p>
           <h1 className="hero__title">
             Your Only{" "}
-            {/* The braced word types and retypes between "defacto" and
-                "default". aria-hidden because a screen reader should not have
-                the headline rewritten under it letter by letter; the .sr-only
-                span carries the sentence instead. */}
+            {/* Only the first word types — "AI" and "Arka" swap, "flow" is
+                static. They share a leading "A", so the rewind stops there and
+                grows into the other rather than emptying the braces.
+
+                reserve={false}, unlike the "defacto"/"default" pair this
+                replaced. Those were near-identical in width, so holding the
+                field at the widest cost nothing. "Arka" is 79px against "AI" at
+                35px, and reserving parks all 44px of that difference between
+                the word and "flow" — it reads as a spacing bug for the whole
+                time "AI" is up. Letting the line re-centre costs 27px of
+                movement across the entire cycle instead, which is small enough
+                to pass as part of the typing, and the phrase is tight at every
+                frame. Centring the word inside a reserved slot was tried and is
+                worse: it strands the caret away from the text it is typing.
+
+                aria-hidden because a screen reader should not have the headline
+                rewritten under it letter by letter; the .sr-only span carries
+                the phrase instead. */}
             <span className="type-cycle" aria-hidden="true">
               {"{"}
-              <TypeCycle className="type-cycle__word" words={HERO_WORDS} />
+              <TypeCycle className="type-cycle__word" words={HERO_WORDS} reserve={false} />
               <span className="type-cycle__caret" />
-              {"}"}
+              {" flow}"}
             </span>
-            <span className="sr-only">defacto</span>
+            <span className="sr-only">AI flow</span>
             <br />
             Digital Partner.
           </h1>
