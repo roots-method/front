@@ -126,13 +126,13 @@ export default function ProductsPage() {
           </p>
           <div className="page-hero__actions">
             <Link className="btn btn--primary" href="/contact">
-              Talk to us about your stack.
+              Talk to us about your stack
               <span className="nav__arrow nav__arrow--right" aria-hidden="true">
                 &#8594;
               </span>
             </Link>
             <a className="btn btn--ghost" href={BOOKING_URL} target="_blank" rel="noopener">
-              Book a 40 mins call.
+              Book a 40 mins call
               <span className="nav__arrow" aria-hidden="true">
                 &#8599;
               </span>
@@ -153,7 +153,7 @@ export default function ProductsPage() {
           Platforms your team already knows.
         </h2>
         <p className="solution-pillars__intro">
-          The world class products since decades. We set up the products, where your teams are already comfortable
+          The world class products for decades. We set up the products, where your teams are already comfortable
           with, then connect them so they behave like one system.
         </p>
 

@@ -67,7 +67,7 @@ export default function AboutPage() {
             <span className="about-hero__line accent">Partnerships that keep going.</span>
           </h1>
           <p className="page-hero__tagline">
-            Arka builds intelligent software for enterprise operations replacing manual,
+            Arka builds intelligent software for enterprise operations which replaces manual,
             fragmented workflows with AI systems that improve execution, sharpen margins, and
             compound in value over time.
           </p>
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <section className="about-story">
         <header className="about-story__header">
           <p className="eyebrow">Our Story</p>
-          <h2>Complex ideas needs simple solutions.</h2>
+          <h2>Complex ideas need simple solutions.</h2>
         </header>
         <div className="about-story__body">
           <p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
             friction instead of focus.
           </p>
           <p>
-            We partner with every scale of businesses be it your small venture or you are ready to scale and with large scale enterprises. We genuinely see where time and margin quietly slip away,
+            We partner with every scale of businesses, be it your small venture or you are ready to scale and with large scale enterprises. We genuinely see where time and margin quietly slip away,
             then design simple solutions that make better execution.
           </p>
           <p>

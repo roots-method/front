@@ -112,7 +112,7 @@ export default function SoftwarePage() {
               </span>
             </a>
             <Link className="btn btn--ghost" href="/contact">
-              Get in touch.
+              Get in touch
             </Link>
           </div>
         </div>
