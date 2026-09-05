@@ -100,11 +100,9 @@ export default function SoftwarePage() {
             />
             Software
           </p>
-          <h1>Custom software, shaped around your business.</h1>
+          <h1>Custom digital solutions, shaped around your business.</h1>
           <p className="page-hero__sub">
-            We build digital solutions tailored to what your business actually needs &mdash; not a
-            template you have to bend around. Start with one free hour of consulting to work out
-            where the real gaps are, and only build once the business case is clear.
+            Software that compliments your existing profit making machine. Not because of AI but the real humans make it happen. 
           </p>
           <div className="page-hero__actions">
             <a className="btn btn--primary" href={BOOKING_URL} target="_blank" rel="noopener">

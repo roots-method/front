@@ -210,36 +210,27 @@ export default function HomePage() {
           closes with the full CTA panel — this is the earlier of two chances,
           not a duplicate of it. */}
       <section className="consult-band" aria-labelledby="free-consult">
-        <div className="consult-band__copy">
-          <p className="eyebrow">Free consultation</p>
-          <h2 className="consult-band__title" id="free-consult">
-            Bring us the workflow that costs you the most.
-          </h2>
-          <p className="consult-band__sub">
-            Forty minutes, no charge. We&rsquo;ll tell you what we would automate first, roughly
-            what it would take, and whether it is worth doing at all &mdash; even if the answer is
-            not yet.
-          </p>
-        </div>
-
-        <div className="consult-band__action">
-          <a
-            className="btn btn--primary consult-band__cta"
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener"
-          >
-            Claim free 40-mins call
-            <span className="nav__arrow" aria-hidden="true">
-              &#8599;
-            </span>
-          </a>
-          <ul className="consult-band__reassure">
-            {CONSULT_REASSURANCE.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
+        <p className="eyebrow">Free consultation</p>
+        <h2 className="consult-band__title" id="free-consult">
+          Bring us the workflow that costs you the most.
+        </h2>
+        <a
+          className="btn btn--primary consult-band__cta"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener"
+        >
+          Claim free 40-mins call
+          <span className="nav__arrow" aria-hidden="true">
+            &#8599;
+          </span>
+        </a>
+        {/* Directly under the button, where the hesitation is. */}
+        <ul className="consult-band__reassure">
+          {CONSULT_REASSURANCE.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </section>
 
       <section className="industry-strip" aria-label="Industries served">
