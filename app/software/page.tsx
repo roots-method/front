@@ -4,15 +4,15 @@ import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Software — custom systems built around your operations",
+  title: "Software: custom systems built around your operations",
   description:
     "Arka builds custom software shaped around how your business already works. Start with a free hour of consulting to find the real gaps, and only build once the business case is clear.",
   alternates: { canonical: "/software" },
   openGraph: {
     url: "/software",
-    title: "Software — custom systems built around your operations",
+    title: "Software: custom systems built around your operations",
     description:
-      "Custom software shaped around how your business already works — not a template you have to bend around.",
+      "Custom software shaped around how your business already works, not a template you have to bend around.",
   },
 };
 
@@ -53,7 +53,7 @@ const PROCESS = [
   {
     title: "AI Automation",
     duration: "Weeks 3–8",
-    body: "We are AI first company but we thoughtfully add where it's only necessary. We design and deploy automation around repeatable decisions, documents, customer operations, and data movement — built to your workflows, not generic templates.",
+    body: "We are AI first company but we thoughtfully add where it's only necessary. We design and deploy automation around repeatable decisions, documents, customer operations, and data movement, built to your workflows rather than generic templates.",
   },
   {
     title: "Workflow Intelligence",
@@ -102,7 +102,7 @@ export default function SoftwarePage() {
           </p>
           <h1>Custom digital solutions, shaped around your business.</h1>
           <p className="page-hero__sub">
-            Software that complements your existing profit-making machine — not because of AI, but because Arka's team makes it happen.
+            Software that complements your existing profit-making machine. Not because of AI, but because Arka's team makes it happen.
           </p>
           <div className="page-hero__actions">
             <a className="btn btn--primary" href={BOOKING_URL} target="_blank" rel="noopener">
@@ -143,7 +143,7 @@ export default function SoftwarePage() {
           ))}
         </ul>
         <p className="problem-frame__bridge">
-          These aren&rsquo;t effort problems. They&rsquo;re systems problems &mdash; and systems can
+          These aren&rsquo;t effort problems. They&rsquo;re systems problems, and systems can
           be fixed.
         </p>
       </section>
@@ -153,7 +153,7 @@ export default function SoftwarePage() {
         <h2 className="what-we-do__title">A four-step engagement built for lasting change.</h2>
         <div className="what-we-do__intro">
           <p>
-            Every engagement follows the same proven sequence — from diagnosing where the value is,
+            Every engagement follows the same proven sequence, from diagnosing where the value is,
             through building and deploying the system, to owning it with you long after launch.
           </p>
         </div>

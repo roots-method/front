@@ -6,9 +6,9 @@ import InlineSvg from "@/components/InlineSvg";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About — practitioners, not consultants",
+  title: "About: practitioners, not consultants",
   description:
-    "Arka builds intelligent software for enterprise operations — replacing manual, fragmented workflows with AI systems that improve execution, sharpen margins, and compound in value over time.",
+    "Arka builds intelligent software for enterprise operations, replacing manual, fragmented workflows with AI systems that improve execution, sharpen margins, and compound in value over time.",
   alternates: { canonical: "/about" },
   openGraph: {
     url: "/about",
@@ -37,14 +37,14 @@ const TEAM = [
     first: "Akki",
     last: "Maheshwari",
     title: "Head of Brand & People",
-    bio: "Shapes how Arka communicates and grows — connecting brand clarity with the talent that delivers it.",
+    bio: "Shapes how Arka communicates and grows, connecting brand clarity with the talent that delivers it.",
   },
   {
     photo: "SJazzy.png",
     first: "Pankaj",
     last: "Jaju",
     title: "Director of Technology & Operations",
-    bio: "Leads the technical architecture of every engagement — from workflow design through long-term system performance.",
+    bio: "Leads the technical architecture of every engagement, from workflow design through long-term system performance.",
   },
 ];
 

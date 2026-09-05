@@ -6,15 +6,15 @@ import ProcessSplit from "@/components/ProcessSplit";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Products — Arka ONE",
+  title: "Products: Arka ONE",
   description:
     "Arka ONE brings Communication, Collaboration and Content together. We configure Zoho One, Google Workspace and your sales stack, then connect them so they behave like one system.",
   alternates: { canonical: "/products" },
   openGraph: {
     url: "/products",
-    title: "Products — Arka ONE",
+    title: "Products: Arka ONE",
     description:
-      "Make the tools your team already knows work the way you need them to — effective, proactive and accountable.",
+      "Make the tools your team already knows work the way you need them to be effective, proactive and accountable.",
   },
 };
 
@@ -36,7 +36,7 @@ const PLATFORMS = [
     label: "CRM & Sales Tools",
     // No destination yet, so this one is a plain div with a badge rather than a link.
     badge: "Coming soon",
-    title: "Ask us — we have special products on the way.",
+    title: "Ask us. We have special products on the way.",
     body: "Pipelines, quotes and follow-ups that your sales team will actually keep up to date. Tell us how you sell today and we will tell you what is coming.",
   },
 ];

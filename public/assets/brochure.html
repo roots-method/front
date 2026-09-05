@@ -346,6 +346,11 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
 .contact__l { display: flex; align-items: center; gap: 1.8mm; font-size: 6.8pt; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--on-brand-mute); }
 .contact__v { font-size: 10.5pt; font-weight: 600; margin-top: 1.5mm; }
+/* Chrome carries <a href> through to the exported PDF as a live annotation, so
+   these are tappable in the file people are actually sent. Colour is inherited
+   rather than set: a default link blue on the cobalt ground would be close to
+   invisible. */
+.contact__v a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(255, 255, 255, 0.45); }
 .contact__l .i { width: 4.6mm; height: 4.6mm; color: var(--on-brand-soft); }
 </style>
 </head>
@@ -665,11 +670,11 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   <div class="contact">
     <div>
       <div class="contact__l"><span class="i" style="--i:url(/assets/icons-ai-ibm/email--new.svg)" aria-hidden="true"></span>Email</div>
-      <div class="contact__v">build@arkaflow.co</div>
+      <div class="contact__v"><a href="mailto:build@arkaflow.co">build@arkaflow.co</a></div>
     </div>
     <div>
       <div class="contact__l"><span class="i" style="--i:url(/assets/icons-ai-ibm/create-link.svg)" aria-hidden="true"></span>Web</div>
-      <div class="contact__v">arkaflow.co</div>
+      <div class="contact__v"><a href="https://www.arkaflow.co">arkaflow.co</a></div>
     </div>
     <div>
       <div class="contact__l"><span class="i" style="--i:url(/assets/icons-ai-ibm/renew.svg)" aria-hidden="true"></span>Response time</div>

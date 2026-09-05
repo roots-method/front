@@ -28,7 +28,7 @@ export const BLUEPRINT_CTA_STEPS = [
 ];
 
 const DEFAULT_STEPS = [
-  "Book a 30-min scoping call — no commitment required",
+  "Book a 30-min scoping call. No commitment required",
   "We map your highest-value workflow opportunity",
   "You receive a tailored ROI Blueprint within 5 business days",
 ];

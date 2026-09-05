@@ -6,15 +6,15 @@ import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Arka — AI for Enterprise Operations",
+  title: "Arka: AI for Enterprise Operations",
   description:
-    "Arka builds intelligent software for enterprise operations — replacing manual workflows with AI systems that cut costs, recover hours, and compound in value. Services: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.",
+    "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value. Services: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: "Arka — AI for Enterprise Operations",
+    title: "Arka: AI for Enterprise Operations",
     description:
-      "Arka builds intelligent software for enterprise operations — replacing manual workflows with AI systems that cut costs, recover hours, and compound in value.",
+      "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value.",
   },
 };
 
@@ -28,7 +28,7 @@ const PILLARS = [
     icon: "ibm-watsonx--code-assistant.svg",
     label: "Software",
     title: "Build Custom AI Solutions",
-    body: "Software that complements your existing profit-making machine — not because of AI, but because real humans make it happen.",
+    body: "Software that complements your existing profit-making machine. Not because of AI, but because real humans make it happen.",
     cta: "Explore software",
   },
   {
@@ -44,7 +44,7 @@ const PILLARS = [
     icon: "operations--field.svg",
     label: "Support",
     title: "Back-office and Operations",
-    body: "Continuity of back-office operations and monthly maintenance across your digital ecosystem — and yes, that includes the cloud infrastructure supporting it.",
+    body: "Continuity of back-office operations and monthly maintenance across your digital ecosystem. And yes, that includes the cloud infrastructure supporting it.",
     cta: "Explore support",
   },
 ];

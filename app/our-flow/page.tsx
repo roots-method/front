@@ -3,13 +3,13 @@ import CtaPanel from "@/components/CtaPanel";
 import InlineSvg from "@/components/InlineSvg";
 
 export const metadata: Metadata = {
-  title: "Our Flow — four stages, one continuous engagement",
+  title: "Our Flow: four stages, one continuous engagement",
   description:
     "Most transformation efforts fail at the handoff. Arka's four-stage engagement runs from the first workflow audit through long-term performance ownership: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.",
   alternates: { canonical: "/our-flow" },
   openGraph: {
     url: "/our-flow",
-    title: "Our Flow — Arka",
+    title: "Our Flow | Arka",
     description: "Four stages. One continuous engagement. We close every handoff gap.",
   },
 };
@@ -21,7 +21,7 @@ const STAGES = [
     num: "01",
     duration: "Weeks 1–2",
     title: "ROI Blueprint",
-    desc: "Before we build anything, we map your workflows, tools, costs, handoffs, and decision points to find exactly where intelligent automation creates the strongest return. You leave this phase with a prioritised plan — not a vague proposal or a generic audit.",
+    desc: "Before we build anything, we map your workflows, tools, costs, handoffs, and decision points to find exactly where intelligent automation creates the strongest return. You leave this phase with a prioritised plan, not a vague proposal or a generic audit.",
     list: [
       "Workflow and cost-structure review",
       "Automation opportunity scoring",
@@ -29,14 +29,14 @@ const STAGES = [
     ],
     deliverableLabel: "You leave with",
     deliverable:
-      "A ranked list of automation opportunities with expected ROI for each — ready to act on immediately.",
+      "A ranked list of automation opportunities with expected ROI for each, ready to act on immediately.",
   },
   {
     icon: "automation",
     num: "02",
     duration: "Weeks 3–8",
     title: "AI Automation",
-    desc: "We design and deploy automation around repeatable decisions, documents, customer operations, internal coordination, and data movement — built specifically to your workflows, not adapted from a generic template.",
+    desc: "We design and deploy automation around repeatable decisions, documents, customer operations, internal coordination, and data movement, built specifically to your workflows rather than adapted from a generic template.",
     list: [
       "Agentic workflow design",
       "Human-in-the-loop controls",
@@ -44,14 +44,14 @@ const STAGES = [
     ],
     deliverableLabel: "You leave with",
     deliverable:
-      "Deployed automation handling your highest-value workflow — running in production, not in a sandbox.",
+      "Deployed automation handling your highest-value workflow, running in production rather than in a sandbox.",
   },
   {
     icon: "intelligence",
     num: "03",
     duration: "Weeks 6–12",
     title: "Workflow Intelligence",
-    desc: "We connect your systems into a clear operating layer — so your team moves faster without losing judgment, context, or quality in the handoff. Scattered tools become a coherent, observable process.",
+    desc: "We connect your systems into a clear operating layer, so your team moves faster without losing judgment, context, or quality in the handoff. Scattered tools become a coherent, observable process.",
     list: [
       "Process redesign and decision logic",
       "Data models and systems integration",
@@ -59,14 +59,14 @@ const STAGES = [
     ],
     deliverableLabel: "You leave with",
     deliverable:
-      "A connected operating layer your team actually uses — with full visibility into what's running and why.",
+      "A connected operating layer your team actually uses, with full visibility into what's running and why.",
   },
   {
     icon: "operations",
     num: "04",
     duration: "Ongoing",
     title: "Back-Office Operations",
-    desc: "We don't launch and leave. We take ownership of ongoing performance, maintenance, and optimisation — so value compounds without adding to your operational burden. Most firms measure success at go-live. We measure it at month twelve.",
+    desc: "We don't launch and leave. We take ownership of ongoing performance, maintenance, and optimisation, so value compounds without adding to your operational burden. Most firms measure success at go-live. We measure it at month twelve.",
     list: [
       "Continuous performance monitoring",
       "System refinement and evolution",
@@ -74,7 +74,7 @@ const STAGES = [
     ],
     deliverableLabel: "You get",
     deliverable:
-      "A partner who owns system performance alongside you — indefinitely, not just at launch.",
+      "A partner who owns system performance alongside you, indefinitely rather than just at launch.",
   },
 ];
 
@@ -89,7 +89,7 @@ export default function OurFlowPage() {
           </p>
           <h1>Four stages. One continuous engagement.</h1>
           <p className="page-hero__sub">
-            Most transformation efforts fail at the handoff — between diagnosis and build, between
+            Most transformation efforts fail at the handoff, between diagnosis and build, between
             launch and ownership. We close every gap. From the first workflow audit through
             long-term performance, we stay in the room.
           </p>

@@ -4,13 +4,13 @@ import CtaPanel from "@/components/CtaPanel";
 import { orderedCaseStudies, type CaseStudy } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
-  title: "Case Work — systems built for clarity, speed and compounding returns",
+  title: "Case Work: systems built for clarity, speed and compounding returns",
   description:
-    "A sample of the outcomes Arka pursues with clients — reducing manual drag, tightening workflows, and making execution easier to measure.",
+    "A sample of the outcomes Arka pursues with clients, reducing manual drag, tightening workflows, and making execution easier to measure.",
   alternates: { canonical: "/results" },
   openGraph: {
     url: "/results",
-    title: "Case Work — Arka",
+    title: "Case Work | Arka",
     description:
       "Systems built for clarity, speed, and compounding returns. A sample of our client work.",
   },
@@ -41,7 +41,7 @@ export default function ResultsPage() {
           <span className="accent">compounding returns.</span>
         </h1>
         <p className="page-hero__sub">
-          A sample of the kinds of outcomes we pursue with clients — reducing manual drag,
+          A sample of the kinds of outcomes we pursue with clients, reducing manual drag,
           tightening workflows, and making <span className="highlight">execution easier to measure</span>.
         </p>
       </section>

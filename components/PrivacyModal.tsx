@@ -65,15 +65,15 @@ export default function PrivacyModal() {
 
           <h3>What we collect</h3>
           <p>
-            <strong>Contact form</strong> — name, work email, company, and message you submit. Used
+            <strong>Contact form</strong>: name, work email, company, and message you submit. Used
             solely to respond to your enquiry (legal basis: legitimate interest, Art. 6(1)(f) GDPR).
           </p>
           <p>
-            <strong>Browser storage</strong> — we store your consent choice in{" "}
+            <strong>Browser storage</strong>: we store your consent choice in{" "}
             <code>localStorage</code> only. No personal data, never transmitted to our servers.
           </p>
           <p>
-            <strong>Server logs</strong> — this site is hosted on GitHub Pages. GitHub may log IP
+            <strong>Server logs</strong>: this site is hosted on GitHub Pages. GitHub may log IP
             addresses and browser agents under their own{" "}
             <a
               href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
@@ -95,7 +95,7 @@ export default function PrivacyModal() {
           <h3>Cookies</h3>
           <p>
             This site sets <strong>no cookies</strong>. We use <code>localStorage</code> for consent
-            preferences only — stored locally in your browser, never shared.
+            preferences only, stored locally in your browser and never shared.
           </p>
 
           <h3>Data retention</h3>
@@ -108,7 +108,7 @@ export default function PrivacyModal() {
           <p>
             You have the right to access, correct, erase, restrict, or port your personal data, and
             to object to processing. Email <a href="mailto:build@arkaflow.co">build@arkaflow.co</a>{" "}
-            to exercise any right — we respond within 30 days. You may also lodge a complaint with
+            to exercise any right, and we respond within 30 days. You may also lodge a complaint with
             your local data protection authority.
           </p>
 

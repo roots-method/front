@@ -4,7 +4,7 @@ import Faq from "@/components/Faq";
 import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — find the workflow worth fixing first",
+  title: "Contact: find the workflow worth fixing first",
   description:
     "Tell us where operations feel slow, manual, or unclear. We start by finding the practical business case before recommending a system. We respond within one business day.",
   alternates: { canonical: "/contact" },
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 
 const NEXT_STEPS = [
   "We review your inquiry and identify the most relevant angle within one business day",
-  "We reach out to schedule a 30-min scoping call — no commitment required",
+  "We reach out to schedule a 30-min scoping call. No commitment required",
   "Together we scope the highest-value workflow opportunity and outline a path forward",
 ];
 
 const FAQS = [
   {
     q: "What does the ROI Blueprint actually deliver?",
-    a: "A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan — not a vague proposal.",
+    a: "A ranked list of automation opportunities with projected cost savings and implementation timelines for each. You leave weeks 1–2 with a prioritized plan, not a vague proposal.",
   },
   {
     q: "How long until we see results?",
@@ -33,11 +33,11 @@ const FAQS = [
   },
   {
     q: "Do you work with businesses outside the US?",
-    a: "Yes — we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions.",
+    a: "Yes, we work with enterprise teams globally. Our engagements run remotely and accommodate operations across time zones and jurisdictions.",
   },
   {
     q: "What happens if the system needs changes after launch?",
-    a: "We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements — so the system keeps getting better as your workflows evolve.",
+    a: "We don't hand off and disappear. Back-Office Operations covers ongoing maintenance, optimization, and improvements, so the system keeps getting better as your workflows evolve.",
   },
 ];
 
