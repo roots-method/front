@@ -28,7 +28,7 @@ const PILLARS = [
     icon: "ibm-watsonx--code-assistant.svg",
     label: "Software",
     title: "Build Custom AI Solutions",
-    body: "Software that compliments your existing profit making machine. Not because of AI but the real humans make it happen. ",
+    body: "Software that complements your existing profit-making machine — not because of AI, but because real humans make it happen.",
     cta: "Explore software",
   },
   {
@@ -44,7 +44,7 @@ const PILLARS = [
     icon: "operations--field.svg",
     label: "Support",
     title: "Back-office and Operations",
-    body: "Continuity of back-office operations, monthly maintainence across your digital ecosystem and yes, that includes the cloud infrastructure supporting that.",
+    body: "Continuity of back-office operations and monthly maintenance across your digital ecosystem — and yes, that includes the cloud infrastructure supporting it.",
     cta: "Explore support",
   },
 ];
@@ -166,8 +166,8 @@ export default function HomePage() {
           Bring AI to your digital ecosystem.
         </h2>
         <p className="solution-pillars__intro">
-          We develop AI softwares, integrate with existing systems and create a seemless workflow experience.  
-          
+          We develop AI software, integrate it with the systems you already run, and create a seamless
+          workflow experience.
         </p>
 
         <div className="solution-pillars__grid">

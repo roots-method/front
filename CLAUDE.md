@@ -373,8 +373,45 @@ is served from `/_next/static/css/`, so a relative path resolves from there.
 
 `--font` and `--font-heading` in `base.css` point at the `next/font` variables
 (`--font-nunito`, `--font-barlow`) with the quoted family names kept behind them
-as a fallback. The fonts are self-hosted by `next/font/google`; the `.ttf` files
-in `public/fonts/` are not used by the site.
+as a fallback. The site's fonts are self-hosted by `next/font/google`, which
+does not read `public/fonts/`.
+
+**`public/fonts/` is still load-bearing, though — do not delete it.**
+`public/assets/brochure.html` is a standalone print document that cannot use
+`next/font`, so it declares its own `@font-face` rules against those `.ttf`
+files. Removing them silently drops the brochure back to Helvetica.
+
+### The brochure
+
+`public/assets/brochure.html` is the editable source for
+`public/assets/Arka-Brochure-1.pdf`: seven A4 pages, served at
+`/assets/brochure.html`. To export, open it in Chrome, Cmd+P, A4, margins
+"None", and tick **Background graphics** — without that every tinted panel and
+both brand pages print white. **The PDF does not regenerate itself; it is stale
+until someone exports it.**
+
+It is deliberately standalone — no React, no `styles/`. Its palette is copied
+from `base.css` and its fonts are `@font-face` rules over `public/fonts/`. That
+duplication is the point: pinning a print document to the site stylesheet means
+every CSS change silently reflows a document nobody re-checks. If the tokens
+move, move these to match.
+
+Its copy duplicates the site's, and nothing keeps them in sync — after a copy
+change on Home, Software or Products, the brochure has to be updated by hand.
+
+Two things to know before editing:
+
+- **Pages are a fixed 297mm with `overflow: hidden`.** Content that grows past
+  that is silently clipped rather than pushed to a new page, so check
+  `scrollHeight` against `clientHeight` after adding anything. The cover and
+  closing pages report an overflow that is *not* content: their watermark bleeds
+  past the edge on purpose.
+- **The logo is masked, not an `<img>`.** `.page-mark` and `.lockup__mark` paint
+  white through `arkaflow-newlogo.svg`'s alpha, which is what puts a light mark
+  on the cobalt ground. It read as an `<img>` with `mix-blend-mode: multiply`
+  for a while, to work around that file having picked up an opaque background —
+  see the logo section above. Keeping it a mask means a background creeping back
+  into that file shows up immediately as a solid square.
 
 ### Palette (light only)
 

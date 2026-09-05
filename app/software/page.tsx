@@ -102,7 +102,7 @@ export default function SoftwarePage() {
           </p>
           <h1>Custom digital solutions, shaped around your business.</h1>
           <p className="page-hero__sub">
-            Software that compliments your existing profit making machine. Not because of AI but the Arka's team make it happen. 
+            Software that complements your existing profit-making machine — not because of AI, but because Arka's team makes it happen.
           </p>
           <div className="page-hero__actions">
             <a className="btn btn--primary" href={BOOKING_URL} target="_blank" rel="noopener">
