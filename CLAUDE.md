@@ -403,23 +403,21 @@ Two things to know before editing:
 
 - **Pages are a fixed 297mm with `overflow: hidden`.** Content that grows past
   that is silently clipped rather than pushed to a new page, so check
-  `scrollHeight` against `clientHeight` after adding anything. The cover and
-  closing pages report an overflow that is *not* content: their watermark bleeds
-  past the edge on purpose.
-- **The logo is masked, not an `<img>`.** `.page-mark` paints white through
-  `arkaflow-newlogo.svg`'s alpha, which is what puts a light mark on the cobalt
-  ground. It read as an `<img>` with `mix-blend-mode: multiply` for a while, to
-  work around that file having picked up an opaque background — see the logo
-  section above. Keeping it a mask means a background creeping back into that
-  file shows up immediately as a solid square.
-- **The cover and closing pages carry the mark once, as the bleed watermark.**
-  A second, smaller copy sat beside the "Arka Technologies" wordmark for a
-  while and was removed: at a few centimetres' distance it read as a repeat
-  rather than as a lockup. `.lockup` is the name on its own now.
-- **The contact lines are real links** on both brand pages. Chrome carries
-  `href` into the exported PDF as a live annotation, so they are tappable in
-  the file people are sent. Their colour is inherited, not set — a default link
-  blue on the cobalt ground is close to invisible.
+  `scrollHeight` against `clientHeight` after adding anything. Every page should
+  read zero.
+- **The brochure carries no logo at all — only the "Arka Technologies"
+  wordmark**, set as text on the cover and in the closing sign-off. The mark was
+  there twice, as a bleed watermark on both brand pages and as a small lockup
+  beside the wordmark, and both were removed on request. Nothing in the file
+  references `arkaflow-newlogo.svg` any more. If it is ever put back, mask it
+  rather than using an `<img>`: a mask reads the file's alpha, so a background
+  creeping into that asset shows up at once as a solid square instead of
+  quietly. It ran as an `<img>` with `mix-blend-mode: multiply` for exactly that
+  reason once — see the logo section above.
+- **The contact lines are real links**, on the cover and the closing page.
+  Chrome carries `href` into the exported PDF as a live annotation, so they are
+  tappable in the file people are sent. Their colour is inherited, not set — a
+  default link blue on the cobalt ground is close to invisible.
 
 ### Palette (light only)
 

@@ -204,33 +204,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 /* ── 01 Cover ────────────────────────────────────────────────────────── */
 .cover { justify-content: space-between; }
-/* Lift the type above the bleed watermark; the contact line crosses it. */
-.cover > *, .page--brand > * { position: relative; z-index: 1; }
-/* Watermark on the two brand pages. A mask rather than an <img>, so the mark
-   is painted in a light tint and reads as a ghost on the cobalt ground.
-
-   This used mix-blend-mode: multiply to cope with arkaflow-newlogo.svg having
-   picked up two full-canvas opaque white rects. That was a fault in the asset,
-   not a property of it — the file is transparent again, so masking works and
-   the mark can be lit rather than darkened. Keep it a mask: a mask reads the
-   image's alpha, so if a background ever creeps back into that file this
-   renders as a solid square and the fault is obvious immediately. */
-.page-mark {
-  position: absolute;
-  width: 168mm;
-  height: 168mm;
-  background-color: #fff;
-  opacity: 0.07;
-  -webkit-mask: url(/assets/arkaflow-newlogo.svg) center / contain no-repeat;
-          mask: url(/assets/arkaflow-newlogo.svg) center / contain no-repeat;
-  pointer-events: none;
-  z-index: 0;
-}
-.cover__mark { right: -46mm; bottom: -40mm; }
-/* Mirrored on the closing page, so the two brand pages bookend each other. */
-.closing__mark { left: -46mm; top: -40mm; }
-
-/* ── Lockup: the mark beside the name, on both brand pages ─────────────── */
 /* The name alone. The mark sat beside it on both brand pages and was taken
    out deliberately — the large bleed watermark already carries the mark on
    these two pages, and a second, smaller copy a few centimetres away read as a
@@ -358,7 +331,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 <!-- ═══ 01 · Cover ═══════════════════════════════════════════════════ -->
 <section class="page page--brand cover">
-  <span class="page-mark cover__mark" aria-hidden="true"></span>
   <div class="lockup">
     <span class="lockup__name">Arka Technologies</span>
   </div>
@@ -636,7 +608,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 <!-- ═══ 07 · Your next step ══════════════════════════════════════════ -->
 <section class="page page--brand">
-  <span class="page-mark closing__mark" aria-hidden="true"></span>
   <p class="eyebrow"><span class="i" style="--i:url(/assets/icons-ai-ibm/send.svg)" aria-hidden="true"></span>Your next step</p>
   <h2>Start with an ROI Blueprint.</h2>
   <p class="lede">
