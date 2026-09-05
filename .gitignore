@@ -22,3 +22,9 @@ node_modules/
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# The pre-React vanilla site, kept locally as the porting reference.
+# Untracked on purpose (git rm -r --cached legacy/) — it is a local artefact,
+# not part of the deployed app. It still exists in history before that commit
+# if it is ever needed again.
+legacy/

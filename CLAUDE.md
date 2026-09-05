@@ -36,7 +36,17 @@ Vercel.
 The complete vanilla-JS site this app was ported from: 11 HTML pages, 16 scripts
 and the original single `styles.css`. It is the reference for anything not yet
 ported and the record of what a page used to do. It is **not** served — nothing
-in the app imports from it, and it should be deleted once the port is signed off.
+in the app imports from it.
+
+**It is no longer tracked.** It was removed from the index with
+`git rm -r --cached legacy/` and is listed in `.gitignore`, so it lives only on
+whichever machine still has it. A fresh clone will not have it at all. That is
+deliberate — it is a porting aid, not part of the deployed app — but it means:
+
+- Do not tell someone to "look at `legacy/`" without checking they have it.
+- Deleting it locally is the last copy on that machine. It survives in history
+  up to the commit that untracked it, recoverable with
+  `git show <commit>:legacy/<file>` or `git restore --source=<commit> legacy/`.
 
 ## Architecture
 
