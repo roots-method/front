@@ -384,7 +384,7 @@ files. Removing them silently drops the brochure back to Helvetica.
 ### The brochure
 
 `public/assets/brochure.html` is the editable source for
-`public/assets/Arka-Brochure-1.pdf`: seven A4 pages, served at
+`public/assets/arka-technologies-brochure.pdf`: seven A4 pages, served at
 `/assets/brochure.html`. To export, open it in Chrome, Cmd+P, A4, margins
 "None", and tick **Background graphics** — without that every tinted panel and
 both brand pages print white. **The PDF does not regenerate itself; it is stale
