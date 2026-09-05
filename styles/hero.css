@@ -1,0 +1,297 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  min-height: clamp(480px, 70vh, 660px);
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.hero__content,
+.page-hero,
+.section,
+.cta-panel,
+.contact-form {
+  animation: rise-in 0.8s ease both;
+}
+
+.hero__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__illustration {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+/* CTA process steps */
+.cta-panel__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cta-panel__steps li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 3vw, 1.75rem);
+  border-right: 1px solid var(--line);
+}
+
+.cta-panel__steps li:first-child { padding-left: 0; }
+.cta-panel__steps li:last-child  { border-right: none; padding-right: 0; }
+
+.cta-panel__step-num {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.cta-panel__step-text {
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cta-panel__action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-panel__note {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .cta-panel__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-panel__steps li {
+    padding: clamp(1rem, 3vw, 1.25rem) 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cta-panel__steps li:last-child { border-bottom: none; }
+
+  .cta-panel__action {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-panel__note { margin-left: 0; }
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin-bottom: clamp(0.8rem, 1.8vw, 1.2rem);
+  color: var(--eyebrow);
+  font-size: 0.9em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.hero__title,
+.page-hero h1 {
+  max-width: 18ch;
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 6vw, 4rem);
+  /* Barlow's default tracking is set for text sizes. At display sizes the gaps
+     open up and the line reads loose, so pull it in slightly. */
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.hero__title em,
+.page-hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.page-hero h1 {
+  max-width: 12.5ch;
+  font-size: clamp(2.3rem, 5.5vw, 4.4rem);
+}
+
+.accent {
+  position: relative;
+  color: var(--fg);
+}
+
+.accent--alt {
+  color: var(--accent);
+}
+
+.hero__slash {
+  display: inline-block;
+  padding-inline: 0.06em;
+  background: linear-gradient(
+    105deg,
+    var(--fg) 0%,
+    var(--fg) 22%,
+    var(--accent) 38%,
+    var(--accent-soft) 50%,
+    var(--accent) 62%,
+    var(--fg) 78%,
+    var(--fg) 100%
+  );
+  background-size: 320% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: slash-sweep 2.2s linear infinite;
+}
+
+@keyframes slash-sweep {
+  0% {
+    background-position: 130% 0;
+  }
+
+  100% {
+    background-position: -30% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand__name,
+  .nav {
+    transition: none;
+  }
+}
+
+.accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.07em;
+  background: currentColor;
+  opacity: 0.28;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline 0.75s ease 0.7s both;
+}
+
+.hero__lede,
+.page-hero p,
+.section__lede {
+  max-width: 54ch;
+  margin-top: clamp(1rem, 2.5vw, 1.6rem);
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.7vw, 1.12rem);
+  line-height: 1.62;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.hero__actions .btn--primary {
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0.72em 1.45em;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Nav-scale CTA: shorter than a page button so it sits level with the
+   2.5rem theme toggle beside it. */
+.btn--nav {
+  min-height: 2.5rem;
+  padding: 0.5em 1.25em;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .btn--nav {
+    display: none;
+  }
+}
+
+/* Cobalt is the resting state now, so hover cannot signal by turning cobalt the
+   way it used to. The border does that job instead. */
+.btn--primary {
+  position: relative;
+  background-color: var(--accent);
+  color: var(--n-0);
+  box-shadow: 0 14px 32px var(--btn-primary-shadow);
+}
+
+/* The drawn border is an overlay, not the button's own border: a real border
+   cannot be revealed along one axis. inset:-1px puts it exactly over the 1px
+   transparent ring .btn already reserves, so nothing shifts when it appears.
+   clip-path insets from the right, so animating it to 0 wipes left to right —
+   and it reverses on its own when the pointer leaves. */
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--accent-soft);
+  border-radius: inherit;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn--primary:hover::after,
+.btn--primary:focus-visible::after {
+  clip-path: inset(0 0 0 0);
+}
+
+.btn--ghost {
+  border-color: var(--line);
+  color: var(--fg);
+  background: var(--surface);
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Outcome snapshot card — replaces abstract orbit diagram in hero */

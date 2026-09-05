@@ -1,0 +1,36 @@
+{
+  "slug": "finding-your-highest-value-workflow",
+  "summary": "The most expensive automation mistake isn't picking the wrong tool. It's picking the wrong workflow — usually the loudest one rather than the costliest one.",
+  "meta": [
+    "15 July 2026",
+    "6 min read",
+    "Arka"
+  ],
+  "sections": [
+    {
+      "heading": "Loud is not the same as expensive",
+      "html": "<p>Ask a leadership team which process most needs fixing and you'll get a fast, confident answer. It's usually wrong — not because people are mistaken about their own operation, but because the process that generates the most complaints is the one that's most <em>visible</em>, and visibility correlates poorly with cost.</p>\n              <p>Loud workflows tend to be customer-facing, recently broken, or owned by someone with organisational weight. Expensive workflows tend to be internal, chronically mediocre, and accepted as the cost of doing business — which is exactly why nobody complains about them.</p>\n              <p>Four signals reliably point at the second category.</p>"
+    },
+    {
+      "heading": "Signal one: something is waiting behind it",
+      "html": "<p>The strongest signal isn't how long a task takes — it's what's blocked while it happens.</p>\n              <p>A two-day approval step that costs twenty minutes of actual labour can be the single most expensive thing in an operation if revenue, onboarding, or fulfilment sits idle behind it. The labour cost is trivial and the opportunity cost is enormous, and standard process measurement captures the first and misses the second entirely.</p>\n              <p>Look for steps where work accumulates in a queue. Then ask what that queue is made of, and what each item in it is worth per day of delay.</p>"
+    },
+    {
+      "heading": "Signal two: cases get touched more than once",
+      "html": "<p>Rework is expensive twice over — the second pass costs real time, and the first pass produced something that had to be undone.</p>\n              <p>The useful question isn't \"how often do we make mistakes.\" It's \"how often does a case come back?\" Those are different numbers, and the second is far larger, because cases come back for reasons that aren't errors: missing information, a decision made without context, a handoff where something didn't survive the transfer.</p>\n              <p>A workflow where a meaningful share of cases get reopened is a workflow where the first pass isn't working. That's usually a context problem, and context problems automate well.</p>"
+    },
+    {
+      "heading": "Signal three: the swivel chair",
+      "html": "<p>Watch someone actually do the work. Count how many systems they touch to complete one case.</p>\n              <p>When the answer is four or five — a CRM, a policy system, a spreadsheet someone maintains, an email thread, and a PDF — you're watching a person function as an integration layer. They're not applying judgment. They're transporting data between systems that don't talk to each other, and paying full attention cost for it.</p>\n              <p>This one is worth calling out because it's frequently invisible to management. On paper the step is \"review and process.\" In reality it's twenty minutes of copying, and the person doing it stopped mentioning it years ago.</p>"
+    },
+    {
+      "heading": "Signal four: only one person can do it",
+      "html": "<p>If a workflow routes around a single individual — the one who knows the exceptions, remembers why the rule exists, can tell which cases are unusual — you have a capacity ceiling and a risk concentration in the same place.</p>\n              <p>That knowledge is real and valuable, which is precisely why it's worth capturing in a system rather than leaving it dependent on one person's availability. It's also the workflow that quietly caps how fast the business can grow, because scaling it means finding another person like that.</p>\n              <p>Worth stating plainly: this isn't an argument for replacing that person. It's an argument for stopping them being the bottleneck, so their judgment goes to the cases that need it.</p>"
+    },
+    {
+      "heading": "Running the exercise",
+      "html": "<p>You can do a rough version of this in an afternoon. List your operational workflows — most organisations have somewhere between eight and twenty that matter. Score each one against the four signals. Then, for the top three, do the thing that actually settles it: sit with someone while they work through a real case, and time it.</p>\n              <p>Direct observation almost always reorders the list. The step everyone assumed was fine turns out to involve a workaround invented two years ago; the step everyone complains about turns out to take four minutes.</p>\n              <p>That's the same exercise that opens a scoping engagement with us, and it produces the current-state numbers that anchor an <a href=\"/blog/inside-the-roi-blueprint.html\">ROI Blueprint</a>. If you'd rather work through it with us, <a href=\"/contact.html\">a discovery call</a> is the place to start.</p>"
+    }
+  ],
+  "tail": ""
+}

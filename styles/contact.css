@@ -1,0 +1,180 @@
+/* ── Contact page ─────────────────────────────────────────────── */
+
+.contact-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: start;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 10vw, 7rem);
+}
+
+/* Left info column */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  position: sticky;
+  top: 5rem;
+}
+
+.contact-info__hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.08;
+  margin-top: 0.65rem;
+  margin-bottom: 0.85rem;
+  max-width: 16ch;
+}
+
+.contact-info__lede {
+  font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+/* What happens next */
+.contact-next__heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+
+.contact-next__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.contact-next__steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-next__num {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex: none;
+}
+
+.contact-next__text {
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* Testimonial snippet */
+.contact-quote {
+  margin: 0;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 1rem 1rem 0;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.contact-quote__text {
+  font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--fg);
+  margin: 0 0 0.85rem;
+}
+
+.contact-quote__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact-quote__name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.contact-quote__role {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* Direct contact links */
+.contact-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.contact-direct__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  background: var(--surface);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-direct__link:hover,
+.contact-direct__link:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Right form card */
+.contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+}
+
+.contact-form-wrap .contact-form {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.contact-form__note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .contact-page {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-info {
+    position: static;
+  }
+
+  .contact-info__hero h1 {
+    max-width: none;
+  }
+}

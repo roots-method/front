@@ -4,47 +4,95 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development
 
-No build tooling. Serve the root directory with any static file server:
+Next.js 16 (App Router) + React 19 + TypeScript. No CSS framework.
 
 ```bash
-npx serve .
-# or
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Open via `http://localhost:8080` — file:// URLs break some scripts due to CORS/origin checks.
+`npm run build` runs the production build and typecheck; run it before pushing —
+Vercel runs the same thing and a type error fails the deploy.
+
+**The npm cache on this machine has root-owned entries** and installs fail with
+`EACCES` on `~/.npm/_cacache`. Fix it once with
+`sudo chown -R $(id -u):$(id -g) ~/.npm`, or pass `--cache <dir>` to npm.
 
 ## Deployment
 
-GitHub Actions (`.github/workflows/`) auto-deploys the entire root directory to GitHub Pages on every push to `main`. Custom domain: `www.arkaflow.co` (set via `CNAME`). No build step — what's in the repo is what gets served.
+Vercel, from the connected GitHub repository. No build configuration is needed —
+Next.js is detected, and the app is at the repo root. Custom domain
+`www.arkaflow.co` (the `CNAME` file at the root is a leftover from GitHub Pages
+and is not what Vercel reads).
+
+`.github/workflows/deploy.yml` still deploys the *old* static site to GitHub
+Pages on every push to `main`. That workflow and this app both claim the same
+domain — **the cutover is a deliberate step, not something a merge should do by
+accident.** Delete or disable the workflow at the same time the domain moves to
+Vercel.
+
+## The `legacy/` directory
+
+The complete vanilla-JS site this app was ported from: 11 HTML pages, 16 scripts
+and the original single `styles.css`. It is the reference for anything not yet
+ported and the record of what a page used to do. It is **not** served — nothing
+in the app imports from it.
+
+**It is no longer tracked.** It was removed from the index with
+`git rm -r --cached legacy/` and is listed in `.gitignore`, so it lives only on
+whichever machine still has it. A fresh clone will not have it at all. That is
+deliberate — it is a porting aid, not part of the deployed app — but it means:
+
+- Do not tell someone to "look at `legacy/`" without checking they have it.
+- Deleting it locally is the last copy on that machine. It survives in history
+  up to the commit that untracked it, recoverable with
+  `git show <commit>:legacy/<file>` or `git restore --source=<commit> legacy/`.
 
 ## Architecture
 
-### Component injection pattern
+### Layout and shared chrome
 
-There is no framework. Shared UI (header, footer) is injected via JavaScript into placeholder elements:
+`app/layout.tsx` is the shell: fonts, site-wide metadata, the Organization and
+WebSite JSON-LD, then `<SiteHeader />`, the page, `<SiteFooter />`, and the two
+overlays (`<PrivacyModal />`, `<CookieConsent />`) outside `.site-shell`.
 
-```html
-<header class="nav" data-component="site-header"></header>
-<footer class="site-footer" data-component="site-footer"></footer>
-```
+The old build injected the header and footer with `innerHTML` from `header.js`
+and `footer.js`, which forced a strict script order on every page. That whole
+mechanism is gone — the components render on the server.
 
-`header.js` and `footer.js` query for `[data-component]` and write innerHTML. **Script load order on every page is strict:**
+### Menu data
 
-```html
-<script src="site-menu.js"></script>   <!-- must be first: sets window.SITE_MENU_ITEMS -->
-<script src="header.js"></script>      <!-- reads SITE_MENU_ITEMS, injects nav -->
-<script src="nav.js"></script>         <!-- binds mobile toggle after header injects DOM -->
-<script src="footer.js"></script>      <!-- reads SITE_MENU_ITEMS, injects footer -->
-<!-- page-specific scripts last -->
-```
+`lib/site.ts` holds `SITE_MENU_ITEMS` and everything else the chrome needs
+(contact email, booking URL, social links). Both header and footer render
+straight from it.
 
-All scripts are at the bottom of `<body>`. (On `main` there is also a
-`theme-init.js` in `<head>`; this branch has no theme system, so it is gone.)
+Hrefs are now **route paths** (`/software`), not filenames. An entry may carry
+`noActive: true`: Support and Contact both point at `/contact`, and without the
+flag both would light up as the current page at once. Anything else sharing a
+destination needs the same treatment.
 
-### Navigation active state
+`isActive()` resolves the active entry from `usePathname()`, with two aliases
+kept from the old build: `/case-study` maps to `/results`, and anything under
+`/blog/` maps to `/blog`.
 
-`window.SITE_ACTIVE_PAGE()` (in `site-menu.js`) resolves which menu item renders active, and both `header.js` and `footer.js` call it. It matches `window.location.pathname`'s last segment against `item.href` in `SITE_MENU_ITEMS`, with two aliases: `case-study.html` maps to `results.html`, and anything under `/blog/` maps to `blog.html`.
+`SiteHeader` drops the `/` entry — the brand mark is the link home — so the bar
+reads Software, Products, Support, About, Contact. The footer keeps Home and
+lists all six. Case Work, Our Flow and Blog are currently **not linked** from
+either; those routes are still built and still in the sitemap. Restoring one is
+a matter of adding its entry back.
+
+### URLs and redirects
+
+Routes dropped their `.html`: `/software.html` → `/software`. `next.config.ts`
+issues permanent redirects for every old path, including `/blog/:slug.html`, so
+indexed links keep resolving.
+
+The one exception is case studies. They stay at `/case-study?slug=<slug>`
+rather than moving to `/case-study/<slug>`, because that is what is indexed and
+what the sitemap has always pointed at. The cost is that the route is
+server-rendered per request rather than statically generated — metadata is still
+built on the server, so crawlers are unaffected. Moving to a path segment later
+is a route rename plus a redirect.
 
 ### Logo
 
@@ -84,9 +132,20 @@ Flat, not a gradient: at favicon size a gradient averages to a flat colour
 anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
 returns, and one-colour reproduction needs a flat version regardless.
 
-**Every reference carries a `?v=` like the scripts do — including the `mask:`
-URL in `styles.css`.** Image assets had no cache key at first, so recolouring
-the file left returning visitors on the old mark. Bump it with everything else.
+**The file must stay transparent.** The footer mark is a CSS mask, and a mask
+reads the image's *alpha*: give the SVG a full-canvas background rect and the
+whole 32×32 box becomes opaque, so it paints as a solid cobalt square instead of
+the asterisk. The same edit turns the CTA watermark into a black square and
+flattens the favicon. A backgrounded variant belongs in its own file —
+`assets/arkaflow-logo-bg.svg` is that file — never in this one. To check: draw
+it to a canvas and measure opaque pixels; the mark is about 26% coverage, a
+broken one reads 100%.
+
+The mask URL lives in `styles/footer.css` and points at
+`/assets/arkaflow-newlogo.svg` — root-absolute, because the stylesheet is bundled
+to `/_next/static/css/` and a relative path would resolve from there. The old
+build hung a `?v=` on it to defeat caching; if the mark is ever recoloured in
+place, rename the file instead.
 
 **Do not put a double hyphen in that file's comment.** `--` is illegal inside an
 XML comment; it makes the SVG malformed and the browser renders a broken-image
@@ -102,32 +161,9 @@ curves gone — the first version read "orko"), and `k` spans all eight bands
 while `a` and `r` take the bottom five. It stops being legible below about 24px,
 where the gaps fall under one physical pixel.
 
-### Menu data
-
-`window.SITE_MENU_ITEMS` in `site-menu.js` is the whole nav. Both `header.js`
-and `footer.js` render straight from it — there is no dropdown, and the three
-solutions sit directly in the bar.
-
-An entry may carry `noActive: true`. Support and Contact both point at
-`contact.html`, and without the flag both would light up as the current page at
-once; the flag keeps that to one. Anything else that ends up sharing a
-destination needs the same treatment.
-
-`header.js` drops the `index.html` entry — the brand mark is the link home — so
-the bar reads Software, Products, Support, About, Contact. The footer keeps
-Home and lists all six.
-
-There was a Solution mega-menu here until the nav was flattened; `megamenu.js`,
-`window.SITE_SOLUTIONS` and the `.megamenu*` layer went with it. The home page's
-three pillars are now the only place that copy lives.
-
-### Link paths in injected components
-
-`header.js` and `footer.js` emit **root-absolute** hrefs (`/our-flow.html`, `/assets/...`). This is required because blog posts live in the `/blog/` subdirectory — relative hrefs would resolve to `/blog/our-flow.html` there. `SITE_MENU_ITEMS` stores bare filenames; the components prefix `/` when rendering. This means the site must be served from a domain root (it is, via `CNAME`), so serve locally from the repo root, not a subpath.
-
 ### Home page and the Software page
 
-`index.html` is the umbrella: hero, the three solution pillars, Industries
+`app/page.tsx` is the umbrella: hero, the three solution pillars, Industries
 served, testimonials, Trusted by, CTA.
 
 The hero is one centred column (`.hero--centered`) over `.hero-cells`
@@ -158,7 +194,7 @@ referenced — it was the hero until the cell grid replaced it, and nothing else
 supplies that look if it is wanted back.
 
 Its headline runs the braced word through a typewriter loop
-(`type-cycle.js`, driven by `data-type-cycle` on the span). Two details there
+(`components/TypeCycle.tsx`). Two details there
 are deliberate and easy to undo by accident:
 
 - **The typed word's width is reserved, and measured rather than set in `ch`.**
@@ -176,30 +212,32 @@ The pillars (`.solution-pillars` / `.pillar`) are **static markup**, and since t
 place that copy lives. The nav labels in `SITE_MENU_ITEMS` need to keep agreeing
 with them; nothing enforces it.
 
-`software.html` holds what used to be the rest of the home page — The Problems,
+`app/software/page.tsx` holds what used to be the rest of the home page — The Problems,
 How We Work, the four-stage process, Why Arka, Built on, CTA — under its own
 two-column hero carrying the illustration that used to sit on home. Those sections live in exactly one place now; do not copy
 them back onto the home page.
 
 ### Decorative SVG art
 
-The three big drawings — the home hero's node network, the About orbits, the Our
-Flow fan — live in `assets/art/*.svg` and are pulled in at runtime by
-`svg-inline.js`, which finds `<div data-svg="/assets/art/name.svg">` and injects
-the file's markup into it.
+The three big drawings — the home hero's cell grid, the About orbits, the Our
+Flow fan — live in `public/assets/art/*.svg` and are inlined by the
+`<InlineSvg>` server component, which reads the file and writes its markup into
+the page.
 
-**They are injected, not `<img src>`, and that is not incidental.** Each one
+**They are inlined, not `<img src>`, and that is not incidental.** Each one
 paints with `currentColor` so it picks up `--accent` from the page, and each is
-animated by rules in `styles.css` (`.hero-nodes__pulse`,
-`.flow-art__line`, `.about-art__orbit`…). Inside an `<img>`, `currentColor`
-resolves against the SVG's own root and comes out black, and a stylesheet cannot
-reach into a referenced document, so none of the animations would run. Swapping
-to `<img>` silently breaks both.
+animated by rules in `styles/` (`.hero-nodes__pulse`, `.flow-art__line`,
+`.about-art__orbit`…). Inside an `<img>`, `currentColor` resolves against the
+SVG's own root and comes out black, and a stylesheet cannot reach into a
+referenced document, so none of the animations would run. Swapping to `<img>`
+silently breaks both.
 
-The wrappers reserve height only while the fetch is in flight
-(`.about-art:not(.is-loaded)`); `svg-inline.js` adds `.is-loaded` on injection.
-Do not constrain the loaded wrapper with `aspect-ratio`/`max-height` — that
-clips the art.
+The old build fetched these in the browser (`svg-inline.js`). Reading them on
+the server removes that request waterfall and puts the art in the HTML, so it
+survives with JS off. `InlineSvg` adds `.is-loaded` itself; the
+`.about-art:not(.is-loaded)` height reservation therefore never applies in
+practice, but it is harmless and left in place. Do not constrain the loaded
+wrapper with `aspect-ratio`/`max-height` — that clips the art.
 
 Small repeated icons stay out of this. The FAQ chevrons and the nav chevron are
 CSS masks over `assets/icons-ai-ibm/chevron--right.svg`, rotated per state,
@@ -207,11 +245,11 @@ which costs no extra request.
 
 ### The Products page
 
-`products.html` is the Arka ONE page. Its hero is two columns: the headline
+`app/products/page.tsx` is the Arka ONE page. Its hero is two columns: the headline
 names the three Cs and `.threec` lists them under it, with
 `assets/art/products-grid.svg` beside it.
 
-`.threec` deliberately does **not** use `type-cycle.js`. Typing through words
+`.threec` deliberately does **not** use `TypeCycle`. Typing through words
 this long left the headline showing a mid-word fragment most of the time, and
 one loop ran about 11 seconds. All three words now stay readable and the only
 motion is the accent walking between them — no reflow, nothing incomplete. The
@@ -233,11 +271,13 @@ Two traps inside that SVG:
   `:nth-child(3)` / `(5)`. `:nth-of-type` counts every `circle` in the group,
   dots included, and matches nothing.
 
-`type-cycle.js` reserves the field width by default, which is right for the home
+`TypeCycle` reserves the field width by default, which is right for the home
 hero (centred, with a closing brace after the word). Where the caret would be the
 last thing on a line, that reservation strands it to the right of the text —
-pass `data-type-cycle-reserve="none"` there. Only the home page uses the script
-now.
+pass `reserve={false}` there. Only the home page uses it now.
+
+Its `words` prop must come from module scope, not an inline array literal: a
+fresh array each render is a new effect dependency, and the typing restarts.
 
 Two more things on the page are worth knowing:
 
@@ -247,10 +287,10 @@ Two more things on the page are worth knowing:
   `.pillar--soon` and a `.pillar__badge`.
 - "How we work" uses `.process-split`, the sticky split-scroll: the steps column
   scrolls while the right half is a full-height screen pinned to the viewport,
-  and `process-split.js` swaps the panel to match the step in view. It pairs
-  `.process-split__step[data-step="N"]` with
-  `.process-visual__panel[data-panel="N"]` — the numbers must match or nothing
-  swaps. Below 860px there is nothing to be sticky against, so CSS shows every
+  and `components/ProcessSplit.tsx` swaps the panel to match the step in view.
+  Steps and panels are paired **by array index**, so the old
+  `data-step="N"` / `data-panel="N"` drift is no longer possible — but the two
+  arrays still have to be the same length and in the same order. Below 860px there is nothing to be sticky against, so CSS shows every
   panel in order after the steps instead of one that would swap off-screen.
 
   Three details there are load-bearing:
@@ -265,8 +305,7 @@ Two more things on the page are worth knowing:
   - **Each step is `min-height: 78vh`.** The pinned screen needs scroll runway;
     with short copy and no minimum, all three stages fly past in one flick.
 
-`process-split.js` was `home.js`; the home page no longer has a `.process-split`
-so the script was inert there.
+Only `/products` uses it.
 
 Headline emphasis: `.accent` draws an absolutely positioned underline anchored
 to the element's box, so on a phrase that wraps it lands under the last line
@@ -274,47 +313,130 @@ only. Use `.accent--alt` (colour, no underline) for anything multi-line.
 
 ### Cache busting
 
-Every local `<script src>` and the stylesheet carry a `?v=N` query string, and
-**all of them share one number**. Bump it in every HTML file whenever you edit
-any CSS or JS:
+**There is none to do, and the `?v=N` ritual is gone.** Next fingerprints the
+CSS and JS it bundles, and the `?v=` query strings were stripped from every
+`url()` in `styles/` during the port. Do not reintroduce them — a hand-managed
+version number that has to be bumped in a dozen files is exactly the failure the
+old build kept hitting.
 
-```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=31"/?v=32"/g'
-```
-
-This is not optional polish. `site-menu.js` and `header.js` carry the nav's data
-and markup, so a stale copy silently serves the old menu — that is how the
-Software link kept pointing at the contact page after it had its own page.
+Files served straight out of `public/` (the SVG art, icons, client logos) are
+the one place without a content hash. They are effectively immutable; if one is
+ever recoloured in place, rename it rather than adding a query string.
 
 ### Blog
 
-Split across two layers, deliberately different from the case studies:
+Three layers, deliberately different from the case studies:
 
-- `blog-posts.js` — `window.BLOG_POSTS` + `window.BLOG_POST_ORDER` (newest first). **Card metadata only**, no body content.
-- `blog.js` renders the index grid on `blog.html` from that data, reusing the `.case-featured` / `.case-card` shells.
-- Each post is a **static file** at `blog/<slug>.html` with its prose inline in the HTML — unlike case studies, post bodies are not client-rendered, so crawlers get real content and each post carries its own title, description, canonical, OG tags, and `BlogPosting` JSON-LD.
+- `lib/blog-posts.ts` — `BLOG_POSTS` + `BLOG_POST_ORDER` (newest first). **Card
+  metadata only**, no body content.
+- `app/blog/page.tsx` renders the index grid from that data, reusing the
+  `.case-featured` / `.case-card` shells.
+- `content/blog/<slug>.json` holds each post's prose: a summary, the byline
+  fields, and an ordered list of `{heading, html}` sections.
+  `app/blog/[slug]/page.tsx` statically generates one page per slug from it and
+  reads the content on the server, so crawlers get real HTML.
 
-Post pages reuse the case-study article shell (`.case-article`, `.case-article__wrap`, `.cs-nav`) plus a small `.post-*` layer at the end of `styles.css` for prose links, bold/italic, and the featured-card kicker.
+**The prose is HTML, not JSX, on purpose.** These are long editorial bodies with
+inline `<em>`, `<strong>` and links in nearly every paragraph; transcribing them
+into JSX would risk a silent typo per paragraph for no structural gain. The
+page shell, the section nav and the metadata are React — only the prose is
+content.
 
-**Adding a post:** create `blog/<slug>.html` (copy an existing one), add the slug to `BLOG_POST_ORDER` and its metadata object to `BLOG_POSTS`, then add the URL to `sitemap.xml`, `llms.txt`, and the `ItemList` JSON-LD in `blog.html`.
+**A section's heading goes into the HTML string, not alongside it as a JSX
+child.** `.case-article__section p + p` and `.check-list + p` are sibling
+selectors, so wrapping the prose in an element to hold `dangerouslySetInnerHTML`
+would change what they match. The whole section body is set as innerHTML for
+exactly that reason.
+
+**Adding a post:** create `content/blog/<slug>.json`, add the slug to
+`BLOG_POST_ORDER` and its metadata to `BLOG_POSTS`, then add the URL to
+`public/llms.txt`. `app/sitemap.ts` and the index's `ItemList` JSON-LD both
+generate from the data, so neither needs touching.
 
 ### Case studies data layer
 
-All case study content lives in `case-studies.js` as two globals:
-- `window.CASE_STUDIES` — keyed object of case study data
-- `window.CASE_STUDY_ORDER` — array of slugs controlling display order
+All case study content lives in `lib/case-studies.ts` as two exports:
+`CASE_STUDIES` (keyed object) and `CASE_STUDY_ORDER` (slugs, controlling display
+order). `app/results/page.tsx` renders the grid from it; `app/case-study/page.tsx`
+renders one study, reading `?slug=` from `searchParams`.
 
-`results.html` uses `case-work.js` to render the grid from this data. `case-study.html` uses `case-study.js` to render a single study, reading `?slug=` from the URL query string.
+Diagram paths inside the data are root-absolute into `public/` — the old file
+stored them relative to the site root, which no longer resolves from a bundled
+route.
 
-### Palette (PROTOTYPE BRANCH — light only)
+### Stylesheets
 
-**This branch has no theme system.** `theme.js`, `theme-init.js`, the header
-toggle and every `[data-theme="dark"]` rule are gone, along with the
-`arka-theme` localStorage key and `window.ArkaTheme`. `main` still has all of
-it; this branch exists to see the light-only direction.
+The original single 5,788-line `styles.css` was split into 24 files under
+`styles/`, one per area (`nav.css`, `hero.css`, `cards.css`, `footer.css`,
+`process-split.css`…). Class names are untouched — still BEM, still exactly what
+the old markup used — so the components read the same as the HTML they replaced.
+
+**`styles/index.css` imports all 24 in the original file's order, and
+`app/layout.tsx` imports only that.** The order is load-bearing: the old file
+relied on later sections overriding earlier ones. Importing a stylesheet
+directly from the component that uses it would let route-level bundling
+reshuffle the cascade and change the design. Moving one out of the barrel is
+safe only for a file nothing else overrides — check first.
+
+`url()` paths are root-absolute (`/assets/...`). They must be: the bundled CSS
+is served from `/_next/static/css/`, so a relative path resolves from there.
+
+`--font` and `--font-heading` in `base.css` point at the `next/font` variables
+(`--font-nunito`, `--font-barlow`) with the quoted family names kept behind them
+as a fallback. The site's fonts are self-hosted by `next/font/google`, which
+does not read `public/fonts/`.
+
+**`public/fonts/` is still load-bearing, though — do not delete it.**
+`public/assets/brochure.html` is a standalone print document that cannot use
+`next/font`, so it declares its own `@font-face` rules against those `.ttf`
+files. Removing them silently drops the brochure back to Helvetica.
+
+### The brochure
+
+`public/assets/brochure.html` is the editable source for
+`public/assets/arka-technologies-brochure.pdf`: seven A4 pages, served at
+`/assets/brochure.html`. To export, open it in Chrome, Cmd+P, A4, margins
+"None", and tick **Background graphics** — without that every tinted panel and
+both brand pages print white. **The PDF does not regenerate itself; it is stale
+until someone exports it.**
+
+It is deliberately standalone — no React, no `styles/`. Its palette is copied
+from `base.css` and its fonts are `@font-face` rules over `public/fonts/`. That
+duplication is the point: pinning a print document to the site stylesheet means
+every CSS change silently reflows a document nobody re-checks. If the tokens
+move, move these to match.
+
+Its copy duplicates the site's, and nothing keeps them in sync — after a copy
+change on Home, Software or Products, the brochure has to be updated by hand.
+
+Two things to know before editing:
+
+- **Pages are a fixed 297mm with `overflow: hidden`.** Content that grows past
+  that is silently clipped rather than pushed to a new page, so check
+  `scrollHeight` against `clientHeight` after adding anything. Every page should
+  read zero.
+- **The brochure carries no logo at all — only the "Arka Technologies"
+  wordmark**, set as text on the cover and in the closing sign-off. The mark was
+  there twice, as a bleed watermark on both brand pages and as a small lockup
+  beside the wordmark, and both were removed on request. Nothing in the file
+  references `arkaflow-newlogo.svg` any more. If it is ever put back, mask it
+  rather than using an `<img>`: a mask reads the file's alpha, so a background
+  creeping into that asset shows up at once as a solid square instead of
+  quietly. It ran as an `<img>` with `mix-blend-mode: multiply` for exactly that
+  reason once — see the logo section above.
+- **The contact lines are real links**, on the cover and the closing page.
+  Chrome carries `href` into the exported PDF as a live annotation, so they are
+  tappable in the file people are sent. Their colour is inherited, not set — a
+  default link blue on the cobalt ground is close to invisible.
+
+### Palette (light only)
+
+**There is no theme system.** No theme toggle, no `[data-theme="dark"]` rules,
+no `arka-theme` storage key. This came from `palette-prototype`, which existed
+to try the light-only direction; the React port inherited it.
 
 The palette is three families plus one neutral ramp, all at the top of
-`styles.css`:
+`styles/base.css`:
 
 - **cobalt** `#0047ab` — identity and wayfinding: eyebrows, links, borders,
   buttons, ticks.
@@ -353,11 +475,32 @@ border, and their cobalt hover already works.
 
 ### Contact form
 
-Submits to `formsubmit.co` via AJAX (no backend). The endpoint is hardcoded in `contact-form.js`. Includes a honeypot field (`name="_gotcha"`) for spam filtering.
+`components/ContactForm.tsx` submits to `formsubmit.co` over AJAX — no backend,
+and the endpoint is hardcoded there. The honeypot field (`name="_gotcha"`) is
+what filters spam; keep it.
+
+The form is `noValidate` so the browser's own messages appear only after a
+submit attempt, not while typing.
 
 ## Key conventions
 
-- **Adding a page:** create the HTML file, add an entry to `window.SITE_MENU_ITEMS` in `site-menu.js`, and include the standard script block at the bottom of `<body>`.
-- **Adding a case study:** add the slug to `CASE_STUDY_ORDER` and the full object to `CASE_STUDIES` in `case-studies.js`. No other files need changing.
-- **`verify-icons.html` / `verify-icons-ai.html`** are developer utility pages for checking icon assets — not part of the public site.
-- Service names must stay consistent between `index.html` and `our-flow.html`: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.
+- **Adding a page:** create `app/<route>/page.tsx`, export a `metadata` object
+  with a title, description and `alternates.canonical`, add the route to
+  `SITE_MENU_ITEMS` in `lib/site.ts` if it belongs in the nav, and add it to
+  `app/sitemap.ts`.
+- **Adding a case study:** add the slug to `CASE_STUDY_ORDER` and the object to
+  `CASE_STUDIES` in `lib/case-studies.ts`. Nothing else needs changing — the
+  grid, the detail page and the sitemap all read from there.
+- **Client components:** only the pieces that genuinely need the browser carry
+  `"use client"` — the header (scroll + menu state), footer (active link),
+  `TypeCycle`, `ProcessSplit`, `CaseNav`, `Faq`, `ContactForm`, `PrivacyModal`
+  and `CookieConsent`. Everything else renders on the server. Adding
+  `"use client"` to a page to fix one interaction sends the whole page's markup
+  to the browser as JS; lift the interactive part into its own component
+  instead.
+- **The CTA panel is one component** (`components/CtaPanel.tsx`) with props for
+  the eyebrow, heading, steps, primary label, secondary button and watermark.
+  It was copy-pasted into six pages before; do not paste a seventh.
+- Service names must stay consistent between `/software` and `/our-flow`:
+  ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.
+  Nothing enforces it.

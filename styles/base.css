@@ -1,0 +1,190 @@
+/* Brand palette — two colours split by role.
+   --accent (cobalt) = identity + wayfinding: eyebrows, links, borders, buttons.
+   --data   (ochre)  = evidence: numbers only. See README.md.
+   Keeping ochre off labels and controls is what preserves the hierarchy. */
+/* ── Palette ────────────────────────────────────────────────────────────────
+   Light only. Three families and one neutral ramp:
+
+     cobalt   #0047ab  identity, wayfinding — eyebrows, links, borders, buttons
+     tint     #7aa5e8  cobalt's quiet half — soft fills, hover washes, art
+     ochre    #8c5810  evidence, numbers ONLY. Keeping it off labels and
+                       controls is what preserves the hierarchy.
+
+   Everything that is not one of those comes from --n-*, the neutral ramp. That
+   ramp is the point of this file: before it, every hairline and muted label was
+   a hand-rolled rgba(), which is why adding a colour always meant inventing
+   four more. Reach for a step, do not invent a grey.
+
+   The semantic names below (--bg, --fg, --line…) are what the rest of the
+   stylesheet uses. Re-point them and the whole site moves. */
+:root {
+  color-scheme: light;
+
+  /* Neutral ramp — near-white to near-black, one hue, even steps. */
+  --n-0:   #ffffff;
+  --n-25:  #fcfcfd;
+  --n-50:  #f4f6f9;
+  --n-100: #eaedf2;
+  --n-150: #dfe3ea;
+  --n-200: #d2d7e1;
+  --n-300: #b8bfcd;
+  --n-400: #949cad;
+  --n-500: #6d7585;
+  --n-600: #545b69;
+  --n-700: #3c424e;
+  --n-800: #272c36;
+  --n-900: #1b202a;
+
+  /* Brand */
+  --accent: #0047ab;
+  --accent-strong: #003380;
+  --accent-soft: #7aa5e8;
+  --accent-rgb: 0, 71, 171;
+  --data: #8c5810;
+  --data-soft: #e3a84a;
+  --data-rgb: 140, 88, 16;
+
+  /* Semantic surfaces and text, all drawn from the ramp.
+     Not pure white on purpose: #ffffff is the most common background on the
+     web and reads as a default rather than a choice. --n-0 stays available for
+     cards that need to sit above the page. */
+  --bg: var(--n-25);
+  --bg-rgb: 252, 252, 253;
+  --surface: var(--n-50);
+  --surface-rgb: 244, 246, 249;
+  --inset: var(--n-100);
+  --fg: var(--n-900);
+  --muted: var(--n-600);
+  --label: var(--n-700);
+  --placeholder: var(--n-400);
+  --line: var(--n-200);
+  --nav-link: var(--n-500);
+  --eyebrow: var(--n-800);
+
+  --shadow: 0 1px 4px rgba(27, 32, 42, 0.05), 0 0 0 1px rgba(27, 32, 42, 0.06);
+  --shadow-strong: 0 8px 32px rgba(27, 32, 42, 0.07), 0 0 0 1px rgba(27, 32, 42, 0.07);
+  --canvas-glow: transparent;
+  --grid-line: var(--n-100);
+  --grid-opacity: 0;
+  --btn-primary-shadow: rgba(0, 71, 171, 0.26);
+  --story-end: var(--n-100);
+  --story-stroke: var(--n-600);
+  --story-stroke-soft: rgba(0, 71, 171, 0.22);
+  --story-stroke-mid: var(--n-500);
+  --story-stroke-end: rgba(0, 71, 171, 0.28);
+  --story-glow-secondary: rgba(0, 71, 171, 0.12);
+  --story-grid-opacity: 0.35;
+
+  /* Products composition. Violet is deliberately outside the system; it is the
+     one drawing that does not follow brand colour. */
+  --viz-violet: #7c3aed;
+  --viz-violet-pale: #c4b5fd;
+  --viz-blue: #7cc0f8;
+  --viz-blue-strong: #3b82f6;
+  --viz-dot: var(--n-0);
+  --viz-grid: var(--n-200);
+  --viz-line: var(--n-200);
+  --viz-halo: var(--n-50);
+  --viz-halo-strong: var(--n-100);
+  --viz-grey-dot: var(--n-400);
+
+  /* next/font self-hosts these; the quoted names stay as a fallback for any
+     surface that renders before the font variables are attached. */
+  --font: var(--font-nunito), "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-heading: var(--font-barlow), "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --maxw: 1400px;
+  --shell-gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* tracking is flat site-wide; per-element values were removed deliberately */
+  letter-spacing: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(80% 60% at 90% -5%, var(--canvas-glow), transparent 55%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+}
+
+/* Headings take Barlow wherever a component rule has not already said so.
+   Several headings (the footer column titles, for one) only ever inherited the
+   body face; "Barlow for headings" is not true until this rule exists. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Kickers are subheadings in everything but tag name. */
+.eyebrow {
+  font-family: var(--font-heading);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--grid-opacity);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 10%, black, transparent 70%);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.site-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: min(100%, var(--maxw));
+  margin: 0 auto;
+  padding: 0 var(--shell-gutter) clamp(1rem, 2.5vh, 1.75rem);
+}
+
+.icon-sm {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+  /* Carbon icons are filled paths, not strokes — opacity is the only
+     lever for line weight, and it doubles as the muted tone. */
+  opacity: 0.6;
+}
+
+/* Three tracks so the links sit on the true centre of the bar rather than
+   wherever the brand's width leaves them. */

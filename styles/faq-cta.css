@@ -1,0 +1,100 @@
+/* ── 4. FAQ accordion ───────────────────────────────── */
+.faq {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq__header {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.faq__header h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 400;
+  color: var(--fg);
+  max-width: 24ch;
+}
+
+.faq__list {
+  list-style: none;
+  max-width: 68ch;
+}
+
+.faq__item:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.05rem 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: clamp(0.9rem, 1.4vw, 0.98rem);
+  font-weight: 600;
+  color: var(--fg);
+  transition: color 0.18s ease;
+}
+
+.faq__btn:hover { color: var(--accent); }
+
+/* Masked rather than an inline <svg> so the same chevron asset the nav
+   already loads is reused, and four copies of the same path leave the HTML.
+   The source glyph points right; 90deg is the resting "closed" state. */
+.faq__chevron {
+  flex: none;
+  width: 0.95rem;
+  height: 0.95rem;
+  background-color: var(--muted);
+  -webkit-mask: url("/assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  mask: url("/assets/icons-ai-ibm/chevron--right.svg") center / contain no-repeat;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease, background-color 0.18s ease;
+}
+
+.faq__item.is-open .faq__btn { color: var(--accent); }
+.faq__item.is-open .faq__chevron {
+  transform: rotate(-90deg);
+  background-color: var(--accent);
+}
+
+.faq__body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq__body-inner {
+  padding-bottom: 1.1rem;
+  font-size: clamp(0.86rem, 1.35vw, 0.93rem);
+  line-height: 1.72;
+  color: var(--muted);
+}
+
+/* ── 5. CTA panel watermark ─────────────────────────── */
+.cta-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-panel__watermark {
+  position: absolute;
+  right: -3.5rem;
+  bottom: -3rem;
+  width: clamp(160px, 26vw, 320px);
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+  filter: saturate(0) brightness(0);
+}

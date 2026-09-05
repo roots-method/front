@@ -1,0 +1,36 @@
+{
+  "slug": "inside-the-roi-blueprint",
+  "summary": "Most automation proposals lead with the technology. A blueprint leads with the arithmetic: which workflow, how much it costs to run today, what changes, and how you'll know whether it worked.",
+  "meta": [
+    "29 July 2026",
+    "6 min read",
+    "Arka"
+  ],
+  "sections": [
+    {
+      "heading": "Why a document, and why first",
+      "html": "<p>An ROI Blueprint is the deliverable from our scoping engagement, and it exists for an unglamorous reason: it forces every assumption into writing before anyone commits budget to building something.</p>\n              <p>Automation projects rarely fail because the technology didn't work. They fail because the workflow chosen wasn't actually expensive, or because the savings were real but nobody could demonstrate them afterwards, or because a dependency nobody flagged turned a six-week build into a six-month one. All three are catchable on paper, in days, for a fraction of what they cost to discover during a build.</p>"
+    },
+    {
+      "heading": "Part one: what this workflow costs you today",
+      "html": "<p>This is the section that does the most work, and the one clients are most surprised by — because most organisations have never costed a workflow end to end.</p>\n              <p>We're after the fully loaded picture, not just headcount:</p>\n              <ul class=\"check-list\">\n                <li>Time spent per case, measured across the whole path rather than the happy path.</li>\n                <li>Volume — how many cases per week, and how much that number moves seasonally.</li>\n                <li>Rework: the proportion of cases touched more than once, and why.</li>\n                <li>Downstream cost of errors — corrections, escalations, credits, remediation.</li>\n                <li>The queue. What waits behind this work, and what that delay costs elsewhere.</li>\n              </ul>\n              <p>That last one is routinely the largest number in the section and the one nobody has counted. When a workflow is a bottleneck, its true cost isn't the labour inside it — it's everything held up behind it.</p>"
+    },
+    {
+      "heading": "Part two: the intervention, in specifics",
+      "html": "<p>Not \"we'll apply AI to this.\" Specifically: which decisions move to automated handling, which stay with people, and what happens at the boundary between them.</p>\n              <p>This section names the architecture — where deterministic logic sits, where a model reasons, where a human reviews — and it names the escalation path. If a case is ambiguous, who sees it, with what context attached, and how fast? A blueprint that doesn't answer that is describing a demo, not a system.</p>\n              <p>It also states plainly what <em>isn't</em> in scope. Scope that isn't written down has a way of arriving later as an assumption someone else was making.</p>"
+    },
+    {
+      "heading": "Part three: how you'll know it worked",
+      "html": "<p>Defined before the build starts, because a success metric chosen afterwards is a metric chosen to be met.</p>\n              <p>Two things need to exist. A baseline — the current-state numbers from part one, captured as a measurement you can re-run rather than a figure in a slide. And a small set of metrics that would move if the intervention is working, with the interval at which you'll check them.</p>\n              <p>We also try to name a counter-metric: the thing that shouldn't get worse. Throughput improvements that quietly degrade accuracy are common, and they're only visible if someone decided in advance to watch for them.</p>"
+    },
+    {
+      "heading": "Part four: what could go wrong",
+      "html": "<p>A risks section that doesn't hedge. In our experience the recurring ones are boring and predictable: data that's less accessible than assumed, a system whose integration path is undocumented, a regulatory requirement discovered halfway through, and — most often — the person who actually understands the workflow having no time allocated to the project.</p>\n              <p>Each risk gets a rough likelihood and what it would do to the timeline. The purpose isn't to be pessimistic. It's that a risk written down in week one is a planning input, while the same risk in week eight is a crisis.</p>"
+    },
+    {
+      "heading": "The part people skip",
+      "html": "<p>The recommendation not to proceed.</p>\n              <p>A blueprint that always concludes \"yes, build this\" isn't an analysis, it's a sales document. Some workflows aren't worth automating: the volume is too low, the process is about to change anyway, or the real problem is upstream and automating the symptom would entrench it.</p>\n              <p>Finding that out from a scoping engagement is a good outcome, not a wasted one. It's a materially cheaper way to learn it than the alternative.</p>\n              <p>If you want to see how this connects to delivery, <a href=\"/our-flow.html\">our flow</a> lays out what happens after the blueprint.</p>"
+    }
+  ],
+  "tail": ""
+}

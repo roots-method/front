@@ -1,0 +1,319 @@
+.service-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(220px, 0.58fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+
+/* Flow step layout — Our Flow page */
+
+.flow-stack {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+}
+
+/* Full-width band per stage: spine | marker | narrative | outcomes.
+   Replaces the narrow single-column stack, which used ~60% of the row. */
+.flow-step {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(120px, 0.42fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 0 clamp(1.5rem, 3.5vw, 3rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+  align-items: start;
+}
+
+.flow-step__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.flow-step__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--accent);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.flow-step__icon--blueprint {
+  -webkit-mask-image: url("/assets/icons-ai-ibm/business-metrics.svg");
+  mask-image: url("/assets/icons-ai-ibm/business-metrics.svg");
+}
+
+.flow-step__icon--automation {
+  -webkit-mask-image: url("/assets/icons-ai-ibm/bot.svg");
+  mask-image: url("/assets/icons-ai-ibm/bot.svg");
+}
+
+.flow-step__icon--intelligence {
+  -webkit-mask-image: url("/assets/icons-ai-ibm/branch.svg");
+  mask-image: url("/assets/icons-ai-ibm/branch.svg");
+}
+
+.flow-step__icon--operations {
+  -webkit-mask-image: url("/assets/icons-ai-ibm/operations--field.svg");
+  mask-image: url("/assets/icons-ai-ibm/operations--field.svg");
+}
+
+.flow-step__main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.flow-step__aside {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  padding-top: 0.35rem;
+}
+
+.flow-step--last {
+  padding-bottom: 0;
+}
+
+.flow-step__spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.2rem;
+}
+
+.flow-step__node {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.flow-step__line {
+  flex: 1;
+  width: 1px;
+  margin-top: 0.5rem;
+  background: linear-gradient(to bottom, var(--accent), var(--line));
+  opacity: 0.5;
+}
+
+.flow-step__num {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.flow-step__duration {
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.flow-step__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--fg);
+  margin: 0;
+}
+
+.flow-step__desc {
+  max-width: 52ch;
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.flow-step__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.flow-step__list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.flow-step__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.flow-step__deliverable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: clamp(0.9rem, 2vw, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: none;
+}
+
+.flow-step__deliverable-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.1rem;
+}
+
+@media (max-width: 980px) {
+  .flow-step {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  /* marker becomes a horizontal strip; narrative and outcomes stack under it */
+  .flow-step__marker {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: clamp(0.85rem, 2vw, 1.15rem);
+  }
+
+  .flow-step__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .flow-step__main,
+  .flow-step__aside {
+    grid-column: 2;
+  }
+
+  .flow-step__aside {
+    padding-top: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .flow-step__desc {
+    max-width: none;
+  }
+}
+
+.page-hero__sub {
+  max-width: 58ch;
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .flow-step {
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0 1rem;
+  }
+
+  .flow-step__node {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
+
+.check-list {
+  display: grid;
+  gap: 0.55rem;
+  color: var(--muted);
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--fg);
+}
+
+.philosophy-grid {
+  padding-bottom: clamp(1rem, 4vw, 2rem);
+}
+
+.vision-panel {
+  display: block;
+}
+
+.vision-panel h2 {
+  max-width: 20ch;
+}
+
+.case-grid {
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+.case-grid--related {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.case-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  --case-accent-bg: var(--case-accent, var(--surface));
+  --case-accent-border: color-mix(in srgb, var(--case-accent, var(--line)) 42%, var(--line));
+  background: var(--case-accent-bg);
+  border-color: var(--case-accent-border);
+}
+
+.case-card--compact {
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+}
+
+.case-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.case-card__cta::after {
+  content: "\2197";
+  font-size: 0.95em;
+}
+
+.case-card:focus-visible {
+  outline: 2px solid rgba(var(--accent-rgb), 0.55);
+  outline-offset: 3px;
+}

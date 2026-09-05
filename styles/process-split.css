@@ -1,0 +1,412 @@
+/* ── Sticky split-scroll process layout ─────────────────────────────────────
+   The steps scroll on the left while the right half is a full-height screen
+   pinned to the viewport, bleeding past the page gutter to the browser edge.
+   process-split.js swaps the panel to match the step in view. */
+.process-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  /* clip, not hidden: hidden would make this a scroll container and the sticky
+     child would stop sticking. clip also lets overflow-y stay visible. */
+  overflow-x: clip;
+}
+
+.process-split__steps {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each step holds most of a screen so there is room to scroll one stage at a
+   time against the pinned panel, and lands centred opposite it. */
+.process-split__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 78vh;
+  padding: clamp(2rem, 5vw, 3rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.process-split__step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.process-split__num {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.process-split__step h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--fg);
+  margin-bottom: 0.7rem;
+}
+
+.process-split__step p {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 34ch;
+}
+
+/* ── The screen ───────────────────────────────────────────────────────────
+   Distance from the shell's content edge to the viewport edge is half the
+   leftover width plus the gutter. Pulling the panel right by that much and
+   padding it back by the same keeps its content in the column. */
+.process-split__sticky {
+  --bleed: calc((100vw - min(100vw, var(--maxw))) / 2 + var(--shell-gutter));
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  height: 100dvh;
+  margin-right: calc(-1 * var(--bleed));
+  padding: clamp(2rem, 5vw, 4rem) var(--bleed) clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+}
+
+.process-visual {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.process-visual__panel {
+  display: none;
+}
+
+.process-visual__panel.is-active {
+  display: block;
+  animation: pv-panel-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pv-panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.process-visual__icon {
+  /* A bare span is inline, and width/height do nothing to an inline box —
+     .pillar__icon only gets away with it because its parent is a flex column. */
+  display: block;
+  width: clamp(3.25rem, 6vw, 4.75rem);
+  height: clamp(3.25rem, 6vw, 4.75rem);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  background-color: var(--accent);
+  -webkit-mask: var(--menu-icon) center / contain no-repeat;
+  mask: var(--menu-icon) center / contain no-repeat;
+}
+
+.process-visual__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22em 0.65em;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.06);
+  margin-bottom: 0.9rem;
+}
+
+.process-visual__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 1.15rem;
+  line-height: 1.3;
+}
+
+/* Checklist */
+.pv-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.pv-list li::before {
+  content: '';
+  display: block;
+  flex: none;
+  margin-top: 0.18em;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  /* Cobalt, not ochre. A tick is an affordance, and ochre is reserved for
+     numbers — an ochre tick inside a cobalt circle broke both rules at once. */
+  background-color: rgba(var(--accent-rgb), 0.12);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 8l2.5 2.5L11 5.5' stroke='%230047ab' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* Stat grid */
+.pv-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+
+.pv-stats--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pv-stat {
+  padding: 0.8rem 0.75rem;
+  border-right: 1px solid var(--line);
+  text-align: center;
+}
+
+.pv-stat:last-child { border-right: none; }
+
+.pv-stat__val {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.28rem;
+}
+
+.pv-stat__lbl {
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* Flow diagram */
+.pv-flow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.pv-flow__node {
+  padding: 0.28em 0.6em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+.pv-flow__node--accent {
+  background: rgba(var(--accent-rgb), 0.1);
+  border-color: rgba(var(--accent-rgb), 0.28);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.pv-flow__arrow {
+  font-size: 0.62rem;
+  color: var(--muted);
+  flex: none;
+}
+
+/* KV rows */
+.pv-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  margin-bottom: 1.1rem;
+}
+
+.pv-kv__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--line);
+  background: rgba(var(--bg-rgb), 0.5);
+}
+
+.pv-kv__key {
+  font-size: 0.78rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+.pv-kv__val {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.pv-kv__val--up { color: var(--accent); }
+
+/* Tag cloud */
+.pv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pv-tag {
+  padding: 0.18em 0.55em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.67rem;
+  color: var(--muted);
+  background: var(--bg);
+}
+
+/* Responsive: collapse on smaller screens.
+   There is nothing to be sticky against once this is one column, so the screen
+   goes back to normal flow and every panel is shown in order after the steps,
+   each labelled by its own stage tag. */
+@media (max-width: 860px) {
+  .process-split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .process-split__step {
+    min-height: 0;
+    padding: clamp(1.5rem, 4vw, 2.25rem) 0;
+  }
+
+  .process-split__sticky {
+    position: static;
+    height: auto;
+    display: block;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    /* Full-bleed both ways here so the band spans the phone. */
+    margin-inline: calc(-1 * var(--shell-gutter));
+    padding: clamp(1.75rem, 6vw, 2.5rem) var(--shell-gutter);
+    border-left: none;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-visual {
+    max-width: none;
+  }
+
+  .process-visual__panel,
+  .process-visual__panel.is-active {
+    display: block;
+    animation: none;
+  }
+
+  .process-visual__panel + .process-visual__panel {
+    margin-top: clamp(1.75rem, 6vw, 2.5rem);
+    padding-top: clamp(1.75rem, 6vw, 2.5rem);
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ── Editorial process list ─────────────────────────── */
+.process-editorial {
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.process-editorial__step {
+  display: grid;
+  grid-template-columns: clamp(4.5rem, 9vw, 8rem) 1fr;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  align-items: start;
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.process-editorial__step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.process-editorial__num {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 0.9;
+  color: rgba(var(--accent-rgb), 0.18);
+  user-select: none;
+  transition: color 0.25s ease;
+  padding-top: 0.1em;
+}
+
+.process-editorial__step:hover .process-editorial__num {
+  color: rgba(var(--accent-rgb), 0.42);
+}
+
+.process-editorial__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.process-editorial__head h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.process-editorial__duration {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  flex: none;
+}
+
+.process-editorial__body p {
+  font-size: clamp(0.9rem, 1.45vw, 1rem);
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+@media (max-width: 600px) {
+  .process-editorial__step {
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1rem;
+  }
+  .process-editorial__num {
+    font-size: 2.5rem;
+  }
+  .process-editorial__head {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

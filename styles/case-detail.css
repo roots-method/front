@@ -1,0 +1,151 @@
+/* ── Case detail page ─────────────────────────────────────────── */
+
+/* Horizontal metric strip */
+.cs-stat {
+  display: flex;
+  align-items: center;
+  padding: clamp(2rem, 5vw, 3rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.cs-stat__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.cs-stat__item:first-child { padding-left: 0; }
+.cs-stat__item:last-child  { padding-right: 0; }
+
+.cs-stat__divider {
+  width: 1px;
+  height: 3rem;
+  background: var(--line);
+  flex: none;
+}
+
+.cs-stat__value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--data);
+}
+
+.cs-stat__label {
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 22ch;
+}
+
+@media (max-width: 560px) {
+  .cs-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .cs-stat__item {
+    padding: 1.1rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+  }
+  .cs-stat__item:last-child { border-bottom: none; }
+  .cs-stat__divider { display: none; }
+}
+
+/* ── Case study sidebar layout ──────────────────────────────── */
+.case-article__wrap {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.case-article__sidebar {
+  position: sticky;
+  top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding-top: 0.25rem;
+}
+
+.case-article__sidebar .case-article__back {
+  margin-bottom: 0;
+}
+
+/* Section timeline nav */
+.cs-nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-nav::before {
+  content: '';
+  position: absolute;
+  left: 3.5px;
+  top: 0.65rem;
+  bottom: 0.65rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.cs-nav__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.35;
+  transition: color 0.2s;
+}
+
+.cs-nav__dot {
+  width: 8px;
+  min-width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  margin-top: 0.22rem;
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cs-nav__item:hover { color: var(--fg); }
+
+.cs-nav__item.is-active {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.cs-nav__item.is-active .cs-nav__dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .case-article__wrap {
+    grid-template-columns: 1fr;
+  }
+  .case-article__sidebar {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0.5rem;
+    gap: 0;
+  }
+  .cs-nav { display: none; }
+}

@@ -1,0 +1,149 @@
+/* ── Home: the three solution pillars ───────────────────────────────────────
+   Whole-card links, so the hit target is the card and the "Explore" line is a
+   visual affordance rather than a second link competing with it. Mirrors the
+   Solution mega-menu, icons included. */
+.solution-pillars__title {
+  max-width: 22ch;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.solution-pillars__intro {
+  max-width: 56ch;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+  line-height: 1.65;
+}
+
+/* Three columns divided by hairlines, matching .why-arka__list. The site
+   states its "three things" this way everywhere else; boxed cards made the
+   home page's most important section look like a different site. */
+.solution-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
+  border-right: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.25s ease;
+}
+
+/* Every column carries the same padding, including the outer two. Flushing the
+   first and last to the page margin lined the text up with the headings above,
+   but left the first card looking cramped against the edge. */
+.pillar:last-child { border-right: none; }
+
+/* No lift and no shadow — the row is flat, so the whole-block link shows it is
+   live with a wash and the accent picking up instead. */
+.pillar:hover,
+.pillar:focus-visible {
+  background-color: color-mix(in srgb, var(--surface) 60%, transparent);
+}
+
+.pillar__icon {
+  width: 3rem;
+  height: 3rem;
+  flex: none;
+  margin-bottom: 1.15rem;
+  background-color: var(--accent);
+  -webkit-mask: var(--menu-icon) center / contain no-repeat;
+  mask: var(--menu-icon) center / contain no-repeat;
+}
+
+.pillar__label {
+  margin-bottom: 0.6rem;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.pillar h3 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--fg);
+  transition: color 0.25s ease;
+}
+
+.pillar:hover h3,
+.pillar:focus-visible h3 {
+  color: var(--accent);
+}
+
+.pillar p {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+/* Pushed to the foot so the three links align across the row even when the
+   descriptions run to different lengths. */
+.pillar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.pillar:hover .nav__arrow--right {
+  transform: translateX(3px);
+}
+
+/* Products page: two of the three blocks are links, the third is a plain
+   block with nothing to click yet. The badge says so rather than leaving a
+   dead-looking column. */
+.pillar__badge {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.pillar--soon h3,
+.pillar--soon p {
+  opacity: 0.82;
+}
+
+@media (max-width: 700px) {
+  .solution-pillars__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pillar {
+    padding: clamp(1.5rem, 5vw, 2rem) 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pillar:last-child { border-bottom: none; }
+}
