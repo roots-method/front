@@ -231,15 +231,11 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .closing__mark { left: -46mm; top: -40mm; }
 
 /* ── Lockup: the mark beside the name, on both brand pages ─────────────── */
-.lockup { display: flex; align-items: center; gap: 4mm; }
-.lockup__mark {
-  flex: none;
-  width: 11mm;
-  height: 11mm;
-  background-color: #fff;
-  -webkit-mask: url(/assets/arkaflow-newlogo.svg) center / contain no-repeat;
-          mask: url(/assets/arkaflow-newlogo.svg) center / contain no-repeat;
-}
+/* The name alone. The mark sat beside it on both brand pages and was taken
+   out deliberately — the large bleed watermark already carries the mark on
+   these two pages, and a second, smaller copy a few centimetres away read as a
+   repeat rather than as a lockup. */
+.lockup { display: flex; align-items: center; }
 .lockup__name { font-family: var(--font-heading); font-size: 17pt; font-weight: 400; color: var(--on-brand-soft); }
 
 /* Sign-off at the foot of the closing page: the mark, the name, and the
@@ -264,6 +260,10 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 }
 .cover__tag { font-size: 11pt; color: var(--on-brand-mute); margin-top: 7mm; }
 .cover__meta { display: flex; justify-content: space-between; font-size: 9pt; color: var(--on-brand-soft); font-weight: 600; }
+/* Same treatment as the closing page: Chrome carries href into the exported
+   PDF as a live annotation, and the colour is inherited because a default link
+   blue on the cobalt ground would be close to invisible. */
+.cover__meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(255, 255, 255, 0.45); }
 
 /* ── Pillars (p2) ────────────────────────────────────────────────────── */
 .pillars { display: grid; gap: 9mm; }
@@ -360,7 +360,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 <section class="page page--brand cover">
   <span class="page-mark cover__mark" aria-hidden="true"></span>
   <div class="lockup">
-    <span class="lockup__mark" aria-hidden="true"></span>
     <span class="lockup__name">Arka Technologies</span>
   </div>
 
@@ -372,8 +371,8 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   <div>
     <hr class="rule" style="margin-bottom:6mm" />
     <div class="cover__meta">
-      <span>arkaflow.co</span>
-      <span>build@arkaflow.co</span>
+      <span><a href="https://www.arkaflow.co">arkaflow.co</a></span>
+      <span><a href="mailto:build@arkaflow.co">build@arkaflow.co</a></span>
     </div>
   </div>
 </section>
@@ -684,7 +683,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
   <div class="signoff">
     <div class="lockup">
-      <span class="lockup__mark" aria-hidden="true"></span>
       <span class="lockup__name">Arka Technologies</span>
     </div>
     <p class="signoff__line">Building intelligent software for enterprise operations.</p>
