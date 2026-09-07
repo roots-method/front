@@ -20,16 +20,34 @@ Vercel runs the same thing and a type error fails the deploy.
 
 ## Deployment
 
-Vercel, from the connected GitHub repository. No build configuration is needed —
-Next.js is detected, and the app is at the repo root. Custom domain
-`www.arkaflow.co` (the `CNAME` file at the root is a leftover from GitHub Pages
-and is not what Vercel reads).
+Vercel, from the connected GitHub repository, serving `www.arkaflow.co`. No
+build configuration is needed: Next.js is detected and the app is at the repo
+root. The apex `arkaflow.co` sits on a Vercel A record and 308-redirects to
+`www`.
 
-`.github/workflows/deploy.yml` still deploys the *old* static site to GitHub
-Pages on every push to `main`. That workflow and this app both claim the same
-domain — **the cutover is a deliberate step, not something a merge should do by
-accident.** Delete or disable the workflow at the same time the domain moves to
-Vercel.
+**GitHub Pages is gone and should stay gone.** `.github/workflows/deploy.yml`
+and the root `CNAME` file were both deleted at the cutover. It is worth knowing
+what they did, because restoring either one breaks the site rather than adding a
+fallback:
+
+- The workflow uploaded `path: .`, the whole repo root, to Pages. That worked
+  when the root was static HTML. The root is now Next.js source with no
+  `index.html`, so a Pages deploy publishes a 404.
+- The `CNAME` file is how a Pages site claims a custom domain, and GitHub only
+  lets one Pages site hold a given domain. With Vercel already serving it, the
+  file re-asserted a competing claim on every push.
+
+The cutover went wrong once, and the failure is worth recognising: `www` briefly
+carried **two** CNAME records, one to `roots-method.github.io` and one to
+Vercel. Two CNAMEs at one name is invalid — a CNAME must be the only record at
+its name — so resolvers picked between them and visitors landed on whichever
+answered, both of which 404ed. If the site ever half-works depending on who is
+asking, check for a duplicate record before looking at the app.
+
+DNS that should exist, and nothing else:
+
+- `www` CNAME to the project's `*.vercel-dns-*.com` target
+- `arkaflow.co` A record to Vercel's anycast address
 
 ## The `legacy/` directory
 
