@@ -51,6 +51,46 @@
   padding: 0.95rem 1.75rem;
 }
 
+/* A wave leaving the button on a slow loop, so the one action in the section
+   keeps drawing the eye without anyone having to hover first.
+
+   It rides ::before because .btn--primary::after is already the wipe-in border
+   the whole site uses on hover, and the two are meant to coexist: the loop says
+   "this is the thing to press", the ring answers the pointer.
+
+   A ring rather than a filled circle, and it starts a shade inside the button
+   edge rather than at dead centre. A fill would wash over the label every
+   cycle, and a ring starting at true centre would draw a line straight across
+   the text on its way out. Beginning at 0.92 keeps the stroke in the padding,
+   so it reads as leaving the button without ever crossing the words.
+
+   z-index is left alone deliberately. Pushing it behind with z-index:-1 would
+   drop it behind .consult-band's own background and it would never be seen —
+   the band is unpositioned, so it creates no stacking context to sit inside. */
+.consult-band__cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid var(--accent);
+  pointer-events: none;
+  opacity: 0;
+  animation: consult-wave 3.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes consult-wave {
+  0%   { transform: scale(0.92); opacity: 0; }
+  12%  { opacity: 0.45; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+/* Asked for less motion: the button keeps its hover ring and loses the loop. */
+@media (prefers-reduced-motion: reduce) {
+  .consult-band__cta::before {
+    animation: none;
+  }
+}
+
 .consult-band__reassure {
   display: flex;
   flex-wrap: wrap;

@@ -203,7 +203,7 @@ export default function HomePage() {
       <section className="consult-band" aria-labelledby="free-consult">
         <p className="eyebrow">Free consultation</p>
         <h2 className="consult-band__title" id="free-consult">
-          Bring us the workflow that costs you the most.
+          Bring the process that costs you most.
         </h2>
         <a
           className="btn btn--primary consult-band__cta"
