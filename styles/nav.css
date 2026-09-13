@@ -37,19 +37,20 @@
   flex: none;
 }
 
-.brand__wordmark {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  line-height: 1;
+/* Sized against the name beside it: roughly 1.8 times its cap height, which is
+   where a mark reads as a partner to the word rather than a bullet before it. */
+.brand__mark {
+  display: block;
+  flex: none;
+  width: 1.875rem;
+  height: 1.875rem;
 }
 
-/* Cobalt, not --fg. With the mark gone the wordmark is the only brand element
-   in the bar, so it carries the identity colour itself. */
 .brand__name {
   font-family: var(--font-heading);
   font-size: 1.5em;
   font-weight: 400;
+  line-height: 1;
   color: var(--accent);
 }
 

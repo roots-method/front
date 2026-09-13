@@ -93,7 +93,10 @@
   --font: var(--font-nunito), "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
-  --font-heading: var(--font-barlow), "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  /* Headings share the body face. Barlow was the heading face until the site
+     moved to one family; the token is kept separate so headings can diverge
+     again without touching the 50-odd rules that read it. */
+  --font-heading: var(--font-nunito), "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
   --maxw: 1400px;
@@ -127,11 +130,46 @@ body {
   line-height: 1.55;
 }
 
-/* Headings take Barlow wherever a component rule has not already said so.
-   Several headings (the footer column titles, for one) only ever inherited the
-   body face; "Barlow for headings" is not true until this rule exists. */
+/* Headings take the heading face and tighter tracking wherever a component rule
+   has not already said so. Nunito Sans is set for text sizes; at heading sizes
+   its default spacing reads loose, so every heading is pulled in to -0.03em.
+
+   The second rule is load-bearing. The reset above gives *every* element
+   letter-spacing: 0 directly, so a heading's tracking would stop at its own
+   box and never reach the words inside it — the typed {AI flow}, an <em>, an
+   .accent phrase all sat at 0 while the rest of the line was tightened. Making
+   heading descendants inherit closes that without undoing the site-wide reset.
+   A class rule on a descendant still wins, since it outranks this selector. */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+:is(h1, h2, h3, h4, h5, h6) * {
+  letter-spacing: inherit;
+}
+
+/* Display text in the heading face that is not a heading element: the name
+   beside the mark, stat and step numerals, and the large labels that do a
+   heading's job. Same tracking, for the same reason.
+
+   Deliberately absent: the uppercase eyebrows and pillar labels, which keep
+   their own spacing because tightening small capitals crams them, and heading-
+   face text under about 20px (the 3 Cs line, the contact step numbers), where
+   negative tracking starts to cost legibility instead of adding polish. */
+.brand__name,
+.site-footer__mark,
+.process-visual__heading,
+.problem-frame__key,
+.about-stats__value,
+.case-featured__stat-value,
+.cs-stat__value,
+.case-card__metric-value,
+.cta-panel__step-num,
+.flow-step__num,
+.process-editorial__num,
+.post-featured__kicker {
+  letter-spacing: -0.03em;
 }
 
 /* Kickers are subheadings in everything but tag name. */
