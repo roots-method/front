@@ -36,7 +36,12 @@
   padding: 0;
   font: inherit;
   font-size: inherit;
-  color: var(--accent);
+  /* --accent-soft, not --accent. The banner is always the opposite of the page:
+     ink on the light theme, near-white on the dark one. The accent was built for
+     the page, so on the banner it failed in both (1.93:1 light, 2.4:1 dark). The
+     soft token is the accent's other half, which is exactly the one that reads
+     on the opposite ground: 6.5:1 light, 8.1:1 dark. */
+  color: var(--accent-soft);
   text-decoration: underline;
   cursor: pointer;
 }

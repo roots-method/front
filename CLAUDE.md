@@ -126,6 +126,7 @@ uses is derived from them:
 |---|---|
 | `arka-mark.svg` | Full colour. Anything roughly 64px and up; the CTA watermark. |
 | `arka-mark-small.svg` | Small-size variant. Header, footer, SVG favicon. |
+| `arka-mark-small-dark.svg` | The small variant with its blue node lifted, for header and footer in dark mode. |
 | `arka-icon-32.png` | PNG favicon for browsers without SVG favicons. |
 | `arka-apple-touch-icon.png` | 180px on an **opaque white tile** — iOS fills a transparent touch icon with black. |
 | `arka-mark-512.png` | The `logo` in the Organization JSON-LD. |
@@ -494,11 +495,64 @@ Two things to know before editing:
   tappable in the file people are sent. Their colour is inherited, not set — a
   default link blue on the cobalt ground is close to invisible.
 
-### Palette (light only)
+### Themes: light by default, dark on request
 
-**There is no theme system.** No theme toggle, no `[data-theme="dark"]` rules,
-no `arka-theme` storage key. This came from `palette-prototype`, which existed
-to try the light-only direction; the React port inherited it.
+**Light is the default for every visitor, whatever their device prefers.** Dark
+is opt-in through the "Dark mode" switch in the footer's legal row
+(`components/ThemeToggle.tsx`), which sets `<html data-theme="dark">` and stores
+`arka-theme` in localStorage. The site ran light-only for a long stretch (it came
+from `palette-prototype`); dark mode was added back on top of the same tokens,
+with a warm ground rather than the old navy.
+
+How it hangs together:
+
+- **No flash.** An inline script in `app/layout.tsx`'s `<head>` reads the stored
+  choice and sets the attribute before first paint. It runs before React, so
+  `<html>` carries `suppressHydrationWarning`. The storage key is written in two
+  places, that script and `THEME_KEY` in `ThemeToggle.tsx`, and they must match.
+- **The toggle** starts unpressed on the server, because the server cannot know
+  the choice, and syncs to the attribute once mounted. It is a single toggle
+  button with a fixed label and `aria-pressed`, not a label that flips between
+  "Dark" and "Light". It follows changes made in other tabs.
+- **Tokens do almost everything.** `:root[data-theme="dark"]` in `base.css`
+  overrides only literal values. Anything written as `var(--n-*)` in `:root`
+  (`--bg`, `--fg`, `--line`, `--muted` and most art tokens) flips by itself.
+- **`styles/theme-dark.css`** holds the few things a token cannot reach, each
+  because it paints a colour that does not come from CSS: the Carbon eyebrow
+  icons (inverted), client logos (white silhouettes), the CTA watermark
+  (inverted ghost), case-study diagrams (placed on a light card, since they are
+  black line art), and the logo swap. It is last in the barrel so it wins.
+
+The dark ground is `#1f1e1d`, a warm near-black. **The dark ramp was solved, not
+picked:** each step is the warm grey whose contrast against `#1f1e1d` matches
+the light step's contrast against `#fcfcfd`, to within 0.05. Hierarchy therefore
+carries across exactly, and so does any contrast problem: a light-mode failure
+comes out as the same failure in dark. To change a dark step, re-solve it against
+the light step's ratio rather than nudging it by eye.
+
+Cobalt cannot carry text on the dark ground (about 2:1), so in dark mode the
+brand tint `#7aa5e8` becomes `--accent` (6.6:1) and cobalt becomes
+`--accent-soft`; ochre and its tint swap the same way for `--data`. Primary
+buttons need no rule: they fill with `--accent` and label with `--n-0`, which is
+a dark step in this theme, so they read as light blue with a dark label (6.5:1).
+The Products drawing's violet moves to its tints.
+
+**The cookie banner is always the opposite of the page** (`--n-900`: ink on
+light, near-white on dark), so its "Privacy Policy" link uses `--accent-soft`,
+the accent's opposite half. With `--accent` it failed in both themes.
+
+**The logo has a dark variant.** `arka-mark-small-dark.svg` lifts only the blue
+node, to `#4884e3` (4.5:1 on `#1f1e1d`); the supplied blue is 1.9:1 there and the
+mark reads as two nodes. Header and footer render both marks and
+`theme-dark.css` shows one. Two tiny images toggled by the theme attribute cannot
+disagree with the colours; swapping `src` in script would flash the wrong mark
+before hydration.
+
+The privacy policy states that theme preference is kept in localStorage. If the
+key or what is stored ever changes, change that text too.
+
+When adding anything that draws in a fixed colour — an `<img>` of line art, a
+hardcoded `rgba()`, a mask — check it on the dark ground as well.
 
 The palette is three families plus one neutral ramp, all at the top of
 `styles/base.css`:

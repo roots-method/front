@@ -103,6 +103,73 @@
   --shell-gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
+/* ── Dark theme ──────────────────────────────────────────────────────────
+   Opt-in: applied only when <html data-theme="dark">, which the footer toggle
+   sets and localStorage remembers. Light stays the default for every visitor
+   who has not chosen, whatever their system setting.
+
+   The ground is #1f1e1d, a warm near-black. The ramp is not an inversion of
+   the light one by eye: each step was solved so its contrast against #1f1e1d
+   matches its light counterpart's contrast against #fcfcfd, within 0.05. Muted
+   text, hairlines and panels therefore keep exactly the relationships they have
+   in light mode. The steps carry the ground's faint warmth rather than the
+   light ramp's cool blue, so greys do not look blue on a brown-black.
+
+   Only literals live here. Everything in :root that is written as var(--n-*)
+   (--bg, --fg, --line, --muted, most art tokens) flips on its own.
+
+   Cobalt cannot carry text on this ground (about 2:1), so the accent moves to
+   the brand's existing tint #7aa5e8 (6.6:1) and the two swap roles: the tint
+   becomes the accent and cobalt becomes the soft token. Buttons follow without
+   a rule of their own: .btn--primary fills with --accent and labels with
+   --n-0, which here is a dark step, giving 6.5:1. Ochre does the same swap for
+   numbers. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --n-0:  #22201f;
+  --n-25: #1f1e1d;
+  --n-50: #242321;
+  --n-100:#2b2926;
+  --n-150:#32302d;
+  --n-200:#3a3735;
+  --n-300:#4a4743;
+  --n-400:#66615b;
+  --n-500:#8b857e;
+  --n-600:#a8a39e;
+  --n-700:#cac7c3;
+  --n-800:#eae9e7;
+  --n-900:#fafaf9;
+
+  --accent: #7aa5e8;
+  --accent-strong: #a8c5f0;
+  --accent-soft: #0047ab;
+  --accent-rgb: 122, 165, 232;
+  --data: #e3a84a;
+  --data-soft: #9c6414;
+  --data-rgb: 227, 168, 74;
+
+  --bg-rgb: 31, 30, 29;
+  --surface-rgb: 36, 35, 33;
+
+  --shadow: 0 1px 4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(250, 250, 249, 0.05);
+  --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(250, 250, 249, 0.06);
+  --btn-primary-shadow: rgba(0, 0, 0, 0.45);
+
+  --story-stroke-soft: rgba(122, 165, 232, 0.28);
+  --story-stroke-end: rgba(122, 165, 232, 0.32);
+  --story-glow-secondary: rgba(122, 165, 232, 0.14);
+  --story-grid-opacity: 0.55;
+
+  /* The Products drawing's violet disappears on dark at full saturation, so it
+     moves to its tints, the same way cobalt and ochre do. */
+  --viz-violet: #a78bfa;
+  --viz-violet-pale: #7c5cd6;
+  --viz-blue: #6aa9f0;
+  --viz-blue-strong: #5b93ee;
+}
+
+
 *,
 *::before,
 *::after {

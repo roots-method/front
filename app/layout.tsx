@@ -58,9 +58,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={nunito.variable}>
+    // suppressHydrationWarning: the inline script below may add data-theme to
+    // this element before React hydrates, and that difference is intended.
+    <html lang="en" className={nunito.variable} suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light" />
+        {/* Runs before first paint, so a returning dark-mode visitor never sees
+            the light site flash first. Opt-in only: without a stored "dark" the
+            page stays light, whatever the device prefers. The key must match
+            THEME_KEY in components/ThemeToggle.tsx. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(localStorage.getItem("arka-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}',
+          }}
+        />
       </head>
       <body>
         <SiteJsonLd />

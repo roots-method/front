@@ -50,8 +50,17 @@ export default function SiteHeader() {
           grey nodes disappear. alt is empty: the link's aria-label names it. */}
       <Link className="brand" href="/" aria-label="Arka home">
         <img
-          className="brand__mark"
+          className="brand__mark brand__mark--light"
           src="/assets/arka-mark-small.svg"
+          alt=""
+          width={30}
+          height={30}
+        />
+        {/* Dark-theme copy of the mark with the blue node lifted; the theme
+            shows one or the other. See theme-dark.css. */}
+        <img
+          className="brand__mark brand__mark--dark"
+          src="/assets/arka-mark-small-dark.svg"
           alt=""
           width={30}
           height={30}
