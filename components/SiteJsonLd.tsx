@@ -39,7 +39,14 @@ export default function SiteJsonLd() {
         name: "Arka",
         alternateName: "Arka AI Automation",
         url: SITE_URL,
-        logo: { "@type": "ImageObject", url: `${SITE_URL}/assets/arkaflow-newlogo.svg` },
+        // PNG rather than SVG: it is what Google's Organization logo guidance is
+        // written around, and it is shown small, so it uses the small variant.
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/assets/arka-mark-512.png`,
+          width: 512,
+          height: 512,
+        },
         sameAs: [SOCIAL.linkedin.split("?")[0], SOCIAL.x],
         description:
           "Arka builds intelligent software for enterprise operations, replacing slow manual processes with AI systems that sharpen margins and compound in value.",

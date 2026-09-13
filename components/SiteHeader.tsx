@@ -43,12 +43,29 @@ export default function SiteHeader() {
         .filter(Boolean)
         .join(" ")}
     >
-      {/* Wordmark only — the mark was pulled from the lockup, so .brand__name
-          carries the cobalt as the sole brand element in the bar. */}
+      {/* The mark beside the name set in the site's own type. The logo file is the
+          mark alone, so the name is live text rather than part of an image: it
+          stays sharp, takes the theme's cobalt, and is real text to a crawler.
+          The small-size variant, because at this height the full mark's khaki and
+          grey nodes disappear. alt is empty: the link's aria-label names it. */}
       <Link className="brand" href="/" aria-label="Arka home">
-        <div className="brand__wordmark">
-          <span className="brand__name">Arka</span>
-        </div>
+        <img
+          className="brand__mark brand__mark--light"
+          src="/assets/arka-mark-small.svg"
+          alt=""
+          width={30}
+          height={30}
+        />
+        {/* Dark-theme copy of the mark with the blue node lifted; the theme
+            shows one or the other. See theme-dark.css. */}
+        <img
+          className="brand__mark brand__mark--dark"
+          src="/assets/arka-mark-small-dark.svg"
+          alt=""
+          width={30}
+          height={30}
+        />
+        <span className="brand__name">Arka</span>
       </Link>
 
       <nav className="nav__links" id="primary-nav" aria-label="Primary navigation">

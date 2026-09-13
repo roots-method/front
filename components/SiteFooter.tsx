@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 import { BOOKING_URL, CONTACT_EMAIL, SITE_MENU_ITEMS, SOCIAL, isActive } from "@/lib/site";
 
 export default function SiteFooter() {
@@ -12,10 +13,24 @@ export default function SiteFooter() {
       <div className="site-footer__grid">
         <div className="site-footer__brand">
           <Link className="site-footer__brand-link" href="/" aria-label="Arka home">
+            {/* Same pairing as the header: the small-size mark beside the name in
+                live text. */}
             <span className="site-footer__mark">
-              {/* Masked, not an <img>, so CSS owns the colour: this renders
-                  cobalt at 0.25 regardless of the fill in the source file. */}
-              <span className="site-footer__logo" aria-hidden="true" />
+              {/* Both variants render; the theme shows one. See theme-dark.css. */}
+              <img
+                className="site-footer__logo site-footer__logo--light"
+                src="/assets/arka-mark-small.svg"
+                alt=""
+                width={32}
+                height={32}
+              />
+              <img
+                className="site-footer__logo site-footer__logo--dark"
+                src="/assets/arka-mark-small-dark.svg"
+                alt=""
+                width={32}
+                height={32}
+              />
               Arka
             </span>
           </Link>
@@ -101,9 +116,12 @@ export default function SiteFooter() {
 
       <div className="site-footer__legal">
         <span>&copy; {new Date().getFullYear()} Arka. All rights reserved.</span>
-        <button className="site-footer__privacy-link" type="button" data-privacy-modal>
-          Privacy Policy
-        </button>
+        <div className="site-footer__legal-actions">
+          <ThemeToggle />
+          <button className="site-footer__privacy-link" type="button" data-privacy-modal>
+            Privacy Policy
+          </button>
+        </div>
       </div>
     </footer>
   );

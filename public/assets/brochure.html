@@ -18,33 +18,13 @@
      print document nobody re-checks. The palette below is copied from the
      tokens at the top of styles.css; if those move, move these to match.
 
-     Fonts and images are loaded from /fonts and /assets, so it must be
+     Fonts (Nunito Sans only) and images are loaded from /fonts and /assets, so it must be
      served from the repo root (python3 -m http.server 8080), not opened as
      a file:// URL — @font-face and the logo will not resolve otherwise.
      ═══════════════════════════════════════════════════════════════════ -->
 
 <style>
 /* ── Fonts, self-hosted from /fonts ──────────────────────────────────── */
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/Barlow-Light.ttf") format("truetype");
-  font-weight: 300; font-display: block;
-}
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/Barlow-Regular.ttf") format("truetype");
-  font-weight: 400; font-display: block;
-}
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/Barlow-Medium.ttf") format("truetype");
-  font-weight: 500; font-display: block;
-}
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/Barlow-SemiBold.ttf") format("truetype");
-  font-weight: 600; font-display: block;
-}
 /* Nunito Sans ships only as a variable font. Declaring the full range lets
    the browser instance any weight; naming a single weight here would pin
    every paragraph to the file's default, which is 200 (Thin). */
@@ -79,10 +59,22 @@
   --muted: var(--n-600);
   --line: var(--n-200);
 
-  --font-heading: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  /* One family, as on the site: headings share the body face. The token is
+     kept separate so headings can diverge again without editing every rule. */
+  --font-heading: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
 
   --pad: 17mm;              /* page margin; one value drives every page */
+}
+
+/* ── Display tracking ────────────────────────────────────────────────────
+   Headings carry -0.03em from the rule above. This gives the same to heading
+   face text at 15pt (20px) and up that is not a heading element: the stat
+   numerals, stage and step numbers, the 3 Cs line, the closing statement and
+   the name. Smaller heading face text (problem names, quotes, platform lines,
+   page numbers) keeps 0; the threshold matches the website's. */
+.num, .lockup__name, .cover__brand, .closing, .stage__n, .step__n, .threec {
+  letter-spacing: -0.03em;
 }
 
 /* ── Page setup ──────────────────────────────────────────────────────── */
@@ -144,9 +136,9 @@ body {
 }
 .page--brand .eyebrow { color: var(--on-brand-soft); }
 
-h1, h2, h3 { font-family: var(--font-heading); font-weight: 300; line-height: 1.14; }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 300; line-height: 1.14; letter-spacing: -0.03em; }
 
-h2 { font-size: 26pt; letter-spacing: -0.01em; margin-bottom: 4mm; }
+h2 { font-size: 26pt; margin-bottom: 4mm; }
 h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 .lede {
@@ -227,7 +219,6 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .cover__title {
   font-size: 40pt;
   font-weight: 300;
-  letter-spacing: -0.02em;
   line-height: 1.08;
   max-width: 150mm;
 }

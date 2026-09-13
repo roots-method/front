@@ -24,19 +24,14 @@
   font-size: clamp(1.6rem, 3vw, 2rem);
   font-weight: 400;
   line-height: 1;
+  color: var(--accent);
 }
 
-/* Cobalt via mask rather than the gold source file, held back to 0.25 so it
-   reads as a blue-grey watermark beside the wordmark instead of a second
-   focal point. Recolouring arkaflow-newlogo.svg does not move this. */
 .site-footer__logo {
+  display: block;
   flex: none;
   width: 2rem;
   height: 2rem;
-  opacity: 0.25;
-  background-color: var(--accent);
-  -webkit-mask: url("/assets/arkaflow-newlogo.svg") center / contain no-repeat;
-  mask: url("/assets/arkaflow-newlogo.svg") center / contain no-repeat;
 }
 
 .site-footer__name {
@@ -168,12 +163,90 @@
 }
 
 .site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
   margin-top: clamp(2rem, 4vw, 3rem);
   padding-top: 1rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 500;
+}
+
+.site-footer__legal-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ── Dark mode switch ─────────────────────────────────────────────────────
+   A small track and thumb beside a fixed "Dark mode" label. The pressed state
+   comes from aria-pressed, so the visual and the accessible state are one
+   attribute and cannot drift apart. It is styled to sit with the Privacy Policy
+   link beside it: same size, same muted colour, no button chrome. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--fg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.theme-toggle__track {
+  position: relative;
+  flex: none;
+  width: 1.9rem;
+  height: 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--n-300);
+  background: var(--n-100);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.12rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 50%;
+  background: var(--n-500);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__track {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__thumb {
+  background: var(--n-0);
+  transform: translate(0.86rem, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__track,
+  .theme-toggle__thumb {
+    transition: none;
+  }
 }
 
 .footer__copy {

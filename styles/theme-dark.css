@@ -1,0 +1,53 @@
+/* ── Dark theme: component overrides ─────────────────────────────────────
+   The tokens in base.css do almost all of the work. What is here cannot be
+   solved with a token, because each of these paints a colour that does not come
+   from CSS at all. Last in the barrel, so these win over the light rules.
+
+   Nothing in this file applies unless <html data-theme="dark"> is set. */
+
+/* The eyebrow icons are Carbon SVGs drawn in black and shown as <img>, so they
+   cannot take a colour. Inverting turns them near-white; the existing 0.6
+   opacity then settles them to a muted light grey. */
+[data-theme="dark"] .icon-sm {
+  filter: invert(1);
+}
+
+/* Client logos are already forced to black silhouettes with brightness(0), so
+   one more step makes them white silhouettes at the same opacity. */
+[data-theme="dark"] .client-bar__logo {
+  filter: brightness(0) invert(1);
+}
+
+/* The CTA watermark is flattened to a black ghost at 4.5% opacity, which is
+   invisible on a dark ground. Inverted, it becomes the same ghost in white. */
+[data-theme="dark"] .cta-panel__watermark {
+  filter: saturate(0) brightness(0) invert(1);
+}
+
+/* Case-study diagrams are images with black text and lines. On a dark panel
+   they vanish, so in dark mode they sit on a light card, like a printed figure
+   placed on the page. --n-900 is the lightest step in this theme. */
+[data-theme="dark"] .case-article__diagram {
+  background: var(--n-900);
+  border-color: transparent;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────────
+   The header and footer render both variants of the mark, and the theme picks
+   one. Swapping the image source in script would flash the wrong mark before
+   hydration; two tiny SVGs toggled by the same attribute that sets the colours
+   cannot disagree with them. */
+.brand__mark--dark,
+.site-footer__logo--dark {
+  display: none;
+}
+
+[data-theme="dark"] .brand__mark--light,
+[data-theme="dark"] .site-footer__logo--light {
+  display: none;
+}
+
+[data-theme="dark"] .brand__mark--dark,
+[data-theme="dark"] .site-footer__logo--dark {
+  display: block;
+}

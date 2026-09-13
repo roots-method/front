@@ -69,7 +69,7 @@ export default function PrivacyModal() {
             solely to respond to your enquiry (legal basis: legitimate interest, Art. 6(1)(f) GDPR).
           </p>
           <p>
-            <strong>Browser storage</strong>: we store your consent choice in{" "}
+            <strong>Browser storage</strong>: we store your theme preference and consent choice in{" "}
             <code>localStorage</code> only. No personal data, never transmitted to our servers.
           </p>
           <p>
@@ -94,8 +94,8 @@ export default function PrivacyModal() {
 
           <h3>Cookies</h3>
           <p>
-            This site sets <strong>no cookies</strong>. We use <code>localStorage</code> for consent
-            preferences only, stored locally in your browser and never shared.
+            This site sets <strong>no cookies</strong>. We use <code>localStorage</code> for theme and
+            consent preferences only, stored locally in your browser and never shared.
           </p>
 
           <h3>Data retention</h3>

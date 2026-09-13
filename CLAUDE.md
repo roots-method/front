@@ -114,70 +114,82 @@ is a route rename plus a redirect.
 
 ### Logo
 
-`assets/arkaflow-newlogo.svg` is the mark: the asterisk, now in `#0047ab`,
-cobalt.
+The logo is a mark only: a triad of three nodes joined by three tapered arcs, in
+blue, khaki and grey. There is no drawn wordmark. Wherever the name appears
+beside it, it is live text in Nunito Sans, in `--accent`.
 
-**The brand is cobalt end to end, and the gold is gone.** The mark was gold
-(`#c97a0a`) for a long time, and the argument for it was that it was the one
-colour on the page that could only be the logo. That argument died when the mark
-left the header: once the bar was a cobalt wordmark alone, gold survived only in
-a 16px favicon, where it read as a leftover rather than a signature. Do not
-reintroduce it as "the logo colour" — there is no longer a place on the site it
-would agree with.
+The source is `public/assets/new-logo.svg` (with `new-logo.png`, the same
+artwork at 3000px). **The site does not reference either file.** Everything it
+uses is derived from them:
 
-The three surfaces the mark still touches, and how each gets its colour — they
-do **not** move together, which is the trap:
+| File | Use |
+|---|---|
+| `arka-mark.svg` | Full colour. Anything roughly 64px and up; the CTA watermark. |
+| `arka-mark-small.svg` | Small-size variant. Header, footer, SVG favicon. |
+| `arka-mark-small-dark.svg` | The small variant with its blue node lifted, for header and footer in dark mode. |
+| `arka-icon-32.png` | PNG favicon for browsers without SVG favicons. |
+| `arka-apple-touch-icon.png` | 180px on an **opaque white tile** — iOS fills a transparent touch icon with black. |
+| `arka-mark-512.png` | The `logo` in the Organization JSON-LD. |
 
-- **Favicon** — the only one that reads this file's fill. Recolouring the SVG
-  changes the favicon and nothing else.
-- **Footer** (`.site-footer__logo`) — a CSS mask painting `--accent` at opacity
-  0.25, so it reads blue-grey. The file's own fill never reaches it. It is
-  masked rather than an `<img>` precisely so it can be coloured; dimming a gold
-  `<img>` gives pale ochre, not blue-grey.
-- **CTA watermark** — `filter: saturate(0) brightness(0)` at opacity 0.045, so
-  it is a black ghost whatever the file says.
+Colours, sampled from both source files, which agree exactly: blue `#174896`,
+khaki `#dbd5c4`, grey `#e5e5ec`. The small variant keeps the blue and deepens
+khaki to `#bfb496` and grey to `#b3b3c8`.
 
-**The header and footer no longer show a lockup.** The bar is `.brand__name`
-alone in `--accent`; `.brand__mark` and the hover spin are gone from the CSS —
-do not write a rule for a class nothing emits. The header wordmark takes
-`--accent` rather than `--fg` on purpose: it is the only brand element left in
-the bar, so it carries the identity colour itself.
+**Why the source file is not used directly.** It is a Canva AI export and has
+three faults for web use:
 
-`--data` ochre (`#8c5810`) is still reserved for numbers, and is now unrelated
-to anything in the logo.
+- **An opaque background.** Behind the mark is a 2000px RGB image with no alpha,
+  near-white with faint noise. The CTA watermark flattens the logo to a black
+  silhouette, so that background would render as a grey square; the header is
+  translucent when scrolled, so it would show a white box.
+- **Empty canvas.** The mark covers about 52 by 58 percent of a square canvas, so
+  it would render tiny unless cropped.
+- **Raster, and heavy.** Thirteen embedded PNGs plus provenance metadata, 345KB.
 
-Flat, not a gradient: at favicon size a gradient averages to a flat colour
-anyway, it cannot be driven by `currentColor` or a CSS mask if theming ever
-returns, and one-colour reproduction needs a flat version regardless.
+`arka-mark.svg` is a vector copy: its shapes were traced from an earlier export
+of the same drawing and checked against `new-logo.svg` at 98.4 percent overlap
+in the new colours, with exact circles for the nodes. It is about 3.6KB. If the
+drawing itself ever changes, that check has to be redone; recolouring is not
+enough.
 
-**The file must stay transparent.** The footer mark is a CSS mask, and a mask
-reads the image's *alpha*: give the SVG a full-canvas background rect and the
-whole 32×32 box becomes opaque, so it paints as a solid cobalt square instead of
-the asterisk. The same edit turns the CTA watermark into a black square and
-flattens the favicon. A backgrounded variant belongs in its own file —
-`assets/arkaflow-logo-bg.svg` is that file — never in this one. To check: draw
-it to a canvas and measure opaque pixels; the mark is about 26% coverage, a
-broken one reads 100%.
+**Why a small variant exists.** The khaki node is about 1.4:1 against the page
+and the grey about 1.2:1, so at header height and favicon size they disappear
+and the mark reads as a single blue dot. The small variant deepens only those
+two, to 2:1, the lightest step where all three nodes survive at 16px. Logos are
+exempt from WCAG contrast, so this is legibility, not compliance. Do not use the
+small variant large or in print.
 
-The mask URL lives in `styles/footer.css` and points at
-`/assets/arkaflow-newlogo.svg` — root-absolute, because the stylesheet is bundled
-to `/_next/static/css/` and a relative path would resolve from there. The old
-build hung a `?v=` on it to defeat caching; if the mark is ever recoloured in
-place, rename the file instead.
+Where it appears:
 
-**Do not put a double hyphen in that file's comment.** `--` is illegal inside an
-XML comment; it makes the SVG malformed and the browser renders a broken-image
-icon rather than failing loudly. Writing `(--accent)` in a note there is exactly
-how that happened once.
+- **Header** (`.brand__mark` + `.brand__name`) — the small mark at 30px beside
+  "Arka" in Nunito Sans at 1.5em, cobalt. The mark is sized to about 1.8 times the
+  name's cap height. The image's `alt` is empty because the link's `aria-label`
+  already names it.
+- **Footer** (`.site-footer__mark`) — the same pairing, mark at 32px.
+- **Favicon** — `arka-mark-small.svg`, with the PNG fallback and touch icon, in
+  `metadata.icons` in `app/layout.tsx`.
+- **CTA watermark** — `arka-mark.svg`, flattened to a black ghost by
+  `filter: saturate(0) brightness(0)` at 0.045 opacity, so its colours do not
+  matter there.
+- **Brochure** — none, by request.
 
-`assets/arka-wordmark.svg` is the striped lowercase wordmark — lowercase "arka"
-cut from eight horizontal bands, on the IBM construction. It is **not currently
-referenced anywhere**; it was briefly the header mark and was reverted. Kept
-because it works as a secondary device. Two things in it are deliberate: the `a`
-is double-storey (a single-storey one is indistinguishable from an `o` with the
-curves gone — the first version read "orko"), and `k` spans all eight bands
-while `a` and `r` take the bottom five. It stops being legible below about 24px,
-where the gaps fall under one physical pixel.
+The palette is unchanged by the logo. The site stays on cobalt `#0047ab`. The
+mark's blue is its own `#174896`, a close neighbour rather than a match, and was
+kept exactly as supplied.
+
+Two rules for any SVG in this folder:
+
+- **Keep the files transparent.** Anything that masks or silhouettes a logo reads
+  its alpha; a full-canvas background turns it into a solid square.
+- **No double hyphen inside an XML comment.** It is illegal there, makes the SVG
+  malformed, and the browser shows a broken image instead of failing loudly.
+  Writing a CSS token name with its leading dashes in a note is how that
+  happened once.
+
+Retired and unreferenced, left on disk: the cobalt asterisk
+(`arkaflow-newlogo.svg`, `arkaflow-newlogo.png`, `arkaflow-logo-bg.svg`,
+`new-logo-whitebg.png`, `light-logo-bg.png`) and `arka-wordmark.svg`, the
+striped lowercase wordmark.
 
 ### Home page and the Software page
 
@@ -399,15 +411,54 @@ safe only for a file nothing else overrides — check first.
 `url()` paths are root-absolute (`/assets/...`). They must be: the bundled CSS
 is served from `/_next/static/css/`, so a relative path resolves from there.
 
-`--font` and `--font-heading` in `base.css` point at the `next/font` variables
-(`--font-nunito`, `--font-barlow`) with the quoted family names kept behind them
-as a fallback. The site's fonts are self-hosted by `next/font/google`, which
-does not read `public/fonts/`.
+### Typography
 
-**`public/fonts/` is still load-bearing, though — do not delete it.**
+**One family: Nunito Sans, for body and headings alike.** Barlow was the heading
+face until it was dropped for consistency; nothing loads it any more, on the site
+or in the brochure.
+
+`--font` and `--font-heading` in `base.css` both point at the `next/font`
+variable `--font-nunito`, with the quoted family name kept behind it as a
+fallback. They are deliberately still two tokens: roughly fifty rules read
+`--font-heading`, and keeping it separate means headings can take a different
+face again by changing one line. The font is self-hosted by `next/font/google`
+at weights 300 to 700, all of which headings use.
+
+**Headings are tracked to -0.03em.** Nunito Sans is spaced for text sizes and
+reads loose at heading sizes. The rule covers:
+
+- every `h1` to `h6`, set in the `h1, h2, h3, h4, h5, h6` rule in `base.css`;
+- display text in the heading face that is not a heading element, listed by
+  class directly beneath it: the name beside the logo, stat and step numerals,
+  and the large labels doing a heading's job.
+
+Two exclusions, both deliberate. Small **uppercase labels** — eyebrows, pillar
+labels, stage tags — keep their own spacing, several of them positive; tightening
+small capitals crams them. And heading-face text **under about 20px** that is not
+a heading, such as the 3 Cs line and the contact step numbers, stays at 0, where
+negative tracking begins to cost legibility. When adding a display class, apply
+the same test.
+
+**The trap: descendants.** `base.css` resets `letter-spacing: 0` on *every*
+element through `*`, on purpose, so tracking stays flat by default. The side
+effect is that a heading's tracking never reaches the elements inside it: the
+typed `{AI flow}`, an `<em>`, an `.accent` phrase would each sit at 0 while the
+rest of the line is tightened. Before the change to Nunito Sans the hero's
+`-0.02em` had exactly that bug. `:is(h1, h2, h3, h4, h5, h6) * { letter-spacing:
+inherit; }` fixes it without removing the reset. Keep both rules together; a
+per-rule `letter-spacing` on a heading class will also override the shared value,
+which is why the hero's own `-0.02em` was deleted rather than updated.
+
+A descendant inherits the heading's tracking as a *pixel* value, not in em, so a
+span inside a heading set in a noticeably different size keeps the heading's
+spacing rather than scaling its own. Nothing does that today.
+
+**`public/fonts/` is still load-bearing — do not delete it.**
 `public/assets/brochure.html` is a standalone print document that cannot use
-`next/font`, so it declares its own `@font-face` rules against those `.ttf`
-files. Removing them silently drops the brochure back to Helvetica.
+`next/font`, so it declares its own `@font-face` against
+`public/fonts/Nunito_Sans/`. Removing that folder silently drops the brochure to
+Helvetica. `public/fonts/Barlow/` is no longer read by anything; it can go
+whenever convenient.
 
 ### The brochure
 
@@ -434,24 +485,74 @@ Two things to know before editing:
   `scrollHeight` against `clientHeight` after adding anything. Every page should
   read zero.
 - **The brochure carries no logo at all — only the "Arka Technologies"
-  wordmark**, set as text on the cover and in the closing sign-off. The mark was
-  there twice, as a bleed watermark on both brand pages and as a small lockup
-  beside the wordmark, and both were removed on request. Nothing in the file
-  references `arkaflow-newlogo.svg` any more. If it is ever put back, mask it
-  rather than using an `<img>`: a mask reads the file's alpha, so a background
-  creeping into that asset shows up at once as a solid square instead of
-  quietly. It ran as an `<img>` with `mix-blend-mode: multiply` for exactly that
-  reason once — see the logo section above.
+  wordmark**, set as text on the cover and in the closing sign-off. The old
+  asterisk was there twice and both were removed on request, before the current
+  logo existed. If a logo goes back in, use `arka-mark.svg` (it is large here, so
+  the full-colour file, not the small variant), and keep the file transparent —
+  see the Logo section.
 - **The contact lines are real links**, on the cover and the closing page.
   Chrome carries `href` into the exported PDF as a live annotation, so they are
   tappable in the file people are sent. Their colour is inherited, not set — a
   default link blue on the cobalt ground is close to invisible.
 
-### Palette (light only)
+### Themes: light by default, dark on request
 
-**There is no theme system.** No theme toggle, no `[data-theme="dark"]` rules,
-no `arka-theme` storage key. This came from `palette-prototype`, which existed
-to try the light-only direction; the React port inherited it.
+**Light is the default for every visitor, whatever their device prefers.** Dark
+is opt-in through the "Dark mode" switch in the footer's legal row
+(`components/ThemeToggle.tsx`), which sets `<html data-theme="dark">` and stores
+`arka-theme` in localStorage. The site ran light-only for a long stretch (it came
+from `palette-prototype`); dark mode was added back on top of the same tokens,
+with a warm ground rather than the old navy.
+
+How it hangs together:
+
+- **No flash.** An inline script in `app/layout.tsx`'s `<head>` reads the stored
+  choice and sets the attribute before first paint. It runs before React, so
+  `<html>` carries `suppressHydrationWarning`. The storage key is written in two
+  places, that script and `THEME_KEY` in `ThemeToggle.tsx`, and they must match.
+- **The toggle** starts unpressed on the server, because the server cannot know
+  the choice, and syncs to the attribute once mounted. It is a single toggle
+  button with a fixed label and `aria-pressed`, not a label that flips between
+  "Dark" and "Light". It follows changes made in other tabs.
+- **Tokens do almost everything.** `:root[data-theme="dark"]` in `base.css`
+  overrides only literal values. Anything written as `var(--n-*)` in `:root`
+  (`--bg`, `--fg`, `--line`, `--muted` and most art tokens) flips by itself.
+- **`styles/theme-dark.css`** holds the few things a token cannot reach, each
+  because it paints a colour that does not come from CSS: the Carbon eyebrow
+  icons (inverted), client logos (white silhouettes), the CTA watermark
+  (inverted ghost), case-study diagrams (placed on a light card, since they are
+  black line art), and the logo swap. It is last in the barrel so it wins.
+
+The dark ground is `#1f1e1d`, a warm near-black. **The dark ramp was solved, not
+picked:** each step is the warm grey whose contrast against `#1f1e1d` matches
+the light step's contrast against `#fcfcfd`, to within 0.05. Hierarchy therefore
+carries across exactly, and so does any contrast problem: a light-mode failure
+comes out as the same failure in dark. To change a dark step, re-solve it against
+the light step's ratio rather than nudging it by eye.
+
+Cobalt cannot carry text on the dark ground (about 2:1), so in dark mode the
+brand tint `#7aa5e8` becomes `--accent` (6.6:1) and cobalt becomes
+`--accent-soft`; ochre and its tint swap the same way for `--data`. Primary
+buttons need no rule: they fill with `--accent` and label with `--n-0`, which is
+a dark step in this theme, so they read as light blue with a dark label (6.5:1).
+The Products drawing's violet moves to its tints.
+
+**The cookie banner is always the opposite of the page** (`--n-900`: ink on
+light, near-white on dark), so its "Privacy Policy" link uses `--accent-soft`,
+the accent's opposite half. With `--accent` it failed in both themes.
+
+**The logo has a dark variant.** `arka-mark-small-dark.svg` lifts only the blue
+node, to `#4884e3` (4.5:1 on `#1f1e1d`); the supplied blue is 1.9:1 there and the
+mark reads as two nodes. Header and footer render both marks and
+`theme-dark.css` shows one. Two tiny images toggled by the theme attribute cannot
+disagree with the colours; swapping `src` in script would flash the wrong mark
+before hydration.
+
+The privacy policy states that theme preference is kept in localStorage. If the
+key or what is stored ever changes, change that text too.
+
+When adding anything that draws in a fixed colour — an `<img>` of line art, a
+hardcoded `rgba()`, a mask — check it on the dark ground as well.
 
 The palette is three families plus one neutral ramp, all at the top of
 `styles/base.css`:
