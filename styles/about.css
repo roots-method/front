@@ -169,7 +169,7 @@
 }
 
 .about-team__sub {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -239,7 +239,7 @@
 
 .team-card__bio {
   margin-top: 0.5rem;
-  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--muted);
 }

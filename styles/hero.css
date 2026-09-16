@@ -59,7 +59,7 @@
 }
 
 .cta-panel__step-text {
-  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--muted);
 }
@@ -196,7 +196,7 @@
   max-width: 54ch;
   margin-top: clamp(1rem, 2.5vw, 1.6rem);
   color: var(--muted);
-  font-size: clamp(0.98rem, 1.7vw, 1.12rem);
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
   line-height: 1.62;
 }
 
