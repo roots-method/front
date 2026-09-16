@@ -230,7 +230,7 @@
 }
 
 .why-arka__sub {
-  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -293,7 +293,7 @@
 }
 
 .why-arka__content p {
-  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  font-size: 1rem;
   line-height: 1.75;
   color: var(--muted);
 }
@@ -414,7 +414,7 @@
 
 .testimonial__quote {
   flex: 1;
-  font-size: 0.9em;
+  font-size: 1rem;
   line-height: 1.75;
   color: var(--fg);
   font-style: normal;

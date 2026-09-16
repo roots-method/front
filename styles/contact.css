@@ -28,7 +28,7 @@
 }
 
 .contact-info__lede {
-  font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+  font-size: clamp(1rem, 1.6vw, 1.02rem);
   line-height: 1.72;
   color: var(--muted);
   max-width: 44ch;
@@ -70,7 +70,7 @@
 }
 
 .contact-next__text {
-  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--muted);
 }
@@ -86,7 +86,7 @@
 }
 
 .contact-quote__text {
-  font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-style: italic;
   color: var(--fg);

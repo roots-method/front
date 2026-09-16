@@ -133,7 +133,7 @@
 
 .flow-step__desc {
   max-width: 52ch;
-  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  font-size: 1rem;
   line-height: 1.75;
   color: var(--muted);
 }
@@ -149,7 +149,7 @@
 .flow-step__list li {
   position: relative;
   padding-left: 1.25rem;
-  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -224,7 +224,7 @@
 .page-hero__sub {
   max-width: 58ch;
   margin-top: clamp(0.75rem, 2vw, 1.25rem);
-  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-size: clamp(1rem, 1.6vw, 1.05rem);
   line-height: 1.75;
   color: var(--muted);
 }
