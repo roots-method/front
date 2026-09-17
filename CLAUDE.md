@@ -78,6 +78,26 @@ The old build injected the header and footer with `innerHTML` from `header.js`
 and `footer.js`, which forced a strict script order on every page. That whole
 mechanism is gone — the components render on the server.
 
+**The chrome navigates with plain `<a>`, not `next/link`.** Header links, footer
+menu links, both brand marks and both CTA buttons are ordinary anchors, so every
+menu click is a real document load. `next/link` was there first and worked, but
+a soft transition swapped the page with no browser feedback of any kind — no
+spinner, no tab throbber, nothing — and the site read as a single-page app
+rather than a set of documents.
+
+Know the cost before changing it back: an `<a>` does not prefetch, so the next
+page starts downloading on click rather than on hover, and each navigation
+re-downloads the shared chrome. Two things were checked and are fine — the
+active-link highlight still resolves, because `usePathname()` is correct on a
+fresh load just as it was on a transition; and dark mode does not flash, because
+the inline script in `<head>` sets `data-theme` before first paint on every load.
+That script is now load-bearing in a way it was not under client-side routing,
+which never re-ran it.
+
+**Page bodies still use `next/link`** — pillar cards, case and blog cards, CTA
+panel buttons, the back links. Only the chrome was converted. If the whole site
+should navigate the same way, those are the files left.
+
 ### Menu data
 
 `lib/site.ts` holds `SITE_MENU_ITEMS` and everything else the chrome needs

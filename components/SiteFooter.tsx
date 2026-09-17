@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import { BOOKING_URL, CONTACT_EMAIL, SITE_MENU_ITEMS, SOCIAL, isActive } from "@/lib/site";
@@ -12,7 +11,9 @@ export default function SiteFooter() {
     <footer className="site-footer site-footer--ready">
       <div className="site-footer__grid">
         <div className="site-footer__brand">
-          <Link className="site-footer__brand-link" href="/" aria-label="Arka home">
+          {/* Plain <a>, like the header: menu clicks are real document loads.
+              See the note at the top of SiteHeader.tsx. */}
+          <a className="site-footer__brand-link" href="/" aria-label="Arka home">
             {/* Same pairing as the header: the small-size mark beside the name in
                 live text. */}
             <span className="site-footer__mark">
@@ -33,7 +34,7 @@ export default function SiteFooter() {
               />
               Arka
             </span>
-          </Link>
+          </a>
           <p className="site-footer__tagline">
             Building Intelligent Software for Enterprise Operations.
           </p>
@@ -43,13 +44,13 @@ export default function SiteFooter() {
           <h2 className="site-footer__heading">Menu</h2>
           <nav className="site-footer__menu" aria-label="Footer navigation">
             {SITE_MENU_ITEMS.map((item, i) => (
-              <Link
+              <a
                 key={`${item.href}-${i}`}
                 className={`site-footer__menu-link${isActive(item, pathname) ? " is-active" : ""}`}
                 href={item.href}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>
@@ -105,12 +106,12 @@ export default function SiteFooter() {
         </div>
 
         <div className="site-footer__cta">
-          <Link className="btn btn--primary site-footer__inquiry" href="/contact">
+          <a className="btn btn--primary site-footer__inquiry" href="/contact">
             Book a discovery call
             <span className="nav__arrow" aria-hidden="true">
               &#8599;
             </span>
-          </Link>
+          </a>
         </div>
       </div>
 
