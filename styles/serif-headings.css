@@ -1,25 +1,8 @@
-/* ── Newsreader for headings ─────────────────────────────────────────────
-   Trial: headings are set in Newsreader, a serif. Everything else stays in
-   Nunito Sans, subheadings included — the lede under a headline, in a hero or
-   a section, is the body voice introducing the heading rather than part of it.
-   --font-heading in base.css does the switching; this file takes back the
-   roughly fifty rules that read that token without being headings.
-
-   To undo the whole experiment: drop this file's import from index.css and point
-   --font-heading back at --font-nunito. Nothing else changed.
-
-   Last in the barrel on purpose: the list below restates selectors that
-   component files already style, so it wins on order, not on specificity.
-
-   The rule to apply when adding something: if it is an h1 to h6, or a label
-   doing a heading's job in a card or panel, it is serif. A supporting line, a
-   numeral, an uppercase kicker or the name beside the mark is not. */
-
-/* Back to the sans: uppercase kickers and labels, every stat and step numeral,
-   the name beside the logo, and the 3 Cs line. Small capitals and figures in a
-   serif read as a different brand rather than a different level, and the name
-   next to the mark is a logo lockup, not a heading. */
-.eyebrow,
+/* ── Nunito for utility labels and figures ────────────────────────────────
+   DM Sans is the display face. These small utility labels and numerals retain
+   Nunito Sans so normal interface text does not become display typography.
+   The file remains last in the barrel because it deliberately overrides
+   component-level heading-token declarations for this small set. */
 .pillar__label,
 .brand__name,
 .site-footer__mark,
@@ -37,9 +20,6 @@
 .cta-panel__step-num,
 .pv-stat__val,
 .pv-kv__val,
-.process-editorial__num,
-/* The "Communication / Collaboration / Content" line sits directly under the
-   Products headline, so it is that hero's subheading however stylised it is. */
-.threec {
+.process-editorial__num {
   font-family: var(--font);
 }

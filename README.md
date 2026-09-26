@@ -60,16 +60,9 @@ If a change appears not to have applied, hard-reload (`Cmd+Shift+R`) before debu
 
 ## Typography
 
-System font stack — no webfont is loaded. `--font` and `--font-heading` both resolve to
-the platform UI face (San Francisco on macOS/iOS, Segoe UI on Windows, Roboto on Android).
-
-- Headings `h1`, `h2` — weight 400
-- Headings `h3` — weight 500
-- Body — weight 400
-
-Because nothing is downloaded there is no render-blocking font request and no FOUT, and
-every weight including 700 is genuinely available — the previous setup loaded only
-400/500/600 from Google Fonts, so any `font-weight: 700` was being faux-bolded.
+The site uses self-hosted `next/font` assets: DM Sans for headings, hero copy, and
+subheadings; Nunito Sans for paragraphs and other normal text. Both are loaded in
+[`app/layout.tsx`](app/layout.tsx) and exposed through `--font-heading` and `--font`.
 
 ## Icons
 

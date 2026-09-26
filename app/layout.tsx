@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Newsreader, Nunito_Sans } from "next/font/google";
+import { DM_Sans, Nunito_Sans } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PrivacyModal from "@/components/PrivacyModal";
@@ -18,13 +18,13 @@ const nunito = Nunito_Sans({
   display: "swap",
 });
 
-// Headings and the lines under them. Italic is loaded because headings use <em>
-// (the hero, team names), and a faux-italic serif is unmistakably wrong.
-const newsreader = Newsreader({
+// DM Sans is the display face for headings, hero copy, and subheadings. Italic
+// is loaded because those styles use <em> in several page headlines.
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // suppressHydrationWarning: the inline script below may add data-theme to
     // this element before React hydrates, and that difference is intended.
-    <html lang="en" className={`${nunito.variable} ${newsreader.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${nunito.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light" />
         {/* Runs before first paint, so a returning dark-mode visitor never sees

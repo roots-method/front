@@ -433,19 +433,14 @@ is served from `/_next/static/css/`, so a relative path resolves from there.
 
 ### Typography
 
-**One family: Nunito Sans, for body and headings alike.** Barlow was the heading
-face until it was dropped for consistency; nothing loads it any more, on the site
-or in the brochure.
+**Two families: DM Sans for display copy, Nunito Sans for body text.**
 
-`--font` and `--font-heading` in `base.css` both point at the `next/font`
-variable `--font-nunito`, with the quoted family name kept behind it as a
-fallback. They are deliberately still two tokens: roughly fifty rules read
-`--font-heading`, and keeping it separate means headings can take a different
-face again by changing one line. The font is self-hosted by `next/font/google`
-at weights 300 to 700, all of which headings use.
+`--font` in `base.css` points at the `next/font` variable `--font-nunito`.
+`--font-heading` points at `--font-dm-sans`; it is used for headings, hero copy,
+and subheadings. Both families are self-hosted by `next/font/google` at weights
+300 to 700.
 
-**Headings are tracked to -0.03em.** Nunito Sans is spaced for text sizes and
-reads loose at heading sizes. The rule covers:
+**Headings are tracked to -0.03em.** The rule covers:
 
 - every `h1` to `h6`, set in the `h1, h2, h3, h4, h5, h6` rule in `base.css`;
 - display text in the heading face that is not a heading element, listed by
