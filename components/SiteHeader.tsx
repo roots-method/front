@@ -1,11 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SITE_MENU_ITEMS, isActive } from "@/lib/site";
 
 const SCROLL_THRESHOLD = 48;
+
+// The chrome navigates with plain <a>, not next/link, so every menu click is a
+// real document load rather than a client-side transition. That is deliberate:
+// this is a marketing site of separate documents, and a soft transition swapped
+// the page with no browser feedback at all, which read as nothing having
+// happened. The cost is real and worth knowing — <a> does not prefetch, so the
+// next page starts downloading on click instead of on hover. To go back, import
+// Link from next/link and swap these four elements; nothing else depends on it.
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -48,7 +55,7 @@ export default function SiteHeader() {
           stays sharp, takes the theme's cobalt, and is real text to a crawler.
           The small-size variant, because at this height the full mark's khaki and
           grey nodes disappear. alt is empty: the link's aria-label names it. */}
-      <Link className="brand" href="/" aria-label="Arka home">
+      <a className="brand" href="/" aria-label="Arka home">
         <img
           className="brand__mark brand__mark--light"
           src="/assets/arka-mark-small.svg"
@@ -66,25 +73,27 @@ export default function SiteHeader() {
           height={30}
         />
         <span className="brand__name">Arka</span>
-      </Link>
+      </a>
 
       <nav className="nav__links" id="primary-nav" aria-label="Primary navigation">
         {items.map((item, i) => (
-          <Link
+          <a
             key={`${item.href}-${i}`}
             className={`nav__link${isActive(item, pathname) ? " is-active" : ""}`}
             href={item.href}
+            /* The load leaves the old page on screen while it works, so closing
+               the panel here is the only immediate feedback a tap gets. */
             onClick={() => setOpen(false)}
           >
             {item.label}
-          </Link>
+          </a>
         ))}
       </nav>
 
       <div className="nav__tools">
-        <Link className="btn btn--primary btn--nav" href="/contact">
+        <a className="btn btn--primary btn--nav" href="/contact">
           Get Started
-        </Link>
+        </a>
         <button
           className="nav__toggle"
           type="button"

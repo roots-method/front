@@ -28,7 +28,10 @@
 }
 
 .about-mission__label {
-  font-size: 0.68rem;
+  /* 1.2rem on desktop, easing to 1.05rem on a phone. These are uppercase, and
+     uppercase grows visually faster than its point size suggests, so the floor
+     is set higher than a sentence-case label of the same size would need. */
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
   font-weight: 700;
   text-transform: uppercase;
   color: var(--accent);
@@ -218,7 +221,7 @@
 
 .team-card__name {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
   font-weight: 500;
   color: var(--fg);
   margin: 0;

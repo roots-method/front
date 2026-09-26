@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Arka Technologies Brochure</title>
+<title>Arka — Enterprise Operations Brochure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      PRINT SOURCE, NOT A SITE PAGE.
@@ -18,9 +21,9 @@
      print document nobody re-checks. The palette below is copied from the
      tokens at the top of styles.css; if those move, move these to match.
 
-     Fonts (Nunito Sans only) and images are loaded from /fonts and /assets, so it must be
-     served from the repo root (python3 -m http.server 8080), not opened as
-     a file:// URL — @font-face and the logo will not resolve otherwise.
+     Nunito Sans is self-hosted; DM Sans is loaded from Google Fonts for display
+     copy. Serve this from the repo root rather than opening it as file:// so
+     assets and font loading resolve correctly.
      ═══════════════════════════════════════════════════════════════════ -->
 
 <style>
@@ -32,22 +35,21 @@
   font-family: "Nunito Sans";
   src: url("/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
        format("truetype-variations");
-  font-weight: 200 1000; font-display: block;
+  font-weight: 200 1000; font-display: swap;
 }
 
 /* ── Palette, copied from styles.css ─────────────────────────────────── */
 :root {
-  --n-25:  #fcfcfd;  --n-50:  #f4f6f9;  --n-100: #eaedf2;
+  --n-25:  #faf8f4;  --n-50:  #f2eee8;  --n-100: #eaedf2;
   --n-150: #dfe3ea;  --n-200: #d2d7e1;  --n-300: #b8bfcd;
   --n-400: #949cad;  --n-500: #6d7585;  --n-600: #545b69;
-  --n-700: #3c424e;  --n-800: #272c36;  --n-900: #1b202a;
+  --n-700: #3c424e;  --n-800: #272c36;  --n-900: #12213a;
 
   --accent: #0047ab;
   --accent-soft: #7aa5e8;
-  /* The ground on the cover and closing page. Same value as --accent, but
-     kept as its own token: one is "the identity colour", the other is "the
-     solid a whole page sits on", and they should stay separable. */
-  --brand: #0047ab;
+  /* The dark pages use the site ink rather than cobalt. Cobalt stays available
+     as the directional signal, keeping the cover deep but not monochrome. */
+  --brand: #0e1a2b;
   /* Text tints for the brand ground. --accent-soft and --n-300 both fall
      under 4.5:1 on the brand ground, so these are lighter rather than reused. */
   --on-brand-soft: #dbe8f8;
@@ -59,9 +61,7 @@
   --muted: var(--n-600);
   --line: var(--n-200);
 
-  /* One family, as on the site: headings share the body face. The token is
-     kept separate so headings can diverge again without editing every rule. */
-  --font-heading: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "DM Sans", "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
 
   --pad: 17mm;              /* page margin; one value drives every page */
@@ -87,7 +87,7 @@ html { background: var(--n-200); }
 body {
   font-family: var(--font-body);
   color: var(--fg);
-  font-size: 10pt;
+  font-size: 1rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
@@ -142,7 +142,7 @@ h2 { font-size: 26pt; margin-bottom: 4mm; }
 h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 .lede {
-  font-size: 10.5pt;
+  font-size: 1rem;
   color: var(--muted);
   max-width: 128mm;
   margin-bottom: 9mm;
@@ -194,14 +194,37 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 .page--brand .i--block { color: var(--on-brand-soft); }
 
-/* ── 01 Cover ────────────────────────────────────────────────────────── */
-.cover { justify-content: space-between; }
+/* ── 01 Cover — Systems in motion ─────────────────────────────────────── */
+.cover { justify-content: space-between; isolation: isolate; }
+.cover::before,
+.cover::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 0.35mm solid rgba(122, 165, 232, 0.42);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cover::before {
+  width: 190mm;
+  height: 190mm;
+  top: -105mm;
+  right: -100mm;
+  box-shadow: 0 0 0 16mm rgba(122, 165, 232, 0.045), 0 0 0 38mm rgba(122, 165, 232, 0.035);
+}
+.cover::after {
+  width: 58mm;
+  height: 58mm;
+  left: -31mm;
+  bottom: 34mm;
+  background: rgba(0, 71, 171, 0.36);
+}
 /* The name alone. The mark sat beside it on both brand pages and was taken
    out deliberately — the large bleed watermark already carries the mark on
    these two pages, and a second, smaller copy a few centimetres away read as a
    repeat rather than as a lockup. */
 .lockup { display: flex; align-items: center; }
-.lockup__name { font-family: var(--font-heading); font-size: 17pt; font-weight: 400; color: var(--on-brand-soft); }
+.lockup__name { font-family: var(--font-heading); font-size: 17pt; font-weight: 500; color: var(--accent-soft); }
 
 /* Sign-off at the foot of the closing page: the mark, the name, and the
    promise, sitting under a rule so it reads as the end of the document. */
@@ -216,13 +239,9 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 }
 .signoff__line { font-size: 8.5pt; color: var(--on-brand-mute); text-align: right; max-width: 78mm; }
 .cover__brand { font-family: var(--font-heading); font-size: 17pt; font-weight: 400; color: var(--on-brand-soft); }
-.cover__title {
-  font-size: 40pt;
-  font-weight: 300;
-  line-height: 1.08;
-  max-width: 150mm;
-}
-.cover__tag { font-size: 11pt; color: var(--on-brand-mute); margin-top: 7mm; }
+.cover__title { font-size: 41pt; font-weight: 500; line-height: 1.02; max-width: 140mm; }
+.cover__title em { color: var(--accent-soft); font-style: normal; }
+.cover__tag { font-family: var(--font-heading); font-size: 13pt; color: var(--on-brand-mute); margin-top: 8mm; max-width: 85mm; }
 .cover__meta { display: flex; justify-content: space-between; font-size: 9pt; color: var(--on-brand-soft); font-weight: 600; }
 /* Same treatment as the closing page: Chrome carries href into the exported
    PDF as a live annotation, and the colour is inherited because a default link
@@ -249,7 +268,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   padding-top: 1mm;
 }
 .pillar__label .i { width: 12mm; height: 12mm; }
-.pillar p { font-size: 9.5pt; color: var(--muted); margin-top: 2mm; }
+.pillar p { font-size: 1rem; color: var(--muted); margin-top: 2mm; }
 
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 16mm; padding-top: 10mm; border-top: 1px solid var(--line); }
 .stats__v { font-size: 30pt; line-height: 1; }
@@ -262,7 +281,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .problem__icon { width: 11mm; height: 11mm; color: var(--accent); margin-bottom: 3mm; }
 .problem__name { font-family: var(--font-heading); font-size: 13pt; font-weight: 500; }
 .problem__cost { font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--data); margin: 1.5mm 0 3mm; }
-.problem__quote { font-size: 9.5pt; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 4mm; font-style: italic; }
+.problem__quote { font-size: 1rem; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 4mm; font-style: italic; }
 
 .closing { margin-top: 16mm; padding-top: 9mm; border-top: 1px solid var(--line); font-family: var(--font-heading); font-size: 15pt; font-weight: 300; max-width: 140mm; }
 
@@ -271,7 +290,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .stage:last-of-type { border-bottom: 0; }
 .stage__n { font-family: var(--font-heading); font-size: 20pt; font-weight: 300; color: var(--accent); line-height: 1; }
 .stage__when { font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--data); text-align: right; padding-top: 2mm; }
-.stage p { font-size: 9.5pt; color: var(--muted); margin-top: 2mm; }
+.stage p { font-size: 1rem; color: var(--muted); margin-top: 2mm; }
 
 /* ── Arka ONE (p5) ───────────────────────────────────────────────────── */
 .threec { display: flex; gap: 4mm; align-items: baseline; margin-bottom: 8mm; font-family: var(--font-heading); font-size: 19pt; font-weight: 300; }
@@ -283,14 +302,14 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 .platform__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2mm; }
 .platform__tag { font-size: 6.8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--n-500); }
 .platform__line { font-family: var(--font-heading); font-size: 10.5pt; color: var(--accent); margin-bottom: 2mm; }
-.platform p { font-size: 9.5pt; color: var(--muted); }
+.platform p { font-size: 1rem; color: var(--muted); }
 
 
 
 /* ── Why (p6) ────────────────────────────────────────────────────────── */
 .commit { padding: 9mm 0; border-bottom: 1px solid var(--line); }
 .commit:last-of-type { border-bottom: 0; }
-.commit p { font-size: 9.5pt; color: var(--muted); margin-top: 2mm; max-width: 150mm; }
+.commit p { font-size: 1rem; color: var(--muted); margin-top: 2mm; max-width: 150mm; }
 
 /* ── Voices (p7) ─────────────────────────────────────────────────────── */
 .quote { margin-bottom: 13mm; }
@@ -304,7 +323,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 /* ── Next step (p8) ──────────────────────────────────────────────────── */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; margin-bottom: 16mm; }
 .step__n { font-family: var(--font-heading); font-size: 19pt; font-weight: 300; color: var(--on-brand-soft); }
-.step p { font-size: 9pt; color: var(--on-brand-mute); margin-top: 2mm; }
+.step p { font-size: 1rem; color: var(--on-brand-mute); margin-top: 2mm; }
 .receive { border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 2mm; padding: 9mm; margin-top: auto; margin-bottom: 14mm; }
 .receive__t { font-family: var(--font-heading); font-size: 13pt; font-weight: 300; margin-top: 3mm; }
 .contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
@@ -322,13 +341,11 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 <!-- ═══ 01 · Cover ═══════════════════════════════════════════════════ -->
 <section class="page page--brand cover">
-  <div class="lockup">
-    <span class="lockup__name">Arka Technologies</span>
-  </div>
+  <div class="lockup"><span class="lockup__name">Arka</span></div>
 
   <div>
-    <h1 class="cover__title">Building intelligent software for enterprise operations.</h1>
-    <p class="cover__tag">A Partner for Your Enterprise Operations.</p>
+    <h1 class="cover__title">Intelligent systems for <em>operations that move.</em></h1>
+    <p class="cover__tag">AI for enterprise operations.</p>
   </div>
 
   <div>
@@ -342,7 +359,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 <!-- ═══ 02 · What we do ══════════════════════════════════════════════ -->
 <section class="page">
-  <p class="eyebrow"><span class="i" style="--i:url(/assets/icons-ai-ibm/arrange.svg)" aria-hidden="true"></span>What Arka Technologies does</p>
+  <p class="eyebrow"><span class="i" style="--i:url(/assets/icons-ai-ibm/arrange.svg)" aria-hidden="true"></span>What Arka does</p>
   <h2>Bring AI to your<br />digital ecosystem.</h2>
   <p class="lede">
     We develop AI software, integrate it with the systems you already run, and
@@ -394,7 +411,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   </div>
 
   <div class="foot">
-    <span>Arka Technologies · Building intelligent software for enterprise operations</span>
+    <span>Arka · AI for enterprise operations</span>
     <span class="foot__num">02</span>
   </div>
 </section>
@@ -441,7 +458,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
     and systems can be fixed.</p>
 
   <div class="foot">
-    <span>Arka Technologies · Building intelligent software for enterprise operations</span>
+    <span>Arka · AI for enterprise operations</span>
     <span class="foot__num">03</span>
   </div>
 </section>
@@ -500,7 +517,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   </div>
 
   <div class="foot">
-    <span>Arka Technologies · Building intelligent software for enterprise operations</span>
+    <span>Arka · AI for enterprise operations</span>
     <span class="foot__num">04</span>
   </div>
 </section>
@@ -513,9 +530,8 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
     <span>Communication</span><span>·</span><span>Collaboration</span><span>·</span><span>Content</span>
   </div>
   <p class="lede" style="margin-top:-4mm">
-    The world class products, for decades. We set up the products your teams
-    are already comfortable with, then connect them so they behave like one
-    system.
+    We set up the tools your teams already know, then connect them so they
+    operate as one system: familiar to use, easier to manage, and built to grow.
   </p>
 
   <div class="platforms">
@@ -557,7 +573,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   </div>
 
   <div class="foot">
-    <span>Arka Technologies · Building intelligent software for enterprise operations</span>
+    <span>Arka · AI for enterprise operations</span>
     <span class="foot__num">05</span>
   </div>
 </section>
@@ -592,7 +608,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
 
   <div class="foot">
-    <span>Arka Technologies · Building intelligent software for enterprise operations</span>
+    <span>Arka · AI for enterprise operations</span>
     <span class="foot__num">06</span>
   </div>
 </section>
@@ -609,7 +625,7 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
   <div class="steps">
     <div class="step">
       <div class="step__n">01</div>
-      <p>Book a 40-mins scoping call. No commitment required.</p>
+      <p>Book a 40-minute scoping call. No commitment required.</p>
     </div>
     <div class="step">
       <div class="step__n">02</div>
@@ -645,9 +661,9 @@ h3 { font-size: 13pt; font-weight: 500; line-height: 1.25; }
 
   <div class="signoff">
     <div class="lockup">
-      <span class="lockup__name">Arka Technologies</span>
+      <span class="lockup__name">Arka</span>
     </div>
-    <p class="signoff__line">Building intelligent software for enterprise operations.</p>
+    <p class="signoff__line">AI for enterprise operations.</p>
   </div>
 </section>
 

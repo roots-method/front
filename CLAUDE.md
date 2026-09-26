@@ -78,6 +78,26 @@ The old build injected the header and footer with `innerHTML` from `header.js`
 and `footer.js`, which forced a strict script order on every page. That whole
 mechanism is gone — the components render on the server.
 
+**The chrome navigates with plain `<a>`, not `next/link`.** Header links, footer
+menu links, both brand marks and both CTA buttons are ordinary anchors, so every
+menu click is a real document load. `next/link` was there first and worked, but
+a soft transition swapped the page with no browser feedback of any kind — no
+spinner, no tab throbber, nothing — and the site read as a single-page app
+rather than a set of documents.
+
+Know the cost before changing it back: an `<a>` does not prefetch, so the next
+page starts downloading on click rather than on hover, and each navigation
+re-downloads the shared chrome. Two things were checked and are fine — the
+active-link highlight still resolves, because `usePathname()` is correct on a
+fresh load just as it was on a transition; and dark mode does not flash, because
+the inline script in `<head>` sets `data-theme` before first paint on every load.
+That script is now load-bearing in a way it was not under client-side routing,
+which never re-ran it.
+
+**Page bodies still use `next/link`** — pillar cards, case and blog cards, CTA
+panel buttons, the back links. Only the chrome was converted. If the whole site
+should navigate the same way, those are the files left.
+
 ### Menu data
 
 `lib/site.ts` holds `SITE_MENU_ITEMS` and everything else the chrome needs
@@ -413,19 +433,14 @@ is served from `/_next/static/css/`, so a relative path resolves from there.
 
 ### Typography
 
-**One family: Nunito Sans, for body and headings alike.** Barlow was the heading
-face until it was dropped for consistency; nothing loads it any more, on the site
-or in the brochure.
+**Two families: DM Sans for display copy, Nunito Sans for body text.**
 
-`--font` and `--font-heading` in `base.css` both point at the `next/font`
-variable `--font-nunito`, with the quoted family name kept behind it as a
-fallback. They are deliberately still two tokens: roughly fifty rules read
-`--font-heading`, and keeping it separate means headings can take a different
-face again by changing one line. The font is self-hosted by `next/font/google`
-at weights 300 to 700, all of which headings use.
+`--font` in `base.css` points at the `next/font` variable `--font-nunito`.
+`--font-heading` points at `--font-dm-sans`; it is used for headings, hero copy,
+and subheadings. Both families are self-hosted by `next/font/google` at weights
+300 to 700.
 
-**Headings are tracked to -0.03em.** Nunito Sans is spaced for text sizes and
-reads loose at heading sizes. The rule covers:
+**Headings are tracked to -0.03em.** The rule covers:
 
 - every `h1` to `h6`, set in the `h1, h2, h3, h4, h5, h6` rule in `base.css`;
 - display text in the heading face that is not a heading element, listed by

@@ -51,7 +51,9 @@
 
 .site-footer__heading {
   margin-bottom: 0.85rem;
-  font-size: 0.95rem;
+  /* Flat rather than clamped: 1.2rem is already comfortable at 375px, and the
+     columns stack there, so there is no crowding to design around. */
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -63,7 +65,7 @@
 .site-footer__menu-link {
   text-decoration: none;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   transition: color 0.2s ease;
 }
@@ -79,7 +81,9 @@
   gap: 0.45rem;
   list-style: none;
   color: var(--muted);
-  font-size: 0.88rem;
+  /* Matched to .site-footer__menu-link: these sit in the next column at the
+     same level, so a smaller size reads as an oversight rather than a choice. */
+  font-size: 1rem;
   font-weight: 500;
 }
 
