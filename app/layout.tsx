@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   // browsers without SVG favicons, and Apple fills a transparent touch icon with
   // black, so that one is drawn on a white tile.
   icons: {
-    icon: [{ url: "/assets/arka-mark-mono.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/assets/arka-mark-mono.png", type: "image/png", sizes: "512x512" }],
   },
   openGraph: {
     type: "website",

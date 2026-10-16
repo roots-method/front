@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1512" height="256" viewBox="0 0 1512 256" role="img" aria-labelledby="title desc">
+  <title id="title">Arka LinkedIn Company Page banner</title>
+  <desc id="desc">Arka — AI for Enterprise Operations.</desc>
+  <rect width="1512" height="256" fill="#F1F1F1"/>
+  <path d="M0 0H254V256H0zM1258 0H1512V256H1258z" fill="#A7BBC0"/>
+  <path d="M254 0H1258V256" fill="none" stroke="#000" stroke-opacity=".1"/>
+  <circle cx="76" cy="206" r="90" fill="none" stroke="#000" stroke-opacity=".22"/>
+  <circle cx="1438" cy="50" r="76" fill="none" stroke="#000" stroke-opacity=".22"/>
+  <path fill="#000" d="M10 14h25c11.1 0 19 8 19 19s-7.9 19-19 19H10V40h25c4.1 0 7-3 7-7s-2.9-7-7-7H10V14Zm12 12v12h13c3.3 0 5-2.1 5-5s-1.7-5-5-5H22Z" transform="translate(470 50) scale(2.15)"/>
+  <text x="595" y="106" fill="#000" font-family="Urbanist, sans-serif" font-size="62" font-weight="700" letter-spacing="-4">Arka</text>
+  <text x="597" y="153" fill="#000" font-family="Urbanist, sans-serif" font-size="27" font-weight="600" letter-spacing="-.8">AI for Enterprise Operations.</text>
+</svg>

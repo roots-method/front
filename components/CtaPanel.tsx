@@ -70,7 +70,7 @@ export default function CtaPanel({
       {watermark ? (
         <img
           className="cta-panel__watermark"
-          src="/assets/arka-mark-mono.svg"
+          src="/assets/arka-mark-mono.png"
           alt=""
           aria-hidden="true"
         />
