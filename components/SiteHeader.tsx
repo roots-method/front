@@ -50,24 +50,12 @@ export default function SiteHeader() {
         .filter(Boolean)
         .join(" ")}
     >
-      {/* The mark beside the name set in the site's own type. The logo file is the
-          mark alone, so the name is live text rather than part of an image: it
-          stays sharp, takes the theme's cobalt, and is real text to a crawler.
-          The small-size variant, because at this height the full mark's khaki and
-          grey nodes disappear. alt is empty: the link's aria-label names it. */}
+      {/* The mark is a standalone vector; the name remains live text for sharp,
+          accessible rendering at every size. */}
       <a className="brand" href="/" aria-label="Arka home">
         <img
-          className="brand__mark brand__mark--light"
-          src="/assets/arka-mark-small.svg"
-          alt=""
-          width={30}
-          height={30}
-        />
-        {/* Dark-theme copy of the mark with the blue node lifted; the theme
-            shows one or the other. See theme-dark.css. */}
-        <img
-          className="brand__mark brand__mark--dark"
-          src="/assets/arka-mark-small-dark.svg"
+          className="brand__mark"
+          src="/assets/arka-mark-mono.svg"
           alt=""
           width={30}
           height={30}

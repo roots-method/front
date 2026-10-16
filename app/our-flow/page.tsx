@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     url: "/our-flow",
     title: "Our Flow | Arka",
     description: "Four stages. One continuous engagement. We close every handoff gap.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka — Systems that move" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Flow | Arka",
+    description: "Four stages. One continuous engagement. We close every handoff gap.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

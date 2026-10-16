@@ -43,14 +43,17 @@ export default function CookieConsent() {
       aria-label="Cookie consent"
     >
       <div className="cookie-banner__inner">
-        <p className="cookie-banner__text">
-          We use essential browser storage (no tracking cookies) to remember your preferences. Read
-          our{" "}
-          <button className="cookie-banner__policy" type="button" data-privacy-modal>
-            Privacy Policy
-          </button>
-          .
-        </p>
+        <div className="cookie-banner__copy">
+          <p className="cookie-banner__eyebrow">Privacy &amp; preferences</p>
+          <p className="cookie-banner__text">
+            We use essential browser storage (no tracking cookies) to remember your preferences. Read
+            our{" "}
+            <button className="cookie-banner__policy" type="button" data-privacy-modal>
+              Privacy Policy
+            </button>
+            .
+          </p>
+        </div>
         <div className="cookie-banner__actions">
           <button
             className="btn btn--primary cookie-banner__accept"

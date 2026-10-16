@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     url: "/blog",
     title: "Blog — Arka",
     description: "Notes on building systems that actually get used.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka notes on building systems" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Arka",
+    description: "Notes on building systems that actually get used.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

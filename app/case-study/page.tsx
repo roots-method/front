@@ -30,8 +30,13 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     title,
     description: study.summary,
     alternates: { canonical: pageUrl(study.slug) },
-    openGraph: { url: pageUrl(study.slug), title, description: study.summary },
-    twitter: { title, description: study.summary },
+    openGraph: {
+      url: pageUrl(study.slug),
+      title,
+      description: study.summary,
+      images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: `${study.title} — Arka case work` }],
+    },
+    twitter: { card: "summary_large_image", title, description: study.summary, images: ["/assets/arka-social-card.png"] },
   };
 }
 

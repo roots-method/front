@@ -31,8 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description,
       publishedTime: post.date,
+      images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: `${post.title} — Arka` }],
     },
-    twitter: { title: post.title, description },
+    twitter: { card: "summary_large_image", title: post.title, description, images: ["/assets/arka-social-card.png"] },
   };
 }
 

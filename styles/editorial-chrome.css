@@ -1,0 +1,30 @@
+/* Shared chrome: a restrained frame for every route in the editorial system. */
+html { background:#f1f1f1; }
+html body .site-shell .nav { position:relative; z-index:100; margin:0; padding:1rem clamp(1.25rem,5vw,5rem); border-bottom:1px solid #000; background:#f1f1f1; color:#000; font-family:var(--font-urbanist),sans-serif; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
+html body .site-shell .nav--scrolled { padding:1rem clamp(1.25rem,5vw,5rem); background:#f1f1f1; box-shadow:none; }
+html body .site-shell .brand { gap:.6rem; }
+html body .site-shell .brand__name { color:#000; font-family:var(--font-urbanist),sans-serif; font-size:1.35rem; font-weight:700; letter-spacing:-.06em; }
+html body .site-shell .nav__links { gap:clamp(.9rem,2.2vw,1.65rem); }
+html body .site-shell .nav__link { position:relative; padding:.3rem 0; color:#000; font-family:var(--font-urbanist),sans-serif; font-size:.76rem; font-weight:700; letter-spacing:.045em; text-transform:uppercase; }
+html body .site-shell .nav__link::after { content:""; position:absolute; right:0; bottom:-.12rem; left:0; height:1px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
+html body .site-shell .nav__link:hover::after, html body .site-shell .nav__link:focus-visible::after, html body .site-shell .nav__link.is-active::after { transform:scaleX(1); }
+html body .site-shell .nav__tools .btn--nav { min-height:auto; padding:.75rem .95rem; border:0; border-radius:0; background:#000; color:#f1f1f1; box-shadow:none; font-family:var(--font-urbanist),sans-serif; font-size:.76rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase; }
+html body .site-shell .nav__toggle { border-color:#000; border-radius:0; background:#f1f1f1; }
+html body .site-shell .nav__toggle-bar { background:#000; }
+
+html body .site-shell .site-footer { margin:0; padding:clamp(3.5rem,7vw,6.5rem) clamp(1.25rem,5vw,5rem) 1.5rem; border:0; background:#090909; color:#f1f1f1; font-family:var(--font-urbanist),sans-serif; }
+html body .site-shell .site-footer__grid { grid-template-columns:minmax(12rem,1.3fr) repeat(3,minmax(7rem,.65fr)) auto; gap:clamp(1.5rem,4vw,4rem); }
+html body .site-shell .site-footer__brand-link { color:#f1f1f1; }
+html body .site-shell .site-footer__mark { color:#f1f1f1; font-family:var(--font-urbanist),sans-serif; font-size:2rem; font-weight:700; letter-spacing:-.07em; }
+html body .site-shell .site-footer__tagline { color:#a7bbc0; font-family:var(--font-urbanist),sans-serif; font-size:1rem; line-height:1.45; }
+html body .site-shell .site-footer__heading { margin-bottom:1rem; color:#a7bbc0; font-family:var(--font-urbanist),sans-serif; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+html body .site-shell .site-footer__menu-link, html body .site-shell .site-footer__list { color:#f1f1f1; font-family:var(--font-urbanist),sans-serif; font-size:.9rem; font-weight:500; }
+html body .site-shell .site-footer__menu-link:hover, html body .site-shell .site-footer__menu-link:focus-visible, html body .site-shell .site-footer__menu-link.is-active, html body .site-shell .site-footer__list a:hover, html body .site-shell .site-footer__list a:focus-visible { color:#a7bbc0; }
+html body .site-shell .site-footer__social-link { width:2.2rem; height:2.2rem; border:1px solid #a7bbc0; border-radius:0; background:transparent; color:#f1f1f1; }
+html body .site-shell .site-footer__social-link:hover, html body .site-shell .site-footer__social-link:focus-visible { background:#a7bbc0; color:#000; opacity:1; transform:translateY(-2px); }
+html body .site-shell .site-footer__inquiry { min-width:auto; border:0; border-radius:0; background:#a7bbc0; color:#000; box-shadow:none; font-family:var(--font-urbanist),sans-serif; font-size:.76rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase; }
+html body .site-shell .site-footer__legal { border-color:#a7bbc0; color:#a7bbc0; font-family:var(--font-urbanist),sans-serif; }
+html body .site-shell .site-footer__privacy-link { border:0; background:none; color:#a7bbc0; font:inherit; cursor:pointer; }
+html body .site-shell .site-footer__privacy-link:hover, html body .site-shell .site-footer__privacy-link:focus-visible { color:#f1f1f1; }
+@media (max-width:860px) { html body .site-shell .nav__links { padding:.75rem; border-color:#000; border-radius:0; background:#f1f1f1; box-shadow:none; } html body .site-shell .nav__link { padding:.72rem 0; } html body .site-shell .site-footer__grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px) { html body .site-shell .site-footer__grid { grid-template-columns:1fr; } html body .site-shell .site-footer__cta { width:100%; } html body .site-shell .site-footer__inquiry { width:100%; } }

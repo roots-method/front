@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import InlineSvg from "@/components/InlineSvg";
-import TypeCycle from "@/components/TypeCycle";
-import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Arka: AI for Enterprise Operations",
+  title: "Your AI digital partner for enterprise operations",
   description:
-    "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value. Services: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.",
+    "Turn complex, manual work into connected systems that move with your business. Arka designs AI software, workflow intelligence, and operations infrastructure for enterprise teams.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: "Arka: AI for Enterprise Operations",
+    title: "Arka — Your AI digital partner",
     description:
-      "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value.",
+      "Turn complex, manual work into connected systems that move with your business.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka — Systems that move" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arka — Your AI digital partner",
+    description: "Turn complex, manual work into connected systems that move with your business.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
-
-// Module scope, not inline: a fresh array literal on every render would restart
-// the typing effect each time the page re-renders.
-const HERO_WORDS = ["AI", "Arka"];
 
 const PILLARS = [
   {
     href: "/software",
-    icon: "ibm-watsonx--code-assistant.svg",
     label: "Software",
     title: "Build Custom AI Solutions",
     body: "Software that complements your existing profit-making machine. Not because of AI, but because real humans make it happen.",
@@ -33,7 +33,6 @@ const PILLARS = [
   },
   {
     href: "/products",
-    icon: "ibm-granite.svg",
     label: "Products",
     title: "Deploy World-Class Products",
     body: "Google Workspace, Zoho, CRM, sales platforms the everyday tools your team already trusts. We can help you deploy and configure so your team can start using from day one.",
@@ -41,7 +40,6 @@ const PILLARS = [
   },
   {
     href: "/contact",
-    icon: "operations--field.svg",
     label: "Support",
     title: "Back-office and Operations",
     body: "Continuity of back-office operations and monthly maintenance across your digital ecosystem. And yes, that includes the cloud infrastructure supporting it.",
@@ -97,176 +95,104 @@ const CLIENTS = [
 
 export default function HomePage() {
   return (
-    <>
-      <section className="hero hero--home hero--centered">
-        {/* Ambient cell grid. Decorative only. Cells sit toward the edges and
-            corners; the middle is left clear, in the artwork as well as the
-            mask, so nothing competes with the centred headline. */}
-        <InlineSvg src="/assets/art/hero-cubes.svg" className="hero-cells" />
-
-        <div className="hero__content">
-          <p className="eyebrow">For enterprise operations teams</p>
-          <h1 className="hero__title">
-            Your Only{" "}
-            {/* Only the first word types — "AI" and "Arka" swap, "flow" is
-                static. They share a leading "A", so the rewind stops there and
-                grows into the other rather than emptying the braces.
-
-                reserve={false}, unlike the "defacto"/"default" pair this
-                replaced. Those were near-identical in width, so holding the
-                field at the widest cost nothing. "Arka" is 79px against "AI" at
-                35px, and reserving parks all 44px of that difference between
-                the word and "flow" — it reads as a spacing bug for the whole
-                time "AI" is up. Letting the line re-centre costs 27px of
-                movement across the entire cycle instead, which is small enough
-                to pass as part of the typing, and the phrase is tight at every
-                frame. Centring the word inside a reserved slot was tried and is
-                worse: it strands the caret away from the text it is typing.
-
-                aria-hidden because a screen reader should not have the headline
-                rewritten under it letter by letter; the .sr-only span carries
-                the phrase instead. */}
-            <span className="type-cycle" aria-hidden="true">
-              {"{"}
-              <TypeCycle className="type-cycle__word" words={HERO_WORDS} reserve={false} />
-              <span className="type-cycle__caret" />
-              {" flow}"}
-            </span>
-            <span className="sr-only">AI flow</span>
-            <br />
-            Digital Partner.
-          </h1>
-          <p className="hero__lede hero__tagline">A Partner for Your Enterprise Operations.</p>
-          <div className="hero__actions">
-            <Link className="btn btn--primary" href="/contact">
-              Contact Us
-              <span className="nav__arrow nav__arrow--right" aria-hidden="true">
-                &#8594;
-              </span>
+    <div className="home-editorial">
+      <section className="home-editorial__hero" aria-labelledby="home-title">
+        <div className="home-editorial__hero-copy">
+          <p className="home-editorial__eyebrow">For enterprise operations teams</p>
+          <h1 id="home-title">Your only AI digital partner.</h1>
+          <p className="home-editorial__lede">
+            A partner for your enterprise operations—turning complex, manual work into systems that move with you.
+          </p>
+          <div className="home-editorial__actions">
+            <Link className="home-editorial__button" href="/contact">
+              Start a conversation <span aria-hidden="true">↗</span>
             </Link>
-            {/* The three pillars sit directly below; no need to leave the page
-                to see what the solutions are. */}
-            <a className="btn btn--ghost" href="#what-arka-does">
-              Explore our Solution
+            <a className="home-editorial__text-link" href="#what-arka-does">
+              Explore capabilities <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
+        <div className="home-editorial__art" aria-hidden="true">
+          <InlineSvg src="/assets/art/hero-cubes.svg" className="home-editorial__art-grid" />
+          <span className="home-editorial__orb home-editorial__orb--large" />
+          <span className="home-editorial__orb home-editorial__orb--dark" />
+          <span className="home-editorial__orb home-editorial__orb--small" />
+          <span className="home-editorial__art-label">Connected systems.<br />Decisive outcomes.</span>
+          <span className="home-editorial__art-index">01 / FLOW</span>
+        </div>
       </section>
 
-      {/* Static markup, not rendered from a shared data layer, because since the
-          Solution mega-menu was removed this is the only place the three
-          solutions are described. The nav labels in lib/site.ts need to keep
-          agreeing with them; nothing enforces it. */}
-      <section className="section solution-pillars" aria-labelledby="what-arka-does">
-        <p className="eyebrow">
-          <img className="icon-sm" src="/assets/icons-ai-ibm/arrange.svg" alt="" />
-          What Arka Does
-        </p>
-        <h2 className="solution-pillars__title" id="what-arka-does">
-          Bring AI to your digital ecosystem.
-        </h2>
-        <p className="solution-pillars__intro">
-          We develop AI software, integrate it with the systems you already run, and create a seamless
-          workflow experience.
-        </p>
-
-        <div className="solution-pillars__grid">
-          {PILLARS.map((pillar) => (
-            <Link className="pillar" href={pillar.href} key={pillar.href}>
-              <span
-                className="pillar__icon"
-                style={
-                  {
-                    "--menu-icon": `url('/assets/icons-ai-ibm/${pillar.icon}')`,
-                  } as React.CSSProperties
-                }
-                aria-hidden="true"
-              />
-              <span className="pillar__label">{pillar.label}</span>
+      <section className="home-editorial__services" aria-labelledby="what-arka-does">
+        <div className="home-editorial__section-heading">
+          <p className="home-editorial__eyebrow">What Arka does</p>
+          <h2 id="what-arka-does">Bring AI to your digital ecosystem.</h2>
+          <p>We develop AI software, connect the systems you already run, and make the work between them flow.</p>
+        </div>
+        <div className="home-editorial__service-grid">
+          {PILLARS.map((pillar, index) => (
+            <Link className="home-editorial__service" href={pillar.href} key={pillar.href}>
+              <span className="home-editorial__service-index">0{index + 1}</span>
+              <span className="home-editorial__service-label">{pillar.label}</span>
               <h3>{pillar.title}</h3>
               <p>{pillar.body}</p>
-              <span className="pillar__cta">
-                {pillar.cta}
-                <span className="nav__arrow nav__arrow--right" aria-hidden="true">
-                  &#8594;
-                </span>
-              </span>
+              <span className="home-editorial__service-link">{pillar.cta} <span aria-hidden="true">→</span></span>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Placed here on purpose: straight after the pillars, where the reader
-          has just learned what we do and is most likely to act. The page still
-          closes with the full CTA panel — this is the earlier of two chances,
-          not a duplicate of it. */}
-      <section className="consult-band" aria-labelledby="free-consult">
-        <p className="eyebrow">Free consultation</p>
-        <h2 className="consult-band__title" id="free-consult">
-          Bring the process that costs you most.
-        </h2>
-        <a
-          className="btn btn--primary consult-band__cta"
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener"
-        >
-          Claim free 40-mins call
-          <span className="nav__arrow" aria-hidden="true">
-            &#8599;
-          </span>
+      <section className="home-editorial__consult" aria-labelledby="free-consult">
+        <p className="home-editorial__eyebrow">Free consultation</p>
+        <h2 id="free-consult">Bring the process that costs you most.</h2>
+        <p>We’ll find the workflow worth fixing first, then outline the route to a measurable return.</p>
+        <a className="home-editorial__button" href={BOOKING_URL} target="_blank" rel="noopener">
+          Claim a free 40-min call <span aria-hidden="true">↗</span>
         </a>
-        {/* Directly under the button, where the hesitation is. */}
-        <ul className="consult-band__reassure">
-          {CONSULT_REASSURANCE.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
+        <ul>
+          {CONSULT_REASSURANCE.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </section>
 
-      <section className="industry-strip" aria-label="Industries served">
-        <span className="industry-strip__label">Industries served</span>
-        <ul className="industry-strip__list">
-          {INDUSTRIES.map((industry) => (
-            <li key={industry}>{industry}</li>
-          ))}
-        </ul>
+      <section className="home-editorial__industries" aria-label="Industries served">
+        <p className="home-editorial__eyebrow">Industries served</p>
+        <ul>{INDUSTRIES.map((industry) => <li key={industry}>{industry}</li>)}</ul>
       </section>
 
-      <section className="social-proof" aria-label="Client testimonials">
-        <div className="testimonial-strip">
-          {TESTIMONIALS.map((t) => (
-            <blockquote className="testimonial" key={t.name}>
-              <p className="testimonial__quote">&ldquo;{t.quote}&rdquo;</p>
-              <footer className="testimonial__footer">
-                <span className="testimonial__name">{t.name}</span>
-                <span className="testimonial__role">{t.role}</span>
-              </footer>
+      <section className="home-editorial__perspectives" aria-labelledby="client-perspectives">
+        <div className="home-editorial__perspectives-heading">
+          <p className="home-editorial__eyebrow">Client perspectives</p>
+          <h2 id="client-perspectives">The work feels lighter when the system does its share.</h2>
+        </div>
+        <div className="home-editorial__testimonial-grid">
+          {TESTIMONIALS.map((t, index) => (
+            <blockquote className="home-editorial__testimonial" key={t.name}>
+              <span>0{index + 1}</span>
+              <p>&ldquo;{t.quote}&rdquo;</p>
+              <footer><strong>{t.name}</strong><small>{t.role}</small></footer>
             </blockquote>
           ))}
         </div>
       </section>
 
-      <section className="client-bar" aria-label="Our clients">
-        <span className="client-bar__label">Trusted by Employees At</span>
-        <div className="client-bar__logos">
+      <section className="home-editorial__clients" aria-label="Our clients">
+        <p className="home-editorial__eyebrow">Trusted by employees at</p>
+        <div>
           {CLIENTS.map((c) => (
-            <img
-              key={c.src}
-              className={`client-bar__logo ${c.modifier}`.trim()}
-              src={`/assets/clients/${c.src}`}
-              alt={c.alt}
-              loading="lazy"
-            />
+            <img key={c.src} className={`home-editorial__client-logo ${c.modifier}`.trim()} src={`/assets/clients/${c.src}`} alt={c.alt} loading="lazy" />
           ))}
         </div>
       </section>
 
-      <CtaPanel
-        steps={BLUEPRINT_CTA_STEPS}
-        primaryLabel="Schedule a call"
-        primaryHref={BOOKING_URL}
-      />
-    </>
+      <section className="home-editorial__closing" aria-labelledby="closing-title">
+        <p className="home-editorial__eyebrow">Ready when you are</p>
+        <h2 id="closing-title">The gap between where you are and where you want to be is a systems problem. Let’s close it.</h2>
+        <ol>
+          <li><span>01</span>Book a 40-min scoping call. No commitment required.</li>
+          <li><span>02</span>We map your highest-value workflow opportunity.</li>
+          <li><span>03</span>You receive a tailored ROI Blueprint within 5 business days.</li>
+        </ol>
+        <a className="home-editorial__closing-button" href={BOOKING_URL} target="_blank" rel="noopener">Schedule a call <span aria-hidden="true">↗</span></a>
+      </section>
+    </div>
   );
 }
