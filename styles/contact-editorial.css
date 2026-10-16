@@ -1,0 +1,48 @@
+body:has(.contact-editorial) { --contact-canvas:#f1f1f1; --contact-surface:#a7bbc0; --contact-ink:#000; --contact-night:#090909; background:var(--contact-canvas); }
+body:has(.contact-editorial) .site-shell { width:min(100%,1600px); padding:0; }
+body:has(.contact-editorial) .nav { position:relative; z-index:10; margin:0; padding:1rem clamp(1.25rem,5vw,5rem); border-color:var(--contact-ink); background:var(--contact-canvas); font-family:var(--font-urbanist),sans-serif; }
+body:has(.contact-editorial) .nav--scrolled { background:var(--contact-canvas); box-shadow:none; }
+body:has(.contact-editorial) .brand__name, body:has(.contact-editorial) .nav__link, body:has(.contact-editorial) .nav__link:hover, body:has(.contact-editorial) .nav__link:focus-visible { color:var(--contact-ink); }
+body:has(.contact-editorial) .nav__link { font-size:.78rem; font-weight:600; letter-spacing:.02em; text-transform:uppercase; }
+body:has(.contact-editorial) .btn--nav { border-radius:0; background:var(--contact-ink); color:var(--contact-canvas); box-shadow:none; }
+body:has(.contact-editorial) .site-footer { margin:0; padding:clamp(3rem,6vw,5rem) clamp(1.25rem,5vw,5rem) 1.5rem; border:0; background:var(--contact-canvas); font-family:var(--font-urbanist),sans-serif; }
+.contact-editorial { overflow:hidden; background:var(--contact-canvas); color:var(--contact-ink); font-family:var(--font-urbanist),sans-serif; }
+.contact-editorial h1,.contact-editorial h2,.contact-editorial p,.contact-editorial a,.contact-editorial li,.contact-editorial span,.contact-editorial label,.contact-editorial input,.contact-editorial textarea,.contact-editorial button { font-family:inherit; }
+.contact-editorial__eyebrow { margin:0; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.contact-editorial__hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(22rem,.9fr); min-height:38rem; border-bottom:1px solid var(--contact-ink); }
+.contact-editorial__intro { display:flex; flex-direction:column; align-items:flex-start; padding:clamp(4rem,8vw,7.5rem) clamp(1.25rem,7vw,8rem); }
+.contact-editorial__intro h1 { max-width:9ch; margin:1rem 0 1.35rem; font-size:clamp(3.25rem,6.6vw,7.3rem); font-weight:700; letter-spacing:-.08em; line-height:.87; }
+.contact-editorial__intro > p:not(.contact-editorial__eyebrow) { max-width:32rem; font-size:clamp(1rem,1.4vw,1.2rem); line-height:1.5; }
+.contact-editorial__direct { display:flex; flex-wrap:wrap; gap:.8rem 1.5rem; margin-top:auto; padding-top:2rem; }
+.contact-editorial__direct a { color:var(--contact-ink); font-size:.82rem; font-weight:700; text-decoration:none; }
+.contact-editorial__direct a:hover,.contact-editorial__direct a:focus-visible { text-decoration:underline; }
+.contact-editorial__form-panel { padding:clamp(3rem,6vw,6rem) clamp(1.25rem,5vw,5rem); background:var(--contact-surface); }
+.contact-editorial__form-label { margin:0 0 1.7rem; font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.contact-editorial .contact-form { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+.contact-editorial .contact-form label { display:grid; gap:.4rem; font-size:.78rem; font-weight:700; }
+.contact-editorial .contact-form .field-full { grid-column:1 / -1; }
+.contact-editorial .contact-form input,.contact-editorial .contact-form textarea { width:100%; padding:.75rem 0; border:0; border-bottom:1px solid var(--contact-ink); border-radius:0; outline-offset:4px; background:transparent; color:var(--contact-ink); font-size:1rem; }
+.contact-editorial .contact-form input::placeholder,.contact-editorial .contact-form textarea::placeholder { color:rgba(0,0,0,.58); }
+.contact-editorial .contact-form textarea { resize:vertical; }
+.contact-editorial .contact-form__footer { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+.contact-editorial .contact-form__footer .btn { border-radius:0; background:var(--contact-ink); box-shadow:none; color:var(--contact-canvas); }
+.contact-editorial .contact-form__note { margin:0; font-size:.8rem; }
+.contact-editorial__next { display:grid; grid-template-columns:minmax(15rem,.8fr) minmax(0,2fr); gap:clamp(2rem,7vw,8rem); padding:clamp(4.5rem,10vw,9rem) clamp(1.25rem,7vw,8rem); }
+.contact-editorial__next h2 { max-width:9ch; margin:.85rem 0 0; font-size:clamp(2.1rem,3.8vw,4.25rem); font-weight:700; letter-spacing:-.07em; line-height:.94; }
+.contact-editorial__next ol { margin:0; padding:0; list-style:none; border-top:1px solid var(--contact-ink); }
+.contact-editorial__next li { display:grid; grid-template-columns:2.4rem 1fr; gap:1rem; padding:1.4rem 0; border-bottom:1px solid var(--contact-ink); }
+.contact-editorial__next li span { font-size:.72rem; font-weight:700; }
+.contact-editorial__next li p { max-width:39rem; margin:0; font-size:1rem; line-height:1.48; }
+.contact-editorial__perspective { display:flex; flex-direction:column; align-items:flex-start; padding:clamp(4.5rem,10vw,9rem) clamp(1.25rem,20vw,20rem); background:var(--contact-night); color:var(--contact-canvas); }
+.contact-editorial__perspective .contact-editorial__eyebrow,.contact-editorial__perspective > p:last-child { color:var(--contact-surface); }
+.contact-editorial__perspective blockquote { max-width:22ch; margin:1rem 0 1.5rem; font-size:clamp(2.2rem,4.8vw,5.45rem); font-weight:600; letter-spacing:-.075em; line-height:.9; }
+.contact-editorial__perspective > p:last-child { margin:0; font-size:.8rem; font-weight:700; letter-spacing:.06em; }
+.contact-editorial .faq { margin:0; padding:clamp(4.5rem,10vw,9rem) clamp(1.25rem,7vw,8rem); border:0; background:var(--contact-canvas); }
+.contact-editorial .faq__header { max-width:48rem; }
+.contact-editorial .faq__header h2 { margin:.85rem 0 2.5rem; font-size:clamp(2.1rem,4vw,4.5rem); font-weight:700; letter-spacing:-.07em; line-height:.94; }
+.contact-editorial .faq__list { border-top:1px solid var(--contact-ink); }
+.contact-editorial .faq__item { border-color:var(--contact-ink); }
+.contact-editorial .faq__btn { padding:1.2rem 0; color:var(--contact-ink); font-weight:700; }
+.contact-editorial .faq__body-inner { max-width:50rem; color:var(--contact-ink); }
+@media (max-width:760px) { .contact-editorial__hero,.contact-editorial__next { grid-template-columns:1fr; } .contact-editorial__intro { min-height:28rem; padding-inline:1.25rem; } .contact-editorial__form-panel { padding:3rem 1.25rem; } .contact-editorial__next { gap:2rem; } }
+@media (max-width:460px) { .contact-editorial .contact-form { grid-template-columns:1fr; } .contact-editorial .contact-form label { grid-column:1 / -1; } }

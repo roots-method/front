@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel, { SCOPING_CALL_STEP } from "@/components/CtaPanel";
-import InlineSvg from "@/components/InlineSvg";
-import ProcessSplit from "@/components/ProcessSplit";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -20,19 +17,16 @@ export const metadata: Metadata = {
 
 const PLATFORMS = [
   {
-    icon: "ibm-granite.svg",
     label: "Zoho One",
     title: "Built for you, built for business & built for Bharat.",
     body: "One licence, forty-odd applications, and a price that makes sense for a growing Indian business. We configure the pieces you will actually use and leave the rest out of your way.",
   },
   {
-    icon: "collaborate.svg",
     label: "Google Workspace",
     title: "Get your familiarity with similarity.",
     body: "Gmail, Drive, Meet and Calendar behave exactly the way your team expects, because they already use them. We handle the domain, the migration and the admin policies underneath.",
   },
   {
-    icon: "business-metrics.svg",
     label: "CRM & Sales Tools",
     // No destination yet, so this one is a plain div with a badge rather than a link.
     badge: "Coming soon",
@@ -94,115 +88,76 @@ const PANELS = [
 
 export default function ProductsPage() {
   return (
-    <>
-      <section className="page-hero page-hero--products">
-        <div className="page-hero__main">
-          <p className="eyebrow">
-            <img className="icon-sm" src="/assets/icons-ai-ibm/ibm-granite.svg" alt="" />
-            Arka ONE
-          </p>
-          <h1>Bring your 3 Cs at one place.</h1>
-
-          {/* All three named and readable at once. A CSS-only sequential
-              highlight walks the accent across them, so there is motion without
-              the headline ever being mid-word or incomplete — which is why this
-              deliberately does not use TypeCycle. The stagger keys off
-              :nth-of-type(3)/(5) because the separators are spans too. */}
-          <p className="threec">
-            <span className="threec__word">Communication</span>
-            <span className="threec__sep" aria-hidden="true">
-              &middot;
-            </span>
-            <span className="threec__word">Collaboration</span>
-            <span className="threec__sep" aria-hidden="true">
-              &middot;
-            </span>
-            <span className="threec__word">Content</span>
-          </p>
-
-          <p className="page-hero__sub">
-            Install the tools your team already knows, work the way you need them to be effective,
-            proactive and accountable.
-          </p>
-          <div className="page-hero__actions">
-            <Link className="btn btn--primary" href="/contact">
-              Talk to us about your stack
-              <span className="nav__arrow nav__arrow--right" aria-hidden="true">
-                &#8594;
-              </span>
-            </Link>
-            <a className="btn btn--ghost" href={BOOKING_URL} target="_blank" rel="noopener">
-              Book a 40 mins call
-              <span className="nav__arrow" aria-hidden="true">
-                &#8599;
-              </span>
-            </a>
+    <div className="products-editorial">
+      <section className="products-editorial__hero" aria-labelledby="products-title">
+        <div className="products-editorial__hero-copy">
+          <p className="products-editorial__eyebrow">Arka ONE / Product deployment</p>
+          <h1 id="products-title">Bring your three Cs into one place.</h1>
+          <div className="products-editorial__three-cs" aria-label="Communication, collaboration and content">
+            <span>Communication</span><span>Collaboration</span><span>Content</span>
+          </div>
+          <p>Install the tools your team already knows, configured to make work more effective, proactive and accountable.</p>
+          <div className="products-editorial__actions">
+            <Link className="products-editorial__button" href="/contact">Talk to us about your stack <span aria-hidden="true">↗</span></Link>
+            <a className="products-editorial__text-link" href={BOOKING_URL} target="_blank" rel="noopener">Book a 40-min call <span aria-hidden="true">→</span></a>
           </div>
         </div>
-
-        {/* The one drawing that does not follow brand colour — it is violet, in
-            --viz-* variables reserved for this composition alone. */}
-        <InlineSvg src="/assets/art/products-grid.svg" className="products-art" />
+        <div className="products-editorial__hero-art" aria-hidden="true">
+          <span className="products-editorial__hero-art-index">02 / PRODUCTS</span>
+          <span className="products-editorial__hero-orb products-editorial__hero-orb--one" />
+          <span className="products-editorial__hero-orb products-editorial__hero-orb--two" />
+          <span className="products-editorial__hero-orb products-editorial__hero-orb--three" />
+          <span className="products-editorial__hero-line products-editorial__hero-line--one" />
+          <span className="products-editorial__hero-line products-editorial__hero-line--two" />
+          <span className="products-editorial__hero-caption">TOOLS YOUR TEAM<br />ALREADY TRUSTS</span>
+        </div>
       </section>
 
-      {/* Same hairline treatment as the home page pillars and .why-arka__list,
-          so the whole site states its "three things" one way. */}
-      <section className="section solution-pillars" aria-labelledby="what-we-deploy">
-        <p className="eyebrow">What We Deploy</p>
-        <h2 className="solution-pillars__title" id="what-we-deploy">
-          Platforms your team already knows.
-        </h2>
-        <p className="solution-pillars__intro">
-          The world class products for decades. We set up the products, where your teams are already comfortable
-          with, then connect them so they behave like one system.
-        </p>
-
-        <div className="solution-pillars__grid">
-          {PLATFORMS.map((p) => (
-            <div className={`pillar${p.badge ? " pillar--soon" : ""}`} key={p.label}>
-              <span
-                className="pillar__icon"
-                style={
-                  { "--menu-icon": `url('/assets/icons-ai-ibm/${p.icon}')` } as React.CSSProperties
-                }
-                aria-hidden="true"
-              />
-              <span className="pillar__label">
-                {p.label}
-                {p.badge ? <em className="pillar__badge">{p.badge}</em> : null}
-              </span>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </div>
+      <section className="products-editorial__platforms" aria-labelledby="what-we-deploy">
+        <div className="products-editorial__section-heading">
+          <p className="products-editorial__eyebrow">What we deploy</p>
+          <h2 id="what-we-deploy">Platforms your team already knows.</h2>
+          <p>We set up the products your teams are already comfortable with, then connect them so they behave like one system.</p>
+        </div>
+        <div className="products-editorial__platform-grid">
+          {PLATFORMS.map((platform, index) => (
+            <article key={platform.label}>
+              <span>0{index + 1}</span>
+              <p className="products-editorial__platform-label">{platform.label}{platform.badge ? <em>{platform.badge}</em> : null}</p>
+              <h3>{platform.title}</h3>
+              <p>{platform.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="section how-we-work">
-        <p className="eyebrow">How We Work</p>
-        <h2 className="what-we-do__title">Three stages, and you are live.</h2>
-        <div className="what-we-do__intro">
+      <section className="products-editorial__process" aria-labelledby="products-process-title">
+        <div className="products-editorial__process-heading">
+          <p className="products-editorial__eyebrow">How we work</p>
+          <h2 id="products-process-title">Three stages, and you are live.</h2>
           <p>Moving goes wrong in the handover, not the setup. We stay on it throughout.</p>
         </div>
+        <ol>
+          {STEPS.map((step, index) => (
+            <li key={step.num}>
+              <span className="products-editorial__stage-number">0{index + 1}</span>
+              <div><small>{step.num}</small><h3>{step.title}</h3><p>{step.body}</p></div>
+              <ul>{PANELS[index].points.map((point) => <li key={point}>{point}</li>)}</ul>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <ProcessSplit steps={STEPS} panels={PANELS} label="Our deployment process" />
-
-      <CtaPanel
-        heading="Tell us what your team runs on today. We will tell you what is worth changing."
-        steps={[
-          SCOPING_CALL_STEP,
-          "We audit your current tools, licences and costs",
-          "You get a costed migration plan within 5 business days",
-        ]}
-        primaryLabel="Schedule a call"
-        primaryHref={BOOKING_URL}
-        secondary={
-          <Link className="btn btn--ghost" href="/software">
-            See custom software
-          </Link>
-        }
-      />
-    </>
+      <section className="products-editorial__closing" aria-labelledby="products-closing-title">
+        <p className="products-editorial__eyebrow">Make the stack work harder</p>
+        <h2 id="products-closing-title">Tell us what your team runs on today. We will tell you what is worth changing.</h2>
+        <ol>
+          <li><span>01</span>Book a 40-min scoping call. No commitment required.</li>
+          <li><span>02</span>We audit your current tools, licences and costs.</li>
+          <li><span>03</span>You get a costed migration plan within 5 business days.</li>
+        </ol>
+        <div><a className="products-editorial__closing-button" href={BOOKING_URL} target="_blank" rel="noopener">Schedule a call <span aria-hidden="true">↗</span></a><Link className="products-editorial__secondary-link" href="/software">See custom software <span aria-hidden="true">→</span></Link></div>
+      </section>
+    </div>
   );
 }

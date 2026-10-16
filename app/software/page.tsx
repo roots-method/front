@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -69,17 +68,14 @@ const PROCESS = [
 
 const WHY = [
   {
-    icon: "ownership",
     title: "We stay after deployment.",
     body: "Most firms hand you a system and move on. We own ongoing performance alongside you every upgrade, every optimization, for as long as you need it.",
   },
   {
-    icon: "margins",
     title: "We measure in margins, not deliverables.",
     body: "We don't track hours or features shipped. We track operational cost reduction, workflow turnaround, and recovered hours the numbers that show up in your P&L.",
   },
   {
-    icon: "workflow",
     title: "We build to your workflow, not a template.",
     body: "There's no off-the-shelf solution here. Every system is designed around how your specific team operates your tools, your decision points and your constraints.",
   },
@@ -89,131 +85,89 @@ const TECH = ["Anthropic", "AWS", "Azure", "n8n", "Make"];
 
 export default function SoftwarePage() {
   return (
-    <>
-      <section className="page-hero page-hero--software">
-        <div className="page-hero__main">
-          <p className="eyebrow">
-            <img
-              className="icon-sm"
-              src="/assets/icons-ai-ibm/ibm-watsonx--code-assistant.svg"
-              alt=""
-            />
-            Software
+    <div className="software-editorial">
+      <section className="software-editorial__hero" aria-labelledby="software-title">
+        <div className="software-editorial__hero-copy">
+          <p className="software-editorial__eyebrow">Software / Custom AI systems</p>
+          <h1 id="software-title">Custom digital solutions, shaped around your business.</h1>
+          <p>
+            Software that complements your existing profit-making machine—built around the work your team already does, and the outcomes it needs to reach.
           </p>
-          <h1>Custom digital solutions, shaped around your business.</h1>
-          <p className="page-hero__sub">
-            Software that complements your existing profit-making machine. Not because of AI, but because Arka's team makes it happen.
-          </p>
-          <div className="page-hero__actions">
-            <a className="btn btn--primary" href={BOOKING_URL} target="_blank" rel="noopener">
-              Claim your free 40 mins consult
-              <span className="nav__arrow" aria-hidden="true">
-                &#8599;
-              </span>
-            </a>
-            <Link className="btn btn--ghost" href="/contact">
-              Get in touch
-            </Link>
+          <div className="software-editorial__actions">
+            <a className="software-editorial__button" href={BOOKING_URL} target="_blank" rel="noopener">Claim your free 40-min consult <span aria-hidden="true">↗</span></a>
+            <Link className="software-editorial__text-link" href="/contact">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>
-
-        <div className="hero__visual">
-          <img
-            src="/assets/tools-banner-tpchg.svg"
-            alt="AI automation platform tools"
-            className="hero__illustration"
-          />
+        <div className="software-editorial__hero-art">
+          <span className="software-editorial__art-label">01 / SOFTWARE</span>
+          <img src="/assets/tools-banner-tpchg.svg" alt="AI automation platform tools" />
+          <span className="software-editorial__shape software-editorial__shape--one" aria-hidden="true" />
+          <span className="software-editorial__shape software-editorial__shape--two" aria-hidden="true" />
         </div>
       </section>
 
-      <section className="problem-frame">
-        <p className="eyebrow">The Problems</p>
-        <h2 className="problem-frame__title">
-          Most operations teams are held back by the same problems.
-        </h2>
-        <ul className="problem-frame__list">
-          {PROBLEMS.map((p) => (
-            <li className="problem-frame__item" key={p.key}>
-              <div className="problem-frame__item-head">
-                <span className="problem-frame__key">{p.key}</span>
-                <span className="problem-frame__cost">{p.cost}</span>
-              </div>
-              <p className="problem-frame__quote">&ldquo;{p.quote}&rdquo;</p>
+      <section className="software-editorial__problems" aria-labelledby="problems-title">
+        <div className="software-editorial__problems-intro">
+          <p className="software-editorial__eyebrow">The systems gap</p>
+          <h2 id="problems-title">Most operations teams are held back by the same problems.</h2>
+          <p>These aren’t effort problems. They’re systems problems—and systems can be fixed.</p>
+        </div>
+        <ul className="software-editorial__problem-list">
+          {PROBLEMS.map((problem, index) => (
+            <li key={problem.key}>
+              <span>0{index + 1}</span>
+              <div><h3>{problem.key}</h3><small>{problem.cost}</small></div>
+              <p>&ldquo;{problem.quote}&rdquo;</p>
             </li>
           ))}
         </ul>
-        <p className="problem-frame__bridge">
-          These aren&rsquo;t effort problems. They&rsquo;re systems problems, and systems can
-          be fixed.
-        </p>
       </section>
 
-      <section className="section what-we-do">
-        <p className="eyebrow">How We Work</p>
-        <h2 className="what-we-do__title">A four-step engagement built for lasting change.</h2>
-        <div className="what-we-do__intro">
-          <p>
-            Every engagement follows the same proven sequence, from diagnosing where the value is,
-            through building and deploying the system, to owning it with you long after launch.
-          </p>
+      <section className="software-editorial__process" aria-labelledby="process-title">
+        <div className="software-editorial__process-heading">
+          <p className="software-editorial__eyebrow">How we work</p>
+          <h2 id="process-title">A four-step engagement built for lasting change.</h2>
+          <p>From the first workflow map to long-term optimization, the work stays connected to measurable operational value.</p>
         </div>
-      </section>
-
-      <section className="process-editorial" aria-label="Our engagement process">
-        {PROCESS.map((step, i) => (
-          <div className="process-editorial__step" key={step.title}>
-            <span className="process-editorial__num" aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div className="process-editorial__body">
-              <div className="process-editorial__head">
-                <h3>{step.title}</h3>
-                <span className="process-editorial__duration">{step.duration}</span>
-              </div>
+        <ol>
+          {PROCESS.map((step, index) => (
+            <li key={step.title}>
+              <span className="software-editorial__process-number">0{index + 1}</span>
+              <div><h3>{step.title}</h3><small>{step.duration}</small></div>
               <p>{step.body}</p>
-            </div>
-          </div>
-        ))}
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <section className="why-arka">
-        <header className="why-arka__header">
-          <p className="eyebrow">Why Arka</p>
-          <h2>Built for outcomes that compound.</h2>
-          <p className="why-arka__sub">
-            We measure success by margins moved, hours recovered, and systems that keep improving
-            without us holding your hand.
-          </p>
-        </header>
-        <div className="why-arka__list">
-          {WHY.map((item) => (
-            <div className="why-arka__item reveal" key={item.icon}>
-              <span className={`why-arka__icon why-arka__icon--${item.icon}`} aria-hidden="true" />
-              <div className="why-arka__content">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </div>
+      <section className="software-editorial__outcomes" aria-labelledby="outcomes-title">
+        <div>
+          <p className="software-editorial__eyebrow">Why Arka</p>
+          <h2 id="outcomes-title">Built for outcomes that compound.</h2>
+          <p>We measure success by margins moved, hours recovered, and systems that keep improving.</p>
+        </div>
+        <div className="software-editorial__outcome-list">
+          {WHY.map((item, index) => (
+            <article key={item.title}>
+              <span>0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="tech-bar" aria-label="Technology partners">
-        <span className="tech-bar__label">Built on</span>
-        <div className="tech-bar__logos">
-          {TECH.map((t) => (
-            <span className="tech-bar__logo" key={t}>
-              {t}
-            </span>
-          ))}
-        </div>
+      <section className="software-editorial__tech" aria-label="Technology partners">
+        <p className="software-editorial__eyebrow">Built on</p>
+        <div>{TECH.map((technology) => <span key={technology}>{technology}</span>)}</div>
       </section>
 
-      <CtaPanel
-        steps={BLUEPRINT_CTA_STEPS}
-        primaryLabel="Schedule a call"
-        primaryHref={BOOKING_URL}
-      />
-    </>
+      <section className="software-editorial__closing" aria-labelledby="software-closing-title">
+        <p className="software-editorial__eyebrow">Start with the right workflow</p>
+        <h2 id="software-closing-title">Find the system problem that will move your operation forward.</h2>
+        <p>Bring us the process that costs you most. We’ll map the opportunity and build the case for change.</p>
+        <a className="software-editorial__closing-button" href={BOOKING_URL} target="_blank" rel="noopener">Schedule a call <span aria-hidden="true">↗</span></a>
+      </section>
+    </div>
   );
 }

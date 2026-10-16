@@ -1,0 +1,102 @@
+/* Motion is deliberately slow and structural: it supports the system metaphor
+   without competing with the editorial copy. */
+
+@keyframes editorial-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+@keyframes editorial-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(10px, 8px, 0); }
+}
+
+@keyframes editorial-grid-shift {
+  0%, 100% { transform: scale(1.2) translate3d(0, 0, 0); }
+  50% { transform: scale(1.23) translate3d(-5px, 4px, 0); }
+}
+
+@keyframes editorial-line-breathe {
+  0%, 100% { opacity: .65; }
+  50% { opacity: 1; }
+}
+
+.home-editorial__art-grid { animation: editorial-grid-shift 14s ease-in-out infinite; }
+.home-editorial__orb--large, .products-editorial__hero-orb--one { animation: editorial-drift-a 10s ease-in-out infinite; }
+.home-editorial__orb--dark, .software-editorial__shape--one, .products-editorial__hero-orb--two { animation: editorial-drift-b 12s ease-in-out infinite; }
+.home-editorial__orb--small, .software-editorial__shape--two, .products-editorial__hero-orb--three { animation: editorial-drift-a 13s ease-in-out -3s infinite; }
+.products-editorial__hero-line { animation: editorial-line-breathe 7s ease-in-out infinite; }
+.products-editorial__hero-line--two { animation-delay: -3.5s; }
+.about-editorial__hero-art span:nth-child(1) { animation: editorial-drift-a 11s ease-in-out infinite; }
+.about-editorial__hero-art span:nth-child(2) { animation: editorial-drift-b 13s ease-in-out infinite; }
+.about-editorial__hero-art span:nth-child(3) { animation: editorial-drift-a 12s ease-in-out -4s infinite; }
+
+.home-editorial__service,
+.software-editorial__outcome-list article,
+.products-editorial__platform-grid article { transition: color .25s ease, background .25s ease, transform .25s ease; }
+
+.software-editorial__outcome-list article:hover,
+.software-editorial__outcome-list article:focus-within { background: var(--software-ink); color: var(--software-canvas); padding-inline: 1rem; }
+
+.products-editorial__platform-grid article:hover,
+.products-editorial__platform-grid article:focus-within { background: var(--products-ink); color: var(--products-canvas); transform: translateY(-5px); }
+
+@supports (animation-timeline: view()) {
+  .home-editorial__services,
+  .home-editorial__consult,
+  .home-editorial__perspectives,
+  .software-editorial__problems,
+  .software-editorial__process,
+  .software-editorial__outcomes,
+  .software-editorial__closing,
+  .products-editorial__platforms,
+  .products-editorial__process,
+  .products-editorial__closing,
+  .contact-editorial__next,
+  .contact-editorial__perspective,
+  .contact-editorial .faq,
+  .about-editorial__mission,
+  .about-editorial__story,
+  .about-editorial__team,
+  .about-editorial__closing {
+    animation: editorial-section-enter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 24%;
+  }
+}
+
+@keyframes editorial-section-enter {
+  from { opacity: .01; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-editorial__art-grid,
+  .home-editorial__orb,
+  .software-editorial__shape,
+  .products-editorial__hero-orb,
+  .products-editorial__hero-line,
+  .about-editorial__hero-art span,
+  .home-editorial__services,
+  .home-editorial__consult,
+  .home-editorial__perspectives,
+  .software-editorial__problems,
+  .software-editorial__process,
+  .software-editorial__outcomes,
+  .software-editorial__closing,
+  .products-editorial__platforms,
+  .products-editorial__process,
+  .products-editorial__closing,
+  .contact-editorial__next,
+  .contact-editorial__perspective,
+  .contact-editorial .faq,
+  .about-editorial__mission,
+  .about-editorial__story,
+  .about-editorial__team,
+  .about-editorial__closing {
+    animation: none;
+  }
+
+  .software-editorial__outcome-list article,
+  .products-editorial__platform-grid article { transition: none; }
+}

@@ -1,0 +1,84 @@
+/* Detailed-service counterpart to the Editorial Systems home page. */
+body:has(.software-editorial) {
+  --software-canvas: #f1f1f1;
+  --software-surface: #a7bbc0;
+  --software-ink: #000;
+  --software-night: #090909;
+  background: var(--software-canvas);
+}
+
+body:has(.software-editorial) .site-shell { width: min(100%, 1600px); padding: 0; }
+body:has(.software-editorial) .nav { position: relative; z-index: 10; margin: 0; padding: 1rem clamp(1.25rem, 5vw, 5rem); border-color: var(--software-ink); background: var(--software-canvas); font-family: var(--font-urbanist), sans-serif; }
+body:has(.software-editorial) .nav--scrolled { background: var(--software-canvas); box-shadow: none; }
+body:has(.software-editorial) .brand__name, body:has(.software-editorial) .nav__link, body:has(.software-editorial) .nav__link:hover, body:has(.software-editorial) .nav__link:focus-visible { color: var(--software-ink); }
+body:has(.software-editorial) .nav__link { font-size: .78rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+body:has(.software-editorial) .btn--nav { border-radius: 0; background: var(--software-ink); box-shadow: none; color: var(--software-canvas); }
+body:has(.software-editorial) .btn--primary::after { border-color: var(--software-surface); }
+body:has(.software-editorial) .site-footer { margin: 0; padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 5rem) 1.5rem; border: 0; background: var(--software-canvas); font-family: var(--font-urbanist), sans-serif; }
+
+.software-editorial { overflow: hidden; background: var(--software-canvas); color: var(--software-ink); font-family: var(--font-urbanist), sans-serif; }
+.software-editorial h1, .software-editorial h2, .software-editorial h3, .software-editorial p, .software-editorial a, .software-editorial li, .software-editorial span { font-family: inherit; }
+.software-editorial__eyebrow { margin: 0; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.software-editorial__hero { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(330px, .96fr); min-height: 39rem; border-bottom: 1px solid var(--software-ink); }
+.software-editorial__hero-copy { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(4rem, 8vw, 7.5rem) clamp(1.25rem, 7vw, 8rem) clamp(3rem, 6vw, 6rem); }
+.software-editorial__hero h1 { max-width: 9.7ch; margin: 1rem 0 1.4rem; font-size: clamp(3.15rem, 6.4vw, 7.1rem); font-weight: 700; letter-spacing: -.08em; line-height: .87; }
+.software-editorial__hero-copy > p:not(.software-editorial__eyebrow) { max-width: 32rem; font-size: clamp(1rem, 1.45vw, 1.2rem); line-height: 1.5; }
+.software-editorial__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.3rem; margin-top: auto; padding-top: 2.25rem; }
+.software-editorial__button, .software-editorial__closing-button { display: inline-flex; align-items: center; gap: .65rem; padding: .92rem 1.1rem; background: var(--software-ink); color: var(--software-canvas); font-size: .84rem; font-weight: 700; text-decoration: none; transition: background .2s ease, color .2s ease; }
+.software-editorial__button:hover, .software-editorial__button:focus-visible { background: var(--software-surface); color: var(--software-ink); }
+.software-editorial__text-link { display: inline-flex; gap: .55rem; color: var(--software-ink); font-size: .82rem; font-weight: 700; text-decoration: none; }
+.software-editorial__text-link:hover, .software-editorial__text-link:focus-visible { text-decoration: underline; }
+.software-editorial__hero-art { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 100%; padding: 4rem; background: var(--software-surface); }
+.software-editorial__hero-art::before { content: ''; position: absolute; inset: 8% 8%; border: 1px solid var(--software-ink); border-radius: 50%; }
+.software-editorial__hero-art img { position: relative; z-index: 1; width: min(100%, 32rem); filter: grayscale(1) contrast(1.25); mix-blend-mode: multiply; }
+.software-editorial__art-label { position: absolute; z-index: 2; top: 10%; left: 11%; font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
+.software-editorial__shape { position: absolute; z-index: 0; display: block; border: 1px solid var(--software-ink); }
+.software-editorial__shape--one { width: 38%; aspect-ratio: 1; right: -7%; bottom: -6%; border-radius: 50%; background: var(--software-ink); }
+.software-editorial__shape--two { width: 19%; aspect-ratio: 1; top: 17%; right: 12%; border-radius: 50%; background: var(--software-canvas); }
+.software-editorial__problems { display: grid; grid-template-columns: minmax(14rem, .85fr) minmax(0, 2fr); gap: clamp(2rem, 7vw, 8rem); padding: clamp(4.5rem, 10vw, 9rem) clamp(1.25rem, 7vw, 8rem); background: var(--software-night); color: var(--software-canvas); }
+.software-editorial__problems-intro { display: flex; flex-direction: column; align-items: flex-start; }
+.software-editorial__problems-intro .software-editorial__eyebrow { color: var(--software-surface); }
+.software-editorial__problems h2 { max-width: 10ch; margin: .85rem 0 1.2rem; font-size: clamp(2.1rem, 3.7vw, 4.3rem); font-weight: 600; letter-spacing: -.07em; line-height: .94; }
+.software-editorial__problems-intro > p:last-child { margin-top: auto; max-width: 23rem; color: var(--software-surface); font-size: 1rem; line-height: 1.45; }
+.software-editorial__problem-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--software-surface); }
+.software-editorial__problem-list li { display: grid; grid-template-columns: 2.4rem minmax(8.5rem, .8fr) 1.8fr; gap: 1rem; padding: 1.3rem 0; border-bottom: 1px solid var(--software-surface); }
+.software-editorial__problem-list li > span { color: var(--software-surface); font-size: .72rem; font-weight: 700; }
+.software-editorial__problem-list h3 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.035em; }
+.software-editorial__problem-list small { display: block; margin-top: .32rem; color: var(--software-surface); font-size: .72rem; line-height: 1.25; }
+.software-editorial__problem-list p { margin: 0; font-size: .93rem; line-height: 1.45; }
+.software-editorial__process { padding: clamp(4.5rem, 10vw, 9rem) 0 0; }
+.software-editorial__process-heading { padding: 0 clamp(1.25rem, 7vw, 8rem) clamp(2.8rem, 6vw, 5rem); }
+.software-editorial__process-heading h2 { max-width: 12ch; margin: .85rem 0 1rem; font-size: clamp(2.1rem, 4.3vw, 4.75rem); font-weight: 700; letter-spacing: -.075em; line-height: .91; }
+.software-editorial__process-heading > p:last-child { max-width: 38rem; font-size: 1rem; line-height: 1.5; }
+.software-editorial__process ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--software-ink); }
+.software-editorial__process li { display: grid; grid-template-columns: minmax(4rem, .45fr) minmax(10rem, 1fr) minmax(0, 1.45fr); gap: 1.5rem; padding: clamp(1.75rem, 3.5vw, 3rem) clamp(1.25rem, 7vw, 8rem); border-bottom: 1px solid var(--software-ink); }
+.software-editorial__process-number { font-size: .76rem; font-weight: 700; }
+.software-editorial__process li h3 { margin: 0; font-size: clamp(1.4rem, 2.3vw, 2.35rem); font-weight: 700; letter-spacing: -.06em; line-height: 1; }
+.software-editorial__process li small { display: block; margin-top: .45rem; font-size: .74rem; font-weight: 700; text-transform: uppercase; }
+.software-editorial__process li p { max-width: 39rem; margin: 0; font-size: .98rem; line-height: 1.52; }
+.software-editorial__outcomes { display: grid; grid-template-columns: minmax(14rem, .82fr) minmax(0, 2fr); gap: clamp(2rem, 7vw, 8rem); padding: clamp(4.5rem, 10vw, 9rem) clamp(1.25rem, 7vw, 8rem); background: var(--software-surface); }
+.software-editorial__outcomes h2 { max-width: 9ch; margin: .85rem 0 1rem; font-size: clamp(2.1rem, 3.8vw, 4.3rem); font-weight: 700; letter-spacing: -.07em; line-height: .94; }
+.software-editorial__outcomes > div > p:last-child { max-width: 24rem; font-size: 1rem; line-height: 1.48; }
+.software-editorial__outcome-list { border-top: 1px solid var(--software-ink); }
+.software-editorial__outcome-list article { display: grid; grid-template-columns: 2.4rem minmax(11rem, .9fr) 1.4fr; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid var(--software-ink); }
+.software-editorial__outcome-list span { font-size: .72rem; font-weight: 700; }
+.software-editorial__outcome-list h3 { margin: 0; font-size: 1.16rem; font-weight: 700; letter-spacing: -.035em; line-height: 1.1; }
+.software-editorial__outcome-list p { margin: 0; font-size: .92rem; line-height: 1.45; }
+.software-editorial__tech { display: grid; grid-template-columns: minmax(10rem, .65fr) 2fr; gap: 2rem; padding: 1.35rem clamp(1.25rem, 7vw, 8rem); border-bottom: 1px solid var(--software-ink); }
+.software-editorial__tech div { display: flex; flex-wrap: wrap; gap: .7rem 1.8rem; font-size: .92rem; font-weight: 600; }
+.software-editorial__closing { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(4.5rem, 10vw, 9rem) clamp(1.25rem, 20vw, 20rem); background: var(--software-ink); color: var(--software-canvas); }
+.software-editorial__closing .software-editorial__eyebrow { color: var(--software-surface); }
+.software-editorial__closing h2 { max-width: 12ch; margin: .85rem 0 1.3rem; font-size: clamp(2.4rem, 5.2vw, 5.9rem); font-weight: 600; letter-spacing: -.08em; line-height: .88; }
+.software-editorial__closing > p:not(.software-editorial__eyebrow) { max-width: 39rem; color: var(--software-surface); font-size: 1.04rem; line-height: 1.5; }
+.software-editorial__closing-button { margin-top: 2rem; background: var(--software-surface); color: var(--software-ink); }
+.software-editorial__closing-button:hover, .software-editorial__closing-button:focus-visible { background: var(--software-canvas); }
+
+@media (max-width: 760px) {
+  .software-editorial__hero, .software-editorial__problems, .software-editorial__outcomes { grid-template-columns: 1fr; }
+  .software-editorial__hero-copy { min-height: 29rem; padding-inline: 1.25rem; }
+  .software-editorial__hero-art { min-height: 21rem; padding: 3rem; }
+  .software-editorial__problems-intro > p:last-child { margin-top: 1rem; }
+  .software-editorial__problem-list li, .software-editorial__process li, .software-editorial__outcome-list article { grid-template-columns: 2rem 1fr; }
+  .software-editorial__problem-list p, .software-editorial__process li p, .software-editorial__outcome-list p { grid-column: 2; }
+  .software-editorial__tech { grid-template-columns: 1fr; gap: 1rem; }
+}

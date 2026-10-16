@@ -31,7 +31,6 @@ export const SITE_MENU_ITEMS: MenuItem[] = [
   { href: "/", label: "Home" },
   { href: "/software", label: "Software" },
   { href: "/products", label: "Products" },
-  { href: "/contact", label: "Support", noActive: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

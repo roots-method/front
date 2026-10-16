@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import ThemeToggle from "@/components/ThemeToggle";
 import { BOOKING_URL, CONTACT_EMAIL, SITE_MENU_ITEMS, SOCIAL, isActive } from "@/lib/site";
 
 export default function SiteFooter() {
@@ -14,20 +13,10 @@ export default function SiteFooter() {
           {/* Plain <a>, like the header: menu clicks are real document loads.
               See the note at the top of SiteHeader.tsx. */}
           <a className="site-footer__brand-link" href="/" aria-label="Arka home">
-            {/* Same pairing as the header: the small-size mark beside the name in
-                live text. */}
             <span className="site-footer__mark">
-              {/* Both variants render; the theme shows one. See theme-dark.css. */}
               <img
-                className="site-footer__logo site-footer__logo--light"
-                src="/assets/arka-mark-small.svg"
-                alt=""
-                width={32}
-                height={32}
-              />
-              <img
-                className="site-footer__logo site-footer__logo--dark"
-                src="/assets/arka-mark-small-dark.svg"
+                className="site-footer__logo"
+                src="/assets/arka-mark-mono-light.svg"
                 alt=""
                 width={32}
                 height={32}
@@ -118,7 +107,6 @@ export default function SiteFooter() {
       <div className="site-footer__legal">
         <span>&copy; {new Date().getFullYear()} Arka. All rights reserved.</span>
         <div className="site-footer__legal-actions">
-          <ThemeToggle />
           <button className="site-footer__privacy-link" type="button" data-privacy-modal>
             Privacy Policy
           </button>

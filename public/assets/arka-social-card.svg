@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Arka</title>
+  <desc id="desc">Arka builds systems for enterprise operations.</desc>
+  <rect width="1200" height="630" fill="#f1f1f1"/>
+  <path fill="#a7bbc0" d="M800 0h400v630H800z"/>
+  <path fill="#000" d="M126 208h168c74 0 127 53 127 127s-53 127-127 127H126V382h168c28 0 48-20 48-47s-20-47-48-47H126v-80Zm80 80v94h88c22 0 34-16 34-47s-12-47-34-47h-88Z"/>
+  <text x="126" y="524" fill="#000" font-family="Arial, sans-serif" font-size="90" font-weight="700" letter-spacing="-5">Arka</text>
+  <text x="812" y="494" fill="#000" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="2">SYSTEMS THAT MOVE</text>
+</svg>

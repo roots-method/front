@@ -39,11 +39,9 @@ export default function SiteJsonLd() {
         name: "Arka",
         alternateName: "Arka AI Automation",
         url: SITE_URL,
-        // PNG rather than SVG: it is what Google's Organization logo guidance is
-        // written around, and it is shown small, so it uses the small variant.
         logo: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/assets/arka-mark-512.png`,
+          url: `${SITE_URL}/assets/arka-mark-mono.svg`,
           width: 512,
           height: 512,
         },

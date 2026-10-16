@@ -1,8 +1,5 @@
-import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import CtaPanel, { BLUEPRINT_CTA_STEPS } from "@/components/CtaPanel";
-import InlineSvg from "@/components/InlineSvg";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,21 +23,18 @@ const STATS = [
 
 const TEAM = [
   {
-    photo: "AMaheshwari.png",
     first: "Vijaya",
     last: "Nikant",
     title: "VP of Engineering & Strategy",
     bio: "15 years building and scaling operations systems across logistics, finance, and B2B technology.",
   },
   {
-    photo: "AkkiMahesh.png",
     first: "Akki",
     last: "Maheshwari",
     title: "Head of Brand & People",
     bio: "Shapes how Arka communicates and grows, connecting brand clarity with the talent that delivers it.",
   },
   {
-    photo: "SJazzy.png",
     first: "Pankaj",
     last: "Jaju",
     title: "Director of Technology & Operations",
@@ -50,58 +44,20 @@ const TEAM = [
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="page-hero page-hero--about">
-        <div className="page-hero__main">
-          <p className="eyebrow">
-            <img className="icon-sm" src="/assets/icons-ai-ibm/collaborate.svg" alt="" />
-            Company
-          </p>
-          <h1>
-            <span className="about-hero__line">
-              Systems that <em>keep working.</em>
-            </span>{" "}
-            {/* .accent draws an absolutely positioned underline anchored to the
-                element's box, so on a phrase that wraps it lands under the last
-                line only. Use .accent--alt for anything multi-line. */}
-            <span className="about-hero__line accent">Partnerships that keep going.</span>
-          </h1>
-          <p className="page-hero__tagline">
-            Arka builds intelligent software for enterprise operations which replaces manual,
-            fragmented workflows with AI systems that improve execution, sharpen margins, and
-            compound in value over time.
-          </p>
-        </div>
-
-        {/* A steady core with orbits that keep turning: the page's claim drawn
-            rather than stated. Rings draw in, then rotate indefinitely. */}
-        <InlineSvg src="/assets/art/about-art.svg" className="about-art" />
+    <div className="about-editorial">
+      <section className="about-editorial__hero" aria-labelledby="about-title">
+        <div><p className="about-editorial__eyebrow">Company / Arka</p><h1 id="about-title">Systems that keep working. Partnerships that keep going.</h1><p>Arka builds intelligent software for enterprise operations—replacing manual, fragmented workflows with AI systems that improve execution, sharpen margins, and compound in value over time.</p></div>
+        <div className="about-editorial__hero-art" aria-hidden="true"><span /><span /><span /><small>03 / ABOUT</small></div>
       </section>
 
-      <section className="about-mission">
-        <div className="about-mission__col">
-          <p className="about-mission__label">Mission</p>
-          <p className="about-mission__text">
-            To help enterprises adopt digital workflows that improve business revenue delivering
-            practical, measurable change in today&rsquo;s competitive global market
-          </p>
-        </div>
-        <div className="about-mission__divider" aria-hidden="true" />
-        <div className="about-mission__col">
-          <p className="about-mission__label">Vision</p>
-          <p className="about-mission__text">
-            To become pioneers of the next generation digital ecosystem building the systems that
-            lets enterprises operate with clarity, speed, and intelligence.
-          </p>
-        </div>
+      <section className="about-editorial__mission">
+        <article><p className="about-editorial__eyebrow">Mission</p><p>To help enterprises adopt digital workflows that improve business revenue, delivering practical, measurable change in today’s competitive global market.</p></article>
+        <article><p className="about-editorial__eyebrow">Vision</p><p>To become pioneers of the next-generation digital ecosystem, building systems that let enterprises operate with clarity, speed, and intelligence.</p></article>
       </section>
 
-      <section className="about-story">
-        <header className="about-story__header">
-          <p className="eyebrow">Our Story</p>
-          <h2>Complex ideas need simple solutions.</h2>
-        </header>
-        <div className="about-story__body">
+      <section className="about-editorial__story">
+        <header><p className="about-editorial__eyebrow">Our story</p><h2>Complex ideas need simple solutions.</h2></header>
+        <div>
           <p>
             Arka began with a simple idea: modern tools should make work feel easier, not heavier.
             We kept seeing capable teams slowed by disconnected workflows and processes that added
@@ -121,62 +77,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="about-stats" aria-label="Arka in numbers">
-        {STATS.map((stat, i) => (
-          <Fragment key={stat.label}>
-            {i > 0 ? <div className="about-stats__divider" aria-hidden="true" /> : null}
-            <div className="about-stats__item">
-              {/* Ochre is reserved for numbers; these are the numbers. */}
-              <span className="about-stats__value">{stat.value}</span>
-              <span className="about-stats__label">{stat.label}</span>
-            </div>
-          </Fragment>
-        ))}
+      <section className="about-editorial__stats" aria-label="Arka in numbers">
+        {STATS.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
       </section>
 
-      <section className="about-team">
-        <header className="about-team__header">
-          <p className="eyebrow">The Team</p>
-          <h2>People who&rsquo;ve done the work.</h2>
-          <p className="about-team__sub">
+      <section className="about-editorial__team" aria-labelledby="team-title">
+        <header>
+          <p className="about-editorial__eyebrow">The team</p>
+          <h2 id="team-title">People who&rsquo;ve done the work.</h2>
+          <p>
             Not consultants who recommend. Practitioners who build, deploy, and own outcomes.
           </p>
         </header>
-        <div className="about-team__grid">
-          {TEAM.map((member) => (
-            <article className="team-card reveal" key={member.photo}>
-              <div className="team-card__photo">
-                <img
-                  src={`/assets/avatars/${member.photo}`}
-                  alt={`${member.first} ${member.last}`}
-                  loading="lazy"
-                />
-              </div>
-              <div className="team-card__body">
-                <h3 className="team-card__name">
-                  {member.first} <em>{member.last}</em>
-                </h3>
-                <p className="team-card__title">{member.title}</p>
-                <p className="team-card__bio">{member.bio}</p>
-              </div>
+        <div className="about-editorial__team-grid">
+          {TEAM.map((member, index) => (
+            <article key={`${member.first}-${member.last}`}>
+              <span>0{index + 1}</span>
+              <div><h3>{member.first} {member.last}</h3><p className="about-editorial__team-title">{member.title}</p><p>{member.bio}</p></div>
             </article>
           ))}
         </div>
       </section>
 
-      <CtaPanel
-        eyebrow="Work With Us"
-        heading="If your operations have room to improve, we'll find it."
-        steps={BLUEPRINT_CTA_STEPS}
-        primaryLabel="Schedule a call"
-        primaryHref={BOOKING_URL}
-        watermark={false}
-        secondary={
-          <Link className="btn btn--ghost" href="/software">
-            How we work
-          </Link>
-        }
-      />
-    </>
+      <section className="about-editorial__closing" aria-labelledby="about-closing-title"><p className="about-editorial__eyebrow">Work with us</p><h2 id="about-closing-title">If your operations have room to improve, we’ll find it.</h2><div><a href={BOOKING_URL} target="_blank" rel="noopener">Schedule a call <span aria-hidden="true">↗</span></a><Link href="/software">How we work <span aria-hidden="true">→</span></Link></div></section>
+    </div>
   );
 }

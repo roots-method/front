@@ -43,65 +43,32 @@ const FAQS = [
 
 export default function ContactPage() {
   return (
-    <>
-      <section className="contact-page">
-        <div className="contact-info">
-          <div className="contact-info__hero">
-            <p className="eyebrow">
-              <img className="icon-sm" src="/assets/icons-ai-ibm/send.svg" alt="" />
-              Contact
-            </p>
-            <h1>Let&rsquo;s find the workflow worth fixing first.</h1>
-            <p className="contact-info__lede">
-              Tell us where operations feel slow, manual, or unclear. We start by finding the
-              practical business case before recommending a system.
-            </p>
-          </div>
-
-          <div className="contact-next">
-            <p className="contact-next__heading">What happens next</p>
-            <ol className="contact-next__steps">
-              {NEXT_STEPS.map((step, i) => (
-                <li key={step}>
-                  <span className="contact-next__num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="contact-next__text">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <blockquote className="contact-quote">
-            <p className="contact-quote__text">
-              &ldquo;The ROI Blueprint alone changed how we think about operations. They found
-              inefficiencies we&rsquo;d been ignoring for years.&rdquo;
-            </p>
-            <footer className="contact-quote__footer">
-              <span className="contact-quote__name">David R.</span>
-              <span className="contact-quote__role">
-                Director of Operations &middot; B2B Technology
-              </span>
-            </footer>
-          </blockquote>
-
-          <div className="contact-direct">
-            <a className="contact-direct__link" href={`mailto:${CONTACT_EMAIL}`}>
-              {CONTACT_EMAIL}
-            </a>
-            <a className="contact-direct__link" href={BOOKING_URL} target="_blank" rel="noopener">
-              Book a call directly
-              <span className="nav__arrow" aria-hidden="true">
-                &#8599;
-              </span>
-            </a>
+    <div className="contact-editorial">
+      <section className="contact-editorial__hero" aria-labelledby="contact-title">
+        <div className="contact-editorial__intro">
+          <p className="contact-editorial__eyebrow">Contact / Start with the workflow</p>
+          <h1 id="contact-title">Let’s find the workflow worth fixing first.</h1>
+          <p>Tell us where operations feel slow, manual, or unclear. We start by finding the practical business case before recommending a system.</p>
+          <div className="contact-editorial__direct">
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <a href={BOOKING_URL} target="_blank" rel="noopener">Book a call directly <span aria-hidden="true">↗</span></a>
           </div>
         </div>
+        <div className="contact-editorial__form-panel"><p className="contact-editorial__form-label">Tell us what should improve</p><ContactForm /></div>
+      </section>
 
-        <div className="contact-form-wrap">
-          <ContactForm />
-        </div>
+      <section className="contact-editorial__next" aria-labelledby="next-title">
+        <div><p className="contact-editorial__eyebrow">What happens next</p><h2 id="next-title">A practical conversation, not a pitch.</h2></div>
+        <ol>{NEXT_STEPS.map((step, index) => <li key={step}><span>0{index + 1}</span><p>{step}</p></li>)}</ol>
+      </section>
+
+      <section className="contact-editorial__perspective" aria-label="Client perspective">
+        <p className="contact-editorial__eyebrow">Client perspective</p>
+        <blockquote>“The ROI Blueprint alone changed how we think about operations. They found inefficiencies we’d been ignoring for years.”</blockquote>
+        <p>David R. / Director of Operations / B2B Technology</p>
       </section>
 
       <Faq items={FAQS} />
-    </>
+    </div>
   );
 }
