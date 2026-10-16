@@ -45,7 +45,7 @@ body:has(.about-editorial) .site-footer { margin:0; padding:clamp(3rem,6vw,5rem)
 .about-editorial__team-grid h3 { margin:0 0 .4rem; font-size:clamp(1.35rem,2.3vw,2.25rem); font-weight:600; letter-spacing:-.055em; line-height:1; }
 .about-editorial__team-grid p { margin:0; font-size:.9rem; line-height:1.48; }
 .about-editorial__team-title { margin-bottom:.85rem !important; color:var(--about-surface); font-size:.72rem !important; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
-.about-editorial__closing { display:grid; grid-template-columns:minmax(12rem,.65fr) minmax(0,2fr); column-gap:clamp(2rem,6vw,8rem); padding:clamp(4.5rem,10vw,9rem) clamp(1.25rem,7vw,8rem); background:var(--about-surface); }
+.about-editorial__closing { display:grid; grid-template-columns:minmax(12rem,.65fr) minmax(0,2fr); column-gap:clamp(2rem,6vw,8rem); padding:clamp(4.5rem,10vw,9rem) clamp(1.25rem,7vw,8rem); background:var(--about-surface); color:var(--about-ink); }
 .about-editorial__closing h2 { grid-column:2; max-width:13ch; margin:0 0 2.4rem; font-size:clamp(2.25rem,4.3vw,4.9rem); font-weight:700; letter-spacing:-.075em; line-height:.91; }
 .about-editorial__closing > div { grid-column:2; display:flex; flex-wrap:wrap; gap:1.25rem; align-items:center; }
 .about-editorial__closing > div a:first-child { display:inline-flex; gap:.65rem; padding:.92rem 1.1rem; background:var(--about-ink); color:var(--about-canvas); font-size:.84rem; font-weight:700; text-decoration:none; }

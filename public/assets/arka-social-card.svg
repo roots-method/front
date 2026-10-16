@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Arka — Your AI digital partner</title>
-  <desc id="desc">Arka builds connected systems for enterprise operations.</desc>
+  <desc id="desc">Arka builds AI systems for enterprise operations.</desc>
   <rect width="1200" height="630" fill="#F1F1F1"/>
   <rect x="780" width="420" height="630" fill="#A7BBC0"/>
   <path fill="#000" d="M10 14h25c11.1 0 19 8 19 19s-7.9 19-19 19H10V40h25c4.1 0 7-3 7-7s-2.9-7-7-7H10V14Zm12 12v12h13c3.3 0 5-2.1 5-5s-1.7-5-5-5H22Z" transform="translate(118 108) scale(2.75)"/>
   <text x="118" y="356" fill="#000" font-family="Urbanist, sans-serif" font-size="112" font-weight="700" letter-spacing="-7">Arka</text>
   <line x1="118" y1="418" x2="680" y2="418" stroke="#000" stroke-width="2"/>
-  <text x="118" y="470" fill="#000" font-family="Urbanist, sans-serif" font-size="23" font-weight="700" letter-spacing="2.4">CONNECTED SYSTEMS</text>
-  <text x="118" y="505" fill="#000" font-family="Urbanist, sans-serif" font-size="23" font-weight="700" letter-spacing="2.4">FOR ENTERPRISE OPERATIONS</text>
+  <text x="118" y="490" fill="#000" font-family="Urbanist, sans-serif" font-size="22" font-weight="700" letter-spacing="1.65">AI SYSTEMS FOR ENTERPRISE OPERATIONS</text>
   <text x="838" y="166" fill="#000" font-family="Urbanist, sans-serif" font-size="21" font-weight="700" letter-spacing="2.5">ARKA / 01</text>
   <text x="838" y="324" fill="#000" font-family="Urbanist, sans-serif" font-size="60" font-weight="700" letter-spacing="-3.8">Your AI</text>
   <text x="838" y="388" fill="#000" font-family="Urbanist, sans-serif" font-size="60" font-weight="700" letter-spacing="-3.8">digital partner.</text>

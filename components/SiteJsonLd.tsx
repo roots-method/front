@@ -41,7 +41,7 @@ export default function SiteJsonLd() {
         url: SITE_URL,
         logo: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/assets/arka-mark-mono.svg`,
+          url: `${SITE_URL}/assets/arka-mark-mono.png`,
           width: 512,
           height: 512,
         },

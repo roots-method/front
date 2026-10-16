@@ -48,7 +48,6 @@
   .software-editorial__problems,
   .software-editorial__process,
   .software-editorial__outcomes,
-  .software-editorial__closing,
   .products-editorial__platforms,
   .products-editorial__process,
   .products-editorial__closing,
@@ -57,8 +56,7 @@
   .contact-editorial .faq,
   .about-editorial__mission,
   .about-editorial__story,
-  .about-editorial__team,
-  .about-editorial__closing {
+  .about-editorial__team {
     animation: editorial-section-enter linear both;
     animation-timeline: view();
     animation-range: entry 0% cover 24%;
@@ -83,7 +81,6 @@
   .software-editorial__problems,
   .software-editorial__process,
   .software-editorial__outcomes,
-  .software-editorial__closing,
   .products-editorial__platforms,
   .products-editorial__process,
   .products-editorial__closing,
@@ -92,8 +89,7 @@
   .contact-editorial .faq,
   .about-editorial__mission,
   .about-editorial__story,
-  .about-editorial__team,
-  .about-editorial__closing {
+  .about-editorial__team {
     animation: none;
   }
 
