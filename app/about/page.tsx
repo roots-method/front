@@ -11,7 +11,14 @@ export const metadata: Metadata = {
     url: "/about",
     title: "About Arka",
     description:
-      "Systems that keep working. Partnerships that keep going. Meet the team behind Arka.",
+      "Systems that keep working. Partnerships built around the people who run them.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "About Arka" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Arka",
+    description: "Systems that keep working. Partnerships built around the people who run them.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

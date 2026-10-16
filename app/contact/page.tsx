@@ -12,7 +12,14 @@ export const metadata: Metadata = {
     url: "/contact",
     title: "Contact Arka",
     description:
-      "Tell us where operations feel slow, manual, or unclear. We respond within one business day.",
+      "Bring the workflow that costs you most. We will help identify the next system worth building.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Contact Arka" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Arka",
+    description: "Bring the workflow that costs you most. We will help identify the next system worth building.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Nunito_Sans, Urbanist } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -41,11 +41,24 @@ const urbanist = Urbanist({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Arka — AI for Enterprise Operations",
+    default: "Arka — Your AI digital partner",
     template: "%s | Arka",
   },
   description:
-    "Arka builds intelligent software for enterprise operations — replacing manual workflows with AI systems that cut costs, recover hours, and compound in value.",
+    "Arka turns complex, manual enterprise work into connected systems that move with your business.",
+  applicationName: "Arka",
+  authors: [{ name: "Arka", url: SITE_URL }],
+  creator: "Arka",
+  publisher: "Arka",
+  category: "Enterprise software and AI operations",
+  keywords: [
+    "enterprise operations",
+    "AI automation",
+    "workflow intelligence",
+    "custom software",
+    "systems design",
+    "business process automation",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -63,13 +76,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Arka",
-    images: [{ url: "/assets/arka-social-card.svg", width: 1200, height: 630 }],
+    locale: "en_US",
+    url: "/",
+    title: "Arka — Your AI digital partner",
+    description: "Connected systems for enterprise operations that need to move with confidence.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka — Systems that move" }],
   },
   twitter: {
     card: "summary_large_image",
     site: "@_jazoo",
-    images: ["/assets/arka-social-card.svg"],
+    creator: "@_jazoo",
+    title: "Arka — Your AI digital partner",
+    description: "Connected systems for enterprise operations that need to move with confidence.",
+    images: ["/assets/arka-social-card.png"],
   },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#A7BBC0",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

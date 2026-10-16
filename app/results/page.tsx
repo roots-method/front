@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     title: "Case Work | Arka",
     description:
       "Systems built for clarity, speed, and compounding returns. A sample of our client work.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka case work" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Case Work | Arka",
+    description: "Systems built for clarity, speed, and compounding returns. A sample of our client work.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

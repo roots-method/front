@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: "Products: Arka ONE",
     description:
       "Make the tools your team already knows work the way you need them to be effective, proactive and accountable.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka ONE connected business tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Products: Arka ONE",
+    description: "Make the tools your team already knows work the way you need them to be effective, proactive and accountable.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

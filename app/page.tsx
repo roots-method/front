@@ -4,15 +4,22 @@ import InlineSvg from "@/components/InlineSvg";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Arka: AI for Enterprise Operations",
+  title: "Your AI digital partner for enterprise operations",
   description:
-    "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value. Services: ROI Blueprint, AI Automation, Workflow Intelligence, Back-Office Operations.",
+    "Turn complex, manual work into connected systems that move with your business. Arka designs AI software, workflow intelligence, and operations infrastructure for enterprise teams.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: "Arka: AI for Enterprise Operations",
+    title: "Arka — Your AI digital partner",
     description:
-      "Arka builds intelligent software for enterprise operations, replacing manual workflows with AI systems that cut costs, recover hours, and compound in value.",
+      "Turn complex, manual work into connected systems that move with your business.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka — Systems that move" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arka — Your AI digital partner",
+    description: "Turn complex, manual work into connected systems that move with your business.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 

@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     title: "Software: custom systems built around your operations",
     description:
       "Custom software shaped around how your business already works, not a template you have to bend around.",
+    images: [{ url: "/assets/arka-social-card.png", width: 1200, height: 630, alt: "Arka custom software for enterprise operations" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Software: custom systems built around your operations",
+    description: "Custom software shaped around how your business already works, not a template you have to bend around.",
+    images: ["/assets/arka-social-card.png"],
   },
 };
 
