@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Nunito_Sans, Urbanist } from "next/font/google";
+import { Inter, Urbanist } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PrivacyModal from "@/components/PrivacyModal";
@@ -7,34 +7,21 @@ import CookieConsent from "@/components/CookieConsent";
 import SiteJsonLd from "@/components/SiteJsonLd";
 import { SITE_URL } from "@/lib/site";
 import "@/styles/index.css";
+import "@/styles/case-ledger.css";
 
-// Self-hosted by next/font, so there is no render-blocking request to
-// fonts.googleapis.com and no layout shift. One family for body and headings;
-// headings use every weight from 300 (the large process numerals) to 700.
-const nunito = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-nunito",
-  display: "swap",
-});
-
-// DM Sans is the display face for headings, hero copy, and subheadings. Italic
-// is loaded because those styles use <em> in several page headlines.
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-// Urbanist is introduced on the refreshed home page first. Keeping it as a
-// separate token lets the remaining routes retain their current typography
-// until their redesigns are ready.
+// Urbanist remains available for the editorial page treatment. Inter is the
+// shared site font for body copy, headings, controls, and the platform.
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-urbanist",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -103,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // this element before React hydrates, and that difference is intended.
     <html
       lang="en"
-      className={`${nunito.variable} ${dmSans.variable} ${urbanist.variable}`}
+      className={`${urbanist.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
