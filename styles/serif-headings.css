@@ -1,6 +1,4 @@
-/* ── Nunito for utility labels and figures ────────────────────────────────
-   DM Sans is the display face. These small utility labels and numerals retain
-   Nunito Sans so normal interface text does not become display typography.
+/* Utility labels and figures use the shared site typography.
    The file remains last in the barrel because it deliberately overrides
    component-level heading-token declarations for this small set. */
 .pillar__label,
