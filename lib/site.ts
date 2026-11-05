@@ -16,13 +16,12 @@ export type MenuItem = {
 };
 
 /**
- * The whole nav. Case Work, Our Flow and Blog stay out of it for now — those
- * routes are still built and still in the sitemap, just not linked. To bring
- * one back, restore its entry here:
+ * The whole nav. Our Flow and Blog stay out of it for now — those routes are
+ * still built and still in the sitemap, just not linked. To bring one back,
+ * restore its entry here:
  *
  *   { href: "/our-flow", label: "Our Flow" }
  *   { href: "/blog",     label: "Blog" }
- *   { href: "/results",  label: "Case Work" }
  *
  * The activePage aliases below are kept so each section resolves the moment it
  * is restored.
@@ -31,6 +30,7 @@ export const SITE_MENU_ITEMS: MenuItem[] = [
   { href: "/", label: "Home" },
   { href: "/software", label: "Software" },
   { href: "/products", label: "Products" },
+  { href: "/results", label: "Case Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
