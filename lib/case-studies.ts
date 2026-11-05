@@ -3,11 +3,25 @@
  * an ordered list of slugs and a keyed object of the studies themselves.
  *
  * Adding one: add the slug to CASE_STUDY_ORDER and the object to CASE_STUDIES.
- * Nothing else needs changing — /results renders the grid from this and
- * /case-study?slug=<slug> renders a single study.
+ * The object can retain a draft or reference study while its slug is absent
+ * from CASE_STUDY_ORDER. Only ordered studies are public: /results, the
+ * sitemap, related work, and direct case-study URLs all respect that list.
  */
 
 export type CaseMetric = { value: string; label: string };
+
+export type CaseBarChart = {
+  title: string;
+  description: string;
+  max: number;
+  rows: Array<{ label: string; estimated: number; actual: number }>;
+};
+
+export type CaseScenarioTable = {
+  caption: string;
+  headers: string[];
+  rows: string[][];
+};
 
 export type CaseSection = {
   heading: string;
@@ -17,6 +31,9 @@ export type CaseSection = {
   /** Root-absolute path into /public. */
   diagram?: string;
   diagramAlt?: string;
+  chart?: CaseBarChart;
+  scenarioTable?: CaseScenarioTable;
+  flow?: "appointment-operations" | "insurance-submission";
 };
 
 export type CaseStudy = {
@@ -34,12 +51,11 @@ export type CaseStudy = {
 };
 
 export const CASE_STUDY_ORDER: string[] = [
-  "agentic-noc-automation",
+  "appointment-intake-operations",
+  "insurance-submission-intake",
   "multi-office-advisory-firm",
-  "direct-to-consumer-retailer",
   "onboarding-success-platform",
-  "agricultural-export-cooperative",
-  "appointment-intake-operations"
+  "agricultural-export-cooperative"
 ];
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
@@ -244,58 +260,120 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
   "onboarding-success-platform": {
     "slug": "onboarding-success-platform",
-    "accent": "#ff8962",
-    "label": "Technology · B2B SaaS",
-    "title": "Onboarding and success platform",
-    "summary": "New customer setup required manual coordination across sales, product, and support. We built an agent assisted intake flow with structured prompts, routing rules, and milestone tracking.",
-    "teaser": "New customer setup required manual coordination across sales, product, and support. We built an agent assisted intake flow with structured prompts, routing rules, and milestone tracking—cutting average onboarding time by nearly half.",
-    "readTime": "7 min read",
-    "engagement": "16-week engagement",
+    "accent": "#a7bbc0",
+    "label": "A classic enterprise tech health backlog",
+    "title": "How AI accelerated Application Migration",
+    "summary": "A 2014-era Spring MVC and AngularJS accounting application needed a modern frontend without changing its URLs, backend endpoints, session model, or familiar workflows. Arka used an AI-assisted strangler migration with parity tests as the contract.",
+    "teaser": "A legacy insurance receivables application moved from AngularJS 1.4 to Angular 20 in four reversible release batches. It preserved its URL contract, backend endpoints, and user workflows while a shared test harness proved each cutover.",
+    "readTime": "9 min read",
+    "engagement": "4 release batches",
     "metrics": [
       {
-        "value": "48%",
-        "label": "Faster average onboarding"
+        "value": "11x to 14x",
+        "label": "Less hands-on engineering effort"
       },
       {
-        "value": "0",
-        "label": "Missed handoffs after go-live"
+        "value": "47",
+        "label": "End-to-end regression tests"
       },
       {
-        "value": "3",
-        "label": "Teams on shared milestones"
+        "value": "7",
+        "label": "Legacy page-apps migrated"
       }
     ],
     "sections": [
       {
-        "heading": "The challenge",
+        "heading": "The mandate",
         "paragraphs": [
-          "A B2B SaaS company sold complex implementations but onboarded customers through ad hoc email threads and shared docs. Sales, product, and customer success each tracked progress differently, and customers felt the friction in long time-to-value.",
-          "Implementation managers spent more time chasing internal updates than guiding customers through configuration and adoption."
+          "Receivables managed outstanding policy-premium balances for two insurance companies from one codebase. The 2014-era Spring MVC and AngularJS application had seven AngularJS page-apps, two Oracle databases, Jasper reporting, drag-and-drop payment workboxes, and container-managed SPNEGO authentication.",
+          "The brief was deliberately narrow: replace the frontend with Angular 20 without changing the URL contract, backend endpoints, or the workflows users already knew. The company prefix in every URL selected the Oracle datasource per request, so preserving it was operationally critical."
         ]
       },
       {
-        "heading": "What we did",
+        "heading": "Plan before porting",
         "paragraphs": [
-          "We designed an intake and onboarding system that structured the work without removing the consultative parts of implementation. Agent-assisted prompts helped gather requirements consistently while routing rules kept internal teams aligned."
+          "Before code changed, Claude produced an inventory of endpoints, server-rendered ng-init values, toast messages, and existing feature behaviour. It also surfaced dead or broken features already in production, turning every port-versus-fix choice into an explicit recorded decision.",
+          "That inventory made the migration estimable and gave the team a concrete parity checklist for every module."
         ],
         "list": [
-          "Built a structured intake flow with guided prompts and validation",
-          "Defined milestone templates by customer segment and contract type",
-          "Automated internal routing and status notifications at each gate",
-          "Gave customer success a live view of blockers, owners, and target dates"
+          "Every endpoint and server-provided value catalogued before implementation",
+          "Dead, broken, and optional behaviour separated from required parity",
+          "Estimates and exceptions recorded in reviewable migration decisions"
         ]
       },
       {
-        "heading": "Results",
+        "heading": "A reversible migration strategy",
         "paragraphs": [
-          "Average onboarding time dropped by nearly half. Missed handoffs between sales and success effectively disappeared because every transition had a defined owner and completion criteria.",
-          "Customers reported clearer expectations during implementation—fewer surprises about what was needed from their team and when."
+          "The team used a strangler-fig approach: one WAR, one deployment, one session, with legacy JSP pages and Angular pages coexisting until each module was ready. Every migrated module received its own extension-less Spring route; the legacy handler could be restored with a single method change if a rollback was needed.",
+          "The Angular router base and the bundle asset base were designed separately. That preserved real, company-prefixed URLs while allowing hashed assets to resolve from every page. There was no catch-all route, avoiding accidental capture of legacy pages."
+        ],
+        "list": [
+          "One independent cutover and rollback path per module",
+          "Legacy .json and .do request shapes preserved",
+          "Company-prefixed URLs kept intact for datasource selection",
+          "Legacy files retained through the production soak period"
         ]
       },
       {
-        "heading": "Where agents helped",
+        "heading": "Tests were the contract",
         "paragraphs": [
-          "Agents handled repeatable discovery questions and document checks, escalating edge cases to implementation managers. That kept human time focused on configuration decisions and change management, not form chasing."
+          "Before porting a page, the team wrote a behaviour-level Playwright suite against the legacy implementation and made it pass there first. The exact same assertions then had to pass against the Angular port, proving parity instead of assuming it.",
+          "Selectors deliberately accepted both worlds: AngularJS ng-model attributes or Angular name attributes, with legacy modal IDs and drag attributes retained as test-stable seams. The suites used shared development data, so they did not submit, delete, or reserve real records; deep workflows were exercised through read-only paths and skeleton endpoints."
+        ],
+        "list": [
+          "One test suite drives legacy and Angular implementations",
+          "Read-only end-to-end tests protect shared development data",
+          "Write paths covered through unit tests and scripted manual checks"
+        ]
+      },
+      {
+        "heading": "Implementation in reviewable slices",
+        "paragraphs": [
+          "Each module followed the same golden pattern: inventory, legacy-first suite, typed API service mirroring the Ajax layer, Angular components using signals, route registration, one-method cutover, verification, and documentation. Releases progressed as four stacked batches: foundation and pilot; statements and reports; adjustments, payables, and shell; then transactions last.",
+          "Shared models and money-math moved into core rather than being copied between features. Cutovers were checked live with redirect chains, computed styles, and pixel positions where the interface had moved. In total, the work closed with 800 backend tests, 156 frontend specs, and a 47-test end-to-end regression suite across seven pages."
+        ]
+      },
+      {
+        "heading": "Migration became an audit",
+        "paragraphs": [
+          "Porting exposed long-standing defects: a service factory that returned nothing, report endpoints accessible to the wrong company through UI-only gating, an unguarded date parser, and session attributes leaking into redirect URLs. Each was fixed and pinned by a test rather than silently carried into the new application.",
+          "One port-created incident became the central lesson. Replacing a legacy full-page reload with an in-place filter refetch dropped the old request-abort behaviour, leaving Oracle threads stuck on Kinsale data. The remedy spanned client and server: request cancellation and disabled controls in the UI, plus a scoped transaction-to-JDBC statement timeout."
+        ],
+        "list": [
+          "Server-side company access enforcement added to report routes",
+          "Legacy UX defects improved without changing familiar interaction patterns",
+          "Request cancellation and scoped database timeout added after live verification"
+        ]
+      },
+      {
+        "heading": "What AI changed and what it did not",
+        "paragraphs": [
+          "AI accelerated the inventory, implementation, and routine migration work. It did not replace judgment: dead code removal, product decisions, pipeline changes, and risk acceptance remained explicit human approvals.",
+          "The original AI-assisted plan budgeted about 22 weeks of engineering effort, versus a conventional estimate of nine to twelve months. Actual hands-on work averaged roughly two working days per release batch. This was an estimated 11x to 14x compression. Calendar delay came from environment constraints, such as a locked Oracle account, not from unverified work being rushed into production."
+        ],
+        "list": [
+          "R1 foundation and pilot: about 4.5 planned weeks, about 2 working days delivered",
+          "R2 statements and reports: about 4.5 planned weeks, about 2 working days delivered",
+          "R3 adjustments, payables, and shell: about 5.5 planned weeks, about 2 working days delivered",
+          "R4 transactions: about 5 to 6 planned weeks, about 2 working days delivered; hardening followed separately"
+        ],
+        "chart": {
+          "title": "Engineering effort per release",
+          "description": "Estimated effort is shown against actual hands-on working days. Actual effort excludes calendar delays caused by environment access.",
+          "max": 30,
+          "rows": [
+            { "label": "R1 · Foundation + pilot", "estimated": 22.5, "actual": 2 },
+            { "label": "R2 · Statements + reports", "estimated": 22.5, "actual": 2 },
+            { "label": "R3 · Adjustments + payables + shell", "estimated": 27.5, "actual": 2 },
+            { "label": "R4 · Transactions", "estimated": 27.5, "actual": 2 }
+          ]
+        }
+      },
+      {
+        "heading": "The takeaway",
+        "paragraphs": [
+          "This was classical migration discipline at AI speed: characterisation tests as the contract, small reversible slices, recorded decisions, and verification for every claim. The typing became faster; review, user acceptance testing, and operational trust remained the dominant work.",
+          "For complex legacy migrations, preserve the behaviour users depend on, keep rollback close, and make the harness, not the generated code, the source of confidence."
         ]
       }
     ]
@@ -362,9 +440,9 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     "slug": "appointment-intake-operations",
     "accent": "#ffd0bd",
     "label": "Healthcare · Clinic network",
-    "title": "Appointment and intake operations",
-    "summary": "Front-desk staff toggled between scheduling tools and paper forms. We digitized intake, connected reminders to the calendar system, and reduced no-show follow-up effort.",
-    "teaser": "Front-desk staff toggled between scheduling tools and paper forms. We digitized intake, connected reminders to the calendar system, and reduced no-show follow-up effort—improving same-day capacity use across three clinic locations.",
+    "title": "Shared appointment and intake platform",
+    "summary": "Three clinics needed one place to manage provider calendars, digital intake, SMS reminders, no-show follow-up, and waitlist calls. Arka built the shared web app that ran the work.",
+    "teaser": "A shared appointment and intake platform gave three clinic front desks one source of truth for provider calendars, reminders, open slots, no-shows, and the next patient to call from the waitlist.",
     "readTime": "6 min read",
     "engagement": "10-week engagement",
     "metrics": [
@@ -385,34 +463,129 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         "heading": "The challenge",
         "paragraphs": [
-          "A three-location clinic network relied on a scheduling tool, paper intake forms, and manual reminder calls. Front-desk staff context-switched constantly, and no-show follow-up consumed hours that could have gone to patient-facing work.",
-          "Administrators lacked a reliable view of same-day capacity across locations, making it hard to absorb cancellations efficiently."
+          "Three clinic locations managed appointments through disconnected front-desk routines. Staff had to reconcile provider availability, paper intake forms, reminder calls, cancellations, and follow-up work while patients were arriving.",
+          "There was no shared operational view. A cancellation at one location did not immediately become a clear task, and staff had no consistent way to see the next suitable patient on the waitlist or who owned the call."
         ]
       },
       {
-        "heading": "What we did",
+        "heading": "One shared operational view",
         "paragraphs": [
-          "We digitized intake and connected it to the existing calendar system so front-desk workflows stayed familiar while removing duplicate data entry and manual reminder tracking."
+          "We built a custom web app used by every clinic front desk. It became the shared source of truth for appointments: staff selected a clinic location, moved between provider calendars, and created, updated, or cancelled appointments in the same place.",
+          "Each appointment carried the operational context the desk needed to act: provider, location, appointment time, intake completion, reminder state, appointment status, follow-up owner, and waitlist eligibility."
         ],
         "list": [
-          "Replaced paper intake with a structured digital flow at check-in",
-          "Connected appointment reminders to the calendar with configurable timing",
-          "Automated no-show follow-up tasks with clear staff ownership",
-          "Gave administrators a cross-location view of same-day openings"
+          "Location and provider calendar views in one web application",
+          "A structured digital intake flow with completion status visible before arrival",
+          "Configurable SMS appointment reminders sent through Twilio",
+          "A cross-location Today view for open slots, incomplete intake, and follow-up work"
         ]
+      },
+      {
+        "heading": "No-shows became owned work",
+        "paragraphs": [
+          "After an appointment time passed, the responsible desk could record the outcome directly: checked in, cancelled, rescheduled, no-show, or needs follow-up. A no-show created a clear call task instead of disappearing into a paper list or a verbal handoff.",
+          "Staff recorded whether the patient had been reached, rescheduled, left a voicemail, or remained unresolved. That made follow-up visible to the next shift and to managers without asking teams to reconstruct the day."
+        ]
+      },
+      {
+        "heading": "Turning cancellations into capacity",
+        "paragraphs": [
+          "When a slot opened, the app surfaced the next appropriate waiting-list patient based on location, provider, and availability. It gave the front desk a call task and the context to act; staff still spoke to the patient and booked the appointment themselves.",
+          "This kept the workflow human where it mattered while making the next best action obvious. The platform did not auto-book patients or rely on delayed schedule imports."
+        ],
+        "flow": "appointment-operations"
       },
       {
         "heading": "Results",
         "paragraphs": [
-          "Same-day capacity use improved across all three locations. No-show follow-up effort dropped by more than a third because reminders and tasks were triggered automatically instead of tracked on clipboards.",
-          "Front-desk staff reported fewer interruptions from chasing incomplete intake information during peak morning hours."
+          "Same-day capacity use improved by 22% across the three clinic locations. No-show follow-up effort fell by 35% because reminders, appointment outcomes, and call tasks were all handled in one place.",
+          "Patients received more consistent reminders and spent less time repeating intake information at the desk. For staff, the gain was a calmer front desk: fewer disconnected tools and a shared view of the work that needed attention."
+        ]
+      }
+    ]
+  },
+  "insurance-submission-intake": {
+    "slug": "insurance-submission-intake",
+    "accent": "#a7bbc0",
+    "label": "Insurance · Underwriting operations",
+    "title": "Submission intake and routing workspace",
+    "summary": "Insurance submissions arrive through web forms, email, fax, and messaging channels with incomplete, inconsistent, and duplicated information. Arka maps a single workflow that turns each request into a source-grounded, reviewable underwriting work item.",
+    "teaser": "A narrow AI-assisted intake workflow gives underwriters one complete submission record, a clear missing-information checklist, and links back to the original evidence before they begin quote work.",
+    "readTime": "5 min read",
+    "engagement": "Discovery workflow",
+    "metrics": [
+      {
+        "value": "4",
+        "label": "Input funnels mapped"
+      },
+      {
+        "value": "1",
+        "label": "Normalized underwriting work item"
+      },
+      {
+        "value": "0",
+        "label": "Autonomous underwriting decisions"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "The operating problem",
+        "paragraphs": [
+          "A submission may arrive as a web form, an email thread with several attachments, a faxed application, or a message from a broker. Operations staff have to identify the right documents, rekey core facts, check for duplicates, chase missing information, and hand the file to an underwriter.",
+          "The underwriter often begins with an incomplete picture and has to reconstruct the submission before evaluating risk, preparing a quote, or binding a policy."
         ]
       },
       {
-        "heading": "Patient experience",
+        "heading": "The smallest useful workflow",
         "paragraphs": [
-          "Patients spent less time repeating information at the desk, and reminder timing became more consistent. The operational gains showed up internally first, but the waiting-room experience improved as a direct result."
+          "Start with one line of business and one high-volume channel, such as broker email with PDF attachments. The workflow creates a single submission record, extracts the key facts, checks completeness, and places the work into a clear queue.",
+          "The first release does not need to replace the policy administration or rating system. It prepares a clean, traceable work item for the systems and people already responsible for quote and bind."
+        ],
+        "list": [
+          "Receive the message and all attached documents",
+          "Create or match one submission record",
+          "Extract proposed facts and document types",
+          "Check required fields and documents with deterministic rules",
+          "Place the submission in ready, needs information, referral, or possible duplicate"
         ]
+      },
+      {
+        "heading": "Where AI earns its place",
+        "paragraphs": [
+          "The AI building block is source-grounded extraction. It reads unstructured email, scans, ACORD forms, loss runs, and broker narratives, then proposes structured fields such as insured name, broker, effective date, risk location, coverage request, limits, and document type.",
+          "Each proposed field carries a confidence level and a link to the source document, page, and supporting text. If the evidence is unclear, the system records unknown rather than inventing an answer."
+        ],
+        "list": [
+          "Document classification across mixed submission packs",
+          "Field extraction with page-level source evidence",
+          "Identification of missing or contradictory information",
+          "A concise submission brief for the underwriter"
+        ],
+        "flow": "insurance-submission"
+      },
+      {
+        "heading": "Rules and people keep authority",
+        "paragraphs": [
+          "Rules, not the language model, check required documents, required fields, duplicate submissions, queue ownership, and service-level deadlines. The rules decide whether a record is ready for review or needs more information.",
+          "The underwriter decides whether the risk fits appetite, whether to refer or decline, what terms to offer, and whether to bind. The system assists the handoff. It does not make an underwriting decision or send consequential broker communication without review."
+        ]
+      },
+      {
+        "heading": "What changes for the underwriting desk",
+        "paragraphs": [
+          "Instead of opening multiple files and searching an inbox, the underwriter receives one work item with the source pack, extracted facts, outstanding questions, status, owner, and handoff history. That creates a consistent starting point for quote work without disrupting the existing policy workflow.",
+          "Once the intake data is trusted, the same structured record can support later capabilities such as routing recommendations, broker follow-up drafts, and underwriting decision support. Those are later stages, not dependencies for the first useful release.",
+          "The planning scenarios below are not measured client results. They show the potential operational capacity released when the review process becomes shorter and more consistent."
+        ],
+        "scenarioTable": {
+          "caption": "Potential review-time savings per 1,000 submissions",
+          "headers": ["Scenario", "Average review time", "Time saved per submission", "Hours saved per 1,000 submissions"],
+          "rows": [
+            ["Conservative", "3 minutes", "2 minutes, 40%", "33 hours"],
+            ["Pilot target", "2 minutes", "3 minutes, 60%", "50 hours"],
+            ["Strong result", "1 minute", "4 minutes, 80%", "67 hours"]
+          ]
+        }
       }
     ]
   }
@@ -420,6 +593,10 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES[slug];
+}
+
+export function getPublishedCaseStudy(slug: string): CaseStudy | undefined {
+  return CASE_STUDY_ORDER.includes(slug) ? CASE_STUDIES[slug] : undefined;
 }
 
 export function orderedCaseStudies(): CaseStudy[] {
