@@ -41,9 +41,7 @@ export default function SiteJsonLd() {
         url: SITE_URL,
         logo: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/assets/arka-mark-mono.png`,
-          width: 512,
-          height: 512,
+          url: `${SITE_URL}/assets/arka-flow-mark.svg`,
         },
         sameAs: [SOCIAL.linkedin.split("?")[0], SOCIAL.x],
         description:

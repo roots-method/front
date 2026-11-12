@@ -1,0 +1,454 @@
+/* Warm Intelligence
+   A colour and typography layer over the established editorial system. The
+   CPQ application is excluded so its product UI remains unchanged. */
+
+body:not(:has(.platform-app)) {
+  --warm-canvas: #f6f3ed;
+  --warm-ink: #14231f;
+  --warm-accent: #c85c3c;
+  --warm-accent-strong: #a9452d;
+  --warm-sage: #c8d2cc;
+  --warm-night: #10201c;
+  --warm-line: #d8d4cc;
+  --warm-light: #f8f5ef;
+  --warm-muted: #5e6964;
+
+  --bg: var(--warm-canvas);
+  --bg-rgb: 246, 243, 237;
+  --surface: #fffdf9;
+  --surface-rgb: 255, 253, 249;
+  --inset: var(--warm-sage);
+  --fg: var(--warm-ink);
+  --muted: var(--warm-muted);
+  --label: #46544e;
+  --placeholder: #8b918d;
+  --line: var(--warm-line);
+  --nav-link: #58645e;
+  --eyebrow: var(--warm-accent-strong);
+  --accent: var(--warm-accent);
+  --accent-strong: var(--warm-accent-strong);
+  --accent-soft: #e3a18b;
+  --accent-rgb: 200, 92, 60;
+  --data: #8b5c2b;
+  --data-soft: #e2a84a;
+  --data-rgb: 139, 92, 43;
+  --shadow: 0 1px 3px rgba(20, 35, 31, .05), 0 0 0 1px rgba(20, 35, 31, .06);
+  --shadow-strong: 0 20px 58px rgba(20, 35, 31, .1), 0 0 0 1px rgba(20, 35, 31, .06);
+  --canvas-glow: rgba(200, 92, 60, .07);
+  --grid-line: #e5dfd4;
+  --grid-opacity: .2;
+  background: var(--warm-canvas);
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+html:has(body:not(:has(.platform-app))) {
+  background: var(--warm-canvas);
+}
+
+body:not(:has(.platform-app)) h1,
+body:not(:has(.platform-app)) h2,
+body:not(:has(.platform-app)) h3,
+body:not(:has(.platform-app)) h4,
+body:not(:has(.platform-app)) h5,
+body:not(:has(.platform-app)) h6 {
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+body:not(:has(.platform-app)) h1 {
+  letter-spacing: -.04em;
+}
+
+body:not(:has(.platform-app)) :is(p, li, dd, input, textarea, select, button) {
+  font-weight: 400;
+}
+
+/* Shared chrome */
+html body:not(:has(.platform-app)) .site-shell .nav {
+  border-color: var(--warm-line);
+  background: color-mix(in srgb, var(--warm-canvas) 94%, transparent);
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, sans-serif;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav--scrolled {
+  background: color-mix(in srgb, var(--warm-canvas) 94%, transparent);
+  box-shadow: 0 12px 34px rgba(20, 35, 31, .07);
+}
+
+html body:not(:has(.platform-app)) .site-shell .brand__mark {
+  width: 2.15rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+html body:not(:has(.platform-app)) .site-shell .brand__name {
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -.035em;
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__link,
+html body:not(:has(.platform-app)) .site-shell .nav__link:hover,
+html body:not(:has(.platform-app)) .site-shell .nav__link:focus-visible {
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 500;
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__link::after {
+  background: var(--warm-accent);
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__tools .btn--nav {
+  background: var(--warm-night);
+  color: var(--warm-light);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 500;
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__tools .btn--nav:hover,
+html body:not(:has(.platform-app)) .site-shell .nav__tools .btn--nav:focus-visible {
+  background: var(--warm-accent);
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__toggle {
+  border-color: var(--warm-ink);
+  background: var(--warm-canvas);
+}
+
+html body:not(:has(.platform-app)) .site-shell .nav__toggle-bar {
+  background: var(--warm-ink);
+}
+
+/* Map every editorial route to the exact supplied palette. */
+body:has(.home-editorial) {
+  --home-canvas: var(--warm-canvas);
+  --home-surface: var(--warm-sage);
+  --home-ink: var(--warm-ink);
+  --home-night: var(--warm-night);
+}
+
+body:has(.software-editorial) {
+  --software-canvas: var(--warm-canvas);
+  --software-surface: var(--warm-sage);
+  --software-ink: var(--warm-ink);
+  --software-night: var(--warm-night);
+}
+
+body:has(.products-editorial) {
+  --products-canvas: var(--warm-canvas);
+  --products-surface: var(--warm-sage);
+  --products-ink: var(--warm-ink);
+  --products-night: var(--warm-night);
+}
+
+body:has(.about-editorial) {
+  --about-canvas: var(--warm-canvas);
+  --about-surface: var(--warm-sage);
+  --about-ink: var(--warm-ink);
+  --about-night: var(--warm-night);
+}
+
+body:has(.contact-editorial) {
+  --contact-canvas: var(--warm-canvas);
+  --contact-surface: var(--warm-sage);
+  --contact-ink: var(--warm-ink);
+  --contact-night: var(--warm-night);
+}
+
+:is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial) {
+  background: var(--warm-canvas);
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+:is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial)
+  :is(h1, h2, h3) {
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+:is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial)
+  :is(p, a, li, span, label, input, textarea, button) {
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+:is(.home-editorial__eyebrow, .software-editorial__eyebrow, .products-editorial__eyebrow, .about-editorial__eyebrow, .contact-editorial__eyebrow) {
+  color: var(--warm-accent-strong);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 500;
+}
+
+/* Content and feature surfaces */
+.home-editorial__service,
+.products-editorial__platform-grid article,
+.about-editorial__mission article,
+.contact-editorial__form-panel {
+  background: var(--warm-sage);
+  border-color: var(--warm-line);
+  color: var(--warm-ink);
+}
+
+.about-editorial__mission article + article {
+  background: var(--warm-canvas);
+}
+
+.home-editorial__service:hover,
+.home-editorial__service:focus-visible {
+  background: var(--warm-night);
+  color: var(--warm-light);
+}
+
+.home-editorial__service-grid,
+.products-editorial__platform-grid,
+.software-editorial__process ol,
+.software-editorial__process li,
+.software-editorial__outcome-list,
+.software-editorial__outcome-list article,
+.contact-editorial__next ol,
+.contact-editorial__next li,
+.about-editorial__mission,
+.about-editorial__stats,
+.about-editorial__stats div + div {
+  border-color: var(--warm-line);
+}
+
+/* Dark sections */
+:is(.home-editorial__perspectives, .software-editorial__problems, .software-editorial__closing, .products-editorial__process, .about-editorial__team, .contact-editorial__perspective) {
+  background: var(--warm-night);
+  color: var(--warm-light);
+}
+
+:is(.home-editorial__perspectives, .software-editorial__problems, .software-editorial__closing, .products-editorial__process, .about-editorial__team, .contact-editorial__perspective)
+  :is(p, small) {
+  color: var(--warm-sage);
+}
+
+:is(.home-editorial__perspectives, .software-editorial__problems, .software-editorial__closing, .products-editorial__process, .about-editorial__team, .contact-editorial__perspective)
+  :is(.home-editorial__eyebrow, .software-editorial__eyebrow, .products-editorial__eyebrow, .about-editorial__eyebrow, .contact-editorial__eyebrow) {
+  color: #e2a84a;
+}
+
+.home-editorial__testimonial-grid,
+.home-editorial__testimonial,
+.software-editorial__problem-list,
+.software-editorial__problem-list li,
+.products-editorial__process > ol,
+.products-editorial__process > ol > li,
+.about-editorial__team-grid,
+.about-editorial__team-grid article {
+  border-color: rgba(248, 245, 239, .24);
+}
+
+/* CTAs and soft closing bands */
+.home-editorial__closing,
+.products-editorial__closing,
+.about-editorial__closing,
+.software-editorial__outcomes {
+  background: var(--warm-sage);
+  color: var(--warm-ink);
+}
+
+:is(.home-editorial__button, .home-editorial__closing-button, .software-editorial__button, .software-editorial__closing-button, .products-editorial__button, .products-editorial__closing-button, .about-editorial__closing a:first-child) {
+  background: var(--warm-night);
+  color: var(--warm-light);
+  font-weight: 500;
+}
+
+:is(.home-editorial__button, .home-editorial__closing-button, .software-editorial__button, .software-editorial__closing-button, .products-editorial__button, .products-editorial__closing-button, .about-editorial__closing a:first-child):hover,
+:is(.home-editorial__button, .home-editorial__closing-button, .software-editorial__button, .software-editorial__closing-button, .products-editorial__button, .products-editorial__closing-button, .about-editorial__closing a:first-child):focus-visible {
+  background: var(--warm-accent);
+  color: var(--warm-light);
+}
+
+.home-editorial__consult {
+  border-color: var(--warm-line);
+  background: color-mix(in srgb, var(--warm-canvas) 72%, var(--warm-sage));
+}
+
+/* Case work and long-form pages */
+:is(.case-notes, .case-notes-detail) {
+  background: var(--warm-canvas);
+  color: var(--warm-ink);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+:is(.case-notes, .case-notes-detail) :is(h1, h2, h3) {
+  color: var(--warm-ink);
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.case-notes__featured,
+.case-notes-detail .case-article__header,
+.case-notes-detail .case-article__diagram,
+.case-notes-related,
+.appointment-flow,
+.case-scenario-table thead th,
+.case-effort-chart__swatch--actual,
+.case-effort-chart__bar--actual {
+  background: var(--warm-sage);
+}
+
+:is(.case-notes__hero, .case-notes__featured-link, .case-notes__metrics, .case-notes__metrics div, .case-notes__grid, .case-notes__card, .case-notes-detail .cs-stat, .case-notes-detail .cs-stat__item, .case-notes-detail .case-article__sidebar, .case-notes-detail .case-article__section, .case-effort-chart, .case-effort-chart__plot, .case-effort-chart__bars, .appointment-flow, .appointment-flow__heading, .appointment-flow__steps button, .appointment-flow__detail > div, .case-scenario-table, .case-scenario-table caption, .case-scenario-table th, .case-scenario-table td, .case-notes-related__list, .case-notes-related__item) {
+  border-color: var(--warm-line);
+}
+
+.case-notes__card:hover,
+.case-notes__card:focus-visible {
+  background: var(--warm-sage);
+}
+
+.case-notes-detail .case-article__header h1,
+.case-notes-detail .case-article__section h2,
+.case-notes-detail .cs-stat__value {
+  color: var(--warm-ink);
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
+  font-weight: 500;
+}
+
+:is(.case-notes__closing, .case-notes-detail__closing) {
+  background: var(--warm-night);
+  color: var(--warm-light);
+}
+
+:is(.case-notes__closing, .case-notes-detail__closing) a {
+  background: var(--warm-sage);
+  color: var(--warm-ink);
+}
+
+.submission-flow,
+.submission-flow__node--api {
+  background: #fffdf9;
+  border-color: var(--warm-line);
+}
+
+:is(.submission-flow__example, .submission-flow__node, .case-effort-chart, .case-scenario-table) {
+  background: var(--warm-canvas);
+}
+
+.submission-flow__node--ai > span {
+  background: var(--warm-sage);
+  color: var(--warm-ink);
+}
+
+.submission-flow__node--api > span {
+  background: var(--warm-night);
+  color: var(--warm-light);
+}
+
+/* Consent surfaces use the same dark/light relationship as the footer. */
+body:not(:has(.platform-app)) .cookie-banner {
+  border-color: var(--warm-sage);
+  background: var(--warm-night);
+  color: var(--warm-light);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+body:not(:has(.platform-app)) :is(.cookie-banner__eyebrow, .cookie-banner__policy) {
+  color: var(--warm-sage);
+}
+
+body:not(:has(.platform-app)) .cookie-banner__text {
+  color: var(--warm-light);
+}
+
+body:not(:has(.platform-app)) .cookie-banner__accept {
+  border-color: var(--warm-sage) !important;
+  background: var(--warm-sage) !important;
+  color: var(--warm-ink) !important;
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+body:not(:has(.platform-app)) .cookie-banner__decline {
+  border-color: var(--warm-sage);
+  color: var(--warm-light);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+body:not(:has(.platform-app)) .privacy-modal__panel,
+body:not(:has(.platform-app)) .privacy-modal__close {
+  background: var(--warm-canvas);
+  color: var(--warm-ink);
+}
+
+/* Softer supporting typography */
+:is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial)
+  :is(.home-editorial__lede, p, small) {
+  font-weight: 400;
+}
+
+:is(.home-editorial__service-label, .home-editorial__service-link, .software-editorial__process li small, .products-editorial__platform-label, .products-editorial__process small, .about-editorial__team-title) {
+  font-weight: 500;
+}
+
+/* Footer */
+html body:not(:has(.platform-app)) .site-shell .site-footer {
+  background: var(--warm-night);
+  color: var(--warm-light);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__logo {
+  width: 2.35rem;
+  height: 2.2rem;
+  object-fit: contain;
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__mark,
+html body:not(:has(.platform-app)) .site-shell .site-footer__brand-link {
+  color: var(--warm-light);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 600;
+}
+
+html body:not(:has(.platform-app)) .site-shell :is(.site-footer__tagline, .site-footer__heading, .site-footer__legal, .site-footer__privacy-link) {
+  color: var(--warm-sage);
+}
+
+html body:not(:has(.platform-app)) .site-shell :is(.site-footer__heading, .site-footer__menu-link, .site-footer__list) {
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-weight: 400;
+}
+
+html body:not(:has(.platform-app)) .site-shell :is(.site-footer__menu-link, .site-footer__list) {
+  color: var(--warm-light);
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__social-link {
+  border-color: var(--warm-sage);
+  color: var(--warm-light);
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__social-link:hover,
+html body:not(:has(.platform-app)) .site-shell .site-footer__social-link:focus-visible {
+  background: var(--warm-accent);
+  color: var(--warm-light);
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__inquiry {
+  background: var(--warm-sage);
+  color: var(--warm-ink);
+  font-weight: 500;
+}
+
+html body:not(:has(.platform-app)) .site-shell .site-footer__legal {
+  border-color: rgba(248, 245, 239, .24);
+}
+
+@media (max-width: 860px) {
+  html body:not(:has(.platform-app)) .site-shell .nav__links {
+    border-color: var(--warm-line);
+    background: var(--warm-canvas);
+  }
+}

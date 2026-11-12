@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 338 100" role="img" aria-labelledby="title desc">
+  <title id="title">Arka</title>
+  <desc id="desc">Arka wordmark with a terracotta arch and amber flow</desc>
+  <defs>
+    <linearGradient id="arka-logo-arch" x1="13" y1="91" x2="82" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b94b31"/>
+      <stop offset=".58" stop-color="#c85c3c"/>
+      <stop offset="1" stop-color="#d87350"/>
+    </linearGradient>
+    <linearGradient id="arka-logo-flow" x1="34" y1="68" x2="101" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d88a35"/>
+      <stop offset="1" stop-color="#e2a84a"/>
+    </linearGradient>
+  </defs>
+  <g aria-hidden="true">
+    <path fill="url(#arka-logo-arch)" d="M7 94C25 61 46 18 60 8c8-6 15-5 21 2 9 10 18 34 23 54-11-17-31-42-42-42C51 22 28 67 7 94Z"/>
+    <path fill="url(#arka-logo-flow)" d="M35 68c16-18 35-29 53-24 8 2 14 8 16 20 1 7-2 12-7 14-5 1-9-2-14-8-12-16-27-18-48-2Z"/>
+    <text x="121" y="68" fill="#14231f" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="600" letter-spacing="-2.6">Arka</text>
+  </g>
+</svg>

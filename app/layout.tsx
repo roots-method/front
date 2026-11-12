@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Urbanist } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PrivacyModal from "@/components/PrivacyModal";
@@ -8,13 +8,15 @@ import SiteJsonLd from "@/components/SiteJsonLd";
 import { SITE_URL } from "@/lib/site";
 import "@/styles/index.css";
 import "@/styles/case-ledger.css";
+import "@/styles/warm-intelligence.css";
 
-// Urbanist remains available for the editorial page treatment. Inter is the
-// shared site font for body copy, headings, controls, and the platform.
-const urbanist = Urbanist({
+// Newsreader gives the marketing pages an editorial display voice. Inter stays
+// in place for body copy, navigation, controls, and the CPQ platform.
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-urbanist",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -53,12 +55,8 @@ export const metadata: Metadata = {
     "max-image-preview": "large",
     "max-video-preview": -1,
   },
-  // The small-size mark, not the full-colour one: at favicon size the full logo's
-  // grey node is ~1.2:1 against a white tab and disappears. The PNGs cover
-  // browsers without SVG favicons, and Apple fills a transparent touch icon with
-  // black, so that one is drawn on a white tile.
   icons: {
-    icon: [{ url: "/assets/arka-mark-mono.png", type: "image/png", sizes: "512x512" }],
+    icon: [{ url: "/assets/arka-flow-mark.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     type: "website",
@@ -81,7 +79,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#A7BBC0",
+  themeColor: "#F6F3ED",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -90,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // this element before React hydrates, and that difference is intended.
     <html
       lang="en"
-      className={`${urbanist.variable} ${inter.variable}`}
+      className={`${newsreader.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
