@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import InlineSvg from "@/components/InlineSvg";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -86,10 +86,10 @@ const TESTIMONIALS = [
 ];
 
 const CLIENTS = [
-  { src: "IBM-logo.svg", alt: "IBM", modifier: "" },
-  { src: "JP-Morgan-Chase-Logo.svg", alt: "JPMorgan Chase & Co.", modifier: "client-bar__logo--jpm" },
-  { src: "kroger-logo.svg", alt: "Kroger", modifier: "client-bar__logo--kroger" },
-  { src: "capital-one-logo.svg", alt: "Capital One", modifier: "client-bar__logo--capone" },
+  { src: "IBM-logo.svg", alt: "IBM" },
+  { src: "JP-Morgan-Chase-Logo.svg", alt: "JPMorgan Chase & Co." },
+  { src: "kroger-logo.svg", alt: "Kroger" },
+  { src: "capital-one-logo.svg", alt: "Capital One" },
 ];
 
 
@@ -98,27 +98,29 @@ export default function HomePage() {
     <div className="home-editorial">
       <section className="home-editorial__hero" aria-labelledby="home-title">
         <div className="home-editorial__hero-copy">
-          <p className="home-editorial__eyebrow">For enterprise operations teams</p>
-          <h1 id="home-title">Your only AI digital partner.</h1>
+          <p className="home-editorial__eyebrow">AI systems for enterprise operations</p>
+          <h1 id="home-title">Turn operational friction into flow.</h1>
           <p className="home-editorial__lede">
-            A partner for your enterprise operations—turning complex, manual work into systems that move with you.
+            We design and build intelligent software that connects fragmented tools, removes manual handoffs, and helps your operations move as one system.
           </p>
           <div className="home-editorial__actions">
             <Link className="home-editorial__button" href="/contact">
               Start a conversation <span aria-hidden="true">↗</span>
             </Link>
-            <a className="home-editorial__text-link" href="#what-arka-does">
-              Explore capabilities <span aria-hidden="true">→</span>
-            </a>
+            <Link className="home-editorial__text-link" href="/results">
+              Explore our work <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
         <div className="home-editorial__art" aria-hidden="true">
-          <InlineSvg src="/assets/art/hero-cubes.svg" className="home-editorial__art-grid" />
-          <span className="home-editorial__orb home-editorial__orb--large" />
-          <span className="home-editorial__orb home-editorial__orb--dark" />
-          <span className="home-editorial__orb home-editorial__orb--small" />
-          <span className="home-editorial__art-label">Connected systems.<br />Decisive outcomes.</span>
-          <span className="home-editorial__art-index">01 / FLOW</span>
+          <Image
+            className="home-editorial__hero-image"
+            src="/assets/arka-data-workflow-systems-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 760px) 100vw, 48vw"
+          />
         </div>
       </section>
 
@@ -178,7 +180,7 @@ export default function HomePage() {
         <p className="home-editorial__eyebrow">Trusted by employees at</p>
         <div>
           {CLIENTS.map((c) => (
-            <img key={c.src} className={`home-editorial__client-logo ${c.modifier}`.trim()} src={`/assets/clients/${c.src}`} alt={c.alt} loading="lazy" />
+            <img key={c.src} className="home-editorial__client-logo" src={`/assets/clients/${c.src}`} alt={c.alt} loading="lazy" />
           ))}
         </div>
       </section>

@@ -16,7 +16,7 @@ export default function SiteFooter() {
             <span className="site-footer__mark">
               <img
                 className="site-footer__logo"
-                src="/assets/arka-mark-mono-light.svg"
+                src="/assets/arka-flow-mark.svg"
                 alt=""
                 width={32}
                 height={32}

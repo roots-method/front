@@ -55,7 +55,7 @@ export default function SiteHeader() {
       <a className="brand" href="/" aria-label="Arka home">
         <img
           className="brand__mark"
-          src="/assets/arka-mark-mono.png"
+          src="/assets/arka-flow-mark.svg"
           alt=""
           width={30}
           height={30}

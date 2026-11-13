@@ -11,7 +11,7 @@ body:has(.contact-editorial) .site-footer { margin:0; padding:clamp(3rem,6vw,5re
 .contact-editorial__eyebrow { margin:0; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
 .contact-editorial__hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(22rem,.9fr); min-height:38rem; border-bottom:1px solid var(--contact-ink); }
 .contact-editorial__intro { display:flex; flex-direction:column; align-items:flex-start; padding:clamp(4rem,8vw,7.5rem) clamp(1.25rem,7vw,8rem); }
-.contact-editorial__intro h1 { max-width:9ch; margin:1rem 0 1.35rem; font-size:clamp(3.25rem,6.6vw,7.3rem); font-weight:700; letter-spacing:-.08em; line-height:.87; }
+.contact-editorial__intro h1 { width:100%; max-width:none; margin:1rem 0 1.35rem; font-size:clamp(2.85rem,5.2vw,5.8rem); font-weight:700; letter-spacing:0; line-height:.92; }
 .contact-editorial__intro > p:not(.contact-editorial__eyebrow) { max-width:32rem; font-size:clamp(1rem,1.4vw,1.2rem); line-height:1.5; }
 .contact-editorial__direct { display:flex; flex-wrap:wrap; gap:.8rem 1.5rem; margin-top:auto; padding-top:2rem; }
 .contact-editorial__direct a { color:var(--contact-ink); font-size:.82rem; font-weight:700; text-decoration:none; }
