@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { Newsreader, Nunito_Sans } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PrivacyModal from "@/components/PrivacyModal";
@@ -10,8 +10,8 @@ import "@/styles/index.css";
 import "@/styles/case-ledger.css";
 import "@/styles/warm-intelligence.css";
 
-// Newsreader gives the marketing pages an editorial display voice. Inter stays
-// in place for body copy, navigation, controls, and the CPQ platform.
+// Newsreader gives the marketing pages an editorial display voice. Nunito Sans
+// supports body copy, navigation, controls, and the CPQ platform.
 const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -20,10 +20,10 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
-const inter = Inter({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-nunito-sans",
   display: "swap",
 });
 
@@ -88,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // this element before React hydrates, and that difference is intended.
     <html
       lang="en"
-      className={`${newsreader.variable} ${inter.variable}`}
+      className={`${newsreader.variable} ${nunitoSans.variable}`}
       suppressHydrationWarning
     >
       <head>

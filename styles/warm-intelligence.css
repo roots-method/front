@@ -39,7 +39,7 @@ body:not(:has(.platform-app)) {
   --grid-opacity: .2;
   background: var(--warm-canvas);
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 400;
 }
 
@@ -59,7 +59,7 @@ body:not(:has(.platform-app)) h6 {
 }
 
 body:not(:has(.platform-app)) h1 {
-  letter-spacing: -.04em;
+  letter-spacing: 0;
 }
 
 body:not(:has(.platform-app)) :is(p, li, dd, input, textarea, select, button) {
@@ -71,7 +71,7 @@ html body:not(:has(.platform-app)) .site-shell .nav {
   border-color: var(--warm-line);
   background: color-mix(in srgb, var(--warm-canvas) 94%, transparent);
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
@@ -89,7 +89,7 @@ html body:not(:has(.platform-app)) .site-shell .brand__mark {
 
 html body:not(:has(.platform-app)) .site-shell .brand__name {
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -.035em;
@@ -99,7 +99,7 @@ html body:not(:has(.platform-app)) .site-shell .nav__link,
 html body:not(:has(.platform-app)) .site-shell .nav__link:hover,
 html body:not(:has(.platform-app)) .site-shell .nav__link:focus-visible {
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -110,7 +110,7 @@ html body:not(:has(.platform-app)) .site-shell .nav__link::after {
 html body:not(:has(.platform-app)) .site-shell .nav__tools .btn--nav {
   background: var(--warm-night);
   color: var(--warm-light);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -167,7 +167,7 @@ body:has(.contact-editorial) {
 :is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial) {
   background: var(--warm-canvas);
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 :is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial)
@@ -179,12 +179,12 @@ body:has(.contact-editorial) {
 
 :is(.home-editorial, .software-editorial, .products-editorial, .about-editorial, .contact-editorial)
   :is(p, a, li, span, label, input, textarea, button) {
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 :is(.home-editorial__eyebrow, .software-editorial__eyebrow, .products-editorial__eyebrow, .about-editorial__eyebrow, .contact-editorial__eyebrow) {
   color: var(--warm-accent-strong);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-weight: 500;
 }
 
@@ -270,6 +270,16 @@ body:has(.contact-editorial) {
   color: var(--warm-light);
 }
 
+body:not(:has(.platform-app)) .software-editorial__closing .software-editorial__closing-button {
+  background: #c85c3c;
+  color: var(--warm-light);
+}
+
+body:not(:has(.platform-app)) .software-editorial__closing .software-editorial__closing-button:hover,
+body:not(:has(.platform-app)) .software-editorial__closing .software-editorial__closing-button:focus-visible {
+  background: var(--warm-accent-strong);
+}
+
 .home-editorial__consult {
   border-color: var(--warm-line);
   background: color-mix(in srgb, var(--warm-canvas) 72%, var(--warm-sage));
@@ -279,7 +289,7 @@ body:has(.contact-editorial) {
 :is(.case-notes, .case-notes-detail) {
   background: var(--warm-canvas);
   color: var(--warm-ink);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 :is(.case-notes, .case-notes-detail) :is(h1, h2, h3) {
@@ -352,7 +362,7 @@ body:not(:has(.platform-app)) .cookie-banner {
   border-color: var(--warm-sage);
   background: var(--warm-night);
   color: var(--warm-light);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 body:not(:has(.platform-app)) :is(.cookie-banner__eyebrow, .cookie-banner__policy) {
@@ -367,13 +377,13 @@ body:not(:has(.platform-app)) .cookie-banner__accept {
   border-color: var(--warm-sage) !important;
   background: var(--warm-sage) !important;
   color: var(--warm-ink) !important;
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 body:not(:has(.platform-app)) .cookie-banner__decline {
   border-color: var(--warm-sage);
   color: var(--warm-light);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 body:not(:has(.platform-app)) .privacy-modal__panel,
@@ -396,7 +406,7 @@ body:not(:has(.platform-app)) .privacy-modal__close {
 html body:not(:has(.platform-app)) .site-shell .site-footer {
   background: var(--warm-night);
   color: var(--warm-light);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
 }
 
 html body:not(:has(.platform-app)) .site-shell .site-footer__logo {
@@ -408,7 +418,7 @@ html body:not(:has(.platform-app)) .site-shell .site-footer__logo {
 html body:not(:has(.platform-app)) .site-shell .site-footer__mark,
 html body:not(:has(.platform-app)) .site-shell .site-footer__brand-link {
   color: var(--warm-light);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-weight: 600;
 }
 
@@ -417,7 +427,7 @@ html body:not(:has(.platform-app)) .site-shell :is(.site-footer__tagline, .site-
 }
 
 html body:not(:has(.platform-app)) .site-shell :is(.site-footer__heading, .site-footer__menu-link, .site-footer__list) {
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-nunito-sans), "Nunito Sans", sans-serif;
   font-weight: 400;
 }
 

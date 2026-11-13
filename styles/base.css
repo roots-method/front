@@ -90,10 +90,10 @@
 
   /* next/font self-hosts these; the quoted names stay as a fallback for any
      surface that renders before the font variables are attached. */
-  --font: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --font: var(--font-nunito-sans), "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
-  --font-heading: var(--font-inter), Inter, -apple-system,
+  --font-heading: var(--font-nunito-sans), "Nunito Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --maxw: 1400px;
   --shell-gutter: clamp(1.25rem, 5vw, 3rem);
@@ -194,7 +194,7 @@ body {
 }
 
 /* Headings take the display face and tighter tracking wherever a component rule
-   has not already said so. Inter is pulled in slightly at display sizes.
+   has not already said so. Nunito Sans is pulled in slightly at display sizes.
 
    The second rule is load-bearing. The reset above gives *every* element
    letter-spacing: 0 directly, so a heading's tracking would stop at its own
@@ -241,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Supporting display copy belongs to the same typographic system as its
    headline. Paragraphs outside these named hero and section treatments keep
-   the shared Inter body token. */
+   the shared Nunito Sans body token. */
 .hero__lede,
 .hero__tagline,
 .page-hero p,

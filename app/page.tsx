@@ -86,10 +86,10 @@ const TESTIMONIALS = [
 ];
 
 const CLIENTS = [
-  { src: "IBM-logo.svg", alt: "IBM", modifier: "" },
-  { src: "JP-Morgan-Chase-Logo.svg", alt: "JPMorgan Chase & Co.", modifier: "client-bar__logo--jpm" },
-  { src: "kroger-logo.svg", alt: "Kroger", modifier: "client-bar__logo--kroger" },
-  { src: "capital-one-logo.svg", alt: "Capital One", modifier: "client-bar__logo--capone" },
+  { src: "IBM-logo.svg", alt: "IBM" },
+  { src: "JP-Morgan-Chase-Logo.svg", alt: "JPMorgan Chase & Co." },
+  { src: "kroger-logo.svg", alt: "Kroger" },
+  { src: "capital-one-logo.svg", alt: "Capital One" },
 ];
 
 
@@ -180,7 +180,7 @@ export default function HomePage() {
         <p className="home-editorial__eyebrow">Trusted by employees at</p>
         <div>
           {CLIENTS.map((c) => (
-            <img key={c.src} className={`home-editorial__client-logo ${c.modifier}`.trim()} src={`/assets/clients/${c.src}`} alt={c.alt} loading="lazy" />
+            <img key={c.src} className="home-editorial__client-logo" src={`/assets/clients/${c.src}`} alt={c.alt} loading="lazy" />
           ))}
         </div>
       </section>
