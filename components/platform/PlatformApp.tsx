@@ -84,7 +84,7 @@ export default function PlatformApp() {
   return (
     <div className="platform-app">
       <aside className={`platform-sidebar${mobileNav ? " is-open" : ""}`} aria-label="Platform navigation">
-        <div className="platform-brand" aria-label="Manufacturing CPQ and Sales Operations Platform"><img src="/assets/arka-mark-mono.png" alt="Arka"/><span><b>Manufacturing CPQ</b><small>and Sales Operations Platform</small></span></div>
+        <div className="platform-brand" aria-label="Manufacturing CPQ and Sales Operations Platform"><img src="/assets/arka-logo-mark.png" alt="Arka"/><span><b>Manufacturing CPQ</b><small>and Sales Operations Platform</small></span></div>
         <nav>{views.map((view) => <button key={view} className={activeView === view ? "is-active" : ""} onClick={() => navigate(view)}><span><PlatformIcon name={view}/></span>{navLabels[view]}{view === "inquiries" && <em>{state.inquiries.filter((item) => item.status === "New").length}</em>}</button>)}</nav>
         <div className="platform-sidebar__foot"><button onClick={reset}><PlatformIcon name="reset" size={18}/> <span>Reset demo data</span></button><div className="platform-profile"><span>SR</span><p><b>Shreya Rao</b><small>Sales coordinator</small></p></div></div>
       </aside>
