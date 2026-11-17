@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import ConnectedGlobe from "@/components/ConnectedGlobe";
 import { BOOKING_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -112,15 +112,8 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="home-editorial__art" aria-hidden="true">
-          <Image
-            className="home-editorial__hero-image"
-            src="/assets/arka-data-workflow-systems-hero.png"
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 760px) 100vw, 48vw"
-          />
+        <div className="home-editorial__art home-editorial__art--globe" aria-hidden="true">
+          <ConnectedGlobe />
         </div>
       </section>
 
