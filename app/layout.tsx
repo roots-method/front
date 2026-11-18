@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Nunito_Sans } from "next/font/google";
+import { Lato, Newsreader, Nunito_Sans } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PrivacyModal from "@/components/PrivacyModal";
@@ -11,7 +11,7 @@ import "@/styles/case-ledger.css";
 import "@/styles/warm-intelligence.css";
 
 // Newsreader gives the marketing pages an editorial display voice. Nunito Sans
-// supports body copy, navigation, controls, and the CPQ platform.
+// supports marketing body copy and navigation, while Lato is scoped to CPQ.
 const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -24,6 +24,13 @@ const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-nunito-sans",
+  display: "swap",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-lato",
   display: "swap",
 });
 
@@ -88,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // this element before React hydrates, and that difference is intended.
     <html
       lang="en"
-      className={`${newsreader.variable} ${nunitoSans.variable}`}
+      className={`${newsreader.variable} ${nunitoSans.variable} ${lato.variable}`}
       suppressHydrationWarning
     >
       <head>
